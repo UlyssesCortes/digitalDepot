@@ -15,7 +15,17 @@ const pool = new Pool({
     database: "digitaldepot"
 })
 
-// console.log(process.env.DB_USER)
-// console.log(JWT_SECRET)
+
+// const { Pool } = require('pg');
+
+// const connectionString = process.env.DATABASE_URL || 'postgres://root:4864@localhost:5432/fitness-dev';
+
+// const client = new Pool({
+//   connectionString,
+//   ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : undefined,
+// });
+
+// module.exports = client;
+
 
 module.exports = pool;
