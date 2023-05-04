@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
-
 const jwt = require('jsonwebtoken');
 const { getUserById } = require('../db');
 const { JWT_SECRET } = process.env;
-
 
 router.use(async (req, res, next) => {
     const prefix = 'Bearer ';
@@ -49,20 +46,19 @@ router.get('/health', async (req, res, next) => {
     res.send({ message: 'API is healthy' });
 });
 
-// ROUTER: /api/users
-// const usersRouter = require('./users');
-// router.use('/users', usersRouter);
+const usersRouter = require('./user');
+router.use('/user', usersRouter);
 
-// ROUTER: /api/activities
 const productsRouter = require('./products');
 router.use('/products', productsRouter);
 
-// ROUTER: /api/routines
-// const routinesRouter = require('./routines');
-// router.use('/routines', routinesRouter);
+const ordersRouter = require('./order');
+router.use('/order', ordersRouter);
 
-// ROUTER: /api/routine_activities
-// const routineActivitiesRouter = require('./routineActivities');
-// router.use('/routine_activities', routineActivitiesRouter);
+const reviewsRouter = require('./review');
+router.use('/review', reviewsRouter);
+
+const orderItemsRouter = require('./order-items');
+router.use('/order-items', orderItemsRouter);
 
 module.exports = router;

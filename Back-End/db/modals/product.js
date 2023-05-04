@@ -1,4 +1,4 @@
-const client = require("./client");
+const client = require("../client");
 
 // const pool = require("../db")
 
@@ -13,7 +13,7 @@ async function createProduct({
     try {
         const {
             rows: [product],
-        } = await pool.query(
+        } = await client.query(
             `
       INSERT INTO products(title, description, price, quantity, category, image) 
       VALUES($1, $2, $3, $4, $5, $6) 
@@ -30,7 +30,7 @@ async function createProduct({
 
 async function getAllProducts() {
     try {
-        const { rows } = await pool.query(`
+        const { rows } = await client.query(`
       SELECT id, title, description, price, quantity, category, image 
       FROM products;
     `);
@@ -43,7 +43,7 @@ async function getAllProducts() {
 
 async function getProductById(id) {
     try {
-        const { rows } = await pool.query(`
+        const { rows } = await client.query(`
       SELECT id, title, description, price, quantity, category, image 
       FROM products
       WHERE id=${id};
@@ -62,7 +62,7 @@ async function updateProducts({ id, ...fields }) {
 
     const {
         rows: [product],
-    } = await pool.query(
+    } = await client.query(
         `
   UPDATE products
   SET ${setString}
@@ -75,13 +75,13 @@ async function updateProducts({ id, ...fields }) {
 }
 
 async function deleteProduct(id) {
-    await pool.query(`
+    await client.query(`
   DELETE FROM orders WHERE product_id=${id}
   `);
 
     const {
         rows: [product],
-    } = await pool.query(
+    } = await client.query(
         `
   DELETE FROM products WHERE id=$1;
   `,

@@ -1,8 +1,7 @@
 module.exports = {
     ...require('./client'),
-    ...require('./product')
-    // , 
-    // ...require('./activities'),
-    // ...require('./routines'), 
-    // ...require('./routine_activities') 
+    ...require('./modals/product'),
+    ...require('./modals/order'),
+    ...require('./modals/review'),
+    ...require('./modals/order-items')
 }
