@@ -12,14 +12,14 @@ apiRouter.get("/", async (req, res, next) => {
     }
 });
 
-apiRouter.post("/:product_id", async (req, res, next) => {
+apiRouter.post("/:productId", async (req, res, next) => {
     const { orderId, quantity } = req.body;
-    const product_id = req.params.product_id;
+    const productId = req.params.productId;
 
     try {
         const newOrderItem = await OrderItems.addProductOrder({
             orderId,
-            product_id,
+            productId,
             quantity,
         });
         res.send(newOrderItem);

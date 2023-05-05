@@ -34,8 +34,8 @@ apiRouter.post("/createProduct", async (req, res, next) => {
     }
 });
 
-// apiRouter.get("/:product_id", async (req, res, next) => {
-//     const id = req.params.product_id;
+// apiRouter.get("/:productId", async (req, res, next) => {
+//     const id = req.params.productId;
 //     try {
 //         const product = await Product.getProductById(id);
 //         res.send(product);
@@ -44,8 +44,8 @@ apiRouter.post("/createProduct", async (req, res, next) => {
 //     }
 // });
 
-// apiRouter.patch("/:product_id", async (req, res, next) => {
-//     const id = req.params.product_id;
+// apiRouter.patch("/:productId", async (req, res, next) => {
+//     const id = req.params.productId;
 //     const { title, description, price, quantity, category, image } = req.body;
 //     const updatedFields = { id: id };
 
@@ -75,8 +75,8 @@ apiRouter.post("/createProduct", async (req, res, next) => {
 //     }
 // });
 
-// apiRouter.delete("/:product_id", async (req, res, next) => {
-//     const id = req.params.product_id;
+// apiRouter.delete("/:productId", async (req, res, next) => {
+//     const id = req.params.productId;
 //     console.log(id);
 //     try {
 //         const destroy = await Product.deleteProduct(id);

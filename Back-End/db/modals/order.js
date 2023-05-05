@@ -1,16 +1,16 @@
 const client = require("../client");
 
-async function createOrder(user_id) {
+async function createOrder(userId) {
     try {
         const {
             rows: [order],
         } = await client.query(
             `
-      INSERT INTO orders("user_id") 
+      INSERT INTO orders("userId") 
       VALUES($1) 
       RETURNING *;
     `,
-            [user_id]
+            [userId]
         );
 
         return order;
@@ -46,12 +46,12 @@ async function getOrderById(id) {
     }
 }
 
-async function getOrderByUserId(user_id) {
+async function getOrderByUserId(userId) {
     try {
         const { rows } = await client.query(`
         SELECT * 
         FROM orders
-        WHERE "user_id"=${user_id} AND "isCheckedOut"=false;
+        WHERE "userId"=${userId} AND "isCheckedOut"=false;
       `);
 
         return rows;

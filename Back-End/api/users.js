@@ -2,42 +2,44 @@ const express = require("express");
 const apiRouter = express.Router();
 const bcrypt = require("bcrypt");
 const { requireUser } = require("./utils");
-const { JWT_SECRET = "secret word" } = process.env;
-
-const { User } = require("../db/index");
-
+const JWT_SECRET = process.env.JWT_SECRET;
 const jwt = require("jsonwebtoken");
+
+const {
+    getUserByEmail,
+    createUser,
+    getAllUsers,
+    getUserById
+} = require('../db');
 
 apiRouter.post("/register", async (req, res, next) => {
     const { firstName, lastName, email, password } = req.body;
-    console.log(firstName);
-    console.log(lastName);
-    console.log(email);
-    console.log(password);
+    // console.log(firstName);
+    // console.log(lastName);
+    // console.log(email);
+    // console.log(password);
+
     try {
-        const _user = await User.getUserByEmail(email);
+        const _user = await getUserByEmail(email);
         if (_user) {
             next({
-                name: "UserTakenError",
-                message: "UserTakenError",
-                error: "UserTakenError",
+                message: "UserTakenError"
             });
         }
 
         if (password.length < 8) {
             next({
-                name: "PasswordTooShortError",
-                message: "PasswordTooShortError",
-                error: "PasswordTooShortError",
+                message: "PasswordTooShortError"
             });
         }
 
-        const user = await User.createUser({
+        const user = await createUser({
             firstName,
             lastName,
             email,
             password,
         });
+
 
         const token = jwt.sign(
             {
@@ -50,16 +52,15 @@ apiRouter.post("/register", async (req, res, next) => {
             }
         );
 
-        apiRouter.use((error, req, res, next) => {
-            res.send(error);
-        });
         res.send({
             user,
             message: "thank you for signing up",
             token,
         });
     } catch (error) {
-        next(ErrorEvent);
+        next({
+            message: "There was an error while registering please try again!",
+        });
     }
 });
 
@@ -69,12 +70,11 @@ apiRouter.post("/login", async (req, res, next) => {
 
     if (!email || !password) {
         next({
-            name: "MissingCredentialsError",
             message: "Please supply both a username and password",
         });
     }
     try {
-        const user = await User.getUserByEmail(email);
+        const user = await getUserByEmail(email);
         const isValid = await bcrypt.compare(password, user.password);
         if (isValid) {
             const token = jwt.sign(
@@ -106,7 +106,7 @@ apiRouter.post("/login", async (req, res, next) => {
 
 apiRouter.get("/", async (req, res, next) => {
     try {
-        const users = await User.getAllUsers();
+        const users = await getAllUsers();
         res.send(users);
     } catch (error) {
         next(error);
@@ -115,7 +115,7 @@ apiRouter.get("/", async (req, res, next) => {
 
 // GET /api/users/me
 apiRouter.get("/me", requireUser, async (req, res, next) => {
-    const user = await User.getUserById(req.user.id);
+    const user = await getUserById(req.user.id);
     console.log(user);
     try {
         res.send({

@@ -10,11 +10,11 @@ async function createUser({ firstName, lastName, email, password }) {
             rows: [user],
         } = await client.query(
             `
-      INSERT INTO users("firstName", "lastName", email, password) 
-      VALUES($1, $2, $3, $4) 
-      ON CONFLICT (email) DO NOTHING 
-      RETURNING *;
-    `,
+        INSERT INTO users("firstName", "lastName", email, password) 
+        VALUES($1, $2, $3, $4) 
+        ON CONFLICT (email) DO NOTHING 
+        RETURNING *;
+      `,
             [firstName, lastName, email, hashedPassword]
         );
 

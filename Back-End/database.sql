@@ -10,7 +10,6 @@ CREATE DATABASE digitaldepot;
         image TEXT NOT NULL
       );
 
--- Get rid of name for login just email and password
       CREATE TABLE users (
         id SERIAL PRIMARY KEY,
         "firstName" VARCHAR(255) NOT NULL,
@@ -20,7 +19,6 @@ CREATE DATABASE digitaldepot;
         "isAdmin" BOOLEAN DEFAULT true
       );
 
-  -- user_id to userId
       CREATE TABLE orders (
         id SERIAL PRIMARY KEY,
         "userId" INTEGER REFERENCES users(id),
@@ -28,8 +26,6 @@ CREATE DATABASE digitaldepot;
         "isCheckedOut" BOOLEAN DEFAULT false
       );
 
-    -- product_id to productId
-    -- user_id to userId
       CREATE TABLE reviews (
         id SERIAL PRIMARY KEY,
         "productId" INTEGER REFERENCES products(id),
@@ -39,7 +35,6 @@ CREATE DATABASE digitaldepot;
         rating INTEGER NOT NULL
       );
 
-    -- product_id to productId
       CREATE TABLE order_items (
         id SERIAL PRIMARY KEY,
         "orderId" INTEGER REFERENCES orders(id),

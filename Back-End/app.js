@@ -13,16 +13,14 @@ app.use(express.json())
 
 const morgan = require('morgan');
 app.use(morgan('dev'));
+
 app.use((req, res, next) => {
-    // console.log("<____Body Logger START____>");
-    // console.log(req.body);
-    // console.log("<_____Body Logger END_____>");
     next();
 });
+
 // Setup your Middleware and API Router here
 const apiRouter = require('./api')
 app.use('/api', apiRouter)
-
 
 //error handler
 app.use((error, req, res, next) => {
