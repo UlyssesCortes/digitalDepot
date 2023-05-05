@@ -1,11 +1,17 @@
 const express = require("express");
 const apiRouter = express.Router();
 
-const { OrderItems } = require("../db/index");
+const {
+    getAllOrderItems,
+    addProductOrder,
+    deleteOrderItem,
+    updateOrderItem,
+    getOrderItemsByOrderId
+} = require('../db');
 
 apiRouter.get("/", async (req, res, next) => {
     try {
-        const orderItems = await OrderItems.getAllOrderItems();
+        const orderItems = await getAllOrderItems();
         res.send(orderItems);
     } catch (error) {
         next(error);
@@ -17,7 +23,7 @@ apiRouter.post("/:productId", async (req, res, next) => {
     const productId = req.params.productId;
 
     try {
-        const newOrderItem = await OrderItems.addProductOrder({
+        const newOrderItem = await addProductOrder({
             orderId,
             productId,
             quantity,
@@ -31,7 +37,7 @@ apiRouter.post("/:productId", async (req, res, next) => {
 apiRouter.get("/:orderId", async (req, res, next) => {
     try {
         const { orderId } = req.params;
-        const orderItems = await OrderItems.getOrderItemsByOrderId(orderId);
+        const orderItems = await getOrderItemsByOrderId(orderId);
         res.send(orderItems);
     } catch (error) {
         next(error);
@@ -43,11 +49,10 @@ apiRouter.patch("/:orderItemId", async (req, res, next) => {
         const id = req.params.orderItemId;
         const { quantity } = req.body;
         const updatedFields = { id: id };
-
         if (quantity) {
             updatedFields.quantity = quantity;
         }
-        const updatedOrderItem = await OrderItems.updateOrderItem(updatedFields);
+        const updatedOrderItem = await updateOrderItem(updatedFields);
 
         res.send(updatedOrderItem);
     } catch (error) {
@@ -58,7 +63,7 @@ apiRouter.patch("/:orderItemId", async (req, res, next) => {
 apiRouter.delete("/:orderItemId", async (req, res, next) => {
     const id = req.params.orderItemId;
     try {
-        const destroy = await OrderItems.deleteOrderItem(id);
+        const destroy = await deleteOrderItem(id);
         res.send(destroy);
     } catch (error) {
         next(error);

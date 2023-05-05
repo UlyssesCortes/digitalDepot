@@ -2,13 +2,16 @@ const express = require('express');
 const apiRouter = express.Router();
 const { requireUser } = require('./utils');
 
-const { Review } = require("../db/index");
+const {
+    getReviewsByProductId,
+    createReview
+} = require('../db');
 
 apiRouter.get('/:productId', async (req, res, next) => {
     const { productId } = req.params;
 
     try {
-        const reviews = await Review.getReviewsByProductId(productId);
+        const reviews = await getReviewsByProductId(productId);
         res.send(reviews);
     } catch (error) {
         next(error);

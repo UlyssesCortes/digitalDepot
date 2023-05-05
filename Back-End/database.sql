@@ -35,6 +35,12 @@ CREATE DATABASE digitaldepot;
         rating INTEGER NOT NULL
       );
 
+      CREATE TABLE favorite (
+        id SERIAL PRIMARY KEY,
+        "productId" INTEGER REFERENCES products(id),
+        "userId" INTEGER REFERENCES users(id)
+      );
+
       CREATE TABLE order_items (
         id SERIAL PRIMARY KEY,
         "orderId" INTEGER REFERENCES orders(id),

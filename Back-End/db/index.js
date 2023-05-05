@@ -4,5 +4,6 @@ module.exports = {
     ...require('./modals/order'),
     ...require('./modals/review'),
     ...require('./modals/order-items'),
-    ...require('./modals/user')
+    ...require('./modals/user'),
+    ...require('./modals/favorite')
 }

@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const { getUserById } = require('../db');
 const JWT_SECRET = process.env.JWT_SECRET;
 
-
 apiRouter.use(async (req, res, next) => {
     const prefix = "Bearer ";
     const auth = req.header("Authorization");
@@ -61,5 +60,8 @@ apiRouter.use('/review', reviewsRouter);
 
 const orderItemsRouter = require('./order-items');
 apiRouter.use('/order-items', orderItemsRouter);
+
+const favoritesRouter = require('./favorite');
+apiRouter.use('/favorite', favoritesRouter);
 
 module.exports = apiRouter;

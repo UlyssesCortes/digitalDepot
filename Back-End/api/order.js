@@ -2,14 +2,12 @@ const express = require("express");
 const apiRouter = express.Router();
 const { requireUser } = require("./utils");
 
-// const { Order } = require("../db/index");
-
 const {
     getAllOrders,
-    getOrderById,
     createOrder,
     updateOrders,
-    deleteOrder
+    deleteOrder,
+    getOrderByUserId
 } = require('../db');
 
 apiRouter.get("/", async (req, res, next) => {
