@@ -5,13 +5,12 @@ async function addProductOrder({ orderId, productId, quantity }) {
 
     try {
         const { rows: [orderItem] } = await client.query(`
-        INSERT INTO order_items("orderId", productId, quantity)
+        INSERT INTO order_items("orderId", "productId", quantity)
         VALUES($1, $2, $3)
         RETURNING *;
       `,
             [orderId, productId, quantity]
         );
-        // console.log(orderItem);
 
         return orderItem;
     } catch (error) {

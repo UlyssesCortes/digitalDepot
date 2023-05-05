@@ -3,7 +3,9 @@ const apiRouter = express.Router();
 
 const {
     getAllProducts,
-    createProduct
+    createProduct,
+    updateProducts,
+    getProductById
 } = require('../db');
 const { requireUser } = require("./utils");
 
