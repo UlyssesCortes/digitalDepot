@@ -14,11 +14,6 @@ const {
 
 apiRouter.post("/register", async (req, res, next) => {
     const { firstName, lastName, email, password } = req.body;
-    // console.log(firstName);
-    // console.log(lastName);
-    // console.log(email);
-    // console.log(password);
-
     try {
         const _user = await getUserByEmail(email);
         if (_user) {
