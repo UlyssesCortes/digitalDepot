@@ -1,49 +1,22 @@
 const client = require("../client");
 
-async function addToFavorite(userId) {
+async function addToFavorite(userId, productId) {
     try {
         const {
-            rows: [favorite],
+            rows: [favorite]
         } = await client.query(
             `
-      INSERT INTO favorite("userId") 
-      VALUES($1) 
-      RETURNING *;
-    `,
-            [userId]
+          INSERT INTO favorite ("userId", "productId")
+          VALUES ($1, $2)
+          RETURNING *
+        `,
+            [userId, productId]
         );
         return favorite;
     } catch (error) {
         throw error;
     }
 }
-
-// async function getAllFavorites() {
-//     try {
-//         const { rows } = await client.query(`
-//       SELECT * 
-//       FROM favorite;
-//     `);
-
-//         return rows;
-//     } catch (error) {
-//         throw error;
-//     }
-// }
-
-// async function getFavoriteById(id) {
-//     try {
-//         const { rows } = await client.query(`
-//       SELECT * 
-//       FROM favorite
-//       WHERE id=${id};
-//     `);
-
-//         return rows;
-//     } catch (error) {
-//         throw error;
-//     }
-// }
 
 async function getFavoriteByUserId(userId) {
     try {
@@ -59,17 +32,35 @@ async function getFavoriteByUserId(userId) {
     }
 }
 
-async function deleteFavorite(id) {
+
+async function deleteFavorite(userId, productId) {
+    try {
+        const {
+            rows: [favorite]
+        } = await client.query(
+            `
+        DELETE FROM favorite ("userId", "productId")
+          VALUES ($1, $2)
+          RETURNING *
+        `,
+            [userId, productId]
+        );
+        return favorite;
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function deleteFavorite(productId) {
     const {
         rows: [favorite],
-    } = await client.query(`DELETE FROM favorite WHERE id=$1;`, [id]);
+    } = await client.query(`DELETE FROM favorite WHERE "productId"=$1;`,
+        [productId]);
     return favorite;
 }
 
 module.exports = {
     addToFavorite,
-    // getAllFavorites,
-    // getFavoriteById,
     getFavoriteByUserId,
     deleteFavorite,
 };

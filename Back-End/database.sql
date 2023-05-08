@@ -7,7 +7,8 @@ CREATE DATABASE digitaldepot;
         price decimal(10,2) NOT NULL,
         quantity integer NOT NULL,
         category varchar(255) NOT NULL,
-        image TEXT NOT NULL
+        image TEXT NOT NULL,
+        favorite BOOLEAN NOT NULL DEFAULT false
       );
 
       CREATE TABLE users (

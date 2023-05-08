@@ -8,28 +8,36 @@ const {
     deleteFavorite
 } = require('../db');
 
-apiRouter.get("/myFavorites", requireUser, async (req, res, next) => {
+apiRouter.get("/", requireUser, async (req, res, next) => {
+    const userId = req.user.id
+
+    console.log(userId)
     try {
-        const usersOrders = await getFavoriteByUserId(req.user.id);
+        const usersOrders = await getFavoriteByUserId(userId);
         res.send(usersOrders);
     } catch (error) {
         next(error);
     }
 });
 
-apiRouter.post("/", requireUser, async (req, res, next) => {
+apiRouter.post("/:productId", requireUser, async (req, res, next) => {
+    const { productId } = req.params;
+    const userId = req.user.id
+    console.log(productId)
+    console.log(userId)
     try {
-        const newOrder = await addToFavorite(req.user.id);
+        const newOrder = await addToFavorite(userId, productId);
         res.send(newOrder);
     } catch (error) {
         next(error);
     }
 });
 
-apiRouter.delete("/:favoriteId", async (req, res, next) => {
-    const id = req.params.orderId;
+apiRouter.delete("/:productId", async (req, res, next) => {
+    const { productId } = req.params;
+    // on the front end control if favorite then on click delete 
     try {
-        const destroy = await deleteFavorite(id);
+        const destroy = await deleteFavorite(productId);
         res.send(destroy);
     } catch (error) {
         next(error);

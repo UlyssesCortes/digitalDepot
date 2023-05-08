@@ -9,7 +9,6 @@ const {
 
 apiRouter.get('/:productId', async (req, res, next) => {
     const { productId } = req.params;
-
     try {
         const reviews = await getReviewsByProductId(productId);
         res.send(reviews);
@@ -21,10 +20,10 @@ apiRouter.get('/:productId', async (req, res, next) => {
 apiRouter.post('/:productId', requireUser, async (req, res, next) => {
     const { productId } = req.params;
     const { title, description, rating } = req.body;
-    const { userId } = req;
+    const userId = req.user.id;
 
     try {
-        const review = await createReview(productId, { userId, title, description, rating });
+        const review = await createReview({ productId, userId, title, description, rating });
         res.send(review);
     } catch (error) {
         next(error);
