@@ -8,7 +8,8 @@
     "seed:dev": "nodemon ./db/seed.js",
     "seed": "node ./db/seed.js",
     "start:dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "db:build": "node ./db/init_db"
   },
   "author": "",
   "license": "ISC",
