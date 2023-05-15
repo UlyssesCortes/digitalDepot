@@ -1,5 +1,7 @@
+const client = require('./client');
+
 module.exports = {
-    ...require('./client'),
+    client,
     ...require('./modals/product'),
     ...require('./modals/order'),
     ...require('./modals/review'),

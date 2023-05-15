@@ -1,22 +1,20 @@
 // const { client } = require("./index.js");
 const client = require("../db/client");
-const {
-    createUser
-} = require('../db');
+const { createUser } = require('../db');
 
 async function buildTables() {
-    try {
-        console.log("Starting to build tables...");
-        client.connect();
+  try {
+    console.log("Starting to build tables...");
+    // client.connect();
 
-        await client.query(`
+    await client.query(`
             DROP TABLE IF EXISTS order_items;
             DROP TABLE IF EXISTS reviews;
             DROP TABLE IF EXISTS products CASCADE;
             DROP TABLE IF EXISTS users CASCADE;
         `);
 
-        await client.query(`
+    await client.query(`
         CREATE TABLE IF NOT EXISTS products (
             id SERIAL PRIMARY KEY,
             title varchar(255) NOT NULL,
@@ -60,34 +58,30 @@ async function buildTables() {
           );
         `);
 
-        console.log("Finished building tables!");
-    } catch (error) {
-        console.error("Error building tables!");
-        throw error;
-    } finally {
-
-    }
+    console.log("Finished building tables!");
+  } catch (error) {
+    console.error("Error building tables!");
+    throw error;
+  }
 }
 
 async function populateInitialData() {
-    console.log("Starting to create users...");
-    try {
-        await createUser({
-            firstName: "Ulysses",
-            lastName: "Cortes",
-            email: "uly@gmail.com",
-            password: "123456789",
-            isAdmin: true,
-        });
-        console.log("User created successfully!");
-    } catch (error) {
-        console.error("Error creating user!");
-        throw error;
-    } finally {
-        await client.end();
-    }
+  console.log("Starting to create users...");
+  try {
+    await createUser({
+      firstName: "Ulysses",
+      lastName: "Cortes",
+      email: "uly@gmail.com",
+      password: "123456789",
+      isAdmin: true,
+    });
+    console.log("User created successfully!");
+  } catch (error) {
+    console.error("Error creating user!");
+    throw error;
+  }
 }
-
 buildTables()
-    .then(populateInitialData)
-    .catch(console.error);
+  .then(populateInitialData)
+  .catch(console.error)
+  .finally(() => client.end());
