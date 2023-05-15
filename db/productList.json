@@ -1,0 +1,324 @@
+{
+    "products": [
+        {
+            "title": "iPhone SE",
+            "description": "The iPhone SE is a compact smartphone with a 4.7-inch Retina HD display, powered by Apple's A13 Bionic chip with 3GB of RAM and available in 64GB, 128GB, and 256GB storage options. It features a 12MP rear camera with Smart HDR and 4K video recording, a 7MP front camera with 1080p HD video recording, Touch ID, Apple Pay, Siri, and supports Wi-Fi 6, Gigabit-class LTE, and dual-SIM capabilities. The device has a 1,821mAh battery that supports fast charging and wireless charging, and runs on iOS 14. Overall, the iPhone SE is a compact and affordable smartphone with excellent performance and features.",
+            "price": 429.00,
+            "quantity": 10,
+            "category": "Phone",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-se-finish-unselect-gallery-3-202207?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1655249913137"
+        },
+        {
+            "title": "iPhone 12",
+            "description": "The iPhone 12 is a flagship smartphone from Apple featuring a 6.1-inch Super Retina XDR OLED display with a resolution of 1170 x 2532 pixels. It is powered by Apple's A14 Bionic chip with a 16-core Neural Engine and 4GB of RAM, and available in storage options of 64GB, 128GB, and 256GB. It boasts a dual-camera system with a 12MP ultra-wide and 12MP wide lens, both with Night mode, 4K Dolby Vision HDR video recording, and Smart HDR 3 for photos. The front-facing camera is a 12MP TrueDepth camera with Night mode and 4K Dolby Vision HDR recording. The device supports 5G connectivity, Face ID, MagSafe wireless charging, and runs on iOS 14. Overall, the iPhone 12 offers top-of-the-line features and performance in a sleek design.",
+            "price": 599.00,
+            "quantity": 8,
+            "category": "Phone",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-finish-unselect-gallery-2-202207?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1662129021500"
+        },
+        {
+            "title": "iPhone 13 mini",
+            "description": "The iPhone 13 mini is a compact smartphone featuring a 5.4-inch Super Retina XDR OLED display with a resolution of 1080 x 2340 pixels. It is powered by Apple's A15 Bionic chip with a 6-core CPU, 5-core GPU, and 16-core Neural Engine, and comes with 4GB of RAM and storage options of 128GB, 256GB, and 512GB. The device boasts a dual-camera system with a 12MP wide and 12MP ultra-wide lens, Night mode, and Cinematic mode for video. The front-facing camera is a 12MP TrueDepth camera with Night mode and 4K Dolby Vision HDR recording. It supports 5G connectivity, Face ID, MagSafe wireless charging, and runs on iOS 15. Overall, the iPhone 13 mini offers impressive performance and features in a compact design.",
+            "price": 599.00,
+            "quantity": 5,
+            "category": "Phone",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-5-4inch_AV1?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1671463394187"
+        },
+        {
+            "title": "iPhone 13",
+            "description": "The iPhone 13 is a flagship smartphone featuring a 6.1-inch Super Retina XDR OLED display with a resolution of 1170 x 2532 pixels. It is powered by Apple's A15 Bionic chip with a 6-core CPU, 5-core GPU, and 16-core Neural Engine, and comes with 4GB of RAM and storage options of 128GB, 256GB, and 512GB. The device boasts a dual-camera system with a 12MP wide and 12MP ultra-wide lens, Night mode, and Cinematic mode for video. The front-facing camera is a 12MP TrueDepth camera with Night mode and 4K Dolby Vision HDR recording. It supports 5G connectivity, Face ID, MagSafe wireless charging, and runs on iOS 15. Overall, the iPhone 13 offers top-of-the-line performance and features with a stunning design.",
+            "price": 699.00,
+            "quantity": 3,
+            "category": "Phone",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-6-1inch-product-red?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1656720518797"
+        },
+        {
+            "title": "iPhone 14",
+            "description": "The iPhone 14 display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle. When measured as a standard rectangular shape, the screen is 6.06 inches diagonally (actual viewable area is less)",
+            "price": 799.00,
+            "quantity": 20,
+            "category": "Phone",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-1inch-yellow?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1676505836714"
+        },
+        {
+            "title": "iPhone 14 Plus",
+            "description": "The iPhone 14 Plus display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle. When measured as a standard rectangular shape, the screen is 6.68 inches diagonally (actual viewable area is less).",
+            "price": 899.00,
+            "quantity": 10,
+            "category": "Phone",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1661027925267"
+        },
+        {
+            "title": "iPhone 12 mini",
+            "description": "The iPhone 12 Mini was released by Apple in October 2020, and it is the smallest member of the iPhone 12 family. The phone has a 5.4-inch Super Retina XDR OLED display with a resolution of 1080 x 2340 pixels. It is powered by the A14 Bionic chip, which is the same processor used in the rest of the iPhone 12 models. The phone features a dual-camera system with a 12-megapixel ultra-wide lens and a 12-megapixel wide-angle lens, as well as a 12-megapixel front-facing camera. It supports 5G connectivity, has Face ID, and runs on iOS 14. The iPhone 12 Mini is available in storage options of 64GB, 128GB, and 256GB, and is offered in five different colors: black, white, red, green, and blue.",
+            "price": 499.00,
+            "quantity": 2,
+            "category": "Phone",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-finish-unselect-gallery-3-202207_GEO_US?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1662128988137"
+        },
+        {
+            "title": "iPhone 12 Pro",
+            "description": "The iPhone 12 Pro was released by Apple in October 2020, and it is one of the high-end models in the iPhone 12 family. The phone has a 6.1-inch Super Retina XDR OLED display with a resolution of 1170 x 2532 pixels, and it is powered by the A14 Bionic chip, which is the same processor used in the rest of the iPhone 12 models. The phone features a triple-camera system with a 12-megapixel ultra-wide lens, a 12-megapixel wide-angle lens, and a 12-megapixel telephoto lens, as well as a LiDAR scanner for enhanced AR experiences. It supports 5G connectivity, has Face ID, and runs on iOS 14. The iPhone 12 Pro is available in storage options of 128GB, 256GB, and 512GB, and is offered in four different colors: graphite, silver, gold, and pacific blue.",
+            "price": 749.00,
+            "quantity": 5,
+            "category": "Phone",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-iphone-12-pro-blue-2020?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1635202834000"
+        },
+        {
+            "title": "iPhone 12 Pro Max",
+            "description": "The iPhone 12 Pro Max is the largest and most advanced model in the iPhone 12 family, released by Apple in October 2020. The phone has a massive 6.7-inch Super Retina XDR OLED display with a resolution of 1284 x 2778 pixels, and it is powered by the A14 Bionic chip, which is the same processor used in the rest of the iPhone 12 models. The phone features a triple-camera system with a 12-megapixel ultra-wide lens, a 12-megapixel wide-angle lens, and a 12-megapixel telephoto lens, as well as a LiDAR scanner for enhanced AR experiences. It supports 5G connectivity, has Face ID, and runs on iOS 14. The iPhone 12 Pro Max is available in storage options of 128GB, 256GB, and 512GB, and is offered in four different colors: graphite, silver, gold, and pacific blue.",
+            "price": 800.00,
+            "quantity": 3,
+            "category": "Phone",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-iphone-12-pro-max-graphite-2020?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1635202942000"
+        },
+        {
+            "title": "iPhone X",
+            "description": "The iPhone X was released by Apple in November 2017, and it was a significant departure from previous iPhone models in terms of design and features. The phone has a 5.8-inch Super Retina OLED display with a resolution of 1125 x 2436 pixels, and it is powered by the A11 Bionic chip. The phone features a dual-camera system with a 12-megapixel wide-angle lens and a 12-megapixel telephoto lens, as well as a 7-megapixel front-facing camera. It introduced Face ID, replacing the traditional home button with a swipe-up gesture, and it runs on iOS 11, upgradable to iOS 14. The iPhone X is available in storage options of 64GB and 256GB, and it is offered in two different colors: silver and space gray. It was also the first iPhone to support wireless charging.",
+            "price": 250.00,
+            "quantity": 2,
+            "category": "Phone",
+            "image": "https://www.apple.com/newsroom/images/product/iphone/standard/iphonex_front_homescreen_inline.jpg.large_2x.jpg"
+        },
+        {
+            "title": "iPad Air 2nd Generation",
+            "description": "Nice Tablet",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Tablet",
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP708/SP708-space_gray.jpeg"
+        },
+        {
+            "title": "iPad Air 3rd Generation",
+            "description": "Nicer Tablet",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Tablet",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-ipad-mini-wifi-gold-gallery-2019?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1581026440444"
+        },
+        {
+            "title": "iPad Air 4th Generation",
+            "description": "Even Nicer Tablet",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Tablet",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-ipad-air-wifi-green-2021?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1644268592092"
+        },
+        {
+            "title": "iPad Air 5th Generation",
+            "description": "Nicest Tablet Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Tablet",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-storage-select-202207-space-gray?wid=5120&hei=2880&fmt=p-jpg&qlt=95&.v=1654903003209"
+        },
+        {
+            "title": "iPad Pro",
+            "description": "Nice Tablet",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Tablet",
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP784/ipad-pro-11-2018_2x.png"
+        },
+        {
+            "title": "iPad Pro 2nd Generation",
+            "description": "Nicer Tablet",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Tablet",
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP761/ipad-pro-12in-hero-201706_2x.png"
+        },
+        {
+            "title": "iPad Pro 3rd Generation",
+            "description": "Even Nicer Tablet",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Tablet",
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP785/ipad-pro-12-2018_2x.png"
+        },
+        {
+            "title": "iPad Pro 4th Generation",
+            "description": "Nicest Tablet Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Tablet",
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP882/ipad-pro-4gen-mainimage_2x.png"
+        },
+        {
+            "title": "iPad Pro 5th Generation",
+            "description": "Nicest Tablet Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Tablet",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-ipad-pro-12-wifi-spacegray-2021?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1674663706569"
+        },
+        {
+            "title": "iPad Pro 6th Generation",
+            "description": "Nicest Tablet Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Tablet",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-finish-select-202212-12-9inch-space-gray?wid=5120&hei=2880&fmt=jpeg&qlt=90&.v=1667595007854"
+        },
+        {
+            "title": "MacBook Air",
+            "description": "Nice Laptop",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Laptop",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-silver-select-201810?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664472289056"
+        },
+        {
+            "title": "MacBook Air 11in",
+            "description": "Nicer Laptop",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Laptop",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-silver-select-201810?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664472289056"
+        },
+        {
+            "title": "MacBook Air 12in",
+            "description": "Even Nicer Laptop",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Laptop",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-gold-select-201810?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664472289059"
+        },
+        {
+            "title": "MacBook Air 13in",
+            "description": "Nicest Laptop Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Laptop",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-silver-select-20220606?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653084303678"
+        },
+        {
+            "title": "MacBook Air 14in",
+            "description": "Nice Laptop",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Laptop",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-starlight-select-20220606?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653084303732"
+        },
+        {
+            "title": "MacBook Air M1",
+            "description": "Nicer Laptop",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Laptop",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664472289661"
+        },
+        {
+            "title": "MacBook Air M2",
+            "description": "Even Nicer Laptop",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Laptop",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653084303665"
+        },
+        {
+            "title": "MacBook Pro 13in",
+            "description": "Nicest Laptop Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Laptop",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-spacegray-select-202301?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1671304673202"
+        },
+        {
+            "title": "MacBook Pro 14in",
+            "description": "Nicer Laptop",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Laptop",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-spacegray-select-202301?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1671304673202"
+        },
+        {
+            "title": "MacBook Pro 16in",
+            "description": "Nicer Laptop",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Laptop",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-spacegray-select-202301?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1671304673202"
+        },
+        {
+            "title": "AppleWatch",
+            "description": "Nice Watch",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Watch",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/2/21/Apple_Watch_%28Space_Grey_42mm%29.png"
+        },
+        {
+            "title": "AppleWatch Series 1",
+            "description": "Nicer Watch",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Watch",
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP746/alu-silver.jpg"
+        },
+        {
+            "title": "AppleWatch Series 2",
+            "description": "Even Nicer Watch",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Watch",
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP746/alu-spacegray-nike.jpg"
+        },
+        {
+            "title": "AppleWatch Series 3",
+            "description": "Nicest Watch Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Watch",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/FQKW2?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1517334319257"
+        },
+        {
+            "title": "AppleWatch Series 4",
+            "description": "Nice Watch",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Watch",
+            "image": "https://www.apple.com/newsroom/images/product/watch/standard/apple-watch-series4_gold-milanese_09122018_carousel.jpg.large_2x.jpg"
+        },
+        {
+            "title": "AppleWatch Series 5",
+            "description": "Nicer Watch",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Watch",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/FWVF2_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1580325954394"
+        },
+        {
+            "title": "AppleWatch Series 6",
+            "description": "Even Nicer Watch",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Watch",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/F00H3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1614983163000"
+        },
+        {
+            "title": "AppleWatch Series 7",
+            "description": "Nicest Watch Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Watch",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/FKN53_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1647901190725"
+        },
+        {
+            "title": "AppleWatch Series 8",
+            "description": "Nicest Watch Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Watch",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MR2P3ref_VW_34FR+watch-41-stainless-silver-cell-8s_VW_34FR_WF_CO?wid=1400&hei=1400&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1676836802403%2C1661890809922"
+        },
+        {
+            "title": "AppleWatch Ultra",
+            "description": "Nicest Watch Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Watch",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQDY3ref_VW_34FR+watch-49-titanium-ultra_VW_34FR_WF_CO+watch-face-49-alpine-ultra_VW_34FR_WF_CO?wid=1400&hei=1400&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1660713659063%2C1660927566964%2C1660927563656"
+        }
+    ]
+}

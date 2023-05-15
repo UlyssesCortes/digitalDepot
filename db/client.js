@@ -10,25 +10,6 @@
 
 // module.exports = pool;
 
-
-
-// const { Pool } = require("pg");
-
-// const pool = new Pool({
-//     user: "digitaldepot_user",
-//     host: "dpg-chg3u0qk728sd6nhce90-a",
-//     database: "digitaldepot",
-//     password: 4864,
-//     port: 5432,
-//     ssl: {
-//         rejectUnauthorized: false
-//     }
-// });
-
-// module.exports = pool;
-
-
-
 const { Pool } = require("pg");
 
 const pool = new Pool({
