@@ -2,24 +2,50 @@ const client = require("../client");
 
 // const pool = require("../db")
 
+// async function createProduct({
+//     title,
+//     description,
+//     price,
+//     quantity,
+//     category,
+//     images,
+// }) {
+//     try {
+//         const {
+//             rows: [product],
+//         } = await client.query(
+//             `
+//       INSERT INTO products(title, description, price, quantity, category, images) 
+//       VALUES($1, $2, $3, $4, $5, $6) 
+//       RETURNING *;
+//     `,
+//             [title, description, price, quantity, category, images]
+//         );
+
+//         return product;
+//     } catch (error) {
+//         throw error;
+//     }
+// }
+
 async function createProduct({
     title,
     description,
     price,
     quantity,
     category,
-    image,
+    images,
 }) {
     try {
         const {
             rows: [product],
         } = await client.query(
             `
-      INSERT INTO products(title, description, price, quantity, category, image) 
-      VALUES($1, $2, $3, $4, $5, $6) 
-      RETURNING *;
-    `,
-            [title, description, price, quantity, category, image]
+            INSERT INTO products(title, description, price, quantity, category, images) 
+            VALUES($1, $2, $3, $4, $5, $6) 
+            RETURNING *;
+            `,
+            [title, description, price, quantity, category, images || null]
         );
 
         return product;
@@ -28,10 +54,11 @@ async function createProduct({
     }
 }
 
+
 async function getAllProducts() {
     try {
         const { rows } = await client.query(`
-      SELECT id, title, description, price, quantity, category, image 
+      SELECT id, title, description, price, quantity, category, images
       FROM products;
     `);
 
@@ -44,7 +71,7 @@ async function getAllProducts() {
 async function getProductById(id) {
     try {
         const { rows } = await client.query(`
-      SELECT id, title, description, price, quantity, category, image 
+      SELECT id, title, description, price, quantity, category, images 
       FROM products
       WHERE id=${id};
     `);

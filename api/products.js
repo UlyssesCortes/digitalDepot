@@ -19,7 +19,7 @@ apiRouter.get('/', async (req, res, next) => {
 })
 
 apiRouter.post("/createProduct", async (req, res, next) => {
-    const { title, description, price, quantity, category, image } = req.body;
+    const { title, description, price, quantity, category, images } = req.body;
     try {
         const newProduct = await createProduct({
             title,
@@ -27,7 +27,7 @@ apiRouter.post("/createProduct", async (req, res, next) => {
             price,
             quantity,
             category,
-            image,
+            images,
         });
         res.send(newProduct);
     } catch (error) {
@@ -47,7 +47,7 @@ apiRouter.get("/:productId", async (req, res, next) => {
 
 apiRouter.patch("/:productId", async (req, res, next) => {
     const id = req.params.productId;
-    const { title, description, price, quantity, category, image } = req.body;
+    const { title, description, price, quantity, category, images } = req.body;
     const updatedFields = { id: id };
 
     if (title) {
@@ -65,8 +65,8 @@ apiRouter.patch("/:productId", async (req, res, next) => {
     if (category) {
         updatedFields.category = category;
     }
-    if (image) {
-        updatedFields.image = image;
+    if (images) {
+        updatedFields.images = images;
     }
     try {
         const updatedProducts = await updateProducts(updatedFields);
