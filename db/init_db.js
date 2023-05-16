@@ -1,6 +1,8 @@
 // const { client } = require("./index.js");
 const client = require("../db/client");
-const { createUser } = require('../db');
+const { createUser, createProduct } = require('../db');
+
+const { products } = require('./productList.json')
 
 async function buildTables() {
   try {
@@ -76,6 +78,14 @@ async function populateInitialData() {
       isAdmin: true,
     });
     console.log("User created successfully!");
+
+    await Promise.all(
+      products.map(async (product) => {
+        await createProduct(product);
+      })
+    )
+    console.log("Products created successfully!");
+
   } catch (error) {
     console.error("Error creating user!");
     throw error;
