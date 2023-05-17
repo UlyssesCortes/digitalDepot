@@ -228,3 +228,111 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+/* BEST SELLER */
+
+.bestSellerContainer {
+    margin-top: 50px;
+}
+
+.title h1 {
+    font-size: 35px;
+}
+
+.bestSellerProducts {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    gap: 10px;
+}
+
+.bestLeft {
+    width: 45%;
+    flex-grow: 1;
+}
+
+.bestRight {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 45%;
+}
+
+.bestProduct1,
+.bestProduct2,
+.bestProduct3 {
+    height: 550px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    background-position: center;
+}
+
+.bestProduct2,
+.bestProduct3 {
+    height: 50%;
+}
+
+.bestProduct1 {
+    background-image: url('https://target.scene7.com/is/image/Target/GUEST_471b6522-5536-49b0-a13f-d0da02dbaea9?wid=1000&hei=1000&qlt=80&fmt=webp');
+}
+
+.bestProduct2 {
+    background-image: url('https://target.scene7.com/is/image/Target/GUEST_eb9906ac-a24e-4f02-a85c-d6a01ab82cef?wid=1000&hei=1000&qlt=80&fmt=webp');
+    background-position: center;
+
+}
+
+.bestProduct3 {
+    background-image: url('https://target.scene7.com/is/image/Target/GUEST_4ea1adad-92b9-4d9f-a95c-6ad8a3e06507?wid=1000&hei=1000&qlt=80&fmt=webp');
+    background-position: bottom;
+}
+
+/* BENEFITS */
+
+.benefitsStripe {
+    display: flex;
+    justify-content: space-evenly;
+    height: 150px;
+    margin: 100px 0 100px 0;
+}
+
+.benefitsBox {
+    width: 180px;
+    height: 100%;
+    /* outline: auto; */
+}
+
+.benefitsBox p {
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.benefitImg1,
+.benefitImg2,
+.benefitImg3,
+.benefitImg4 {
+    height: 80%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.benefitImg1 {
+    background-image: url("../assets/click.png");
+}
+
+.benefitImg2 {
+    background-image: url("../assets/shiping.png");
+}
+
+.benefitImg3 {
+    background-image: url("../assets/card.png");
+}
+
+.benefitImg4 {
+    background-image: url("../assets/contact.png");
+    cursor: pointer;
+}
