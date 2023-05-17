@@ -180,4 +180,51 @@
     background-image: url('https://target.scene7.com/is/image/Target/GUEST_f1801d8c-50db-4e1d-8f10-012d77d7ca0f?wid=1000&hei=1000&qlt=80&fmt=webp');
 }
 
-/* SPECIALS */
+/* DISCOUNTS */
+
+.discountsContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.discountsTop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.discountsTop h1 {
+    font-size: 35px;
+}
+
+.discountsTop p {
+    font-size: 18px;
+}
+
+.saleLine {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    color: white;
+    margin-top: 30px;
+    font-size: 20px;
+    width: 100%;
+    height: 60px;
+    background-color: #ab856c;
+
+}
+
+.saleLine h1 {
+    border-right: solid white 1px;
+    padding-right: 50px;
+    font-size: 28px;
+}
+
+.saleLine span {
+    font-weight: bold;
+    cursor: pointer;
+}
