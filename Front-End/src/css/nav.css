@@ -1,0 +1,77 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+.leftNav {
+    display: flex;
+}
+
+.titleContainer p {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    margin-left: 70px;
+    font-size: 20px;
+    gap: 30px;
+    cursor: pointer;
+}
+
+.rightNav {
+    display: flex;
+    align-items: center;
+}
+
+.navIcons {
+    display: flex;
+    gap: 20px;
+    padding-right: 30px;
+    border-right: solid black 1px;
+}
+
+.navSearchIcon {
+    width: 25px;
+    height: 25px;
+    background-image: url("../assets/search.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.navCartIcon {
+    width: 25px;
+    height: 25px;
+    background-image: url("../assets/cart.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.navLogContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: 30px;
+}
+
+.navBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.navLog {
+    padding: 10px;
+    background-color: #2f2f2f;
+    color: white;
+    border-radius: 10px;
+    width: 120px;
+}
