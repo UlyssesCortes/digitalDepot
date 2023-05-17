@@ -1,0 +1,70 @@
+.banner {
+    display: flex;
+    height: 55vh;
+    border-radius: 20px;
+    background-image: url("../assets/banner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+}
+
+.bannerContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px 0 0 100px;
+}
+
+.bannerSlogan {
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+}
+
+.bannerSubSlogan {
+    color: white;
+    font-size: 20px;
+
+}
+
+.bannerBtnContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    gap: 100px;
+}
+
+.bannerBtn {
+    padding: 10px;
+    background-color: #2f2f2f;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 18px;
+    height: 60px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.bannerStats {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.statsLeft {
+    border-right: solid black 1.5px;
+    padding-right: 50px;
+    font-size: 18px;
+}
+
+.statsLeft h1,
+.statsRight h1 {
+    font-size: 24px;
+}
+
+.statsRight {
+    padding: 0 50px 0 50px;
+    font-size: 18px;
+
+}
