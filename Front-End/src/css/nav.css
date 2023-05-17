@@ -9,11 +9,13 @@
     display: flex;
 }
 
-.titleContainer p {
-    font-size: 24px;
+.companyTitle {
+    font-size: 26px;
     font-weight: bold;
     cursor: pointer;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 
 .navLinks {
     display: flex;
@@ -22,6 +24,13 @@
     font-size: 20px;
     gap: 30px;
     cursor: pointer;
+    color: #2f2f2f;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #2f2f2f;
+
 }
 
 .rightNav {

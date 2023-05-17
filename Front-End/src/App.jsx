@@ -1,10 +1,23 @@
-import Header from './components/Header'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import Hero from './components/Hero/Hero'
+import Products from './components/Products/Products';
 function App() {
   return (
     <>
-      <Header />
-      <Hero />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path='/'
+            element={<Hero />}
+          />
+          <Route
+            path='/products'
+            element={<Products />}
+          />
+        </Routes>
+
+      </BrowserRouter>
     </>
   )
 }

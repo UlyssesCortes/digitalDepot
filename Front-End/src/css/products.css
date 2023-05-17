@@ -1,0 +1,41 @@
+.productNav {
+    /* height: 30vh; */
+    /* outline: auto; */
+
+}
+
+.topNavProduct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh;
+    border-top: solid black 2px;
+    border-bottom: solid black 2px;
+}
+
+.topNavProduct p {
+    font-size: 115px;
+    letter-spacing: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.bottomNavProduct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    height: 8vh;
+    border-bottom: solid black 2px;
+}
+
+.productLinks:first-child {
+    font-weight: bold;
+}
+
+
+.productLinks {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
