@@ -145,16 +145,24 @@
 }
 
 .furnitureCard {
-    width: 250px;
+    width: 300px;
 }
 
+
 .furnitureCardImg {
-    height: 350px;
+    height: 400px;
     border-radius: 20px;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
+    transition: all ease-in-out 0.3s;
 }
+
+.furnitureCardImg:hover {
+    background-position: bottom;
+}
+
 
 .furnitureCard p {
     text-align: center;
@@ -165,19 +173,25 @@
 
 .livingRoomImg {
     background-image: url('https://target.scene7.com/is/image/Target/GUEST_bb2d4af1-680c-4f85-a701-a5ec550a4b29?wid=1000&hei=1000&qlt=80&fmt=webp');
+    background-color: #efefef;
+    transition: all ease-in-out 0.5s;
 }
 
 .bedroomImg {
     background-image: url('https://target.scene7.com/is/image/Target/GUEST_03d7d5b3-7dfc-4ba7-a12d-01d966f54889?wid=1000&hei=1000&qlt=80&fmt=webp');
     border: #8888881e solid .5px;
+    background-color: #fffeff;
 }
 
 .workspaceImg {
     background-image: url('https://target.scene7.com/is/image/Target/GUEST_677d0a83-4e74-46b3-9fc4-35ee1a3c29b2?wid=1000&hei=1000&qlt=80&fmt=webp');
+    background-color: #efefef;
+
 }
 
 .kitchenImg {
     background-image: url('https://target.scene7.com/is/image/Target/GUEST_f1801d8c-50db-4e1d-8f10-012d77d7ca0f?wid=1000&hei=1000&qlt=80&fmt=webp');
+    background-color: #eaeaea;
 }
 
 /* DISCOUNTS */
