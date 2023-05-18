@@ -24,6 +24,7 @@ async function buildTables() {
             price decimal(10,2) NOT NULL,
             quantity integer NOT NULL,
             category varchar(255) NOT NULL,
+            type varchar(255) NOT NULL,
             images TEXT[] NOT NULL,
             dimensions JSONB,
             features JSONB
