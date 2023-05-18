@@ -7,7 +7,7 @@ export default function ProductNav({ setFilterName }) {
             </section>
             <section className="bottomNavProduct">
                 <button className="productLinks"
-                    onClick={() => { setFilterName("") }}>New Arrivals</button>
+                    onClick={() => { setFilterName("all") }}>New Arrivals</button>
                 <button className="productLinks"
                     onClick={() => { setFilterName("bed") }}>Beds</button>
                 <button className="productLinks"

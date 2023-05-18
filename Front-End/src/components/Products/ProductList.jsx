@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-
 export default function ProductList({ API_URL, filterName }) {
     const [products, setProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([products]);
-
-
+    const [furniture, setFurniture] = useState([]);
     const getProducts = async () => {
         try {
             const response = await fetch(`${API_URL}products`, {
@@ -16,6 +13,7 @@ export default function ProductList({ API_URL, filterName }) {
             const result = await response.json();
             if (result) {
                 setProducts(result);
+                setFurniture(result);
             }
             return result;
         } catch (error) {
@@ -27,21 +25,23 @@ export default function ProductList({ API_URL, filterName }) {
         getProducts();
     }, []);
 
+    useEffect(() => {
+        if (filterName === "all") {
+            setFurniture(products)
+        } else {
+            const filteredProducts = (products.filter(product => product.type === filterName));
+            if (filteredProducts) {
+                setFurniture(filteredProducts)
+            }
+        }
 
-    if (filterName) {
-        console.log(products.map((product => product.images)))
-        console.log(products.filter(product => product.type == filterName))
-        // setFilteredProducts(products.filter(product => product.type.toLowerCase().includes(filterName)));
-        // console.log("There is filterName")
-    }
-
-
-
+    }, [filterName])
 
     return (
         <>
             <section className='productsLis'>
-                {products && products.map((product) => {
+                {furniture.map((product) => {
+                    { console.log(furniture) }
                     return (
                         <div className="productCard" key={product.id}>
                             <div className='borderCard'>
@@ -59,7 +59,6 @@ export default function ProductList({ API_URL, filterName }) {
                     )
                 })}
             </section>
-
         </>
     )
 }
