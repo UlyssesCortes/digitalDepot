@@ -27,21 +27,21 @@ export default function ProductList({ API_URL }) {
 
     return (
         <>
-            {products.map((product) => {
-                return (
-                    <div className="card2" key={product.id}>
-                        <div className='imgBox2'>
-                            <img className='mouse' src={product.image} alt="" />
+            <section className='productsLis'>
+                {products.map((product) => {
+                    return (
+                        <div className="productCard" key={product.id}>
+                            <img className="productImg" src={product.images[1]} alt="product Image" />
+
+                            <div className='productContent'>
+                                <p>{product.title}</p>
+                                <p>${product.price}</p>
+                            </div>
                         </div>
-                        <div className='contentBox2'>
-                            <h3>{product.title}</h3>
-                            <h2>${product.price}</h2>
-                            <p>${product.images}</p>
-                            {/* <button className='buy2' onClick={() => addToCart(API_URL, user, product.id, token)}>Add to Cart</button> */}
-                        </div>
-                    </div>
-                )
-            })}
+                    )
+                })}
+            </section>
+
         </>
     )
 }
