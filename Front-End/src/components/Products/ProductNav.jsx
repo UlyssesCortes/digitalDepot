@@ -1,17 +1,23 @@
 
-export default function ProductNav() {
+export default function ProductNav({ setFilterName }) {
     return (
         <nav className="productNav">
             <section className="topNavProduct">
                 <p>MODERN FURNITURE</p>
             </section>
             <section className="bottomNavProduct">
-                <button className="productLinks">New Arrivals</button>
-                <button className="productLinks">Beds</button>
-                <button className="productLinks">Sofas</button>
-                <button className="productLinks">Chairs</button>
-                <button className="productLinks">Tables</button>
-                <button className="productLinks">Desks</button>
+                <button className="productLinks"
+                    onClick={() => { setFilterName("") }}>New Arrivals</button>
+                <button className="productLinks"
+                    onClick={() => { setFilterName("bed") }}>Beds</button>
+                <button className="productLinks"
+                    onClick={() => { setFilterName("sofa") }}>Sofas</button>
+                <button className="productLinks"
+                    onClick={() => { setFilterName("chari") }}>Chairs</button>
+                <button className="productLinks"
+                    onClick={() => { setFilterName("table") }}>Tables</button>
+                <button className="productLinks"
+                    onClick={() => { setFilterName("desk") }}>Desks</button>
             </section>
         </nav>
     )

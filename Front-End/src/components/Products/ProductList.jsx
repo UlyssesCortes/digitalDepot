@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 
-export default function ProductList({ API_URL }) {
+export default function ProductList({ API_URL, filterName }) {
     const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([products]);
+
 
     const getProducts = async () => {
         try {
@@ -25,10 +27,21 @@ export default function ProductList({ API_URL }) {
         getProducts();
     }, []);
 
+
+    if (filterName) {
+        console.log(products.map((product => product.images)))
+        console.log(products.filter(product => product.type == filterName))
+        // setFilteredProducts(products.filter(product => product.type.toLowerCase().includes(filterName)));
+        // console.log("There is filterName")
+    }
+
+
+
+
     return (
         <>
             <section className='productsLis'>
-                {products.map((product) => {
+                {products && products.map((product) => {
                     return (
                         <div className="productCard" key={product.id}>
                             <div className='borderCard'>

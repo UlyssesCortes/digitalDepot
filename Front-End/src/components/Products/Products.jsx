@@ -7,16 +7,13 @@ import ProductNav from './ProductNav'
 import ProductList from './ProductList'
 
 export default function Products({ API_URL }) {
-    const [beds, setBeds] = useState([])
-    const [sofas, setSofas] = useState([])
-    const [chairs, setChairs] = useState([])
-    const [tables, setTables] = useState([])
-    const [desks, setDesks] = useState([])
+    const [filterName, setFilterName] = useState("")
+
     return (
         <>
             <Header />
-            <ProductNav />
-            <ProductList API_URL={API_URL} />
+            <ProductNav setFilterName={setFilterName} />
+            <ProductList API_URL={API_URL} filterName={filterName} />
         </>
     )
 }
