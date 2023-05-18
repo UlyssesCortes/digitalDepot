@@ -31,11 +31,16 @@ export default function ProductList({ API_URL }) {
                 {products.map((product) => {
                     return (
                         <div className="productCard" key={product.id}>
-                            <img className="productImg" src={product.images[1]} alt="product Image" />
+                            <div className='borderCard'>
+                                <div className='favorite'>
+                                    <div className='heartIcon'></div>
+                                </div>
+                                <img className="productImg" src={product.images[0]} alt="product Image" />
 
-                            <div className='productContent'>
-                                <p>{product.title}</p>
-                                <p>${product.price}</p>
+                                <div className='productContent'>
+                                    <p>{product.title}</p>
+                                    <p>${product.price}</p>
+                                </div>
                             </div>
                         </div>
                     )

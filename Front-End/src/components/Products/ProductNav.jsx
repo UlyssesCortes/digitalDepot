@@ -10,8 +10,8 @@ export default function ProductNav() {
                 <button className="productLinks">Beds</button>
                 <button className="productLinks">Sofas</button>
                 <button className="productLinks">Chairs</button>
-                <button className="productLinks">Dining Tables</button>
-                <button className="productLinks">Deals</button>
+                <button className="productLinks">Tables</button>
+                <button className="productLinks">Desks</button>
             </section>
         </nav>
     )
