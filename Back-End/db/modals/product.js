@@ -35,17 +35,19 @@ async function createProduct({
     quantity,
     category,
     images,
+    dimensions,
+    features,
 }) {
     try {
         const {
             rows: [product],
         } = await client.query(
             `
-            INSERT INTO products(title, description, price, quantity, category, images) 
-            VALUES($1, $2, $3, $4, $5, $6) 
+            INSERT INTO products(title, description, price, quantity, category, images, dimensions, features) 
+            VALUES($1, $2, $3, $4, $5, $6, $7, $8) 
             RETURNING *;
             `,
-            [title, description, price, quantity, category, images || null]
+            [title, description, price, quantity, category, images || null, dimensions, features]
         );
 
         return product;
@@ -58,7 +60,7 @@ async function createProduct({
 async function getAllProducts() {
     try {
         const { rows } = await client.query(`
-      SELECT id, title, description, price, quantity, category, images
+      SELECT id, title, description, price, quantity, category, images, dimensions, features
       FROM products;
     `);
 
@@ -71,7 +73,7 @@ async function getAllProducts() {
 async function getProductById(id) {
     try {
         const { rows } = await client.query(`
-      SELECT id, title, description, price, quantity, category, images 
+      SELECT id, title, description, price, quantity, category, images, dimensions, features 
       FROM products
       WHERE id=${id};
     `);

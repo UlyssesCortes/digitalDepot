@@ -24,7 +24,9 @@ async function buildTables() {
             price decimal(10,2) NOT NULL,
             quantity integer NOT NULL,
             category varchar(255) NOT NULL,
-            images TEXT NOT NULL
+            images TEXT[] NOT NULL,
+            dimensions JSONB,
+            features JSONB
           );
     
           CREATE TABLE IF NOT EXISTS users (
@@ -79,10 +81,11 @@ async function populateInitialData() {
     });
     console.log("User created successfully!");
 
+    console.log("Starting to create Products...");
+
     await Promise.all(
       products.map(async (product) => {
         await createProduct(product);
-        console.log(product.images)
       })
     )
 

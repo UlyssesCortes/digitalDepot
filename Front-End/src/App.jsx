@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Hero from './components/Hero/Hero'
 import Products from './components/Products/Products';
 function App() {
+
+  const API_URL = "https://digitaldepot-ger8.onrender.com/api/";
   return (
     <>
       <BrowserRouter>
@@ -13,7 +15,7 @@ function App() {
           />
           <Route
             path='/products'
-            element={<Products />}
+            element={<Products API_URL={API_URL} />}
           />
         </Routes>
 
