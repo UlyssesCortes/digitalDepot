@@ -13,7 +13,7 @@ export default function ProductNav({ setFilterName }) {
                 <button className="productLinks"
                     onClick={() => { setFilterName("sofa") }}>Sofas</button>
                 <button className="productLinks"
-                    onClick={() => { setFilterName("chari") }}>Chairs</button>
+                    onClick={() => { setFilterName("chair") }}>Chairs</button>
                 <button className="productLinks"
                     onClick={() => { setFilterName("table") }}>Tables</button>
                 <button className="productLinks"

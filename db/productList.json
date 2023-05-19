@@ -463,7 +463,7 @@
             }
         },
         {
-            "title": "Ascent 2 - Drawer File Cabinet",
+            "title": "Ascent Drawer File Cabinet",
             "description": "Juxtaposing clean lines against rustic woodgrains + black iron hardware, this filing cabinet gives contemporary cabin vibes. Built from solid mango wood, it rolls into your workday on four caster wheels. One drawer holds supplies, while the other has hanging file bars to organize your papers.",
             "price": 396,
             "quantity": 10,
@@ -488,7 +488,7 @@
             }
         },
         {
-            "title": "Flame 2 - Drawer File Cabinet",
+            "title": "Flame Drawer File Cabinet",
             "description": "This 2-drawer filing cabinet blends industrial materials with a clean-lined, updated silhouette, so it has you covered when it comes to upgrading your storage options. The outer shell is made from concrete with a distressed finish, which contrasts neatly against the walnut veneers on the drawer fronts.",
             "price": 2300,
             "quantity": 10,
@@ -513,7 +513,7 @@
             }
         },
         {
-            "title": "Kingsdown 2 - Drawer File Cabinet",
+            "title": "Kingsdown Drawer File Cabinet",
             "description": "The filing pedestal with open shelf and 2 drawers (1 for storage and 1 for filing). The frame is black steel with walnut veneer-covered MDF shelving, panels, and drawers. Coordinates with the desk and bookcase.",
             "price": 356,
             "quantity": 10,
@@ -538,7 +538,7 @@
             }
         },
         {
-            "title": "Dang 2 Drawer File Cabinet",
+            "title": "Dang Drawer File Cabinet",
             "description": "The perforated wood door front allows the use of remotes without spoiling the view. Brass details and wood base.",
             "price": 770,
             "quantity": 10,
@@ -997,7 +997,7 @@
             }
         },
         {
-            "title": "Marinette Swivel Office Chair",
+            "title": "Marinette Office Chair",
             "description": "Real talk: If you're on the WFH grind, you need a space that's both stylish and supportive. That's where this desk chair comes in. It's made with an engineered wood seat and has a streamlined, armless silhouette with five gold-finished legs. Translation: It's super easy to match with a modern vibe.",
             "price": 200,
             "quantity": 10,
@@ -1023,7 +1023,7 @@
             }
         },
         {
-            "title": "Jewett Swivel Office Chair",
+            "title": "Jewett Office Chair",
             "description": "This task chair looks great and will help you get it done. So you can be your best boss self. The seat is built on an engineered wood frame and features a full back with a stylish cutout and armrests.",
             "price": 640,
             "quantity": 10,
@@ -1049,7 +1049,7 @@
             }
         },
         {
-            "title": "Escapade Upholstered Plastic Solid Back Side Chair Dining Chair",
+            "title": "Escapade Dining Chair",
             "description": "Inspired by iconic mid-century design, this bright white side chair’s contoured silhouette base bring space-age style to your dining area. The seat swivels retro-futuristically and features an attached cushion for a little softness while you enjoy your food capsules.",
             "price": 196,
             "quantity": 10,
@@ -1108,7 +1108,8 @@
             "images": [
                 "https://secure.img1-fg.wfcdn.com/im/23980700/resize-h800-w800%5Ecompr-r85/2330/233090723/Lincoln+5+-+Piece+Dining+Set.jpg",
                 "https://secure.img1-fg.wfcdn.com/im/42657481/resize-h800-w800%5Ecompr-r85/1136/113658028/Lincoln+5+-+Piece+Dining+Set.jpg",
-                "https://secure.img1-fg.wfcdn.com/im/46171344/resize-h800-w800%5Ecompr-r85/2334/233499878/Lincoln+5+-+Piece+Dining+Set.jpg"
+                "https://secure.img1-fg.wfcdn.com/im/46171344/resize-h800-w800%5Ecompr-r85/2334/233499878/Lincoln+5+-+Piece+Dining+Set.jpg",
+                "https://secure.img1-fg.wfcdn.com/im/42657481/resize-h800-w800%5Ecompr-r85/1136/113658028/Lincoln+5+-+Piece+Dining+Set.jpg"
             ],
             "dimensions": {
                 "Table": "29'' H X 36'' W X 36'' L",
@@ -1228,7 +1229,7 @@
             }
         },
         {
-            "title": "Daxon 3 - Piece Dining Set (Set of 3)",
+            "title": "Daxon 3 - Piece Dining Set",
             "description": "Comfort food. This dining set mixes mid-century design elements, for a look that’s cohesive without being matchy-matchy. Built from powder-coated steel, the table’s tulip-style silhouette leaves plenty of legroom. The two chairs cradle you in curved seats wrapped with cushioned velvet upholstery.",
             "price": 710,
             "quantity": 10,

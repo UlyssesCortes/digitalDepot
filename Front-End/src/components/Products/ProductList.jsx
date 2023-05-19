@@ -42,7 +42,7 @@ export default function ProductList({ API_URL, filterName }) {
     const handleMouseEnter = (index) => {
         setTimeout(() => {
             setHoveredIndex(index);
-        }, 300);
+        }, 200);
     };
 
     const handleMouseLeave = () => {

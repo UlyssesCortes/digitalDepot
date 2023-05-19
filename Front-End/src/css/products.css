@@ -307,7 +307,7 @@
 }
 
 .productCard .imageContainer:hover img {
-    animation: opacityAnimation 0.8s;
+    animation: opacityAnimation 0.5s;
 }
 
 @keyframes opacityAnimation {
@@ -318,6 +318,6 @@
     }
 
     50% {
-        opacity: 0.5;
+        opacity: 0.7;
     }
 }
