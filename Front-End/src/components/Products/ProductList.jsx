@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ProductList({ API_URL, filterName }) {
     const [products, setProducts] = useState([]);
@@ -34,16 +35,19 @@ export default function ProductList({ API_URL, filterName }) {
                 setFurniture(filteredProducts)
             }
         }
-
     }, [filterName])
+
+    const productInfo = (product) => {
+        console.log(product)
+    }
 
     return (
         <>
             <section className='productsLis'>
                 {furniture.map((product) => {
-                    { console.log(furniture) }
                     return (
-                        <div className="productCard" key={product.id}>
+                        <Link to={`/product/${product.id}`} key={product.id} className="productCard">
+
                             <div className='borderCard'>
                                 <div className='favorite'>
                                     <div className='heartIcon'></div>
@@ -55,7 +59,7 @@ export default function ProductList({ API_URL, filterName }) {
                                     <p>${product.price}</p>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     )
                 })}
             </section>
