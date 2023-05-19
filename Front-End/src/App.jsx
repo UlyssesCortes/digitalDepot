@@ -6,7 +6,7 @@ import ProductDetails from './components/Products/ProductDetails';
 
 function App() {
 
-  const API_URL = "https://digitaldepot-ger8.onrender.com/api/";
+  const API_URL = "https://digital-depot.onrender.com/api/";
   return (
     <>
       <BrowserRouter>

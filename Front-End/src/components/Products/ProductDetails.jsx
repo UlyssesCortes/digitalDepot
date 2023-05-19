@@ -2,11 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../Header';
 import StarRating from './StartRating';
+import Features from './Features';
+import Dimensions from './Dimensions';
+import Shipping from './Shipping';
 
 export default function ProductDetails({ API_URL }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
+    const [displayFeatures, setDisplayFeatures] = useState(false)
+    const [displayDimensions, setDisplayDimensions] = useState(false)
+    const [displayShipping, setDisplayShipping] = useState(false)
 
     useEffect(() => {
         const fetchProductDetails = async () => {
@@ -33,7 +39,6 @@ export default function ProductDetails({ API_URL }) {
     }
 
     const productInfo = product[0];
-    console.log(productInfo)
     return (
         <>
             <Header />
@@ -75,14 +80,42 @@ export default function ProductDetails({ API_URL }) {
                         <button className='saveToWishlist'>Save To Wishlist</button>
                     </div>
                     <div className='moreDetails'>
-                        <div className='features'>
-                            <p>Product Features</p><p className='plus'>+</p></div>
-                        <div className='dimensions'><p>Dimensions</p><p className='plus'>+</p></div>
-                        <div className='shiping'>
-                            <p>Shiping and Return</p><p className='plus'>+</p></div>
+
+                        <div className="features"
+                            onClick={() => {
+                                setDisplayFeatures(!displayFeatures);
+                            }}
+                        >
+                            <p>Product Features</p>
+                            <p className="plus">{!displayFeatures ? "+" : "-"}</p>
+                        </div>
+                        <section className={`moreDetailsListAnimation ${displayFeatures ? "active" : ""}`}>
+                            {displayFeatures && <Features features={productInfo.features} />}
+                        </section>
+                        <div className="dimensions"
+                            onClick={() => {
+                                setDisplayDimensions(!displayDimensions);
+                            }}
+                        >
+                            <p>Dimensions</p>
+                            <p className="plus">{!displayDimensions ? "+" : "-"}</p>
+                        </div>
+                        <section className={`moreDetailsListAnimation ${displayDimensions ? "active" : ""}`}>
+                            {displayDimensions && <Dimensions dimensions={productInfo.dimensions} />}
+                        </section>
+
+                        <div className='shiping'
+                            onClick={() => { setDisplayShipping(!displayShipping) }}>
+                            <p>Shipping and Return</p>
+                            <p className="plus">{!displayShipping ? "+" : "-"}</p>
+                        </div>
+                        <section className={`moreDetailsListAnimation ${displayShipping ? "active" : ""}`}>
+                            {displayShipping && <Shipping />}
+
+                        </section>
                     </div>
-                </section>
-            </div>
+                </section >
+            </div >
             <section className='detailsBottom'>
                 <h1>Details</h1>
                 <div className='summary'><p>01 Summary</p><p className='plus'>+</p></div>
