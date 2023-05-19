@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 export default function ProductList({ API_URL, filterName }) {
     const [products, setProducts] = useState([]);
     const [furniture, setFurniture] = useState([]);
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+
     const getProducts = async () => {
         try {
             const response = await fetch(`${API_URL}products`, {
@@ -37,27 +39,39 @@ export default function ProductList({ API_URL, filterName }) {
         }
     }, [filterName])
 
-    const productInfo = (product) => {
-        console.log(product)
-    }
+    const handleMouseEnter = (index) => {
+        setTimeout(() => {
+            setHoveredIndex(index);
+        }, 300);
+    };
+
+    const handleMouseLeave = () => {
+        setHoveredIndex(null);
+    };
 
     return (
         <>
             <section className='productsLis'>
-                {furniture.map((product) => {
+                {furniture.map((product, index) => {
+                    const isHovered = index === hoveredIndex;
+                    const imageSource = isHovered ? product.images[1] : product.images[0];
                     return (
-                        <Link to={`/product/${product.id}`} key={product.id} className="productCard">
-
-                            <div className='borderCard'>
-                                <div className='favorite'>
-                                    <div className='heartIcon'></div>
-                                </div>
-                                <img className="productImg" src={product.images[0]} alt="product Image" />
-
-                                <div className='productContent'>
-                                    <p>{product.title}</p>
-                                    <p>${product.price}</p>
-                                </div>
+                        <Link to={`/product/${product.id}`} key={product.id} className="productCard"
+                            onMouseEnter={() => handleMouseEnter(index)}
+                            onMouseLeave={handleMouseLeave}>
+                            <div className='favorite'>
+                                <div className='heartIcon'></div>
+                            </div>
+                            <div className="imageContainer">
+                                <img
+                                    className="productImg"
+                                    src={imageSource}
+                                    alt="product Image"
+                                />
+                            </div>
+                            <div className='productContent'>
+                                <p>{product.title}</p>
+                                <p>${product.price}</p>
                             </div>
                         </Link>
                     )

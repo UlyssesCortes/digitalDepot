@@ -2,8 +2,14 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0 4% 0 4%;
+}
+
+::selection {
+    background-color: rgb(206, 206, 205);
+    color: rgb(59, 44, 44);
 }

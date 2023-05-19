@@ -1,7 +1,6 @@
-import '../../css/products.css'
-
 import React, { useState } from 'react';
 
+import '../../css/products.css'
 import Header from "../Header"
 import ProductNav from './ProductNav'
 import ProductList from './ProductList'
