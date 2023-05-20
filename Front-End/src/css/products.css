@@ -156,7 +156,7 @@
 
 .productImg1 {
     width: 100%;
-    height: 570px;
+    height: 470px;
 }
 
 .productDetailsRight {
@@ -164,7 +164,7 @@
     flex-direction: column;
     padding: 0 50px 0 50px;
     width: 30%;
-    gap: 40px;
+    gap: 20px;
 }
 
 .reviews {
@@ -262,7 +262,8 @@
 
 .features,
 .shiping,
-.dimensions {
+.dimensions,
+.description {
     display: flex;
     justify-content: space-between;
     border-top: black 2px solid;
@@ -276,7 +277,10 @@
 .dimensions {
     border: none;
     border-bottom: black 2px solid;
+}
 
+.description {
+    border-top: none;
 }
 
 .shiping {
@@ -287,29 +291,6 @@
     padding-right: 10px;
     font-weight: bold;
     user-select: none;
-
-}
-
-.detailsBottom {
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-}
-
-.detailsBottom h1 {
-    font-size: 80px;
-    border-bottom: black 2px solid;
-    padding-bottom: 20px;
-    font-weight: 100;
-}
-
-.summary,
-.dimensions2 {
-    display: flex;
-    justify-content: space-between;
-    font-size: 40px;
-    border-bottom: black 1px solid;
-    padding: 20px 0 20px 20px;
 }
 
 .productCard .imageContainer img {

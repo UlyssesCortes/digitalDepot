@@ -5,6 +5,7 @@ import StarRating from './StartRating';
 import Features from './Features';
 import Dimensions from './Dimensions';
 import Shipping from './Shipping';
+import Description from './Description';
 
 export default function ProductDetails({ API_URL }) {
     const { id } = useParams();
@@ -13,6 +14,7 @@ export default function ProductDetails({ API_URL }) {
     const [displayFeatures, setDisplayFeatures] = useState(false)
     const [displayDimensions, setDisplayDimensions] = useState(false)
     const [displayShipping, setDisplayShipping] = useState(false)
+    const [displayDescription, setDisplayDescription] = useState(false)
 
     useEffect(() => {
         const fetchProductDetails = async () => {
@@ -103,6 +105,17 @@ export default function ProductDetails({ API_URL }) {
                         <section className={`moreDetailsListAnimation ${displayDimensions ? "active" : ""}`}>
                             {displayDimensions && <Dimensions dimensions={productInfo.dimensions} />}
                         </section>
+                        <div className="description"
+                            onClick={() => {
+                                setDisplayDescription(!displayDescription);
+                            }}
+                        >
+                            <p>Description</p>
+                            <p className="plus">{!displayDescription ? "+" : "-"}</p>
+                        </div>
+                        <section className={`moreDetailsListAnimation ${displayDescription ? "active" : ""}`}>
+                            {displayDescription && <Description description={productInfo.description} />}
+                        </section>
 
                         <div className='shiping'
                             onClick={() => { setDisplayShipping(!displayShipping) }}>
@@ -111,16 +124,10 @@ export default function ProductDetails({ API_URL }) {
                         </div>
                         <section className={`moreDetailsListAnimation ${displayShipping ? "active" : ""}`}>
                             {displayShipping && <Shipping />}
-
                         </section>
                     </div>
                 </section >
             </div >
-            <section className='detailsBottom'>
-                <h1>Details</h1>
-                <div className='summary'><p>01 Summary</p><p className='plus'>+</p></div>
-                <div className='dimensions2'><p>02 Dimensions</p><p className='plus'>+</p></div>
-            </section>
         </>
     );
 }
