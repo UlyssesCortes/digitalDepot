@@ -54,10 +54,10 @@ function App() {
 
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} />}
+            element={<Products API_URL={API_URL} user={user} token={token} />}
           />
           <Route path="/product/:id"
-            element={<ProductDetails API_URL={API_URL} />}
+            element={<ProductDetails API_URL={API_URL} user={user} />}
           />
         </Routes>
 

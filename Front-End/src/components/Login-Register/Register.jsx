@@ -27,6 +27,7 @@ const Register = ({ API_URL }) => {
     const handleChangePasswordRegister = (event) => {
         setPasswordReg(event.target.value)
     }
+
     const handleRegisterSumbit = async (event) => {
         event.preventDefault()
         fetch(`${API_URL}users/register`, {
@@ -56,6 +57,7 @@ const Register = ({ API_URL }) => {
             })
             .catch(console.error)
     }
+
     return (
         <>
             <section className="loginComponent">
