@@ -11,7 +11,6 @@ const {
 apiRouter.get("/", requireUser, async (req, res, next) => {
     const userId = req.user.id
 
-    console.log(userId)
     try {
         const usersOrders = await getFavoriteByUserId(userId);
         res.send(usersOrders);
@@ -23,8 +22,6 @@ apiRouter.get("/", requireUser, async (req, res, next) => {
 apiRouter.post("/:productId", requireUser, async (req, res, next) => {
     const { productId } = req.params;
     const userId = req.user.id
-    console.log(productId)
-    console.log(userId)
     try {
         const newOrder = await addToFavorite(userId, productId);
         res.send(newOrder);

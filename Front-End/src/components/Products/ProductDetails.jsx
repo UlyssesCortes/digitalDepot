@@ -16,9 +16,6 @@ export default function ProductDetails({ API_URL, user, token }) {
     const [displayDimensions, setDisplayDimensions] = useState(false)
     const [displayShipping, setDisplayShipping] = useState(false)
     const [displayDescription, setDisplayDescription] = useState(false)
-    console.log("USER: ", user)
-
-
     useEffect(() => {
         const fetchProductDetails = async () => {
             try {

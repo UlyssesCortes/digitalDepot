@@ -9,10 +9,8 @@ async function createOrder(userId) {
       INSERT INTO orders("userId") 
       VALUES($1) 
       RETURNING *;
-    `,
-            [userId]
+    `, [userId]
         );
-
         return order;
     } catch (error) {
         throw error;
@@ -25,7 +23,6 @@ async function getAllOrders() {
       SELECT * 
       FROM orders;
     `);
-
         return rows;
     } catch (error) {
         throw error;

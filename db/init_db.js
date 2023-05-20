@@ -11,7 +11,9 @@ async function buildTables() {
 
     await client.query(`
             DROP TABLE IF EXISTS order_items;
+            DROP TABLE IF EXISTS orders;
             DROP TABLE IF EXISTS reviews;
+            DROP TABLE IF EXISTS favorite;
             DROP TABLE IF EXISTS products CASCADE;
             DROP TABLE IF EXISTS users CASCADE;
         `);
@@ -60,6 +62,12 @@ async function buildTables() {
             "orderId" INTEGER REFERENCES orders(id),
             "productId" INTEGER REFERENCES products(id),
             quantity INTEGER NOT NULL
+          );
+    
+          CREATE TABLE IF NOT EXISTS favorite (
+            id SERIAL PRIMARY KEY,
+            "productId" INTEGER REFERENCES products(id),
+            "userId" INTEGER REFERENCES users(id)
           );
         `);
 

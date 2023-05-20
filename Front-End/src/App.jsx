@@ -57,7 +57,7 @@ function App() {
             element={<Products API_URL={API_URL} user={user} token={token} />}
           />
           <Route path="/product/:id"
-            element={<ProductDetails API_URL={API_URL} user={user} />}
+            element={<ProductDetails API_URL={API_URL} user={user} token={token} />}
           />
         </Routes>
 
