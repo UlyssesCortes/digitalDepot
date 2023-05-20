@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import '../css/nav.css'
 
 export default function Header() {
@@ -24,8 +23,8 @@ export default function Header() {
                     <div className='navCartIcon'></div>
                 </section>
                 <section className='navLogContainer'>
-                    <button className='navBtn'>Sign Up</button>
-                    <button className='navBtn navLog'>Login</button>
+                    <Link to='/register' className='navBtn navLink'>Sign Up</Link>
+                    <Link to='/login' className='navBtn navLog navLink'>Login</Link>
                 </section>
             </section>
         </nav>

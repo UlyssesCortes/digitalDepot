@@ -42,7 +42,7 @@ export default function ProductDetails({ API_URL }) {
 
     const productInfo = product[0];
     return (
-        <>
+        <section className='marginReducer'>
             <Header />
             <div className='productDetailBox'>
                 <section className='imageGallery'>
@@ -128,6 +128,6 @@ export default function ProductDetails({ API_URL }) {
                     </div>
                 </section >
             </div >
-        </>
+        </section>
     );
 }

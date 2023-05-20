@@ -1,0 +1,190 @@
+.containerModal {
+    animation: animatetop 0.4s ease-in-out;
+}
+
+.loginComponent {
+    display: flex;
+    height: 100vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.leftLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    padding: 0px 100px 0px 100px;
+}
+
+.loginTitle h2 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.loginTitle p {
+    font-size: 18px;
+}
+
+.rightLoginImg {
+    width: 60%;
+}
+
+.loginImg {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0 10px 0;
+}
+
+.inputLogin {
+    margin: 1em 0;
+    font-size: 1em;
+    padding-left: 10px;
+    height: 50px;
+    border: none;
+    border-bottom: 1px solid hsla(0, 0%, 0%, 0.4);
+    outline: none;
+    background-color: transparent;
+}
+
+.loginBtn,
+.googleLog {
+    padding: 1em 2em;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border: none;
+    font-size: 1em;
+    transition: all .5s ease;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.googleLog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: white;
+    color: #000000;
+    border: .5px rgb(201, 200, 200) solid;
+}
+
+
+.loginBtn:hover {
+    background-color: #333333;
+}
+
+.googleLog:hover {
+    border: .5px rgb(94, 91, 91) solid;
+
+}
+
+.loginButton {
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 20px;
+}
+
+.loginButton:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.memberDetail {
+    display: flex;
+    gap: 5px;
+}
+
+.signUpContainer {
+    display: flex;
+    flex-direction: row;
+    font-size: 18px;
+}
+
+.signUp {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.link-2 {
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid hsla(0, 0%, 0%, 0.4);
+    background-color: transparent;
+    border-radius: 100rem;
+    color: inherit;
+    font-size: 2.2rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.link-2::before {
+    content: '×';
+    -webkit-transform: translateY(-.1rem);
+    transform: translateY(-.1rem);
+}
+
+
+.link-2:hover,
+.link-2:focus {
+    border-color: hsla(0, 0%, 0%, 0.6);
+    -webkit-transform: translateY(-.2rem);
+    transform: translateY(-.2rem);
+}
+
+
+.alert {
+    padding: 20px;
+    background-color: #e6857e;
+    color: white;
+    font-family: 'Montserrat', Arial, sans-serif;
+    text-transform: uppercase;
+}
+
+.alertGreen {
+    padding: 20px;
+    background-color: #617464;
+    color: white;
+    font-family: 'Montserrat', Arial, sans-serif;
+    text-transform: uppercase;
+}
+
+.alertGreen strong {
+    font-size: 18px;
+}
+
+.alert strong {
+    font-size: 18px;
+}
+
+.names {
+    display: flex;
+    justify-content: space-between;
+}
+
+.namesInp {
+    width: 49%;
+}
+
+@keyframes animatetop {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}

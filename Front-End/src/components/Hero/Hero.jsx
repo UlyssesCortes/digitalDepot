@@ -12,7 +12,7 @@ import Benefits from './Benefits'
 
 export default function Hero() {
     return (
-        <>
+        <section className='marginReducer'>
             <Header />
             <Banner />
             <Companies />
@@ -21,6 +21,6 @@ export default function Hero() {
             <BestSellers />
             <Benefits />
             {/* <Footer /> */}
-        </>
+        </section>
     )
 }
