@@ -20,7 +20,7 @@ export default function Header() {
             <section className='rightNav'>
                 <section className='navIcons'>
                     <div className='navSearchIcon'></div>
-                    <div className='navCartIcon'></div>
+                    <Link to='/cart' className='navCartIcon'></Link>
                 </section>
                 <section className='navLogContainer'>
                     <Link to='/register' className='navBtn navLink'>Sign Up</Link>

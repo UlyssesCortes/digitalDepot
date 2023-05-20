@@ -6,6 +6,7 @@ import Products from './components/Products/Products';
 import ProductDetails from './components/Products/ProductDetails';
 import Register from './components/Login-Register/Register';
 import Login from './components/Login-Register/Login';
+import Cart from './components/Products/Cart';
 function App() {
 
   const API_URL = "https://digital-depot.onrender.com/api/";
@@ -50,6 +51,10 @@ function App() {
           <Route
             path='/login'
             element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} setToken={setToken} user={user} token={token} />}
+          />
+          <Route
+            path='/cart'
+            element={<Cart API_URL={API_URL} token={token} />}
           />
 
           <Route
