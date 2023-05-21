@@ -199,12 +199,19 @@
 .quntityBtns {
     display: flex;
     align-items: center;
-    gap: 10px;
+    /* gap: 10px; */
 }
 
 .quntityBtns p {
-    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
     font-weight: 100;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 45px;
+    height: 35px;
 }
 
 .minusIcon,
@@ -214,9 +221,8 @@
     align-items: center;
     width: 35px;
     height: 35px;
-    outline: auto;
+    border: 1px solid black;
     font-size: 20px;
-    border-radius: 100%;
     cursor: pointer;
     user-select: none;
 }
@@ -336,4 +342,106 @@
 .moreDetailsList h1 {
     font-size: 26px;
     margin-bottom: 10px;
+}
+
+
+/* CART */
+.cartBody {
+    display: flex;
+    justify-content: center;
+}
+
+.cartSection {
+    position: absolute;
+    margin-top: 50px;
+    width: 90%;
+    height: 100vh;
+}
+
+.subHeaderCart {
+    padding: 0 100px 0 100px;
+}
+
+.subHeaderCart h1 {
+    font-size: 40px;
+    letter-spacing: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.CartBtnContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    margin: 50px 0 50px 0;
+    padding: 20px 0 20px 0;
+    font-size: 20px;
+}
+
+.CartBtnContainer button {
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    border: none;
+    background-color: transparent;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+.totalPrice {
+    font-size: 24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.productsSec {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 100px;
+}
+
+.invisSum {
+    display: none;
+}
+
+.cartProduct {
+    height: 450px;
+    width: 300px;
+}
+
+.cartProductImg {
+    height: 400px;
+    width: 300px;
+}
+
+.contentBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.topContentBox,
+.bottomContentBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.removeBtn {
+    background-color: transparent;
+    color: red;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.removeBtn:hover {
+    text-decoration: underline;
 }

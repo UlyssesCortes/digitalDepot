@@ -7,6 +7,8 @@ export default function Cart({ API_URL, token }) {
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
+    const [quantity, setQuantity] = useState(1);
+
     let sum = 0;
 
     const getOrders = async () => {
@@ -68,7 +70,7 @@ export default function Cart({ API_URL, token }) {
                 <div className='subHeaderCart'>
                     <h1>SHOPPING CART</h1>
                     <section className='CartBtnContainer'>
-                        <p>My Cart</p>
+                        <p className='totalPrice'>My Cart</p>
                         <Link to='/products'>
                             <button>Continue Shoping</button>
                         </Link>
@@ -76,22 +78,33 @@ export default function Cart({ API_URL, token }) {
 
                     <section className='productsSec'>
                         {products && products.map((data) =>
-                            <div className="card2 cartCard" key={data.id}>
-                                <p className='totalPriceP'>{sum += parseFloat(data.price)}</p>
-                                <button className='removeBtn'>X</button>
-                                <div className='imgBox2'>
-                                    <img className='mouse' src={data.images[0]} alt="" />
-                                </div>
-                                <div className='contentBox2'>
-                                    <h3>{data.title}</h3>
-                                    <h2>${data.price}</h2>
+                            <div className="cartProduct" key={data.id}>
+
+                                <img className='cartProductImg' src={data.images[0]} alt="" />
+                                <div className='contentBox'>
+                                    <div className='topContentBox'>
+                                        <h3>{data.title}</h3>
+                                        <h3>${data.price}</h3>
+                                        <p className='invisSum'> {sum += parseFloat(data.price)}</p>
+                                    </div>
+                                    <div className='bottomContentBox'>
+
+                                        <div className='quntityBtns'>
+                                            <div className='minusIcon' onClick={() => { quantity < 4 && setQuantity(quantity + 1) }}>+</div>
+                                            <p>0{quantity}</p>
+                                            <div className='plusIcon' onClick={() => { quantity > 1 && setQuantity(quantity - 1) }}>-</div>
+                                        </div>
+
+                                        <button className='removeBtn'>Remove item</button>
+                                    </div>
+
                                 </div>
                             </div>
                         )}
 
                     </section>
                     <section className='CartBtnContainer'>
-                        <h1 className='totalPrice'>Total ${sum}</h1>
+                        <p className='totalPrice'>Total ${sum}</p>
                         <Link to='/products'>
                             <button>Checkout</button>
                         </Link>
