@@ -15,6 +15,8 @@ function App() {
   const [user, setUser] = useState("")
   const [currentOrderId, setCurrentOrderId] = useState("")
 
+  // Save currentOrderId in local storage
+
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
     setToken(localToken)
@@ -63,7 +65,7 @@ function App() {
             element={<Products API_URL={API_URL} user={user} token={token} />}
           />
           <Route path="/product/:id"
-            element={<ProductDetails API_URL={API_URL} user={user} token={token} />}
+            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} />}
           />
         </Routes>
 

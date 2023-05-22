@@ -8,7 +8,7 @@ import Shipping from './Shipping';
 import Description from './Description';
 import addToCart from './addToCart';
 
-export default function ProductDetails({ API_URL, user, token }) {
+export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
@@ -78,7 +78,7 @@ export default function ProductDetails({ API_URL, user, token }) {
                         <p>Available to ship in 2 weeks</p>
                     </div>
                     <div className='productBtns'>
-                        <button className='addCartBtn' onClick={() => addToCart(API_URL, user, productInfo.id, token)}>Add To Cart</button>
+                        <button className='addCartBtn' onClick={() => addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId)}>Add To Cart</button>
                         <button className='saveToWishlist'>Save To Wishlist</button>
                     </div>
                     <div className='moreDetails'>

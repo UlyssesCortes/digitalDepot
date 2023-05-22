@@ -10,7 +10,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     const [quantity, setQuantity] = useState(1);
 
     let sum = 0;
-
     const getOrders = async () => {
         try {
             const response = await fetch(`${API_URL}order/myOrders`, {
@@ -20,18 +19,23 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             });
 
             const data = await response.json();
-            setCurrentOrderId(data.id)
-            console.log(data[0].id)
+            // currentOrderIdFiner(data)
 
-            if (data) {
-
-                fetch(`${API_URL}order-items/${data.id}`)
-                    .then((response) => response.json())
-                    .catch((error) => console.error(error))
-
-
-                // setMyCart(myCartData.flat());
-                console.log(myCart)
+            data.map((order) => {
+                if (!order.isCheckedOut) {
+                    setCurrentOrderId(order.id)
+                }
+            })
+            try {
+                const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                const items = await response.json();
+                setMyCart(items)
+            } catch (error) {
+                console.error(error);
             }
 
         } catch (error) {
@@ -41,14 +45,19 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     const deleteItem = async (itemId) => {
         try {
-            const response = await fetch(`${API_URL}order/${itemId}`, {
+            const response = await fetch(`${API_URL}order-items/${itemId}`, {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
                 }
-            })
-            const data = await response.json();
-            console.log(data)
+            });
+
+            if (!response.ok) {
+                throw new Error(`Failed to delete item. Status: ${response.status}`);
+            }
+            console.log("Item deleted successfully");
+
+            setMyCart(prevCart => prevCart.filter(item => item.id !== itemId));
         } catch (error) {
             console.error(error);
         }
@@ -106,7 +115,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                             <p>0{quantity}</p>
                                             <div className='plusIcon' onClick={() => { quantity > 1 && setQuantity(quantity - 1) }}>-</div>
                                         </div>
-
                                         <button className='removeBtn' onClick={() => deleteItem(data.id)}>Remove item</button>
 
                                     </div>
