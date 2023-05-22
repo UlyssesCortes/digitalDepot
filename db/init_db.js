@@ -45,9 +45,11 @@ async function buildTables() {
             id SERIAL PRIMARY KEY,
             "userId" INTEGER REFERENCES users(id),
             "orderDate" DATE DEFAULT CURRENT_DATE,
-            "isCheckedOut" BOOLEAN DEFAULT false
+            "isCheckedOut" BOOLEAN DEFAULT false,
+            "checkoutDate" VARCHAR(255),
+            "checkoutSum" DECIMAL (10,2)
           );
-          
+
           CREATE TABLE IF NOT EXISTS order_items (
             id SERIAL PRIMARY KEY,
             "orderId" INTEGER REFERENCES orders(id),

@@ -18,9 +18,9 @@ apiRouter.get("/", async (req, res, next) => {
     }
 });
 
-apiRouter.post("/:productId", async (req, res, next) => {
-    const { orderId, quantity } = req.body;
-    const productId = req.params.productId;
+apiRouter.post("/:orderId", async (req, res, next) => {
+    const { orderId } = req.params;
+    const { productId, quantity } = req.body;
 
     try {
         const newOrderItem = await addProductOrder({
@@ -28,7 +28,7 @@ apiRouter.post("/:productId", async (req, res, next) => {
             productId,
             quantity,
         });
-        res.send(newOrderItem);
+        res.status(201).json(newOrderItem);
     } catch (error) {
         next(error);
     }
@@ -60,14 +60,21 @@ apiRouter.patch("/:orderItemId", async (req, res, next) => {
     }
 });
 
-apiRouter.delete("/:orderItemId", async (req, res, next) => {
-    const id = req.params.orderItemId;
+apiRouter.delete("/:productId", async (req, res, next) => {
+    const { productId } = req.params;
+    console.log(productId);
     try {
-        const destroy = await deleteOrderItem(id);
-        res.send(destroy);
+        const destroyedOrderItem = await deleteOrderItem(productId);
+        const response = {
+            message: 'Item deleted successfully',
+            orderItem: destroyedOrderItem
+        };
+        res.status(200).json(response);
     } catch (error) {
         next(error);
     }
 });
+
+
 
 module.exports = apiRouter;

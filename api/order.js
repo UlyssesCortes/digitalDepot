@@ -21,6 +21,7 @@ apiRouter.get("/", async (req, res, next) => {
 
 apiRouter.get("/myOrders", requireUser, async (req, res, next) => {
     try {
+
         console.log(await getOrderByUserId(req.user.id))
         const usersOrders = await getOrderByUserId(req.user.id);
         res.send(usersOrders);
@@ -32,7 +33,7 @@ apiRouter.get("/myOrders", requireUser, async (req, res, next) => {
 apiRouter.post("/", requireUser, async (req, res, next) => {
     try {
         const newOrder = await createOrder(req.user.id);
-        res.send(newOrder);
+        res.status(201).json(newOrder);
     } catch (error) {
         next(error);
     }
@@ -55,14 +56,14 @@ apiRouter.patch("/:orderId", async (req, res, next) => {
     }
 });
 
-apiRouter.delete("/:orderId", async (req, res, next) => {
-    const id = req.params.orderId;
-    try {
-        const destroy = await deleteOrder(id);
-        res.send(destroy);
-    } catch (error) {
-        next(error);
-    }
-});
+// apiRouter.delete("/:orderId", async (req, res, next) => {
+//     const id = req.params.orderId;
+//     try {
+//         const destroy = await deleteOrder(id);
+//         res.send(destroy);
+//     } catch (error) {
+//         next(error);
+//     }
+// });
 
 module.exports = apiRouter;
