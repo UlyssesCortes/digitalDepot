@@ -37,6 +37,32 @@ export default function Cart({ API_URL, token }) {
         }
     }
 
+    // const deleteItem = async (itemId) => {
+    //     try {
+    //         const response = await fetch(`${API_URL}order/${itemId}`, {
+    //             method: 'DELETE',
+    //             headers: {
+    //                 Authorization: `Bearer ${token}`
+    //             }
+    //         });
+    //         console.log(response)
+    //         if (response.ok) {
+    //             const updatedCart = myCart.filter((item) => item.id !== itemId);
+    //             setMyCart(updatedCart);
+    //         } else {
+    //             let errorData;
+    //             try {
+    //                 errorData = await response.json();
+    //             } catch (error) {
+    //                 throw new Error('Invalid JSON response');
+    //             }
+    //             throw new Error(errorData.message);
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
+
     const deleteItem = async (itemId) => {
         try {
             const response = await fetch(`${API_URL}order/${itemId}`, {
@@ -46,19 +72,27 @@ export default function Cart({ API_URL, token }) {
                 }
             });
 
+            console.log(response);
+
             if (response.ok) {
                 const updatedCart = myCart.filter((item) => item.id !== itemId);
                 setMyCart(updatedCart);
+                console.log(updatedCart)
             } else {
-                // Handle error if the response is not OK
-                const errorData = await response.json();
+                let errorData;
+                try {
+                    errorData = await response.json();
+                } catch (error) {
+                    throw new Error('Invalid JSON response');
+                }
                 throw new Error(errorData.message);
             }
         } catch (error) {
             console.error(error);
-            // Handle the error gracefully (e.g., display an error message)
         }
     };
+
+
 
 
     useEffect(() => {
