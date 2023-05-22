@@ -1,37 +1,42 @@
-const addToCart = async (API_URL, user, productId, token) => {
-    console.log(productId);
-    console.log(token);
+
+const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId) => {
     let order = null;
     let items = null;
 
     try {
-        const orderResponse = await fetch(`${API_URL}order`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                userId: user.id,
-            })
-        });
+        if (!currentOrderId) {
+            console.log("Creating new order")
+            const orderResponse = await fetch(`${API_URL}order`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    userId: user.id,
+                })
+            });
 
-        if (!orderResponse.ok) {
-            throw new Error(`Failed to create order. Status: ${orderResponse.status}`);
+            if (!orderResponse.ok) {
+                throw new Error(`Failed to create order. Status: ${orderResponse.status}`);
+            }
+            // Do this when ther is no order with checkout false
+            console.log("Order Response:", orderResponse);
+            order = await orderResponse.json();
+            setCurrentOrderId(order.id);
+            console.log("Order:", order);
         }
 
-        console.log("Order Response:", orderResponse);
-        order = await orderResponse.json();
-        console.log("Order:", order);
+        console.log("Updating Order: ", currentOrderId)
 
-        const itemsResponse = await fetch(`${API_URL}order-items/${productId}`, {
+        const itemsResponse = await fetch(`${API_URL}order-items/${currentOrderId}`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                orderId: order.id,
+                orderId: currentOrderId,
                 productId: productId,
                 quantity: 1
             })
