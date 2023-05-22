@@ -70,6 +70,7 @@ async function deleteOrderItem(id) {
     const {
         rows: [orderItem],
     } = await client.query(`DELETE FROM order_items WHERE id=$1;`, [id]);
+
     return orderItem;
 }
 

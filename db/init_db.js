@@ -47,6 +47,13 @@ async function buildTables() {
             "orderDate" DATE DEFAULT CURRENT_DATE,
             "isCheckedOut" BOOLEAN DEFAULT false
           );
+          
+          CREATE TABLE IF NOT EXISTS order_items (
+            id SERIAL PRIMARY KEY,
+            "orderId" INTEGER REFERENCES orders(id),
+            "productId" INTEGER REFERENCES products(id),
+            quantity INTEGER NOT NULL
+          );
     
           CREATE TABLE IF NOT EXISTS reviews (
             id SERIAL PRIMARY KEY,
@@ -57,13 +64,7 @@ async function buildTables() {
             rating INTEGER NOT NULL
           );
     
-          CREATE TABLE IF NOT EXISTS order_items (
-            id SERIAL PRIMARY KEY,
-            "orderId" INTEGER REFERENCES orders(id),
-            "productId" INTEGER REFERENCES products(id),
-            quantity INTEGER NOT NULL
-          );
-    
+        
           CREATE TABLE IF NOT EXISTS favorite (
             id SERIAL PRIMARY KEY,
             "productId" INTEGER REFERENCES products(id),

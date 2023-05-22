@@ -10,6 +10,7 @@ export default function Cart({ API_URL, token }) {
     const [quantity, setQuantity] = useState(1);
 
     let sum = 0;
+    console.log("ORDERS: ", myCart)
 
     const getOrders = async () => {
         try {
@@ -37,63 +38,20 @@ export default function Cart({ API_URL, token }) {
         }
     }
 
-    // const deleteItem = async (itemId) => {
-    //     try {
-    //         const response = await fetch(`${API_URL}order/${itemId}`, {
-    //             method: 'DELETE',
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`
-    //             }
-    //         });
-    //         console.log(response)
-    //         if (response.ok) {
-    //             const updatedCart = myCart.filter((item) => item.id !== itemId);
-    //             setMyCart(updatedCart);
-    //         } else {
-    //             let errorData;
-    //             try {
-    //                 errorData = await response.json();
-    //             } catch (error) {
-    //                 throw new Error('Invalid JSON response');
-    //             }
-    //             throw new Error(errorData.message);
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
-
     const deleteItem = async (itemId) => {
         try {
             const response = await fetch(`${API_URL}order/${itemId}`, {
-                method: 'DELETE',
+                method: "DELETE",
                 headers: {
-                    Authorization: `Bearer ${token}`
+                    'Content-Type': 'application/json',
                 }
-            });
-
-            console.log(response);
-
-            if (response.ok) {
-                const updatedCart = myCart.filter((item) => item.id !== itemId);
-                setMyCart(updatedCart);
-                console.log(updatedCart)
-            } else {
-                let errorData;
-                try {
-                    errorData = await response.json();
-                } catch (error) {
-                    throw new Error('Invalid JSON response');
-                }
-                throw new Error(errorData.message);
-            }
+            })
+            const data = await response.json();
+            console.log(data)
         } catch (error) {
             console.error(error);
         }
     };
-
-
-
 
     useEffect(() => {
         getOrders()
@@ -149,7 +107,7 @@ export default function Cart({ API_URL, token }) {
                                         </div>
 
                                         <button className='removeBtn' onClick={() => deleteItem(data.id)}>Remove item</button>
-                                        {/* <button className='removeBtn'>Remove item</button> */}
+
                                     </div>
 
                                 </div>
