@@ -13,6 +13,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState("")
   const [user, setUser] = useState("")
+  const [currentOrderId, setCurrentOrderId] = useState("")
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -54,7 +55,7 @@ function App() {
           />
           <Route
             path='/cart'
-            element={<Cart API_URL={API_URL} token={token} />}
+            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} />}
           />
 
           <Route

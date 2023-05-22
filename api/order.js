@@ -56,14 +56,14 @@ apiRouter.patch("/:orderId", async (req, res, next) => {
     }
 });
 
-// apiRouter.delete("/:orderId", async (req, res, next) => {
-//     const id = req.params.orderId;
-//     try {
-//         const destroy = await deleteOrder(id);
-//         res.send(destroy);
-//     } catch (error) {
-//         next(error);
-//     }
-// });
+apiRouter.delete("/:orderId", async (req, res, next) => {
+    const id = req.params.orderId;
+    try {
+        const destroy = await deleteOrder(id);
+        res.send(destroy);
+    } catch (error) {
+        next(error);
+    }
+});
 
 module.exports = apiRouter;

@@ -3,14 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default function Cart({ API_URL, token }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId }) {
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
     const [quantity, setQuantity] = useState(1);
 
     let sum = 0;
-    console.log("ORDERS: ", myCart)
 
     const getOrders = async () => {
         try {
@@ -21,16 +20,18 @@ export default function Cart({ API_URL, token }) {
             });
 
             const data = await response.json();
-            if (data) {
-                const myCartData = await Promise.all(
-                    data && data.map((order) =>
-                        fetch(`${API_URL}order-items/${order.id}`)
-                            .then((response) => response.json())
-                            .catch((error) => console.error(error))
-                    )
-                );
+            setCurrentOrderId(data.id)
+            console.log(data[0].id)
 
-                setMyCart(myCartData.flat());
+            if (data) {
+
+                fetch(`${API_URL}order-items/${data.id}`)
+                    .then((response) => response.json())
+                    .catch((error) => console.error(error))
+
+
+                // setMyCart(myCartData.flat());
+                console.log(myCart)
             }
 
         } catch (error) {
