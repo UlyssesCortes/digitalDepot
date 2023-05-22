@@ -20,9 +20,7 @@ export default function Cart({ API_URL, token }) {
             });
 
             const data = await response.json();
-            console.log("Orders: ", data)
             if (data) {
-
                 const myCartData = await Promise.all(
                     data && data.map((order) =>
                         fetch(`${API_URL}order-items/${order.id}`)
@@ -30,15 +28,38 @@ export default function Cart({ API_URL, token }) {
                             .catch((error) => console.error(error))
                     )
                 );
-                setMyCart(myCartData.flat());
-                console.log("Cart:", myCartData.flat())
 
+                setMyCart(myCartData.flat());
             }
 
         } catch (error) {
             console.error(error);
         }
     }
+
+    const deleteItem = async (itemId) => {
+        try {
+            const response = await fetch(`${API_URL}order/${itemId}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            if (response.ok) {
+                const updatedCart = myCart.filter((item) => item.id !== itemId);
+                setMyCart(updatedCart);
+            } else {
+                // Handle error if the response is not OK
+                const errorData = await response.json();
+                throw new Error(errorData.message);
+            }
+        } catch (error) {
+            console.error(error);
+            // Handle the error gracefully (e.g., display an error message)
+        }
+    };
+
 
     useEffect(() => {
         getOrders()
@@ -55,7 +76,6 @@ export default function Cart({ API_URL, token }) {
                     )
                 );
                 setProducts(myProductData.flat());
-                console.log("Products", myProductData.flat())
             } catch (error) {
                 console.error(error);
             }
@@ -77,9 +97,8 @@ export default function Cart({ API_URL, token }) {
                     </section>
 
                     <section className='productsSec'>
-                        {products && products.map((data) =>
-                            <div className="cartProduct" key={data.id}>
-
+                        {products && products.map((data, index) =>
+                            <div className="cartProduct" key={data.id + '-' + index}>
                                 <img className='cartProductImg' src={data.images[0]} alt="" />
                                 <div className='contentBox'>
                                     <div className='topContentBox'>
@@ -95,7 +114,8 @@ export default function Cart({ API_URL, token }) {
                                             <div className='plusIcon' onClick={() => { quantity > 1 && setQuantity(quantity - 1) }}>-</div>
                                         </div>
 
-                                        <button className='removeBtn'>Remove item</button>
+                                        <button className='removeBtn' onClick={() => deleteItem(data.id)}>Remove item</button>
+                                        {/* <button className='removeBtn'>Remove item</button> */}
                                     </div>
 
                                 </div>

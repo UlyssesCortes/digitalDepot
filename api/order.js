@@ -23,7 +23,6 @@ apiRouter.get("/myOrders", requireUser, async (req, res, next) => {
     try {
         console.log(await getOrderByUserId(req.user.id))
         const usersOrders = await getOrderByUserId(req.user.id);
-        console.log("usersOrders")
         res.send(usersOrders);
     } catch (error) {
         next(error);
@@ -32,7 +31,6 @@ apiRouter.get("/myOrders", requireUser, async (req, res, next) => {
 
 apiRouter.post("/", requireUser, async (req, res, next) => {
     try {
-        console.log(await createOrder(req.user.id))
         const newOrder = await createOrder(req.user.id);
         res.send(newOrder);
     } catch (error) {
