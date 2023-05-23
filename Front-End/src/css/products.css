@@ -118,10 +118,10 @@
     z-index: 999;
 }
 
-
 .heartIcon:hover {
     background-image: url("../assets/redHeart.png");
 }
+
 
 /* STAR RATING */
 .star-rating {

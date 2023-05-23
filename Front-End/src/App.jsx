@@ -37,7 +37,6 @@ function App() {
         .catch((error) => console.log(error));
     }
   }, [token]);
-  console.log(user)
   return (
     <>
       <BrowserRouter>

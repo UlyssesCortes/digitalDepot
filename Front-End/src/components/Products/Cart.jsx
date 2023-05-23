@@ -10,6 +10,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     const [quantity, setQuantity] = useState(1);
 
     let sum = 0;
+
     const getOrders = async () => {
         try {
             const response = await fetch(`${API_URL}order/myOrders`, {
@@ -55,13 +56,17 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             if (!response.ok) {
                 throw new Error(`Failed to delete item. Status: ${response.status}`);
             }
-            console.log("Item deleted successfully");
 
-            setMyCart(prevCart => prevCart.filter(item => item.id !== itemId));
+            console.log("Item deleted successfully");
+            getOrders()
+
+            // setMyCart()
+            // setMyCart(prevCart => prevCart.filter(item => item.id !== itemId));
         } catch (error) {
             console.error(error);
         }
     };
+
 
     useEffect(() => {
         getOrders()
@@ -108,6 +113,8 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                         <h3>${data.price}</h3>
                                         <p className='invisSum'> {sum += parseFloat(data.price)}</p>
                                     </div>
+
+
                                     <div className='bottomContentBox'>
 
                                         <div className='quntityBtns'>

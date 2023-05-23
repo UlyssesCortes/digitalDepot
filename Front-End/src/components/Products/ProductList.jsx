@@ -75,30 +75,30 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         if (!favoriteResponse.ok) {
             throw new Error(`Failed to create order. Status: ${favoriteResponse.status}`);
         }
-        // Do this when ther is no order with checkout false
         const favorite = await favoriteResponse.json();
         console.log(favorite)
     }
 
+    const fetchFavorites = async () => {
+        try {
+            const favoriteResponse = await fetch(`${API_URL}favorite`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const favorite = await favoriteResponse.json();
+            setMyFavorites(favorite);
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
     useEffect(() => {
-        const fetchFavorites = async () => {
-            try {
-                const favoriteResponse = await fetch(`${API_URL}favorite`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-                const favorite = await favoriteResponse.json();
-                setMyFavorites(favorite);
-
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
         fetchFavorites();
-    }, [API_URL, token]);
+    }, []);
 
     const removeFavorite = async (productId) => {
         const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
@@ -115,7 +115,9 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     }
 
     const checkFavorite = (productId) => {
+
         if (myFavorites.some((favorite) => favorite.productId === productId)) {
+            // fetchFavorites()
             return (
                 <div className='redHeartIcon' onClick={() => { removeFavorite(productId) }}></div>
             )
@@ -124,6 +126,8 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 <div className='heartIcon' onClick={() => { handleFavoriteBtn(productId), setRedHeart(!redHeart) }}></div>
             )
         }
+
+
     }
 
     return (
