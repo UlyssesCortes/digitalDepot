@@ -57,15 +57,15 @@ function App() {
           />
           <Route
             path='/cart'
-            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} />}
+            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} />}
           />
 
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} user={user} token={token} />}
+            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} />}
           />
           <Route path="/product/:id"
-            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} />}
+            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} />}
           />
         </Routes>
 

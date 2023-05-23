@@ -105,7 +105,19 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    z-index: 999;
 }
+
+.redHeartIcon {
+    width: 30px;
+    height: 30px;
+    background-image: url("../assets/redHeart.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 999;
+}
+
 
 .heartIcon:hover {
     background-image: url("../assets/redHeart.png");

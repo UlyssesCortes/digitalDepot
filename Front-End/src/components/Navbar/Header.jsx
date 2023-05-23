@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import '../css/nav.css'
-import Desktop from './Navbar/Desktop';
-import UserIcon from './Navbar/UserIcon';
+import '../../css/nav.css'
+import Desktop from './Desktop';
+import UserIcon from './UserIcon';
 
 export default function Header({ isLoggedIn }) {
     return (

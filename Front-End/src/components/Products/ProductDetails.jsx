@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from '../Header';
+import Header from '../Navbar/Header';
 import StarRating from './StartRating';
 import Features from './Features';
 import Dimensions from './Dimensions';
@@ -8,7 +8,7 @@ import Shipping from './Shipping';
 import Description from './Description';
 import addToCart from './addToCart';
 
-export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId }) {
+export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
@@ -43,7 +43,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const productInfo = product[0];
     return (
         <section className='marginReducer'>
-            <Header />
+            <Header isLoggedIn={isLoggedIn} />
             <div className='productDetailBox'>
                 <section className='imageGallery'>
                     <img className="productImg1" src={productInfo.images[0]} alt="product Image" />

@@ -4,7 +4,7 @@ import Banner from "./Banner"
 import Companies from './Companies'
 import Furniture from './Furniture'
 import Sale from './Sale'
-import Header from '../Header'
+import Header from '../Navbar/Header'
 // import Footer from '../Footer'
 import BestSellers from './BestSellers'
 import Benefits from './Benefits'

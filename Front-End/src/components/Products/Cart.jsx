@@ -1,9 +1,9 @@
-import Header from '../Header'
+import Header from '../Navbar/Header'
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn }) {
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
@@ -87,7 +87,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     return (
         <section className='cartContainer marginReducer'>
-            <Header />
+            <Header isLoggedIn={isLoggedIn} />
             <section className='cartSection'>
                 <div className='subHeaderCart'>
                     <h1>SHOPPING CART</h1>
