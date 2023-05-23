@@ -7,6 +7,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const [furniture, setFurniture] = useState([]);
     const [myFavorites, setMyFavorites] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [redHeart, setRedHeart] = useState(false);
     const [productsPerPage] = useState(8);
 
     const token = window.localStorage.getItem('token');
@@ -78,6 +79,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         const favorite = await favoriteResponse.json();
         console.log(favorite)
     }
+
     useEffect(() => {
         const fetchFavorites = async () => {
             try {
@@ -89,6 +91,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 });
                 const favorite = await favoriteResponse.json();
                 setMyFavorites(favorite);
+
             } catch (error) {
                 console.log(error);
             }
@@ -97,16 +100,29 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         fetchFavorites();
     }, [API_URL, token]);
 
+    const removeFavorite = async (productId) => {
+        const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!favoriteResponse.ok) {
+            throw new Error(`Failed to create order. Status: ${favoriteResponse.status}`);
+        }
+    }
+
     const checkFavorite = (productId) => {
         if (myFavorites.some((favorite) => favorite.productId === productId)) {
             return (
-                <div className='redHeartIcon' onClick={() => { handleFavoriteBtn(productId) }}></div>
+                <div className='redHeartIcon' onClick={() => { removeFavorite(productId) }}></div>
             )
         } else {
             return (
-                <div className='heartIcon' onClick={() => { handleFavoriteBtn(productId) }}></div>
+                <div className='heartIcon' onClick={() => { handleFavoriteBtn(productId), setRedHeart(!redHeart) }}></div>
             )
-
         }
     }
 
@@ -121,9 +137,13 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                         <section to={`/product/${product.id}`} key={product.id} className="productCard"
                             onMouseEnter={() => handleMouseEnter(index)}
                             onMouseLeave={handleMouseLeave}>
+
+
                             <div className='favorite'>
                                 {checkFavorite(product.id)}
                             </div>
+
+
                             <Link to={`/product/${product.id}`} key={product.id}
                                 onMouseEnter={() => handleMouseEnter(index)}>
                                 <Suspense fallback={<div>Loading...</div>}>
