@@ -307,6 +307,37 @@
     animation: opacityAnimation 0.5s;
 }
 
+.paginationBtns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.paginationBtn {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(250, 248, 248);
+    border: 1.5px solid #333333;
+    border-radius: 50px;
+    margin: 10px 0 10px 0;
+    cursor: pointer;
+    transition: all ease-in-out .2s;
+}
+
+.paginationBtn.selected {
+    background-color: #333333;
+    color: white;
+}
+
+.paginationBtn:hover {
+    background-color: #333333;
+    color: white;
+
+}
+
+
 @keyframes opacityAnimation {
 
     0%,

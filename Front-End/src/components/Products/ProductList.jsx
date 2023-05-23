@@ -5,6 +5,8 @@ export default function ProductList({ API_URL, filterName }) {
     const [products, setProducts] = useState([]);
     const [furniture, setFurniture] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage] = useState(8);
 
     const getProducts = async () => {
         try {
@@ -49,10 +51,18 @@ export default function ProductList({ API_URL, filterName }) {
         setHoveredIndex(null);
     };
 
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = furniture.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
     return (
         <>
             <section className='productsLis'>
-                {furniture.map((product, index) => {
+                {currentProducts.map((product, index) => {
                     const isHovered = index === hoveredIndex;
                     const imageSource = isHovered ? product.images[1] : product.images[0];
                     return (
@@ -76,6 +86,13 @@ export default function ProductList({ API_URL, filterName }) {
                         </Link>
                     )
                 })}
+                <section className='paginationBtns'>
+                    {Array.from({ length: Math.ceil(products.length / productsPerPage) }, (_, index) => (
+                        <button className='paginationBtn' key={index} onClick={() => paginate(index + 1)}>
+                            {index + 1}
+                        </button>
+                    ))}
+                </section>
             </section>
         </>
     )
