@@ -21,13 +21,9 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
                 throw new Error(`Failed to create order. Status: ${orderResponse.status}`);
             }
             // Do this when ther is no order with checkout false
-            console.log("Order Response:", orderResponse);
             order = await orderResponse.json();
             setCurrentOrderId(order.id);
-            console.log("Order:", order);
         }
-
-        console.log("Updating Order: ", currentOrderId)
 
         const itemsResponse = await fetch(`${API_URL}order-items/${currentOrderId}`, {
             method: "POST",

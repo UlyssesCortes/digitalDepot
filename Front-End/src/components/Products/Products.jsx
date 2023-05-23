@@ -7,12 +7,14 @@ import ProductList from './ProductList'
 
 export default function Products({ API_URL }) {
     const [filterName, setFilterName] = useState("")
+    const [currentPage, setCurrentPage] = useState(1);
+
 
     return (
         <section className='marginReducer'>
             <Header />
-            <ProductNav setFilterName={setFilterName} />
-            <ProductList API_URL={API_URL} filterName={filterName} />
+            <ProductNav setFilterName={setFilterName} setCurrentPage={setCurrentPage} />
+            <ProductList API_URL={API_URL} filterName={filterName} setCurrentPage={setCurrentPage} currentPage={currentPage} />
         </section>
     )
 }

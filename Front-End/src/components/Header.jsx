@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import '../css/nav.css'
+import Desktop from './Navbar/Desktop';
+import UserIcon from './Navbar/UserIcon';
 
-export default function Header() {
+export default function Header({ isLoggedIn }) {
     return (
         <nav className='navbar'>
             <section className='leftNav'>
@@ -22,10 +24,10 @@ export default function Header() {
                     <div className='navSearchIcon'></div>
                     <Link to='/cart' className='navCartIcon'></Link>
                 </section>
-                <section className='navLogContainer'>
-                    <Link to='/register' className='navBtn navLink'>Sign Up</Link>
-                    <Link to='/login' className='navBtn navLog navLink'>Login</Link>
-                </section>
+                {isLoggedIn ?
+                    <UserIcon /> :
+                    <Desktop />
+                }
             </section>
         </nav>
     )

@@ -44,7 +44,7 @@ function App() {
         <Routes>
           <Route
             path='/'
-            element={<Hero API_URL={API_URL} />}
+            element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} />}
           />
 
           <Route

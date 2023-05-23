@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
+import LazyImages from './LazyImages';
 
-export default function ProductList({ API_URL, filterName }) {
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage }) {
     const [products, setProducts] = useState([]);
     const [furniture, setFurniture] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
-    const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(8);
+
+
 
     const getProducts = async () => {
         try {
@@ -61,7 +63,7 @@ export default function ProductList({ API_URL, filterName }) {
 
     return (
         <>
-            <section className='productsLis'>
+            <section className='productsLis' >
                 {currentProducts.map((product, index) => {
                     const isHovered = index === hoveredIndex;
                     const imageSource = isHovered ? product.images[1] : product.images[0];
@@ -72,13 +74,19 @@ export default function ProductList({ API_URL, filterName }) {
                             <div className='favorite'>
                                 <div className='heartIcon'></div>
                             </div>
-                            <div className="imageContainer">
+                            {/* <div className="imageContainer">
                                 <img
                                     className="productImg"
                                     src={imageSource}
                                     alt="product Image"
                                 />
-                            </div>
+                            </div> */}
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <div className='imageContainer'>
+                                    <LazyImages src={imageSource} alt="product Image" />
+                                </div>
+                            </Suspense>
+
                             <div className='productContent'>
                                 <p>{product.title}</p>
                                 <p>${product.price}</p>
@@ -88,9 +96,14 @@ export default function ProductList({ API_URL, filterName }) {
                 })}
                 <section className='paginationBtns'>
                     {Array.from({ length: Math.ceil(products.length / productsPerPage) }, (_, index) => (
-                        <button className='paginationBtn' key={index} onClick={() => paginate(index + 1)}>
+                        <a
+                            href='#topNav'
+                            className={`paginationBtn ${index + 1 === currentPage ? 'selected' : ''}`}
+                            key={index}
+                            onClick={() => paginate(index + 1)}
+                        >
                             {index + 1}
-                        </button>
+                        </a>
                     ))}
                 </section>
             </section>

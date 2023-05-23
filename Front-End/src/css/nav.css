@@ -86,3 +86,14 @@
     border-radius: 10px;
     width: 120px;
 }
+
+.userIcon {
+    width: 30px;
+    height: 30px;
+    background-image: url("../assets/user.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-left: 20px;
+    cursor: pointer;
+}
