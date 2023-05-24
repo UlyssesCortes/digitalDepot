@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import '../../css/nav.css'
 import Desktop from './Desktop';
 import UserIcon from './UserIcon';
+import Profile from './Profile';
 
 export default function Header({ isLoggedIn }) {
     return (

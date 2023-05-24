@@ -126,3 +126,69 @@
 .categoryLink:hover+.navCategories {
     opacity: 1;
 }
+
+/* PROFILE */
+
+.profileSectionBtn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 28%;
+    position: absolute;
+    background-color: rgba(248, 246, 246, 0.918);
+    backdrop-filter: blur(20px);
+    height: 45vh;
+    width: 400px;
+    border: #2f2f2f solid 1px;
+    border-radius: 10px;
+    right: 0;
+    z-index: 1000;
+    transition: transform ease-in-out 0.5s, opacity ease-in-out 0.5s;
+}
+
+.profileSectionBtn.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+.triShape {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-color: rgba(248, 246, 246, 0.932);
+    backdrop-filter: blur(20px);
+    margin-top: -26px;
+    margin-right: 48px;
+    top: 0;
+    right: 0;
+    border-top: #2f2f2f solid 1px;
+    border-left: #2f2f2f solid 1px;
+    border-radius: 5px;
+    transform: rotate(45deg);
+}
+
+.profileBtns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    width: 100%;
+    height: 25%;
+    border: none;
+    border-top: #2f2f2f 2px solid;
+    border-bottom: #2f2f2f 2px solid;
+    user-select: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.profileBtn1,
+.profileBtn4 {
+    border: none;
+}
+
+.profileBtn3 {
+    border-top: none;
+}
