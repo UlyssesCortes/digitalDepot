@@ -15,7 +15,15 @@ export default function Header({ isLoggedIn }) {
                     <Link to='/' className='navLink '>Home</Link>
 
                     <Link to='/products' className='navLink '>Products</Link>
-                    <Link to='/newsfeed' className='navLink '>Newsfeed</Link>
+                    <section className='navCategorieSec'>
+                        <Link className='navLink categoryLink'>Categories</Link>
+                        <div className='navCategories'>
+                            <p className='navCategory'>Living Room</p>
+                            <p className='navCategory'>Bedroom</p>
+                            <p className='navCategory'>Workspace</p>
+                            <p className='navCategory'>Kitchem</p>
+                        </div>
+                    </section>
                     <Link to='/promo' className='navLink'>Promo</Link>
                 </section>
             </section>

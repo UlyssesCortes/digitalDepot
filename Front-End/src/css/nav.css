@@ -97,3 +97,32 @@
     margin-left: 20px;
     cursor: pointer;
 }
+
+
+.navCategorieSec {
+    display: flex;
+    flex-direction: column;
+}
+
+.navCategories {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    margin-top: 20px;
+    background-color: rgb(253, 252, 252);
+    padding: 15px;
+    border-radius: 5px;
+    opacity: 0;
+    border: #2f2f2f46 1px solid;
+    transition: all ease-in-out .2s;
+}
+
+.navCategories:hover {
+    opacity: 1;
+
+}
+
+.categoryLink:hover+.navCategories {
+    opacity: 1;
+}

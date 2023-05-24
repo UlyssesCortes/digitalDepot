@@ -1,4 +1,4 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import LazyImages from './LazyImages';
 import ProductListLoading from '../Loading/ProductListLoading';

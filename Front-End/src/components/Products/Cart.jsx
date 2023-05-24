@@ -1,43 +1,38 @@
 import Header from '../Navbar/Header'
 import React, { useState, useEffect } from 'react';
+import CartLoading from '../Loading/CartLoading';
 import { Link } from 'react-router-dom';
 
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity }) {
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
-    const [quantity, setQuantity] = useState(1);
+    const [updatedQuantity, setUpdatedQuantity] = useState(quantity)
 
     let sum = 0;
 
     const getOrders = async () => {
         try {
-            const response = await fetch(`${API_URL}order/myOrders`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
 
-            const data = await response.json();
-            // currentOrderIdFiner(data)
 
-            data.map((order) => {
-                if (!order.isCheckedOut) {
-                    setCurrentOrderId(order.id)
-                }
-            })
             try {
-                const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                })
-                const items = await response.json();
-                setMyCart(items)
+                console.log(`${API_URL}order-items/${currentOrderId}`)
+                if (currentOrderId) {
+                    const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    })
+                    const items = await response.json();
+                    setMyCart(items)
+
+                }
+
             } catch (error) {
                 console.error(error);
             }
+            console.log("GETTING CART ITEMS")
 
         } catch (error) {
             console.error(error);
@@ -59,13 +54,31 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
             console.log("Item deleted successfully");
             getOrders()
-
-            // setMyCart()
-            // setMyCart(prevCart => prevCart.filter(item => item.id !== itemId));
         } catch (error) {
             console.error(error);
         }
     };
+
+    // NEED TO UPDATE CHECKOUT TO HAVE CHECKOUT BE TRUE WHEN CLICKED AND RESET THER CURRENTID TO ""
+    // const checkOut = async (itemId) => {
+    //     try {
+    //         const response = await fetch(`${API_URL}order${itemId}`, {
+    //             method: "PATCH",
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             }
+    //         });
+
+    //         if (!response.ok) {
+    //             throw new Error(`Failed to delete item. Status: ${response.status}`);
+    //         }
+
+    //         console.log("Item deleted successfully");
+    //         getOrders()
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
 
 
     useEffect(() => {
@@ -83,12 +96,15 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     )
                 );
                 setProducts(myProductData.flat());
+                console.log("GETING CART PRODUCTS")
+
             } catch (error) {
                 console.error(error);
             }
         };
         getProducts();
     }, [myCart]);
+
 
     return (
         <section className='cartContainer marginReducer'>
@@ -104,8 +120,11 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     </section>
 
                     <section className='productsSec'>
+                        {myCart.length === 0 && <CartLoading />}
+                        {console.log(myCart)}
                         {products && products.map((data, index) =>
                             <div className="cartProduct" key={data.id + '-' + index}>
+                                {console.log(data)}
                                 <img className='cartProductImg' src={data.images[0]} alt="" />
                                 <div className='contentBox'>
                                     <div className='topContentBox'>
@@ -118,9 +137,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                     <div className='bottomContentBox'>
 
                                         <div className='quntityBtns'>
-                                            <div className='minusIcon' onClick={() => { quantity < 4 && setQuantity(quantity + 1) }}>+</div>
-                                            <p>0{quantity}</p>
-                                            <div className='plusIcon' onClick={() => { quantity > 1 && setQuantity(quantity - 1) }}>-</div>
+                                            <div className='minusIcon' onClick={() => { updatedQuantity < 4 && setUpdatedQuantity(updatedQuantity + 1) }}>+</div>
+                                            <p>0{updatedQuantity}</p>
+                                            <div className='plusIcon' onClick={() => { updatedQuantity > 1 && setUpdatedQuantity(updatedQuantity - 1) }}>-</div>
                                         </div>
                                         <button className='removeBtn' onClick={() => deleteItem(data.id)}>Remove item</button>
 
@@ -131,12 +150,14 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                         )}
 
                     </section>
-                    <section className='CartBtnContainer'>
-                        <p className='totalPrice'>Total ${sum}</p>
-                        <Link to='/products'>
-                            <button>Checkout</button>
-                        </Link>
-                    </section>
+                    {myCart.length > 0 &&
+                        <section className='CartBtnContainer'>
+                            <p className='totalPrice'>Total ${sum}</p>
+                            <Link to='/products'>
+                                <button>Checkout</button>
+                            </Link>
+                        </section>
+                    }
                 </div>
             </section>
         </section>

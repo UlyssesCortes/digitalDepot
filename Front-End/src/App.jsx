@@ -14,11 +14,19 @@ function App() {
   const [token, setToken] = useState("")
   const [user, setUser] = useState("")
   const [currentOrderId, setCurrentOrderId] = useState("")
+  const [quantity, setQuantity] = useState(1);
+
+  // localStorage.setItem('currentOrderId', "");
+  console.log(currentOrderId)
 
   // Save currentOrderId in local storage
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
+    const currentOrderId = window.localStorage.getItem('currentOrderId');
+    setCurrentOrderId(currentOrderId)
+
+    console.log(currentOrderId)
     setToken(localToken)
     if (localToken) {
       setIsLoggedIn(true)
@@ -56,7 +64,7 @@ function App() {
           />
           <Route
             path='/cart'
-            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} />}
+            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setQuantity={setQuantity} quantity={quantity} />}
           />
 
           <Route
@@ -64,7 +72,7 @@ function App() {
             element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} />}
           />
           <Route path="/product/:id"
-            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} />}
+            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setQuantity={setQuantity} quantity={quantity} />}
           />
         </Routes>
 
