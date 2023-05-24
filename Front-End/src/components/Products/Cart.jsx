@@ -4,11 +4,10 @@ import CartLoading from '../Loading/CartLoading';
 import { Link } from 'react-router-dom';
 
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn }) {
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
-    const [updatedQuantity, setUpdatedQuantity] = useState(quantity)
 
     let sum = 0;
 
@@ -17,7 +16,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
 
             try {
-                console.log(`${API_URL}order-items/${currentOrderId}`)
                 if (currentOrderId) {
                     const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
                         headers: {
@@ -32,7 +30,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             } catch (error) {
                 console.error(error);
             }
-            console.log("GETTING CART ITEMS")
 
         } catch (error) {
             console.error(error);
@@ -58,6 +55,21 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             console.error(error);
         }
     };
+
+
+    const increaseQuantity = (index) => {
+        if (myCart[index].quantity < 4) {
+            myCart[index].quantity += 1;
+            console.log(myCart[index].quantity);
+        }
+    }
+
+    const decreaseQuantity = (index) => {
+        if (myCart[index].quantity > 1) {
+            myCart[index].quantity -= 1;
+            console.log(myCart[index].quantity);
+        }
+    }
 
     // NEED TO UPDATE CHECKOUT TO HAVE CHECKOUT BE TRUE WHEN CLICKED AND RESET THER CURRENTID TO ""
     // const checkOut = async (itemId) => {
@@ -96,15 +108,12 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     )
                 );
                 setProducts(myProductData.flat());
-                console.log("GETING CART PRODUCTS")
-
             } catch (error) {
                 console.error(error);
             }
         };
         getProducts();
     }, [myCart]);
-
 
     return (
         <section className='cartContainer marginReducer'>
@@ -121,10 +130,8 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
                     <section className='productsSec'>
                         {myCart.length === 0 && <CartLoading />}
-                        {console.log(myCart)}
                         {products && products.map((data, index) =>
                             <div className="cartProduct" key={data.id + '-' + index}>
-                                {console.log(data)}
                                 <img className='cartProductImg' src={data.images[0]} alt="" />
                                 <div className='contentBox'>
                                     <div className='topContentBox'>
@@ -133,13 +140,13 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                         <p className='invisSum'> {sum += parseFloat(data.price)}</p>
                                     </div>
 
-
                                     <div className='bottomContentBox'>
 
                                         <div className='quntityBtns'>
-                                            <div className='minusIcon' onClick={() => { updatedQuantity < 4 && setUpdatedQuantity(updatedQuantity + 1) }}>+</div>
-                                            <p>0{updatedQuantity}</p>
-                                            <div className='plusIcon' onClick={() => { updatedQuantity > 1 && setUpdatedQuantity(updatedQuantity - 1) }}>-</div>
+
+                                            <div className='minusIcon' onClick={() => { increaseQuantity(index) }}>+</div>
+                                            <p>0{products.length === myCart.length ? myCart[index].quantity : 0}</p>
+                                            <div className='plusIcon' onClick={() => { decreaseQuantity(index) }}>-</div>
                                         </div>
                                         <button className='removeBtn' onClick={() => deleteItem(data.id)}>Remove item</button>
 

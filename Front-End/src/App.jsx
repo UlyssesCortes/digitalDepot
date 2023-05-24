@@ -17,7 +17,6 @@ function App() {
   const [quantity, setQuantity] = useState(1);
 
   // localStorage.setItem('currentOrderId', "");
-  console.log(currentOrderId)
 
   // Save currentOrderId in local storage
 
@@ -26,7 +25,6 @@ function App() {
     const currentOrderId = window.localStorage.getItem('currentOrderId');
     setCurrentOrderId(currentOrderId)
 
-    console.log(currentOrderId)
     setToken(localToken)
     if (localToken) {
       setIsLoggedIn(true)
