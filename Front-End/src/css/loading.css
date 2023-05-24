@@ -1,0 +1,91 @@
+/* ProductLoading */
+.loadingGrey {
+    background-color: rgb(219, 217, 217);
+    border: none;
+}
+
+.pLoading {
+    height: 30px;
+    background-color: rgb(219, 217, 217);
+    border: none;
+}
+
+.nameLoading {
+    height: 60px;
+    background-color: rgb(219, 217, 217);
+    width: 80%;
+}
+
+.divLoadingCont {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.divLoading {
+    display: flex;
+    flex-direction: column;
+    height: 50px;
+    background-color: rgb(219, 217, 217);
+    border: none;
+}
+
+.priceLoading {
+    background-color: rgb(219, 217, 217);
+    width: 50%;
+    height: 40px;
+}
+
+.quantityLoading {
+    background-color: rgb(219, 217, 217);
+    width: 35%;
+    height: 40px;
+}
+
+/* ProductList */
+.loadingProductContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.pLoading2 {
+    scale: .9;
+    height: 30px;
+}
+
+
+.imageLoading {
+    background-color: rgb(219, 217, 217);
+    scale: .9;
+}
+
+.shinny {
+    background: lightgray;
+    position: relative;
+    overflow: hidden;
+}
+
+.shinny::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    height: 100%;
+    transform: skew(5deg);
+    animation: shine infinite 1.5s ease-in-out;
+}
+
+
+@keyframes shine {
+    from {
+        transform: skew(45deg) translateX(-100%);
+    }
+
+    to {
+        transform: skew(45deg) translateX(200%);
+    }
+}

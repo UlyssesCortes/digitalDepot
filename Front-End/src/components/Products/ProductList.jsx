@@ -1,8 +1,9 @@
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import LazyImages from './LazyImages';
+import ProductListLoading from '../Loading/ProductListLoading';
 
-export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage }) {
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn }) {
     const [products, setProducts] = useState([]);
     const [furniture, setFurniture] = useState([]);
     const [myFavorites, setMyFavorites] = useState([]);
@@ -33,6 +34,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     useEffect(() => {
         getProducts();
     }, []);
+
 
     useEffect(() => {
         if (filterName === "all") {
@@ -126,8 +128,14 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 <div className='heartIcon' onClick={() => { handleFavoriteBtn(productId), setRedHeart(!redHeart) }}></div>
             )
         }
+    }
 
-
+    if (products.length === 0) {
+        return (
+            <>
+                <ProductListLoading isLoggedIn={isLoggedIn} />
+            </>
+        )
     }
 
     return (

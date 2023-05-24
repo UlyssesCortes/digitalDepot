@@ -7,6 +7,7 @@ import Dimensions from './Dimensions';
 import Shipping from './Shipping';
 import Description from './Description';
 import addToCart from './addToCart';
+import ProductLoading from '../Loading/ProductLoading';
 
 export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn }) {
     const { id } = useParams();
@@ -37,7 +38,11 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     }, [API_URL, id]);
 
     if (!product) {
-        return <div>Loading...</div>;
+        return (
+            <>
+                <ProductLoading isLoggedIn={isLoggedIn} />
+            </>
+        )
     }
 
     const productInfo = product[0];
@@ -66,7 +71,6 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                         <p>${productInfo.price * quantity}.00</p>
                     </div>
                     <div className='quantity'>
-                        <p>Quantity</p>
                         <div className='quntityBtns'>
                             <div className='minusIcon' onClick={() => { quantity < 4 && setQuantity(quantity + 1) }}>+</div>
                             <p>0{quantity}</p>
