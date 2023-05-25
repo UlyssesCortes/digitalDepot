@@ -42,7 +42,7 @@ apiRouter.post("/", requireUser, async (req, res, next) => {
 apiRouter.patch("/:orderId", async (req, res, next) => {
     try {
         const id = req.params.orderId;
-        const { isCheckedOut } = req.body;
+        const { isCheckedOut, checkoutDate, checkoutSum } = req.body;
         const updatedFields = { id: id };
 
         if (isCheckedOut) {

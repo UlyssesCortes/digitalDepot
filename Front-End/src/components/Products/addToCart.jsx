@@ -59,6 +59,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
             }
 
             items = await itemsResponse.json();
+            console.log(items)
 
             if (items) {
                 alert("Product added to cart!");
@@ -91,6 +92,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
             }
 
             items = await itemsResponse.json();
+            console.log(items)
 
             if (items) {
                 alert("Product added to cart!");
