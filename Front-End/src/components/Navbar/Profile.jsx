@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
+
 
 export default function Profile({ setIsLoggedIn }) {
 
@@ -15,7 +17,7 @@ export default function Profile({ setIsLoggedIn }) {
             <div className='triShape'></div>
             <button className='profileBtns profileBtn1'>
                 <div className='btnContainer'>
-                    <p>Cart</p>
+                    <Link to='/cart' className='userLink'>Cart</Link>
                     <div className='profileIcon1'></div>
                 </div>
             </button>

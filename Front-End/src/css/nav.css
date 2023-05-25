@@ -207,6 +207,11 @@
     gap: 20px;
 }
 
+.userLink {
+    text-decoration: none;
+    color: #5f5f5f;
+}
+
 .profileIcon1,
 .profileIcon2,
 .profileIcon3,

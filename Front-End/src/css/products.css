@@ -402,12 +402,8 @@
 .cartSection {
     position: absolute;
     margin-top: 50px;
-    width: 90%;
+    width: 92%;
     height: 100vh;
-}
-
-.subHeaderCart {
-    padding: 0 100px 0 100px;
 }
 
 .subHeaderCart h1 {

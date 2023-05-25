@@ -8,10 +8,15 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
+    const [updatedCheckout, setUpdatedCheckout] = useState({
+        isCheckedOut: null,
+        checkoutDate: "",
+        checkoutSum: null
+    })
 
     let sum = 0;
 
-    const getOrders = async () => {
+    const getOrderItems = async () => {
         try {
             if (currentOrderId) {
                 const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
@@ -43,7 +48,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             }
 
             console.log("Item deleted successfully");
-            getOrders()
+            getOrderItems()
         } catch (error) {
             console.error(error);
         }
@@ -64,30 +69,56 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
     }
 
-    // NEED TO UPDATE CHECKOUT TO HAVE CHECKOUT BE TRUE WHEN CLICKED AND RESET THER CURRENTID TO ""
-    // const checkOut = async (itemId) => {
-    //     try {
-    //         const response = await fetch(`${API_URL}order${itemId}`, {
-    //             method: "PATCH",
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             }
-    //         });
+    const handleUpdate = async (orderId) => {
+        // Create a new Date object
+        var currentDate = new Date();
 
-    //         if (!response.ok) {
-    //             throw new Error(`Failed to delete item. Status: ${response.status}`);
-    //         }
+        // Calculate the checkout date (e.g., add 7 days)
+        var checkoutDate = new Date(currentDate);
+        checkoutDate.setDate(currentDate.getDate());
 
-    //         console.log("Item deleted successfully");
-    //         getOrders()
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
+        // Get the individual date components
+        var month = checkoutDate.getMonth() + 1;
+        var day = checkoutDate.getDate();
+        var year = checkoutDate.getFullYear();
+
+        // Format the date string
+        var formattedDate = month + '/' + day + '/' + year;
+
+        console.log("DATA: ", formattedDate)
+
+        setUpdatedCheckout({ ...updatedCheckout, isCheckedOut: true })
+        setUpdatedCheckout({ ...updatedCheckout, checkoutDate: formattedDate })
+        setUpdatedCheckout({ ...updatedCheckout, checkoutSum: sum })
+
+        try {
+            const response = await fetch(`${API_URL}order/${orderId}`, {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify(updatedCheckout)
+            });
+            const result = await response.json();
+            console.log("result: ", result)
+            console.log("response: ", response)
+            if (result.name !== "error") {
+                localStorage.removeItem('currentOrderId')
+                console.log("Order sent!")
+                alert("Checked out succesfully!")
+            } else {
+                console.log("Failed to send order, try again!")
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
 
     useEffect(() => {
-        getOrders()
+        getOrderItems()
     }, [token]);
 
     useEffect(() => {
@@ -133,6 +164,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                         <p className='invisSum'>
                                             {products.length === myCart.length ? sum += parseFloat(myCart[index].quantity) * data.price : sum += parseFloat(data.price)}
                                         </p>
+                                        <p>+tax</p>
                                     </div>
 
                                     <div className='bottomContentBox'>
@@ -155,9 +187,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     {myCart.length > 0 &&
                         <section className='CartBtnContainer'>
                             <p className='totalPrice'>Total ${sum}</p>
-                            <Link to='/products'>
-                                <button>Checkout</button>
-                            </Link>
+                            <button onClick={() => { handleUpdate(currentOrderId) }}>Checkout</button>
                         </section>
                     }
                 </div>

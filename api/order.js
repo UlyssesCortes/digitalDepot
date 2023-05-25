@@ -48,6 +48,15 @@ apiRouter.patch("/:orderId", async (req, res, next) => {
         if (isCheckedOut) {
             updatedFields.isCheckedOut = isCheckedOut;
         }
+
+        if (checkoutDate) {
+            updatedFields.checkoutDate = checkoutDate;
+        }
+
+        if (checkoutSum) {
+            updatedFields.checkoutSum = checkoutSum;
+        }
+
         const updatedOrderItem = await updateOrders(updatedFields);
 
         res.send(updatedOrderItem);

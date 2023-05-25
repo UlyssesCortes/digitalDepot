@@ -128,7 +128,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     }
 
     const checkFavorite = (productId) => {
-        console.log(isLoggedInLocal)
         if (isLoggedInLocal) {
             if (myFavorites.some((favorite) => favorite.productId === productId)) {
                 return (
