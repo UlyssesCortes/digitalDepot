@@ -13,6 +13,12 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
 
     const token = window.localStorage.getItem('token');
 
+    const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
+    // localStorage.setItem('isLoggedIn', false)
+
+
+    // console.log("LOCAL: ", isLoggedInLocal)
+
     const getProducts = async () => {
         try {
             const response = await fetch(`${API_URL}products`, {
@@ -66,19 +72,24 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     };
 
     const handleFavoriteBtn = async (productId) => {
-        const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
+        if (isLoggedIn) {
+            const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
 
-        if (!favoriteResponse.ok) {
-            throw new Error(`Failed to create order. Status: ${favoriteResponse.status}`);
+            if (!favoriteResponse.ok) {
+                throw new Error(`Failed to create order. Status: ${favoriteResponse.status}`);
+            }
+            const favorite = await favoriteResponse.json();
+            console.log(favorite)
+        } else {
+            alert("Need to be loged in to perform this action")
         }
-        const favorite = await favoriteResponse.json();
-        console.log(favorite)
+
     }
 
     const fetchFavorites = async () => {
@@ -117,16 +128,17 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     }
 
     const checkFavorite = (productId) => {
-
-        if (myFavorites.some((favorite) => favorite.productId === productId)) {
-            // fetchFavorites()
-            return (
-                <div className='redHeartIcon' onClick={() => { removeFavorite(productId) }}></div>
-            )
-        } else {
-            return (
-                <div className='heartIcon' onClick={() => { handleFavoriteBtn(productId), setRedHeart(!redHeart) }}></div>
-            )
+        console.log(isLoggedInLocal)
+        if (isLoggedInLocal) {
+            if (myFavorites.some((favorite) => favorite.productId === productId)) {
+                return (
+                    <div className='redHeartIcon' onClick={() => { removeFavorite(productId) }}></div>
+                )
+            } else {
+                return (
+                    <div className='heartIcon' onClick={() => { handleFavoriteBtn(productId), setRedHeart(!redHeart) }}></div>
+                )
+            }
         }
     }
 
@@ -150,11 +162,11 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                             onMouseEnter={() => handleMouseEnter(index)}
                             onMouseLeave={handleMouseLeave}>
 
-
-                            <div className='favorite'>
-                                {checkFavorite(product.id)}
-                            </div>
-
+                            {isLoggedInLocal &&
+                                <div className='favorite'>
+                                    {checkFavorite(product.id)}
+                                </div>
+                            }
 
                             <Link to={`/product/${product.id}`} key={product.id}
                                 onMouseEnter={() => handleMouseEnter(index)}>

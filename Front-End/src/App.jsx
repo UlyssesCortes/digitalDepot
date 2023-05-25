@@ -7,6 +7,7 @@ import ProductDetails from './components/Products/ProductDetails';
 import Register from './components/Login-Register/Register';
 import Login from './components/Login-Register/Login';
 import Cart from './components/Products/Cart';
+import Header from './components/Navbar/Header';
 function App() {
 
   const API_URL = "https://digital-depot.onrender.com/api/";
@@ -23,8 +24,10 @@ function App() {
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
     const currentOrderId = window.localStorage.getItem('currentOrderId');
+    const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     setCurrentOrderId(currentOrderId)
-
+    setIsLoggedIn(isLoggedInLocal)
+    console.log(currentOrderId)
     setToken(localToken)
     if (localToken) {
       setIsLoggedIn(true)
@@ -49,7 +52,7 @@ function App() {
         <Routes>
           <Route
             path='/'
-            element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} />}
+            element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
           />
 
           <Route
@@ -62,15 +65,15 @@ function App() {
           />
           <Route
             path='/cart'
-            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setQuantity={setQuantity} quantity={quantity} />}
+            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} />}
           />
 
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} />}
+            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
           />
           <Route path="/product/:id"
-            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setQuantity={setQuantity} quantity={quantity} />}
+            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} />}
           />
         </Routes>
 

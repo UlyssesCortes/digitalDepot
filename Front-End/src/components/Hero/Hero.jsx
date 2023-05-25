@@ -10,10 +10,10 @@ import BestSellers from './BestSellers'
 import Benefits from './Benefits'
 
 
-export default function Hero({ isLoggedIn }) {
+export default function Hero({ isLoggedIn, setIsLoggedIn }) {
     return (
         <section className='marginReducer'>
-            <Header isLoggedIn={isLoggedIn} />
+            <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             <Banner />
             <Companies />
             <Furniture />

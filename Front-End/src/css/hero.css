@@ -30,10 +30,14 @@
     display: flex;
     flex-direction: row;
     margin-top: 40px;
+
     gap: 100px;
 }
 
 .bannerBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #2f2f2f;
     border: none;
     color: white;
@@ -41,6 +45,7 @@
     font-size: 18px;
     height: 60px;
     width: 160px;
+    text-decoration: none;
     cursor: pointer;
 }
 
@@ -178,7 +183,7 @@
 }
 
 .bedroomImg {
-    background-image: url('https://target.scene7.com/is/image/Target/GUEST_03d7d5b3-7dfc-4ba7-a12d-01d966f54889?wid=1000&hei=1000&qlt=80&fmt=webp');
+    background-image: url('https://secure.img1-fg.wfcdn.com/im/69316589/resize-h800-w800%5Ecompr-r85/1961/196176567/Javi+Upholstered+Bed.jpg');
     border: #8888881e solid .5px;
     background-color: #fffeff;
 }
@@ -190,7 +195,7 @@
 }
 
 .kitchenImg {
-    background-image: url('https://target.scene7.com/is/image/Target/GUEST_f1801d8c-50db-4e1d-8f10-012d77d7ca0f?wid=1000&hei=1000&qlt=80&fmt=webp');
+    background-image: url('https://secure.img1-fg.wfcdn.com/im/23980700/resize-h800-w800%5Ecompr-r85/2330/233090723/Lincoln+5+-+Piece+Dining+Set.jpg');
     background-color: #eaeaea;
 }
 

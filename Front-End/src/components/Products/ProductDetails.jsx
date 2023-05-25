@@ -9,7 +9,7 @@ import Description from './Description';
 import addToCart from './addToCart';
 import ProductLoading from '../Loading/ProductLoading';
 
-export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity }) {
+export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setIsLoggedIn }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     // const [quantity, setQuantity] = useState(1);
@@ -48,7 +48,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const productInfo = product[0];
     return (
         <section className='marginReducer'>
-            <Header isLoggedIn={isLoggedIn} />
+            <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             <div className='productDetailBox'>
                 <section className='imageGallery'>
                     <img className="productImg1" src={productInfo.images[0]} alt="product Image" />
@@ -82,7 +82,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                         <p>Available to ship in 2 weeks</p>
                     </div>
                     <div className='productBtns'>
-                        <button className='addCartBtn' onClick={() => addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity)}>Add To Cart</button>
+                        <button className='addCartBtn' onClick={() => addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn)}>Add To Cart</button>
                         <button className='saveToWishlist'>Save To Wishlist</button>
                     </div>
                     <div className='moreDetails'>

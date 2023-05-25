@@ -4,7 +4,9 @@ import Desktop from './Desktop';
 import UserIcon from './UserIcon';
 import Profile from './Profile';
 
-export default function Header({ isLoggedIn }) {
+export default function Header({ setIsLoggedIn }) {
+    const isLoggedIn = window.localStorage.getItem('isLoggedIn');
+
     return (
         <nav className='navbar'>
             <section className='leftNav'>
@@ -22,7 +24,7 @@ export default function Header({ isLoggedIn }) {
                             <p className='navCategory'>Living Room</p>
                             <p className='navCategory'>Bedroom</p>
                             <p className='navCategory'>Workspace</p>
-                            <p className='navCategory'>Kitchem</p>
+                            <p className='navCategory'>Kitchen</p>
                         </div>
                     </section>
                     <Link to='/promo' className='navLink'>Promo</Link>
@@ -34,7 +36,7 @@ export default function Header({ isLoggedIn }) {
                     <Link to='/cart' className='navCartIcon'></Link>
                 </section>
                 {isLoggedIn ?
-                    <UserIcon /> :
+                    <UserIcon setIsLoggedIn={setIsLoggedIn} /> :
                     <Desktop />
                 }
             </section>

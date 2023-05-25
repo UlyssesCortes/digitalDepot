@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 export default function Banner() {
     return (
@@ -13,7 +14,7 @@ export default function Banner() {
                     <p>mid-century modern accent</p>
                 </section>
                 <section className='bannerBtnContainer'>
-                    <button className='bannerBtn'>Show now</button>
+                    <Link to='/products' className=' bannerBtn'>Shop now</Link>
                     <section className='bannerStats'>
                         <div className='statsLeft'>
                             <h1>20k+</h1>

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { registeredAlert, usernameTakenAlert, passwordTooWeekAlert } from './Alerts';
 
 const Register = ({ API_URL }) => {
@@ -83,7 +83,7 @@ const Register = ({ API_URL }) => {
                         <input type='password' placeholder="Password" value={passwordReg} onChange={handleChangePasswordRegister} className="inputLogin"></input>
                         <button type="submit" className="loginBtn">Register &rarr;</button>
                         <button className='googleLog'>
-                            <FontAwesomeIcon icon={faGoogle} className='googleIcon' />
+                            <div className='googleIcon'></div>
                             Sign up with Google
                         </button>
                     </form>

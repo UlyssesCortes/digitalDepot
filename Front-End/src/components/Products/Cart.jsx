@@ -4,7 +4,7 @@ import CartLoading from '../Loading/CartLoading';
 import { Link } from 'react-router-dom';
 
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setIsLoggedIn }) {
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
@@ -13,22 +13,15 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     const getOrders = async () => {
         try {
+            if (currentOrderId) {
+                const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                })
+                const items = await response.json();
+                setMyCart(items)
 
-
-            try {
-                if (currentOrderId) {
-                    const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        }
-                    })
-                    const items = await response.json();
-                    setMyCart(items)
-
-                }
-
-            } catch (error) {
-                console.error(error);
             }
 
         } catch (error) {
@@ -117,7 +110,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     return (
         <section className='cartContainer marginReducer'>
-            <Header isLoggedIn={isLoggedIn} />
+            <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             <section className='cartSection'>
                 <div className='subHeaderCart'>
                     <h1>SHOPPING CART</h1>
@@ -130,7 +123,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
                     <section className='productsSec'>
                         {myCart.length === 0 && <CartLoading />}
-                        {products && products.map((data, index) =>
+                        {isLoggedIn && products && products.map((data, index) =>
                             <div className="cartProduct" key={data.id + '-' + index}>
                                 <img className='cartProductImg' src={data.images[0]} alt="" />
                                 <div className='contentBox'>

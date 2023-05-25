@@ -69,12 +69,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
     background-color: white;
     color: #000000;
     border: .5px rgb(201, 200, 200) solid;
 }
-
 
 .loginBtn:hover {
     background-color: #333333;
@@ -82,7 +81,13 @@
 
 .googleLog:hover {
     border: .5px rgb(94, 91, 91) solid;
+}
 
+.googleIcon {
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-image: url("../assets/google.png");
 }
 
 .loginButton {

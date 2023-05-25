@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Profile from './Profile'
 
-export default function UserIcon() {
+export default function UserIcon({ setIsLoggedIn }) {
     const [showProfile, setShowProfile] = useState(false)
 
     return (
@@ -11,7 +11,7 @@ export default function UserIcon() {
                 <div className='userIcon' onClick={() => { setShowProfile(!showProfile) }}></div>
             </section>
 
-            {showProfile && <Profile showProfile={showProfile} />}
+            {showProfile && <Profile showProfile={showProfile} setIsLoggedIn={setIsLoggedIn} />}
         </>
     )
 }

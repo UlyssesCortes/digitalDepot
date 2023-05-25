@@ -1,10 +1,10 @@
 
-const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity) => {
+const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn) => {
     let items = null;
 
     setCurrentOrderId(currentOrderId)
 
-    if (!currentOrderId) {
+    if (!currentOrderId && isLoggedIn) {
         const response = await fetch(`${API_URL}order/myOrders`, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -13,15 +13,11 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
 
         const data = await response.json();
 
-
-        console.log("ALL ORDERS: ", data)
         // Check if there is an order with isCheckedOut set to false
         const hasUncheckedOrder = data.some((order) => !order.isCheckedOut);
-        console.log("MY ORDER: ", hasUncheckedOrder)
         if (hasUncheckedOrder) {
             // Get the order with isCheckedOut set to false
             const uncheckedOrder = data.find((order) => !order.isCheckedOut);
-            console.log(uncheckedOrder)
             setCurrentOrderId(uncheckedOrder.id);
             localStorage.setItem('currentOrderId', uncheckedOrder.id);
         } else {
@@ -44,7 +40,6 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
 
             const order = await orderResponse.json();
             setCurrentOrderId(order.id);
-            localStorage.setItem('currentOrderId', order.id);
 
             const itemsResponse = await fetch(`${API_URL}order-items/${currentOrderId}`, {
                 method: "POST",
@@ -70,18 +65,14 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
             }
         }
 
-
-        // data && data.map((order) => {
-        //     if (!order.isCheckedOut) {
-        //         setCurrentOrderId(order.id)
-        //     }
-        // })
+    } else if (!isLoggedIn) {
+        alert("Need to login to add product")
     }
 
 
     try {
         // error occurs because currentOrder does not get registered fast enought
-        if (currentOrderId) {
+        if (currentOrderId && isLoggedIn) {
             const itemsResponse = await fetch(`${API_URL}order-items/${currentOrderId}`, {
                 method: "POST",
                 headers: {

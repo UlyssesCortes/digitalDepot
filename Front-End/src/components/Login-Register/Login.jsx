@@ -35,10 +35,10 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
                 .then(result => {
                     if (result.token) {
                         setIsLoggedIn(true)
+                        localStorage.setItem('isLoggedIn', true)
                         localStorage.setItem('token', result.token);
                         setToken(result.token)
-                        setUser(result.data);
-                        console.log(result.data)
+                        setUser(result.user);
                     }
                     if (result.name === 'IncorrectCredentialsError') {
                         setValidInfo(false)

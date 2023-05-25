@@ -15,7 +15,7 @@ const LazyImage = ({ src, alt }) => {
                     }
                 });
             },
-            { threshold: 0.1 } // Adjust the threshold as needed
+            { threshold: 0.1 }
         );
 
         if (imageRef.current) {
