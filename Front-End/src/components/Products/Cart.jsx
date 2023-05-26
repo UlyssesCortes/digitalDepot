@@ -8,11 +8,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
-    const [updatedCheckout, setUpdatedCheckout] = useState({
-        isCheckedOut: null,
-        checkoutDate: "",
-        checkoutSum: null
-    })
 
     let sum = 0;
 
@@ -85,12 +80,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         // Format the date string
         var formattedDate = month + '/' + day + '/' + year;
 
-        console.log("DATA: ", formattedDate)
-
-        setUpdatedCheckout({ ...updatedCheckout, isCheckedOut: true })
-        setUpdatedCheckout({ ...updatedCheckout, checkoutDate: formattedDate })
-        setUpdatedCheckout({ ...updatedCheckout, checkoutSum: sum })
-
         try {
             const response = await fetch(`${API_URL}order/${orderId}`, {
                 method: "PATCH",
@@ -98,14 +87,17 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify(updatedCheckout)
+                body: JSON.stringify({
+                    isCheckedOut: true,
+                    checkoutDate: formattedDate,
+                    checkoutSum: sum
+                })
             });
             const result = await response.json();
             console.log("result: ", result)
             console.log("response: ", response)
             if (result.name !== "error") {
-                localStorage.removeItem('currentOrderId')
-                console.log("Order sent!")
+                localStorage.setItem('currentOrderId', "");
                 alert("Checked out succesfully!")
             } else {
                 console.log("Failed to send order, try again!")

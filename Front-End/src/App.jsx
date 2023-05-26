@@ -20,7 +20,6 @@ function App() {
   // localStorage.setItem('currentOrderId', "");
 
   // Save currentOrderId in local storage
-
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
     const currentOrderId = window.localStorage.getItem('currentOrderId');
