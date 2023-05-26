@@ -15,12 +15,12 @@ export default function Profile({ setIsLoggedIn }) {
     return (
         <section className='profileSectionBtn' >
             <div className='triShape'></div>
-            <button className='profileBtns profileBtn1'>
+            <Link to='/cart' className='profileBtns profileBtn1'>
                 <div className='btnContainer'>
-                    <Link to='/cart' className='userLink'>Cart</Link>
+                    <div className='userLink'>Cart</div>
                     <div className='profileIcon1'></div>
                 </div>
-            </button>
+            </Link>
             <button className='profileBtns profileBtn2'>
                 <div className='btnContainer'>
                     <p>Orders</p>

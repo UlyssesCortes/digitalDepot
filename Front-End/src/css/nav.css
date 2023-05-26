@@ -180,6 +180,7 @@
     border: none;
     border-top: #2f2f2f 2px solid;
     border-bottom: #2f2f2f 2px solid;
+    text-decoration: none;
     user-select: none;
     cursor: pointer;
     font-size: 18px;

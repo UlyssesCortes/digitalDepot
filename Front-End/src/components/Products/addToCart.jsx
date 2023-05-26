@@ -2,6 +2,7 @@
 const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn) => {
     let items = null;
 
+
     setCurrentOrderId(currentOrderId)
 
     if (!currentOrderId && isLoggedIn) {
@@ -21,7 +22,6 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
             setCurrentOrderId(uncheckedOrder.id);
             localStorage.setItem('currentOrderId', uncheckedOrder.id);
         } else {
-            // Create a new order
             console.log("Creating new order");
             const orderResponse = await fetch(`${API_URL}order`, {
                 method: "POST",
@@ -41,7 +41,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
             const order = await orderResponse.json();
             setCurrentOrderId(order.id);
 
-            const itemsResponse = await fetch(`${API_URL}order-items/${currentOrderId}`, {
+            const itemsResponse = await fetch(`${API_URL}order-items/${order.id}`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
