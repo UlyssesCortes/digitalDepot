@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 
-export default function Furniture() {
+export default function Furniture({ setFilterName }) {
+
     return (
         <article className="furnitureComponent">
             <section className="topFurniture">
@@ -8,22 +10,22 @@ export default function Furniture() {
             </section>
 
             <section className="furnitureCategory">
-                <div className="livingRoomCard furnitureCard">
+                <Link to='./products' className="livingRoomCard furnitureCard" onClick={() => { setFilterName("Living Room") }}>
                     <div className="livingRoomImg furnitureCardImg"></div>
                     <p>Living room</p>
-                </div>
-                <div className="bedRoomCard furnitureCard">
+                </Link>
+                <Link to='/products' className="bedRoomCard furnitureCard" onClick={() => { setFilterName("Bedroom") }}>
                     <div className="bedroomImg furnitureCardImg"></div>
                     <p>Bedroom</p>
-                </div>
-                <div className="workSpaceCard furnitureCard">
+                </Link>
+                <Link to='/products' className="workSpaceCard furnitureCard" onClick={() => { setFilterName("Workspace") }}>
                     <div className="workspaceImg furnitureCardImg"></div>
                     <p>Workspace</p>
-                </div>
-                <div className="kitchenCard furnitureCard">
-                    <div className="kitchenImg furnitureCardImg"></div>
+                </Link>
+                <Link to='products' className="kitchenCard furnitureCard" onClick={() => { setFilterName("Kitchen") }}>
+                    <div href="#topNav" className="kitchenImg furnitureCardImg"></div>
                     <p>Kitchen</p>
-                </div>
+                </Link>
             </section>
 
         </article>

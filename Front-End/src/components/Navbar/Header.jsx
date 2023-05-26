@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import '../../css/nav.css'
 import Desktop from './Desktop';
 import UserIcon from './UserIcon';
-import Profile from './Profile';
 
 export default function Header({ setIsLoggedIn }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
@@ -19,13 +18,16 @@ export default function Header({ setIsLoggedIn }) {
 
                     <Link to='/products' className='navLink '>Products</Link>
                     <section className='navCategorieSec'>
-                        <Link className='navLink categoryLink'>Categories</Link>
+                        <p className='navLink categoryLink'>Categories</p>
                         <div className='navCategories'>
-                            <p className='navCategory'>Living Room</p>
-                            <p className='navCategory'>Bedroom</p>
-                            <p className='navCategory'>Workspace</p>
-                            <p className='navCategory'>Kitchen</p>
+                            <Link to='/products' className='navCategory'>Living Room</Link>
+                            <Link to='/products' className='navCategory'>Bedroom</Link>
+                            <Link to='/products' className='navCategory'>Workspace</Link>
+                            <Link to='/products' className='navCategory'>Kitchen</Link>
+
+
                         </div>
+
                     </section>
                     <Link to='/promo' className='navLink'>Promo</Link>
                 </section>

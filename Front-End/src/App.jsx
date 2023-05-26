@@ -18,6 +18,8 @@ function App() {
   const [user, setUser] = useState("")
   const [currentOrderId, setCurrentOrderId] = useState("")
   const [quantity, setQuantity] = useState(1);
+  const [filterName, setFilterName] = useState("")
+
 
   // localStorage.setItem('currentOrderId', "");
 
@@ -53,7 +55,7 @@ function App() {
         <Routes>
           <Route
             path='/'
-            element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
+            element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} />}
           />
 
           <Route
@@ -71,7 +73,7 @@ function App() {
 
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
+            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} />}
           />
 
           <Route

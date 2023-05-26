@@ -151,6 +151,8 @@
 
 .furnitureCard {
     width: 300px;
+    text-decoration: none;
+    color: #2f2f2f;
 }
 
 
