@@ -26,7 +26,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             const result = await response.json();
             if (result) {
                 setProducts(result);
-                console.log('Furniture set 1');
             }
             return result;
         } catch (error) {

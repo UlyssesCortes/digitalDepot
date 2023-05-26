@@ -24,8 +24,6 @@ export default function Header({ setIsLoggedIn }) {
                             <Link to='/products' className='navCategory'>Bedroom</Link>
                             <Link to='/products' className='navCategory'>Workspace</Link>
                             <Link to='/products' className='navCategory'>Kitchen</Link>
-
-
                         </div>
 
                     </section>
