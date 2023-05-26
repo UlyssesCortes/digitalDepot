@@ -50,34 +50,63 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     };
 
 
-    const increaseQuantity = (index) => {
+    const increaseQuantity = async (index) => {
         if (myCart[index].quantity < 4) {
-            myCart[index].quantity += 1;
+            let currentQuantity = myCart[index].quantity += 1;
+            const orderItemId = myCart[index].id
+            // myCart[index].quantity += 1;
+            try {
+                const response = await fetch(`${API_URL}order-items/${orderItemId}`, {
+                    method: "PATCH",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({ quantity: currentQuantity })
+                });
+                if (response.ok) {
+                    getOrderItems()
+                }
+            } catch (error) {
+                console.log(error)
+            }
             console.log(myCart[index].quantity);
         }
     }
 
-    const decreaseQuantity = (index) => {
+    const decreaseQuantity = async (index) => {
         if (myCart[index].quantity > 1) {
-            myCart[index].quantity -= 1;
+
+            let currentQuantity = myCart[index].quantity -= 1;
+            const orderItemId = myCart[index].id
+            try {
+                const response = await fetch(`${API_URL}order-items/${orderItemId}`, {
+                    method: "PATCH",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({ quantity: currentQuantity })
+                });
+                if (response.ok) {
+                    getOrderItems()
+                }
+            } catch (error) {
+                console.log(error)
+            }
             console.log(myCart[index].quantity);
         }
     }
 
     const handleUpdate = async (orderId) => {
-        // Create a new Date object
         var currentDate = new Date();
-
-        // Calculate the checkout date (e.g., add 7 days)
         var checkoutDate = new Date(currentDate);
         checkoutDate.setDate(currentDate.getDate());
 
-        // Get the individual date components
         var month = checkoutDate.getMonth() + 1;
         var day = checkoutDate.getDate();
         var year = checkoutDate.getFullYear();
 
-        // Format the date string
         var formattedDate = month + '/' + day + '/' + year;
 
         try {
@@ -94,8 +123,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 })
             });
             const result = await response.json();
-            console.log("result: ", result)
-            console.log("response: ", response)
+
             if (result.name !== "error") {
                 localStorage.setItem('currentOrderId', "");
                 alert("Checked out succesfully!")
@@ -156,16 +184,15 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                         <p className='invisSum'>
                                             {products.length === myCart.length ? sum += parseFloat(myCart[index].quantity) * data.price : sum += parseFloat(data.price)}
                                         </p>
-                                        <p>+tax</p>
                                     </div>
 
                                     <div className='bottomContentBox'>
 
                                         <div className='quntityBtns'>
 
-                                            <div className='minusIcon' onClick={() => { increaseQuantity(index) }}>+</div>
+                                            <div className='plusIcon' onClick={() => { increaseQuantity(index) }}>+</div>
                                             <p>0{products.length === myCart.length ? myCart[index].quantity : 0}</p>
-                                            <div className='plusIcon' onClick={() => { decreaseQuantity(index) }}>-</div>
+                                            <div className='minusIcon' onClick={() => { decreaseQuantity(index) }}>-</div>
                                         </div>
                                         <button className='removeBtn' onClick={() => deleteItem(data.id)}>Remove item</button>
 

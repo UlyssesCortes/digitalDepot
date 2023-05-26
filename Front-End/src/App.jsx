@@ -7,7 +7,9 @@ import ProductDetails from './components/Products/ProductDetails';
 import Register from './components/Login-Register/Register';
 import Login from './components/Login-Register/Login';
 import Cart from './components/Products/Cart';
-import Header from './components/Navbar/Header';
+// import Order from './components/Products/Orders';
+import Orders from './components/Products/Profile/Orders';
+import Favorites from './components/Products/Profile/Favorites';
 function App() {
 
   const API_URL = "https://digital-depot.onrender.com/api/";
@@ -70,6 +72,15 @@ function App() {
           <Route
             path='/products'
             element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
+          />
+
+          <Route
+            path='/orders'
+            element={<Orders API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
+          />
+          <Route
+            path='/favorites'
+            element={<Favorites API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
           />
           <Route path="/product/:id"
             element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} />}

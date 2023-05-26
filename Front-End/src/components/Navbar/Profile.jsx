@@ -21,18 +21,18 @@ export default function Profile({ setIsLoggedIn }) {
                     <div className='profileIcon1'></div>
                 </div>
             </Link>
-            <button className='profileBtns profileBtn2'>
+            <Link to='/orders' className='profileBtns profileBtn2'>
                 <div className='btnContainer'>
                     <p>Orders</p>
                     <div className='profileIcon2'></div>
                 </div>
-            </button>
-            <button className='profileBtns profileBtn3'>
+            </Link>
+            <Link to='/favorites' className='profileBtns profileBtn3'>
                 <div className='btnContainer'>
                     <p>Favorites</p>
                     <div className='profileIcon3'></div>
                 </div>
-            </button>
+            </Link>
             <button className='profileBtns profileBtn4'>
                 <div className='btnContainer' onClick={() => { handleLogOutBtn() }}>
                     <p>Logout</p>
