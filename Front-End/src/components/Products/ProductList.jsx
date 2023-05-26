@@ -16,9 +16,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     // localStorage.setItem('isLoggedIn', false)
 
-
-    // console.log("LOCAL: ", isLoggedInLocal)
-
     const getProducts = async () => {
         try {
             const response = await fetch(`${API_URL}products`, {
@@ -185,7 +182,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                     )
                 })}
                 <section className='paginationBtns'>
-                    {Array.from({ length: Math.ceil(products.length / productsPerPage) }, (_, index) => (
+                    {Array.from({ length: Math.ceil(furniture.length / productsPerPage) }, (_, index) => (
                         <a
                             href='#topNav'
                             className={`paginationBtn ${index + 1 === currentPage ? 'selected' : ''}`}
