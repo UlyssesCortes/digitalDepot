@@ -75,6 +75,4 @@ apiRouter.delete("/:productId", async (req, res, next) => {
     }
 });
 
-
-
 module.exports = apiRouter;

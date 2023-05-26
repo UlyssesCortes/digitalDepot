@@ -63,6 +63,8 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         setHoveredIndex(null);
     };
 
+
+
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = furniture.slice(indexOfFirstProduct, indexOfLastProduct);
