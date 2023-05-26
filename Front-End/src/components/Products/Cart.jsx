@@ -126,6 +126,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
             if (result.name !== "error") {
                 localStorage.setItem('currentOrderId', "");
+                setMyCart([])
                 alert("Checked out succesfully!")
             } else {
                 console.log("Failed to send order, try again!")
