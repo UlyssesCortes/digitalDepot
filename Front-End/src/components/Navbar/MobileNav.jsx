@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import '/root/windowPros3/src/CSS/HamburgerNav.css'
+import { Link } from 'react-router-dom';
 
 export default function MobileNav() {
     const [isOpen, setIsOpen] = useState(false);
@@ -23,9 +23,9 @@ export default function MobileNav() {
 
             <div className={`links-container ${isOpen && "active"}`}>
                 <div className="mobileNav">
-                    <a href='#services' className='linksMobile'>Services</a>
-                    <a href='#reviews' className='linksMobile'>Reviews</a>
-                    <a href='#contact' className='linksMobile contactLink'>ContactUs</a>
+                    <Link to='/home' className='linksMobile'>Home</Link>
+                    <Link to='/products' className='linksMobile'>Products</Link>
+                    <Link to='/promo' className='linksMobile contactLink'>Promo</Link>
                 </div>
             </div>
         </body>

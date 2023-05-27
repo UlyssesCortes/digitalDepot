@@ -57,6 +57,10 @@ function App() {
             path='/'
             element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} />}
           />
+          <Route
+            path='/home'
+            element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} />}
+          />
 
           <Route
             path='/register'

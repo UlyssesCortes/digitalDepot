@@ -57,6 +57,11 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                         <img className="productImg3" src={productInfo.images[2]} alt="product Image" />
                         <img className="productImg4" src={productInfo.images[3]} alt="product Image" />
                     </div>
+                    <div className='dots'>
+                        <span className='dot'></span>
+                        <span className='dot'></span>
+                        <span className='dot'></span>
+                    </div>
 
                 </section>
                 <section className='productDetailsRight'>

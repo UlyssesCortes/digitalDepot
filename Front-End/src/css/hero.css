@@ -1,7 +1,7 @@
 /* BANNER */
 .banner {
     display: flex;
-    height: 65vh;
+    height: 500px;
     border-radius: 20px;
     background-image: url("../assets/banner.jpg");
     background-repeat: no-repeat;
@@ -12,12 +12,13 @@
 .bannerContent {
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    overflow: hidden;
+    gap: 40px;
     padding: 50px 0 0 100px;
 }
 
 .bannerSlogan {
-    font-size: 50px;
+    font-size: 45px;
     color: rgb(255, 255, 255);
 }
 
@@ -356,4 +357,50 @@
 .benefitImg4 {
     background-image: url("../assets/contact.png");
     cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) {
+
+    .bannerContent {
+        gap: 20px;
+        padding: 25px 0 0 50px;
+    }
+
+    .banner {
+        height: 400px;
+    }
+
+    .bannerSlogan {
+        font-size: 30px;
+    }
+
+    .bannerSubSlogan {
+        font-size: 16px;
+    }
+
+    .bannerBtnContainer {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .topFurniture h1,
+    .discountsTop h1,
+    .title h1 {
+        font-size: 30px;
+    }
+
+    .saleLine h1 {
+        font-size: 20px;
+        padding-left: 20px;
+    }
+
+    .saleLine p {
+        font-size: 14px;
+    }
+
+    .huobi,
+    .hornet,
+    .duofast {
+        display: none;
+    }
 }

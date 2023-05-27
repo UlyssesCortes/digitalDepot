@@ -241,3 +241,96 @@
 .profileIcon4 {
     background-image: url("../assets/exit.png");
 }
+
+
+/* MOBILE NAV  */
+
+.hamburgerNavContainer {
+    display: none;
+    z-index: 999;
+}
+
+.subNav {
+    z-index: 8;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 35px;
+    height: 3px;
+    background-color: rgb(0, 0, 0);
+    z-index: 5;
+    margin: 5px 0;
+    transition: transform 0.2s ease-in-out;
+}
+
+.links-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background-color: #2f2f2f;
+    transition: height 0.3s ease-in-out;
+}
+
+.active {
+    height: 100vh;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: all 0.5 ease-in-out;
+}
+
+.bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+.bar2 {
+    opacity: 0;
+}
+
+.bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+
+.mobileNav {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 80px;
+    height: 100vh;
+    align-items: center;
+    position: relative;
+}
+
+.linksMobile {
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+@media only screen and (max-width: 800px) {
+    .hamburgerNavContainer {
+        display: block;
+    }
+
+    .leftNav {
+        display: none;
+    }
+
+}

@@ -16,11 +16,11 @@ export default function ProductNav({ setFilterName, setCurrentPage }) {
                     onClick={() => handleNavBtn("all")}>New Arrivals</button>
                 <button className="productLinks"
                     onClick={() => handleNavBtn("bed")}>Beds</button>
-                <button className="productLinks"
+                <button className="productLinks sofa"
                     onClick={() => handleNavBtn("sofa")}>Sofas</button>
                 <button className="productLinks"
                     onClick={() => handleNavBtn("chair")}>Chairs</button>
-                <button className="productLinks"
+                <button className="productLinks tables"
                     onClick={() => handleNavBtn("table")}>Tables</button>
                 <button className="productLinks"
                     onClick={() => handleNavBtn("desk")}>Desks</button>
