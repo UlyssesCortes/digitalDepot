@@ -8,8 +8,10 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(false)
 
     let sum = 0;
+
 
     const getOrderItems = async () => {
         try {
@@ -28,6 +30,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             console.error(error);
         }
     }
+
 
     const deleteItem = async (itemId) => {
         try {
@@ -140,6 +143,10 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     useEffect(() => {
         getOrderItems()
+
+
+
+
     }, [token]);
 
     useEffect(() => {
@@ -158,6 +165,14 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             }
         };
         getProducts();
+
+        if (myCart.length === 0) {
+            setLoading(true);
+        } else {
+            setTimeout(() => {
+                setLoading(false);
+            }, 200);
+        }
     }, [myCart]);
 
     return (
@@ -175,9 +190,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
                     <section className='productsSec'>
 
-                        {myCart.length === 0 && <CartLoading />}
+                        {loading && <CartLoading />}
 
-                        {isLoggedIn && products && products.map((data, index) =>
+                        {!loading && isLoggedIn && products && products.map((data, index) =>
                             <div className="cartProduct" key={data.id + '-' + index}>
                                 <img className='cartProductImg' src={data.images[0]} alt="" />
                                 <div className='contentBox'>
