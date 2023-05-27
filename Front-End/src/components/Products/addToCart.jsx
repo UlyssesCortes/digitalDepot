@@ -59,16 +59,11 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
             }
 
             items = await itemsResponse.json();
-
-            if (items) {
-                alert("Product added to cart!");
-            }
         }
 
     } else if (!isLoggedIn) {
         alert("Need to login to add product")
     }
-
 
     try {
         // error occurs because currentOrder does not get registered fast enought
@@ -89,13 +84,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
             if (!itemsResponse.ok) {
                 throw new Error(`Failed to add item to cart. Status: ${itemsResponse.status}`);
             }
-
             items = await itemsResponse.json();
-            console.log(items)
-
-            if (items) {
-                alert("Product added to cart!");
-            }
         }
 
 

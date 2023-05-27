@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Lottie from "lottie-react"
+import check from "../../assets/check.json"
+
 import Header from '../Navbar/Header';
 import StarRating from './StartRating';
 import Features from './Features';
@@ -14,6 +17,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const [product, setProduct] = useState(null);
     // const [quantity, setQuantity] = useState(1);
     const [displayFeatures, setDisplayFeatures] = useState(false)
+    const [added, setAdded] = useState(false)
     const [displayDimensions, setDisplayDimensions] = useState(false)
     const [displayShipping, setDisplayShipping] = useState(false)
     const [displayDescription, setDisplayDescription] = useState(false)
@@ -86,10 +90,29 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                     <div className='shipInfo'>
                         <p>Available to ship in 2 weeks</p>
                     </div>
+
+
                     <div className='productBtns'>
-                        <button className='addCartBtn' onClick={() => addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn)}>Add To Cart</button>
+                        <button
+                            className="addCartBtn"
+                            onClick={() => {
+                                addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn);
+                                setAdded(true);
+                            }}
+                        >
+                            {added ?
+                                <Lottie className="checkAnimation" animationData={check} loop={false} />
+                                :
+                                <p>Add to cart</p>
+                            }
+
+
+
+                        </button>
                         <button className='saveToWishlist'>Save To Wishlist</button>
                     </div>
+
+
                     <div className='moreDetails'>
 
                         <div className="features"

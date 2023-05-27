@@ -255,6 +255,9 @@
 }
 
 .addCartBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 60px;
     background-color: black;
     color: white;
@@ -492,6 +495,14 @@
 
 .removeBtn:hover {
     text-decoration: underline;
+}
+
+.checkAnimation {
+    align-self: center;
+    width: 80px;
+    margin-bottom: 15px;
+    /* height: 40px; */
+    /* outline: auto; */
 }
 
 /* FAVORITE */

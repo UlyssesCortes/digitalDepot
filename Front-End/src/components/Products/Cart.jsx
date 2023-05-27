@@ -174,7 +174,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     </section>
 
                     <section className='productsSec'>
+
                         {myCart.length === 0 && <CartLoading />}
+
                         {isLoggedIn && products && products.map((data, index) =>
                             <div className="cartProduct" key={data.id + '-' + index}>
                                 <img className='cartProductImg' src={data.images[0]} alt="" />

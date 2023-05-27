@@ -1,9 +1,12 @@
+// import loading from "/root/DigitalDepot/Front-End/src/assets/loading.json"
+import Lottie from "lottie-react"
+import loading from "../../assets/loading.json"
 
 export default function CartLoading() {
     return (
-        <div id="loading-wrapper">
-            <div id="loading-text">LOADING</div>
-            <div id="loading-content"></div>
+
+        <div className="loadingWrapper">
+            <Lottie className="loadingAnimation" animationData={loading} />
         </div>
     )
 }

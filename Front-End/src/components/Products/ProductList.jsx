@@ -1,12 +1,15 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import LazyImages from './LazyImages';
+// import Lottie from "lottie-react"
+// import heartAnimation from "../../assets/heartAnimation.json"
 import ProductListLoading from '../Loading/ProductListLoading';
 
 export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setFilterName }) {
     const [products, setProducts] = useState([]);
     const [furniture, setFurniture] = useState([]);
     const [myFavorites, setMyFavorites] = useState([]);
+    const [heartIcons, setHeartIcons] = useState({});
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [redHeart, setRedHeart] = useState(false);
     const [productsPerPage] = useState(8);
@@ -137,26 +140,30 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             );
         }
     };
+    const handleClick = (productId) => {
+        setHeartIcons((prevIcons) => ({
+            ...prevIcons,
+            [productId]: !prevIcons[productId],
+        }));
+
+        handleFavoriteBtn(productId);
+    };
 
     const checkFavorite = (productId) => {
         if (isLoggedInLocal) {
             if (myFavorites.some((favorite) => favorite.productId === productId)) {
                 return (
-                    <div
-                        className="redHeartIcon"
-                        onClick={() => {
-                            removeFavorite(productId);
-                        }}
-                    ></div>
+                    <div className="redHeartIcon" onClick={() => removeFavorite(productId)}></div>
                 );
             } else {
                 return (
                     <div
-                        className="heartIcon"
-                        onClick={() => {
-                            handleFavoriteBtn(productId), setRedHeart(!redHeart);
-                        }}
-                    ></div>
+                        key={productId}
+                        className={`heartIcon ${heartIcons[productId] ? 'redHeartIcon' : ''}`}
+                        onClick={() =>
+                            handleClick(productId)}
+                    >
+                    </div>
                 );
             }
         }
