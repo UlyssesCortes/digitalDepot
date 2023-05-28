@@ -25,7 +25,7 @@ export const registeredAlert = () => {
 export const usernameTakenAlert = () => {
     return (
         <div className="alert">
-            <strong>Username already belongs to a user!</strong>
+            <strong>Email is already in use!</strong>
         </div>
     );
 };
@@ -33,7 +33,14 @@ export const usernameTakenAlert = () => {
 export const passwordTooWeekAlert = () => {
     return (
         <div className="alert">
-            <strong>Password too weak, make it larger!</strong>
+            <strong>Password too weak!</strong>
+        </div>
+    );
+};
+export const invalidEmailAlert = () => {
+    return (
+        <div className="alert">
+            <strong>Invalide Email!</strong>
         </div>
     );
 };

@@ -184,6 +184,20 @@
     width: 49%;
 }
 
+.authContainer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: red;
+    width: 100%;
+}
+
+.authorizationAnimation {
+    position: absolute;
+    width: 900px
+}
+
 @keyframes animatetop {
     from {
         opacity: 0
