@@ -1,6 +1,7 @@
 
 const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn) => {
     let items = null;
+    console.log("isLoggedIn: ", isLoggedIn)
 
 
     setCurrentOrderId(currentOrderId)

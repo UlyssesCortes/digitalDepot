@@ -193,3 +193,16 @@
         opacity: 1
     }
 }
+
+@media only screen and (max-width: 850px) {
+    .rightLoginImg {
+        display: none;
+    }
+
+    .leftLogin {
+        width: 100%;
+        padding: 0px 50px 0px 50px;
+    }
+
+
+}

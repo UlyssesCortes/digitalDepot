@@ -8,7 +8,6 @@ export default function Profile({ setIsLoggedIn }) {
     const handleLogOutBtn = () => {
         localStorage.removeItem('isLoggedIn')
         window.localStorage.removeItem('token');
-        console.log("REMOVING ")
         setIsLoggedIn(false)
     }
 

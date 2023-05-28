@@ -100,13 +100,11 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                                 setAdded(true);
                             }}
                         >
-                            {added ?
+                            {isLoggedIn && added ?
                                 <Lottie className="checkAnimation" animationData={check} loop={false} />
                                 :
                                 <p>Add to cart</p>
                             }
-
-
 
                         </button>
                         <button className='saveToWishlist'>Save To Wishlist</button>
@@ -123,7 +121,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                             <p>Product Features</p>
                             <p className="plus">{!displayFeatures ? "+" : "-"}</p>
                         </div>
-                        <section className={`moreDetailsListAnimation ${displayFeatures ? "active" : ""}`}>
+                        <section className={`moreDetailsListAnimation ${displayFeatures ? "actives" : ""}`}>
                             {displayFeatures && <Features features={productInfo.features} />}
                         </section>
                         <div className="dimensions"
@@ -134,7 +132,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                             <p>Dimensions</p>
                             <p className="plus">{!displayDimensions ? "+" : "-"}</p>
                         </div>
-                        <section className={`moreDetailsListAnimation ${displayDimensions ? "active" : ""}`}>
+                        <section className={`moreDetailsListAnimation ${displayDimensions ? "actives" : ""}`}>
                             {displayDimensions && <Dimensions dimensions={productInfo.dimensions} />}
                         </section>
                         <div className="description"
@@ -145,7 +143,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                             <p>Description</p>
                             <p className="plus">{!displayDescription ? "+" : "-"}</p>
                         </div>
-                        <section className={`moreDetailsListAnimation ${displayDescription ? "active" : ""}`}>
+                        <section className={`moreDetailsListAnimation ${displayDescription ? "actives" : ""}`}>
                             {displayDescription && <Description description={productInfo.description} />}
                         </section>
 
@@ -154,7 +152,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                             <p>Shipping and Return</p>
                             <p className="plus">{!displayShipping ? "+" : "-"}</p>
                         </div>
-                        <section className={`moreDetailsListAnimation ${displayShipping ? "active" : ""}`}>
+                        <section className={`moreDetailsListAnimation ${displayShipping ? "actives" : ""}`}>
                             {displayShipping && <Shipping />}
                         </section>
                     </div>

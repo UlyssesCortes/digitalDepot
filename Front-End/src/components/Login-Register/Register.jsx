@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-
 import { Link } from 'react-router-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { registeredAlert, usernameTakenAlert, passwordTooWeekAlert } from './Alerts';
 
 const Register = ({ API_URL }) => {
@@ -39,7 +36,8 @@ const Register = ({ API_URL }) => {
                 firstName: `${firstName}`,
                 lastName: `${lastName}`,
                 email: `${emailReg}`,
-                password: `${passwordReg}`
+                password: `${passwordReg}`,
+                isAdmin: false
             })
         }).then(response => response.json())
             .then(result => {

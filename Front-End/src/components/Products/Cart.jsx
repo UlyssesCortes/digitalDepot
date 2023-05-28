@@ -6,13 +6,12 @@ import Lottie from "lottie-react"
 import checkout from "../../assets/checkout.json"
 
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setIsLoggedIn, setFilterName = { setFilterName } }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setIsLoggedIn, setFilterName }) {
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
-
     let sum = 0;
 
     const getOrderItems = async () => {

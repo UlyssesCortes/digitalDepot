@@ -10,6 +10,8 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
     const [password, setPassword] = useState("")
     const [validInfo, setValidInfo] = useState(true)
 
+
+
     const handleChangeEmail = (event) => {
         setEamil(event.target.value)
     }
@@ -33,14 +35,14 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
                 })
             }).then(response => response.json())
                 .then(result => {
+                    console.log(result)
                     if (result.token) {
                         setIsLoggedIn(true)
                         localStorage.setItem('isLoggedIn', true)
                         localStorage.setItem('token', result.token);
                         setToken(result.token)
                         setUser(result.user);
-                    }
-                    if (result.name === 'IncorrectCredentialsError') {
+                    } else {
                         setValidInfo(false)
                     }
                 })
