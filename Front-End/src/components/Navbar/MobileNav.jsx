@@ -9,7 +9,7 @@ export default function MobileNav() {
     };
 
     return (
-        <body className='hamburgerNavContainer'>
+        <section className='hamburgerNavContainer'>
             <section className='subNav'>
 
                 <section className='subnavIcons'>
@@ -28,6 +28,6 @@ export default function MobileNav() {
                     <Link to='/promo' className='linksMobile contactLink'>Promo</Link>
                 </div>
             </div>
-        </body>
+        </section>
     )
 }

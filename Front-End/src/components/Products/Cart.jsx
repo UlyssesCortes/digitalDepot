@@ -2,16 +2,18 @@ import Header from '../Navbar/Header'
 import React, { useState, useEffect } from 'react';
 import CartLoading from '../Loading/CartLoading';
 import { Link } from 'react-router-dom';
+import Lottie from "lottie-react"
+import checkout from "../../assets/checkout.json"
 
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setIsLoggedIn }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setIsLoggedIn, setFilterName = { setFilterName } }) {
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
+    const [checkoutAnimation, setCheckoutAnimation] = useState(false)
 
     let sum = 0;
-
 
     const getOrderItems = async () => {
         try {
@@ -23,7 +25,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 })
                 const items = await response.json();
                 setMyCart(items)
-
             }
 
         } catch (error) {
@@ -130,7 +131,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             if (result.name !== "error") {
                 localStorage.setItem('currentOrderId', "");
                 setMyCart([])
-                alert("Checked out succesfully!")
+                setProducts([])
+                setCurrentOrderId("")
+                setCheckoutAnimation(true)
             } else {
                 console.log("Failed to send order, try again!")
             }
@@ -143,10 +146,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     useEffect(() => {
         getOrderItems()
-
-
-
-
     }, [token]);
 
     useEffect(() => {
@@ -175,9 +174,11 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
     }, [myCart]);
 
+    const segments = [2.5, 3];
+
     return (
         <section className='cartContainer marginReducer'>
-            <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} />
             <section className='cartSection'>
                 <div className='subHeaderCart'>
                     <h1>SHOPPING CART</h1>
@@ -190,7 +191,8 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
                     <section className='productsSec'>
 
-                        {loading && <CartLoading />}
+                        {loading && !checkoutAnimation && <CartLoading />}
+                        {checkoutAnimation && <Lottie className="checkoutAnimation" animationData={checkout} loop={false} segments={segments} />}
 
                         {!loading && isLoggedIn && products && products.map((data, index) =>
                             <div className="cartProduct" key={data.id + '-' + index}>

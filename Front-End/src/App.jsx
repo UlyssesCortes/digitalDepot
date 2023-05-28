@@ -20,10 +20,8 @@ function App() {
   const [quantity, setQuantity] = useState(1);
   const [filterName, setFilterName] = useState("")
 
-
   // localStorage.setItem('currentOrderId', "");
 
-  // Save currentOrderId in local storage
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
     const currentOrderId = window.localStorage.getItem('currentOrderId');
@@ -72,7 +70,7 @@ function App() {
           />
           <Route
             path='/cart'
-            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} />}
+            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} />}
           />
 
           <Route

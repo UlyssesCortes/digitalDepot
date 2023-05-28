@@ -11,8 +11,8 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const [myFavorites, setMyFavorites] = useState([]);
     const [heartIcons, setHeartIcons] = useState({});
     const [hoveredIndex, setHoveredIndex] = useState(null);
-    const [redHeart, setRedHeart] = useState(false);
     const [productsPerPage] = useState(8);
+
 
     const token = window.localStorage.getItem('token');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
@@ -148,12 +148,22 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
 
         handleFavoriteBtn(productId);
     };
+    const handleClickRemove = (productId) => {
+        setHeartIcons((prevIcons) => ({
+            ...prevIcons,
+            [productId]: !prevIcons[productId],
+        }));
+
+        removeFavorite(productId);
+    };
 
     const checkFavorite = (productId) => {
         if (isLoggedInLocal) {
             if (myFavorites.some((favorite) => favorite.productId === productId)) {
                 return (
-                    <div className="redHeartIcon" onClick={() => removeFavorite(productId)}></div>
+                    <div
+                        className={`redHeartIcon ${heartIcons[productId] ? 'heartIcon' : ''}`}
+                        onClick={() => handleClickRemove(productId)}></div>
                 );
             } else {
                 return (

@@ -6,14 +6,13 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn }) {
+export default function Header({ setIsLoggedIn, setFilterName }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showProfile, setShowProfile] = useState(false)
 
-
     return (
         <nav className='navbar'>
-            <Desktop />
+            <Desktop setFilterName={setFilterName} />
             <MobileNav />
 
             <section className='rightNav'>

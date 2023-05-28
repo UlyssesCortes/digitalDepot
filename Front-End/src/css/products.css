@@ -503,6 +503,11 @@
     margin-bottom: 15px;
 }
 
+.checkoutAnimation {
+    margin: auto;
+    width: 600px;
+}
+
 /* FAVORITE */
 
 .favoriteProduct {

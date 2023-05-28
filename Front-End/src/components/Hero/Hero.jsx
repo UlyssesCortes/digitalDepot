@@ -13,7 +13,7 @@ import Benefits from './Benefits'
 export default function Hero({ isLoggedIn, setIsLoggedIn, setFilterName }) {
     return (
         <section className='marginReducer'>
-            <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} />
             <Banner />
             <Companies />
             <Furniture setFilterName={setFilterName} />
