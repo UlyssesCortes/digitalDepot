@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../../css/login.css'
+import Lottie from "lottie-react"
+import authorization from "../../assets/registered.json"
 
 import { Link } from 'react-router-dom';
 import { loggedInAlert, wrongUserAlert } from './Alerts';
@@ -45,6 +47,11 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
                     } else {
                         setValidInfo(false)
                     }
+                    if (result.token) {
+                        setTimeout(() => {
+                            window.location.href = '/home';
+                        }, 2300);
+                    }
                 })
                 .catch(console.error);
         }
@@ -65,7 +72,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
                     <form onSubmit={handleSubmit} className="formContainer">
                         {isLoggedIn ?
                             <div className='container'>
-                                {isLoggedIn && loggedInAlert()}
+                                {/* {isLoggedIn && loggedInAlert()} */}
                             </div>
                             : <div className="container">
                                 {!validInfo && wrongUserAlert()}
@@ -87,6 +94,11 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
 
                     </div>
                 </section>
+
+                <div className='authContainer'>
+                    {isLoggedIn && <Lottie className="authorizationAnimation" animationData={authorization} loop={false} />}
+                </div>
+
                 <section className='rightLoginImg'>
                     <img className="loginImg" src={"https://secure.img1-fg.wfcdn.com/im/04285501/resize-h800-w800%5Ecompr-r85/1539/153992096/Jewett+Swivel+Office+Chair.jpg"} alt="product Image" />
                 </section>
