@@ -1,5 +1,9 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react'
+import Lottie from "lottie-react"
+import search from "../../assets/searchClock.json"
+import cart from "../../assets/cart.json"
+import user from "../../assets/userAnimation.json"
 
 import '../../css/nav.css'
 import Desktop from './Desktop';
@@ -9,6 +13,7 @@ import MobileNav from './MobileNav';
 export default function Header({ setIsLoggedIn, setFilterName }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showProfile, setShowProfile] = useState(false)
+    const [showSearch, setShowSearch] = useState(false)
 
     const handleSearch = (event) => {
         setFilterName(event.target.value)
@@ -25,20 +30,26 @@ export default function Header({ setIsLoggedIn, setFilterName }) {
                     <div className="box">
                         <input
                             type="text"
-                            className="searchInput"
+                            className={`searchInput ${showSearch ? 'active' : ''}`}
                             name="txt"
                             onChange={handleSearch}
                             placeholder="Search..."
                         />
-                        <img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="searchIcon" />
-                    </div>
 
-                    <Link to='/cart' className='navCartIcon'></Link>
+                    </div>
+                    <Lottie className="headerIcon" animationData={search} loop={false} onClick={() => {
+                        setShowSearch(!showSearch);
+                    }} />
+
+                    <Link to='/cart' className='navCartIcons'>
+                        <Lottie className="cartIcon" animationData={cart} loop={false} />
+                    </Link>
+
                 </section>
                 {isLoggedIn ?
                     <section>
                         <section className='profileSection'>
-                            <div className='userIcon' onClick={() => { setShowProfile(!showProfile) }}></div>
+                            <Lottie className="userIcon" animationData={user} loop={false} onClick={() => { setShowProfile(!showProfile) }} />
                         </section>
                         {showProfile && <Profile showProfile={showProfile} setIsLoggedIn={setIsLoggedIn} />}
                     </section>

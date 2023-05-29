@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     height: 120px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .leftNav {
@@ -13,9 +14,11 @@
     font-size: 26px;
     font-weight: bold;
     cursor: pointer;
+    color: #2f2f2f;
+    padding-bottom: 3px;
+    text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
 
 .navLinks {
     display: flex;
@@ -28,9 +31,10 @@
 }
 
 .navLink {
+    position: relative;
     text-decoration: none;
+    padding-bottom: 4px;
     color: #2f2f2f;
-
 }
 
 .rightNav {
@@ -50,19 +54,11 @@
 .navSearchIcon {
     width: 25px;
     height: 25px;
-    background-image: url("../assets/search.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
 }
 
 .navCartIcon {
     width: 25px;
     height: 25px;
-    background-image: url("../assets/cart.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
 }
 
 .navLogContainer {
@@ -92,10 +88,6 @@
 .userIcon {
     width: 30px;
     height: 30px;
-    background-image: url("../assets/user.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
     margin-left: 20px;
     cursor: pointer;
 }
@@ -244,6 +236,24 @@
     background-image: url("../assets/exit.png");
 }
 
+.navLink::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #0e0e0e;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.navLink:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
 
 /* MOBILE NAV  */
 
@@ -339,9 +349,7 @@
 
 
 .box:hover .searchInput {
-    width: 350px;
-    background: #3b3640;
-    border-radius: 10px;
+    width: 300px;
 }
 
 .box {
@@ -354,16 +362,29 @@
     width: 0px;
     height: 40px;
     background: none;
-    border: none;
     padding-left: 20px;
     border-radius: 50px;
+    border: none;
     font-size: 20px;
-    color: white;
+    color: grey;
     outline: none;
-    transition: .5s;
+    opacity: 0;
+    transition: all ease-in-out .5s;
+}
+
+.searchInput.active {
+    width: 250px;
+    border: solid black 1px;
+    opacity: 1;
 }
 
 .headerIcon {
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.cartIcon {
+    height: 35px;
+    width: 35px;
 }

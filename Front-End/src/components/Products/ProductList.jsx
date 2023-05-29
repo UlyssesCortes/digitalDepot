@@ -41,7 +41,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     }
 
     useEffect(() => {
-        console.log("FILTERED NAME: ", filterName)
         if (filterName === 'all') {
             setFurniture(products);
         } else if (filterName === 'Living Room') {

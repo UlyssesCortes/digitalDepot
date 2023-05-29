@@ -13,7 +13,7 @@ export default function ProductNav({ setFilterName, setCurrentPage }) {
             </section>
             <section className="bottomNavProduct">
                 <button className="productLinks"
-                    onClick={() => handleNavBtn("all")}>New Arrivals</button>
+                    onClick={() => handleNavBtn("all")}>All Furniture</button>
                 <button className="productLinks"
                     onClick={() => handleNavBtn("bed")}>Beds</button>
                 <button className="productLinks sofa"

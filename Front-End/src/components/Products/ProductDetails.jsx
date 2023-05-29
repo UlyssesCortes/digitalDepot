@@ -15,12 +15,12 @@ import ProductLoading from '../Loading/ProductLoading';
 export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setIsLoggedIn }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
-    // const [quantity, setQuantity] = useState(1);
     const [displayFeatures, setDisplayFeatures] = useState(false)
     const [added, setAdded] = useState(false)
     const [displayDimensions, setDisplayDimensions] = useState(false)
     const [displayShipping, setDisplayShipping] = useState(false)
     const [displayDescription, setDisplayDescription] = useState(false)
+
     useEffect(() => {
         const fetchProductDetails = async () => {
             try {
@@ -91,7 +91,6 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                         <p>Available to ship in 2 weeks</p>
                     </div>
 
-
                     <div className='productBtns'>
                         <button
                             className="addCartBtn"
@@ -105,11 +104,9 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                                 :
                                 <p>Add to cart</p>
                             }
-
                         </button>
                         <button className='saveToWishlist'>Save To Wishlist</button>
                     </div>
-
 
                     <div className='moreDetails'>
 

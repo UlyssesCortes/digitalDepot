@@ -6,7 +6,7 @@ export default function Desktop({ setFilterName }) {
     return (
         <section className='leftNav'>
             <section className='titleContainer'>
-                <Link to='/' className='navLink companyTitle'>DigitalDepot</Link>
+                <Link to='/' className='companyTitle'>DigitalDepot</Link>
 
             </section>
             <section className='navLinks'>
@@ -16,10 +16,10 @@ export default function Desktop({ setFilterName }) {
                 <section className='navCategorieSec'>
                     <p className='navLink categoryLink'>Categories</p>
                     <div className='navCategories'>
-                        <Link to='/products' className='navCategory' onClick={() => { setFilterName("Living Room") }} >Living Room</Link>
-                        <Link to='/products' className='navCategory' onClick={() => { setFilterName("Bedroom") }}>Bedroom</Link>
-                        <Link to='/products' className='navCategory' onClick={() => { setFilterName("Workspace") }}>Workspace</Link>
-                        <Link to='/products' className='navCategory' onClick={() => { setFilterName("Kitchen") }}>Kitchen</Link>
+                        <Link to='/products' className='navCategory navLink' onClick={() => { setFilterName("Living Room") }} >Living Room</Link>
+                        <Link to='/products' className='navCategory navLink' onClick={() => { setFilterName("Bedroom") }}>Bedroom</Link>
+                        <Link to='/products' className='navCategory navLink' onClick={() => { setFilterName("Workspace") }}>Workspace</Link>
+                        <Link to='/products' className='navCategory navLink' onClick={() => { setFilterName("Kitchen") }}>Kitchen</Link>
                     </div>
 
                 </section>
