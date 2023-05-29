@@ -10,6 +10,10 @@ export default function Header({ setIsLoggedIn, setFilterName }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showProfile, setShowProfile] = useState(false)
 
+    const handleSearch = (event) => {
+        setFilterName(event.target.value)
+    }
+
     return (
         <nav className='navbar'>
             <Desktop setFilterName={setFilterName} />
@@ -17,7 +21,18 @@ export default function Header({ setIsLoggedIn, setFilterName }) {
 
             <section className='rightNav'>
                 <section className='navIcons'>
-                    <div className='navSearchIcon'></div>
+
+                    <div className="box">
+                        <input
+                            type="text"
+                            className="searchInput"
+                            name="txt"
+                            onChange={handleSearch}
+                            placeholder="Search..."
+                        />
+                        <img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="searchIcon" />
+                    </div>
+
                     <Link to='/cart' className='navCartIcon'></Link>
                 </section>
                 {isLoggedIn ?

@@ -20,7 +20,6 @@ function App() {
   const [quantity, setQuantity] = useState(1);
   const [filterName, setFilterName] = useState("")
 
-  console.log("ISloggediN app: ", isLoggedIn)
   // localStorage.setItem('currentOrderId', "");
 
   useEffect(() => {

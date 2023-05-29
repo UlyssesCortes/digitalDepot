@@ -1,22 +1,20 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import LazyImages from './LazyImages';
+
 import ProductListLoading from '../Loading/ProductListLoading';
 
 export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setFilterName }) {
     const [products, setProducts] = useState([]);
     const [furniture, setFurniture] = useState([]);
     const [myFavorites, setMyFavorites] = useState([]);
-    const [heartIcons, setHeartIcons] = useState({});
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [productsPerPage] = useState(8);
 
-
     const token = window.localStorage.getItem('token');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
-    console.log(heartIcons)
-
-
+    const lowerCaseFilterName = filterName.toLowerCase();
+    console.log(lowerCaseFilterName)
     const getProducts = async () => {
         try {
             const response = await fetch(`${API_URL}products`, {
@@ -43,6 +41,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     }
 
     useEffect(() => {
+        console.log("FILTERED NAME: ", filterName)
         if (filterName === 'all') {
             setFurniture(products);
         } else if (filterName === 'Living Room') {
@@ -67,7 +66,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             setFurniture(filteredProducts);
         } else {
             const filteredProducts = products.filter(
-                (product) => product.type === filterName
+                (product) => product.type.toLowerCase() === lowerCaseFilterName || product.title.toLowerCase().includes(lowerCaseFilterName) || product.id == filterName || product.category.toLowerCase().includes(lowerCaseFilterName)
             );
             setFurniture(filteredProducts);
         }
@@ -83,25 +82,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         setHoveredIndex(null);
     };
 
-    const handleFavoriteBtn = async (productId) => {
-        if (isLoggedIn) {
-            const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            });
 
-            if (!favoriteResponse.ok) {
-                throw new Error(
-                    `Failed to create order. Status: ${favoriteResponse.status}`
-                );
-            }
-        } else {
-            alert('Need to be logged in to perform this action');
-        }
-    };
 
     const fetchFavorites = async () => {
         try {
@@ -123,6 +104,28 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     }, []);
 
 
+    const handleFavoriteBtn = async (productId) => {
+        if (isLoggedIn) {
+            const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (!favoriteResponse.ok) {
+                throw new Error(
+                    `Failed to create order. Status: ${favoriteResponse.status}`
+                );
+            }
+        } else {
+            alert('Need to be logged in to perform this action');
+        }
+        fetchFavorites();
+
+    };
+
     const removeFavorite = async (productId) => {
         const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
             method: 'DELETE',
@@ -137,23 +140,8 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 `Failed to create order. Status: ${favoriteResponse.status}`
             );
         }
-    };
+        fetchFavorites();
 
-    const handleClick = (productId) => {
-        setHeartIcons((prevIcons) => ({
-            ...prevIcons,
-            [productId]: !prevIcons[productId],
-        }));
-
-        handleFavoriteBtn(productId);
-    };
-    const handleClickRemove = (productId) => {
-        setHeartIcons((prevIcons) => ({
-            ...prevIcons,
-            [productId]: !prevIcons[productId],
-        }));
-
-        removeFavorite(productId);
     };
 
     const checkFavorite = (productId) => {
@@ -161,16 +149,16 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             if (myFavorites.some((favorite) => favorite.productId === productId)) {
                 return (
                     <div
-                        className={`redHeartIcon ${heartIcons[productId] ? 'heartIcon' : ''}`}
-                        onClick={() => handleClickRemove(productId)}></div>
+                        key={productId}
+                        className="redHeartIcon"
+                        onClick={() => removeFavorite(productId)}></div>
                 );
             } else {
                 return (
                     <div
                         key={productId}
-                        className={`heartIcon ${heartIcons[productId] ? 'redHeartIcon' : ''}`}
-                        onClick={() =>
-                            handleClick(productId)}
+                        className="heartIcon"
+                        onClick={() => handleFavoriteBtn(productId)}
                     >
                     </div>
                 );
