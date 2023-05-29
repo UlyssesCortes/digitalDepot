@@ -11,6 +11,7 @@ import Shipping from './Shipping';
 import Description from './Description';
 import addToCart from './addToCart';
 import ProductLoading from '../Loading/ProductLoading';
+import ImageSlider from './ImageSlider';
 
 export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setIsLoggedIn }) {
     const { id } = useParams();
@@ -20,6 +21,8 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const [displayDimensions, setDisplayDimensions] = useState(false)
     const [displayShipping, setDisplayShipping] = useState(false)
     const [displayDescription, setDisplayDescription] = useState(false)
+    const [showImageSlider, setShowImageSlider] = useState(false)
+    const [imgIndex, setImgIndex] = useState(0)
 
     useEffect(() => {
         const fetchProductDetails = async () => {
@@ -51,15 +54,26 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
 
     const productInfo = product[0];
     return (
-        <section className='marginReducer'>
+        <section id="topDetails" className='marginReducer'>
             <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+
+            {showImageSlider &&
+                <div className='imageSliderContainerBox'>
+                    <ImageSlider images={productInfo.images} setShowImageSlider={setShowImageSlider} imgIndex={imgIndex} />
+                </div>
+            }
+
             <div className='productDetailBox'>
                 <section className='imageGallery'>
-                    <img className="productImg1" src={productInfo.images[0]} alt="product Image" />
-                    <div className='bottomImages'>
-                        <img className="productImg2" src={productInfo.images[1]} alt="product Image" />
-                        <img className="productImg3" src={productInfo.images[2]} alt="product Image" />
-                        <img className="productImg4" src={productInfo.images[3]} alt="product Image" />
+
+
+                    <img className="productImg1" src={productInfo.images[0]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(0) }} />
+
+
+                    <div className='bottomImages' >
+                        <img className="productImg2" src={productInfo.images[1]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(1) }} />
+                        <img className="productImg3" src={productInfo.images[2]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(2) }} />
+                        <img className="productImg4" src={productInfo.images[3]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(3) }} />
                     </div>
                     <div className='dots'>
                         <span className='dot'></span>
