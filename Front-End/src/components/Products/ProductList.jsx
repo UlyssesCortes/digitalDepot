@@ -14,7 +14,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const token = window.localStorage.getItem('token');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     const lowerCaseFilterName = filterName.toLowerCase();
-    console.log(lowerCaseFilterName)
     const getProducts = async () => {
         try {
             const response = await fetch(`${API_URL}products`, {
