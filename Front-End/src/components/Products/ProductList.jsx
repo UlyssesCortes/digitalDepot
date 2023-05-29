@@ -1,8 +1,6 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import LazyImages from './LazyImages';
-// import Lottie from "lottie-react"
-// import heartAnimation from "../../assets/heartAnimation.json"
 import ProductListLoading from '../Loading/ProductListLoading';
 
 export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setFilterName }) {
@@ -16,7 +14,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
 
     const token = window.localStorage.getItem('token');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
-
+    console.log(heartIcons)
 
 
     const getProducts = async () => {
@@ -140,6 +138,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             );
         }
     };
+
     const handleClick = (productId) => {
         setHeartIcons((prevIcons) => ({
             ...prevIcons,

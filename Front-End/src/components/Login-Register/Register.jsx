@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react"
-import authorization from "../../assets/registered2.json"
+import authorization from "../../assets/registered3.json"
 import { usernameTakenAlert, passwordTooWeekAlert, invalidEmailAlert } from './Alerts';
 
 const Register = ({ API_URL }) => {
@@ -119,10 +119,9 @@ const Register = ({ API_URL }) => {
                         </Link>
                     </div>
                 </section>
-                {/* {registered && <Lottie className="authorizationAnimation" animationData={authorization} loop={false} />} */}
 
                 <div className='authContainer'>
-                    {registered && <Lottie className="authorizationAnimation" animationData={authorization} loop={false} />}
+                    {registered && <Lottie className="authorizationAnimation2" animationData={authorization} loop={false} />}
                 </div>
 
                 <section className='rightLoginImg'>

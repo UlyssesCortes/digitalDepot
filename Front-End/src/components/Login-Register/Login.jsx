@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import '../../css/login.css'
 import Lottie from "lottie-react"
-import authorization from "../../assets/registered.json"
+import authorization from "../../assets/logged.json"
 
 import { Link } from 'react-router-dom';
-import { loggedInAlert, wrongUserAlert } from './Alerts';
+import { wrongUserAlert } from './Alerts';
 
 const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
 
@@ -50,7 +50,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
                     if (result.token) {
                         setTimeout(() => {
                             window.location.href = '/home';
-                        }, 2300);
+                        }, 4200);
                     }
                 })
                 .catch(console.error);
@@ -70,13 +70,10 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
                     </div>
 
                     <form onSubmit={handleSubmit} className="formContainer">
-                        {isLoggedIn ?
-                            <div className='container'>
-                                {/* {isLoggedIn && loggedInAlert()} */}
-                            </div>
-                            : <div className="container">
-                                {!validInfo && wrongUserAlert()}
-                            </div>}
+
+                        <div className="container">
+                            {!validInfo && wrongUserAlert()}
+                        </div>
                         <input type='text' placeholder="Email" value={email} onChange={handleChangeEmail} className="inputLogin">
                         </input>
                         <input type='password' placeholder="Password" value={password} onChange={handleChangePassword} className="inputLogin">
