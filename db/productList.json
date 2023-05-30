@@ -1,36 +1,6 @@
 {
     "products": [
         {
-            "title": "Elsmere Upholstered Sleeper Sofa",
-            "description": "A sleeker sleeper. Just remove the back cushions to turn this asymmetrical sofa into a twin bed – it’s as easy as saying, “You can stay at my place.” Leather accents + strapping elevate durable performance upholstery in an understated hue, and the bolster pillow/armrest can be secured at either end.",
-            "price": 1400,
-            "quantity": 10,
-            "category": "Living Room",
-            "type": "sofa",
-            "images": [
-                "https://secure.img1-cg.wfcdn.com/im/52438038/resize-h800-w800%5Ecompr-r85/1175/117515212/Elsmere+81%27%27+Upholstered+Sleeper+Sofa.jpg",
-                "https://secure.img1-cg.wfcdn.com/im/15667440/resize-h800-w800%5Ecompr-r85/1175/117515218/Elsmere+81%27%27+Upholstered+Sleeper+Sofa.jpg",
-                "https://secure.img1-cg.wfcdn.com/im/93122056/resize-h800-w800%5Ecompr-r85/1175/117515221/Elsmere+81%27%27+Upholstered+Sleeper+Sofa.jpg",
-                "https://secure.img1-cg.wfcdn.com/im/57672744/resize-h800-w800%5Ecompr-r85/1175/117515199/Elsmere+81%27%27+Upholstered+Sleeper+Sofa.jpg"
-            ],
-            "dimensions": {
-                "Overall": "29'' H X 81'' W X 43'' D",
-                "Seat": "16'' H X 75'' W X 31.1'' D",
-                "Arm Height - Floor to Arm": "24'' H",
-                "Leg Height - Top to Bottom": "7'' H",
-                "Minimum Door Width - Side to Side": "26'' W",
-                "Overall Product Weight": "101 lb"
-            },
-            "features": {
-                "Sofa Design": "Sofa Bed",
-                "Upholstery Material": "Polyester Blend",
-                "Frame Material": "Solid Wood",
-                "Wood Species": "Pine",
-                "Leg Material": "Metal",
-                "Removable Cushions": "Yes"
-            }
-        },
-        {
             "title": "Square Arm Sofa Bed",
             "description": "Sofa by day, peacekeeper by night. This warm and inviting sleeper flips forward to become a queen-sized sleeper at a moment's notice. Walnut legs coordinate thoughtfully with your choice of fabric.",
             "price": 2195,
@@ -198,6 +168,268 @@
                 "Back Height - Seat to Top of Back": "11.03'' H",
                 "Arm Height - Floor to Arm": "29.92'' H",
                 "Overall Product Weight": "66 lb"
+            },
+            "features": {
+                "Sofa Design": "Standard",
+                "Upholstery Material": "100% Polyester",
+                "Frame Material": "Solid Wood",
+                "Seat Fill Material": "Foam",
+                "Leg Material": "Wood",
+                "Removable Cushions": "No"
+            }
+        },
+        {
+            "title": "Deangelo Sofa",
+            "description": "Deep seating and a plush, overstuffed look give this sofa a relaxed luxe look that encourages lounging. Crafted with a kiln-dried hardwood frame, this sofa features a low-profile silhouette and wide, rounded arms for a simple silhouette with gentle round contours",
+            "price": 1430,
+            "quantity": 10,
+            "category": "Living Room",
+            "type": "sofa",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/11039915/resize-h800-w800%5Ecompr-r85/2330/233014827/Deangelo+90%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/09448689/resize-h800-w800%5Ecompr-r85/2330/233014645/Deangelo+90%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/26493331/resize-h800-w800%5Ecompr-r85/2330/233015248/Deangelo+90%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/71895006/resize-h800-w800%5Ecompr-r85/1014/101405550/Deangelo+90%27%27+Upholstered+Sofa.jpg"
+            ],
+            "dimensions": {
+                "Overall": "29.3'' H X 90'' W X 35.8'' D",
+                "Seat": "16'' H X 63.8'' W X 23.2'' D",
+                "Back Height - Seat to Top of Back": "11.03'' H",
+                "Arm Height - Floor to Arm": "29.92'' H",
+                "Overall Product Weight": "112.5 lb"
+            },
+            "features": {
+                "Sofa Design": "Standard",
+                "Upholstery Material": "100% Polyester",
+                "Frame Material": "Solid Wood",
+                "Seat Fill Material": "Foam",
+                "Leg Material": "Wood",
+                "Removable Cushions": "No"
+            }
+        },
+        {
+            "title": "Moab Sofa",
+            "description": "Minimalist + unexpected. This sofa’s slim arms are balanced by matching throw pillows, and its welted seams layer in subtle texture. Metal legs reach up the low deck, adding contrast and embellishment. Built with a solid hardwood frame + wrapped in durable upholstery, it’s ready for maximal use.",
+            "price": 1080,
+            "quantity": 10,
+            "category": "Living Room",
+            "type": "sofa",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/11930024/resize-h800-w800%5Ecompr-r85/1579/157951199/Moab+81%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/33554071/resize-h800-w800%5Ecompr-r85/1715/171514160/Moab+81%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/98180758/resize-h800-w800%5Ecompr-r85/1579/157951212/Moab+81%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/81880835/resize-h800-w800%5Ecompr-r85/1579/157951183/Moab+81%27%27+Upholstered+Sofa.jpg"
+            ],
+            "dimensions": {
+                "Overall": "29'' H X 81'' W X 36'' D",
+                "Seat": "17.7'' H X 76.5'' W X 22'' D",
+                "Back Height - Seat to Top of Back": "11.03'' H",
+                "Arm Height - Floor to Arm": "29.92'' H",
+                "Overall Product Weight": "105 lb"
+            },
+            "features": {
+                "Sofa Design": "Standard",
+                "Upholstery Material": "100% Polyester",
+                "Frame Material": "Solid Wood",
+                "Seat Fill Material": "Foam",
+                "Leg Material": "Wood",
+                "Removable Cushions": "No"
+            }
+        },
+        {
+            "title": "Elsmere Upholstered Sleeper Sofa",
+            "description": "A sleeker sleeper. Just remove the back cushions to turn this asymmetrical sofa into a twin bed – it’s as easy as saying, “You can stay at my place.” Leather accents + strapping elevate durable performance upholstery in an understated hue, and the bolster pillow/armrest can be secured at either end.",
+            "price": 1400,
+            "quantity": 10,
+            "category": "Living Room",
+            "type": "sofa",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/52438038/resize-h800-w800%5Ecompr-r85/1175/117515212/Elsmere+81%27%27+Upholstered+Sleeper+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/15667440/resize-h800-w800%5Ecompr-r85/1175/117515218/Elsmere+81%27%27+Upholstered+Sleeper+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/93122056/resize-h800-w800%5Ecompr-r85/1175/117515221/Elsmere+81%27%27+Upholstered+Sleeper+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/57672744/resize-h800-w800%5Ecompr-r85/1175/117515199/Elsmere+81%27%27+Upholstered+Sleeper+Sofa.jpg"
+            ],
+            "dimensions": {
+                "Overall": "29'' H X 81'' W X 43'' D",
+                "Seat": "16'' H X 75'' W X 31.1'' D",
+                "Arm Height - Floor to Arm": "24'' H",
+                "Leg Height - Top to Bottom": "7'' H",
+                "Minimum Door Width - Side to Side": "26'' W",
+                "Overall Product Weight": "101 lb"
+            },
+            "features": {
+                "Sofa Design": "Sofa Bed",
+                "Upholstery Material": "Polyester Blend",
+                "Frame Material": "Solid Wood",
+                "Wood Species": "Pine",
+                "Leg Material": "Metal",
+                "Removable Cushions": "Yes"
+            }
+        },
+        {
+            "title": "Kye Loveseat",
+            "description": "This loveseat brings additional seating and a modern style to your living room. It's made with a solid walnut wood frame that sits on solid and engineered wood legs with a walnut finish. This couch is wrapped in 100% polyester upholstery with a neutral gray hue that's endlessly versatile. The foam-filled cushions support you as you sit. We love how the square arms and tight back give this sofa a modern design. It's just right for placing in a small space or in your main bedroom.",
+            "price": 426,
+            "quantity": 10,
+            "category": "Living Room",
+            "type": "sofa",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/21697552/resize-h800-w800%5Ecompr-r85/1405/140590215/Kye+44%27%27+Upholstered+Loveseat.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/20632790/resize-h800-w800%5Ecompr-r85/1513/151301932/Kye+44%27%27+Upholstered+Loveseat.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/38912208/resize-h800-w800%5Ecompr-r85/1515/151576817/Kye+44%27%27+Upholstered+Loveseat.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/39217005/resize-h800-w800%5Ecompr-r85/1405/140590212/Kye+44%27%27+Upholstered+Loveseat.jpg"
+            ],
+            "dimensions": {
+                "Overall": "31'' H X 44'' W X 31'' D",
+                "Seat": "16'' H X 42'' W X 21'' D",
+                "Back Height - Seat to Top of Back": "11.03'' H",
+                "Arm Height - Floor to Arm": "29.92'' H",
+                "Overall Product Weight": "53 lb"
+            },
+            "features": {
+                "Sofa Design": "Standard",
+                "Upholstery Material": "100% Polyester",
+                "Frame Material": "Solid Wood",
+                "Seat Fill Material": "Foam",
+                "Leg Material": "Wood",
+                "Removable Cushions": "No"
+            }
+        },
+        {
+            "title": "Luxury Channel Couch",
+            "description": "This comfortable living room couch will provide a fresh and pleasing look to your space and will be the center of attention thanks to its tufted design. These designer-style French boucle sofas create an inviting space for your guests or family entertainment activities. Combining top-quality craftsmanship and high-density foam, this set will provide you with great comfort and undoubtedly become the centerpiece of your apartment, living room, den, urban loft, or condo.",
+            "price": 1380,
+            "quantity": 10,
+            "category": "Living Room",
+            "type": "sofa",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/55263541/resize-h800-w800%5Ecompr-r85/2265/226523332/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/50898226/resize-h800-w800%5Ecompr-r85/2265/226523328/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/32043508/resize-h800-w800%5Ecompr-r85/2265/226523308/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/28196400/resize-h800-w800%5Ecompr-r85/2265/226523326/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg"
+            ],
+            "dimensions": {
+                "Overall": "27'' H X 88'' W X 34.5'' D",
+                "Seat": "18'' H X 74.5'' W X 24'' D",
+                "Back Height - Seat to Top of Back": "11.03'' H",
+                "Arm Height - Floor to Arm": "29.92'' H",
+                "Overall Product Weight": "122 lb"
+            },
+            "features": {
+                "Sofa Design": "Standard",
+                "Upholstery Material": "Solid Wood",
+                "Frame Material": "Solid Wood",
+                "Seat Fill Material": "Foam",
+                "Leg Material": "Wood",
+                "Removable Cushions": "No"
+            }
+        },
+        {
+            "title": "Easy Sofa",
+            "description": "Our Seat Couches are carefully constructed from top to bottom. The right sofa may not help you read that new novel faster, but it can help you stay comfortable while you try. We know that your decision when shopping for the right love seat comes down to a few factors, including durability, style, and upkeep. ",
+            "price": 3900,
+            "quantity": 10,
+            "category": "Living Room",
+            "type": "sofa",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/24135819/resize-h800-w800%5Ecompr-r85/2184/218460551/Easy+Sofa+102%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/35486732/resize-h800-w800%5Ecompr-r85/2184/218460550/Easy+Sofa+102%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/12784906/resize-h800-w800%5Ecompr-r85/2184/218460552/Easy+Sofa+102%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/93331692/resize-h800-w800%5Ecompr-r85/2274/227415950/Easy+Sofa+102%27%27+Upholstered+Sofa.jpg"
+            ],
+            "dimensions": {
+                "Overall": "32'' H X 102'' W X 37'' D",
+                "Seat": "8'' H X 78'' W X 24'' D",
+                "Back Height - Seat to Top of Back": "11.03'' H",
+                "Arm Height - Floor to Arm": "29.92'' H",
+                "Overall Product Weight": "240 lb"
+            },
+            "features": {
+                "Sofa Design": "Standard",
+                "Upholstery Material": "Solid Wood",
+                "Frame Material": "Solid Wood",
+                "Seat Fill Material": "Foam",
+                "Leg Material": "Wood",
+                "Removable Cushions": "No"
+            }
+        },
+        {
+            "title": "Katavia Sofa",
+            "description": "Handsome + inviting. This sofa’s square arms and crisp lines bring structure to its overstuffed foam + feather cushions. It’s wrapped in durable linen-blend upholstery, and rests on an exposed wooden base. Mid-century-inspired tapered legs round out the tailored look.",
+            "price": 1300,
+            "quantity": 10,
+            "category": "Living Room",
+            "type": "sofa",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/22058710/resize-h800-w800%5Ecompr-r85/1826/182652724/Katavia+87%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/73083132/resize-h800-w800%5Ecompr-r85/1683/168372839/Katavia+87%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/57710565/resize-h800-w800%5Ecompr-r85/1826/182652741/Katavia+87%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/42702955/resize-h800-w800%5Ecompr-r85/1826/182652703/Katavia+87%27%27+Upholstered+Sofa.jpg"
+            ],
+            "dimensions": {
+                "Overall": "31'' H X 87'' W X 37'' D",
+                "Seat": "18'' H X 73'' W X 23'' D",
+                "Back Height - Seat to Top of Back": "11.03'' H",
+                "Arm Height - Floor to Arm": "29.92'' H",
+                "Overall Product Weight": "124 lb"
+            },
+            "features": {
+                "Sofa Design": "Standard",
+                "Upholstery Material": "Linen Blend",
+                "Frame Material": "Solid Wood",
+                "Seat Fill Material": "Foam",
+                "Leg Material": "Wood",
+                "Removable Cushions": "No"
+            }
+        },
+        {
+            "title": "Lavonte Sofa",
+            "description": "Merge worlds old and new with livable, rustic-modern furnishings in a range of contemporary shapes. Crafted by hand from sustainably harvested and reclaimed woods, a mix of rough and refined textures, patinas, and tones add a sense of timeless history to any space. One-of-a-kind pieces offer a dramatic focal point and blend beautifully with a range of decorating inspirations.",
+            "price": 2720,
+            "quantity": 10,
+            "category": "Living Room",
+            "type": "sofa",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/84750316/resize-h800-w800%5Ecompr-r85/2131/213108448/Lavonte+96%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/26600597/resize-h800-w800%5Ecompr-r85/2131/213108447/Lavonte+96%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/96257671/resize-h800-w800%5Ecompr-r85/2131/213108454/Lavonte+96%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/53305973/resize-h800-w800%5Ecompr-r85/2131/213108458/Lavonte+96%27%27+Upholstered+Sofa.jpg"
+            ],
+            "dimensions": {
+                "Overall": "33'' H X 96'' W X 35.25'' D",
+                "Seat": "18.5'' H X 24.5'' D",
+                "Back Height - Seat to Top of Back": "11.03'' H",
+                "Arm Height - Floor to Arm": "29.92'' H",
+                "Overall Product Weight": "66 lb"
+            },
+            "features": {
+                "Sofa Design": "Standard",
+                "Upholstery Material": "Polyester",
+                "Frame Material": "Solid Wood",
+                "Seat Fill Material": "Foam",
+                "Leg Material": "Wood",
+                "Removable Cushions": "No"
+            }
+        },
+        {
+            "title": "Bradson Sofa",
+            "description": "Our Seat Couches are carefully constructed from top to bottom. The right sofa may not help you read that new novel faster, but it can help you stay comfortable while you try. We know that your decision when shopping for the right love seat comes down to a few factors, including durability, style, and upkeep.",
+            "price": 2070,
+            "quantity": 10,
+            "category": "Living Room",
+            "type": "sofa",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/56371282/resize-h800-w800%5Ecompr-r85/2194/219426454/Bradson+97%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/67722195/resize-h800-w800%5Ecompr-r85/2194/219426453/Bradson+97%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/45020369/resize-h800-w800%5Ecompr-r85/2194/219426455/Bradson+97%27%27+Upholstered+Sofa.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/62833833/resize-h800-w800%5Ecompr-r85/2275/227510847/Bradson+97%27%27+Upholstered+Sofa.jpg"
+            ],
+            "dimensions": {
+                "Overall": "29'' H X 97'' W X 35'' D",
+                "Seat": "19'' H X 72'' W X 25'' D",
+                "Back Height - Seat to Top of Back": "11.03'' H",
+                "Arm Height - Floor to Arm": "29.92'' H",
+                "Overall Product Weight": "127 lb"
             },
             "features": {
                 "Sofa Design": "Standard",
@@ -1221,7 +1453,7 @@
             }
         },
         {
-            "title": "Cal Swivel Office Chair",
+            "title": "Cal Swivel Chair",
             "description": "Small home office? No problem. This task chair is an eye-catching addition to your office no matter the size. The bucket-style seat has a cutout in the back, and two short arms with a slight scroll for some mid-century modern vibes.",
             "price": 1540,
             "quantity": 10,
@@ -1324,7 +1556,7 @@
             }
         },
         {
-            "title": "Cali Swivel Office Chair",
+            "title": "Cali Swivel Chair",
             "description": "This office chair brings all the modern functionality you need in your workspace with a streamlined look we're all about. It's made with an aluminum frame, and has a pedestal base with five legs and included wheels. The base and seat bottom work together with an adjustable height, center tilt, and swivel, so you can easily adjust this chair and move throughout your space. The seat and back are upholstered in foam-filled dark gray polyester fabric, giving you the support you need while you tackle your workday.",
             "price": 610,
             "quantity": 10,
@@ -1349,392 +1581,392 @@
             }
         },
         {
-            "title": "",
-            "description": "",
-            "price": 610,
+            "title": "Brisbane Swivel Chair",
+            "description": "This task chair leans into a mid-century aesthetic with its velvet upholstery and streamlined bucket seat, so you tackle the week's work with a retro vibe. Crafted with an engineered wood frame, this task chair features an armed bucket silhouette upholstered in velvet fabric for a nod to mid-century designs. ",
+            "price": 270,
             "quantity": 10,
             "category": "Workspace",
             "type": "chair",
             "images": [
-                "",
-                "",
-                "",
-                ""
+                "https://secure.img1-cg.wfcdn.com/im/57079580/resize-h800-w800%5Ecompr-r85/1711/171103213/Brisbane+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/10537756/resize-h800-w800%5Ecompr-r85/1397/139739056/Brisbane+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/84266397/resize-h800-w800%5Ecompr-r85/1711/171102761/Brisbane+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/63561906/resize-h800-w800%5Ecompr-r85/1379/137950767/Brisbane+Swivel+Office+Chair.jpg"
             ],
             "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Overall": "20'' W X 20'' D",
                 "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
+                "Overall Product Weight": " 20 lb"
+            },
+            "features": {
+                "Frame Material": "Manufactured Wood; Steel",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "250 lb"
+            }
+        },
+        {
+            "title": "Jewett Swivel Chair",
+            "description": "This task chair looks great and will help you get it done. So you can be your best boss self. The seat is built on an engineered wood frame and features a full back with a stylish cutout and armrests. Upholstered in synthetic fabric and faux leather, the seat is filled with foam for added padding to keep you comfy as you crush your to-do list. The 5-spoke base is set on casters and is swivel-able so you can move throughout your home office with ease. Plus, it has a center tilt and tilt lock.",
+            "price": 640,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/26872826/resize-h800-w800%5Ecompr-r85/1875/187513675/Jewett+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/12237542/resize-h800-w800%5Ecompr-r85/1432/143299274/Jewett+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/03266792/resize-h800-w800%5Ecompr-r85/8430/84305597/Jewett+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/24932947/resize-h800-w800%5Ecompr-r85/8109/81097287/Jewett+Swivel+Office+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "25.6'' D",
+                "Seat": "18.51'' W X 17.7'' D",
+                "Overall Product Weight": " 2lb"
+            },
+            "features": {
+                "Frame Material": "Steel",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "250 lb"
+            }
+        },
+        {
+            "title": "Cooke Swivel Chair",
+            "description": "This swivel office chair features an intriguing retro design to offer style and comfort to any office space.",
+            "price": 197,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/35985234/resize-h800-w800%5Ecompr-r85/1441/144180243/Cooke+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/14500824/resize-h800-w800%5Ecompr-r85/1436/143620487/Cooke+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/90876584/resize-h800-w800%5Ecompr-r85/1441/144180249/Cooke+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/01932495/resize-h800-w800%5Ecompr-r85/1441/144180240/Cooke+Swivel+Office+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "30.25'' H X 24'' W X 24'' D",
+                "Seat": "18'' H X 18'' D",
+                "Overall Product Weight": "22 lb"
+            },
+            "features": {
+                "Frame Material": "Steel",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "300 lb"
+            }
+        },
+        {
+            "title": "Acosta Swivel Chair",
+            "description": "Work softer. This task chair showcases a sleek silhouette with inviting arms + cushiony, elevated upholstery – ideal for the home office that’s also a bedroom. Built with a solid wood frame, the seat swivels, tilts, and adjusts for height, while five metal wheels help you glide from nine to five.",
+            "price": 670,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/6719804/resize-h800-w800%5Ecompr-r85/1944/194433575/Acosta+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/42739522/resize-h800-w800%5Ecompr-r85/1947/194777862/Acosta+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/21917825/resize-h800-w800%5Ecompr-r85/1944/194433592/Acosta+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/74581920/resize-h800-w800%5Ecompr-r85/1944/194433560/Acosta+Swivel+Office+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "35'' H X 25'' W X 26'' D",
+                "Seat": "23.5'' W X 14.5'' D",
+                "Overall Product Weight": "36 lb"
+            },
+            "features": {
+                "Frame Material": "Solid Wood",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "250 lb"
+            }
+        },
+        {
+            "title": "Demetrus Swivel Chair",
+            "description": "Work smarter. Ergonomic and easy to assemble, this task chair is your new favorite coworker. It features a high mesh backrest for breathability + lumbar support, and it rests on a five-star caster base. Adjustable armrests and a swiveling, tilting, adjustable seat keep you aligned and productive.",
+            "price": 590,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/98168402/resize-h800-w800%5Ecompr-r85/1414/141474822/Demetrus+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/66812113/resize-h800-w800%5Ecompr-r85/1414/141475606/Demetrus+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/88948236/resize-h800-w800%5Ecompr-r85/1414/141474853/Demetrus+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/17506871/resize-h800-w800%5Ecompr-r85/1414/141472694/Demetrus+Swivel+Office+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "47'' H X 22.5'' W X 25.5'' D",
+                "Seat": "20'' W X 19'' D",
+                "Overall Product Weight": "47 lb"
+            },
+            "features": {
+                "Frame Material": "Steel",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "250 lb"
+            }
+        },
+        {
+            "title": "Apt Home Office Chair",
+            "description": "Designed specifically for the home office, the apt home office chair is designed to feel right at home with the rest of your furniture. Featuring lightly-textured fabric with a soft brushed finish and the ability to swivel and adjust the height, it combines the look and feels of a residential chair with the performance you need while WFH.",
+            "price": 213,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/12781042/resize-h800-w800%5Ecompr-r85/2155/215595653/Apt+Home+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/01430129/resize-h800-w800%5Ecompr-r85/2155/215595652/Apt+Home+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/35482868/resize-h800-w800%5Ecompr-r85/2155/215595655/Apt+Home+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/12781042/resize-h800-w800%5Ecompr-r85/2155/215595653/Apt+Home+Office+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "21'' W X 22'' D",
+                "Seat": "21'' W X 22'' D",
+                "Overall Product Weight": "21 lb"
+            },
+            "features": {
+                "Frame Material": "Steel",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "250 lb"
+            }
+        },
+        {
+            "title": "Orna Swivel Chair",
+            "description": "The 9-5 grind is about to get a whole lot chicer with this fabulous conference chair. Elegant and refined in its streamlined silhouette, its plush velvet upholstery is absolutely luxurious, and a shimmering silver swivel base completes the glamorous look.",
+            "price": 350,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/82186409/resize-h800-w800%5Ecompr-r85/1577/157776982/Orna+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/30161588/resize-h800-w800%5Ecompr-r85/1577/157778778/Orna+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/40480619/resize-h800-w800%5Ecompr-r85/1577/157777017/Orna+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/67441390/resize-h800-w800%5Ecompr-r85/1577/157776602/Orna+Swivel+Office+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "25.4'' W X 25.4'' D",
+                "Seat": "17.7'' W",
+                "Overall Product Weight": "30 lb"
+            },
+            "features": {
+                "Frame Material": "Manufactured Wood",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "275 lb"
+            }
+        },
+        {
+            "title": "Calypso Swivel Chair",
+            "description": "Give your desk a good looking pal with this task chair. The seat is built on a stainless steel frame and strikes a bucket-style seat for a modern silhouette. Upholstered in polyester and filled with foam, the seat gives you some cushion as you tackle your to-dos. Two curved stainless steel arms with wooden armrests add a hint of Scandi-inspired vibes.",
+            "price": 350,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/41841076/resize-h800-w800%5Ecompr-r85/1770/177083445/Calypso+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/42022118/resize-h800-w800%5Ecompr-r85/1203/120349468/Calypso+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/09618123/resize-h800-w800%5Ecompr-r85/3889/38895081/Calypso+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/44010519/resize-h800-w800%5Ecompr-r85/3889/38894972/Calypso+Swivel+Office+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "22.5'' W X 22'' D",
+                "Seat": "19'' W X 17'' D",
+                "Overall Product Weight": "25 lb"
+            },
+            "features": {
+                "Frame Material": "Steel",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "220 lb"
+            }
+        },
+        {
+            "title": "Craft Side Chair",
+            "description": "The blended aesthetics of mid-century modern style and the elegance of retro glamour are channeled to create the striking Craft Fabric Upholstered Dining Side Chair. Featuring dual densely padded foam cushions covered in soft and durable polyester fabric upholstery, this dining chair is a luxurious seating experience with an open, breathable design.",
+            "price": 163,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/10414994/resize-h800-w800%5Ecompr-r85/2079/207997982/Craft+Upholstered+Side+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/05317731/resize-h800-w800%5Ecompr-r85/1815/181574794/Craft+Upholstered+Side+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/97800620/resize-h800-w800%5Ecompr-r85/2084/208497047/Craft+Upholstered+Side+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/51606582/resize-h800-w800%5Ecompr-r85/2084/208497038/Craft+Upholstered+Side+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "32.5'' H X 18.5'' W X 21.5'' D",
+                "Seat": "18.5'' H X 17.5'' W X 16.5'' D",
+                "Overall Product Weight": "12 lb"
             },
             "features": {
                 "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "331 lb"
+            }
+        },
+        {
+            "title": "Brenda Swivel Chair",
+            "description": "Elevate your WFH experience with an office chair that gives you the support you need, the comfort you crave in the style you love. Smooth vegan leather envelops it's plywood seat and back providing a sturdy foundation with high-density foam padding added for an undeniable element of comfort.",
+            "price": 238,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/96305116/resize-h800-w800%5Ecompr-r85/2172/217290422/Brenda+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/98837011/resize-h800-w800%5Ecompr-r85/2254/225455553/Brenda+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/79468840/resize-h800-w800%5Ecompr-r85/1567/156712203/Brenda+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/40634759/resize-h800-w800%5Ecompr-r85/2178/217805278/Brenda+Swivel+Office+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "31'' H X 22'' W X 22'' D",
+                "Seat": "21'' W X 15'' D",
+                "Overall Product Weight": "20 lb"
+            },
+            "features": {
+                "Frame Material": "Steel",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "250 lb"
+            }
+        },
+        {
+            "title": "Jewett Arm Chair",
+            "description": "With its blend of materials and silhouette inspired by retro designs, this side chair is a versatile addition to your home that can work in almost any space. It's made with four tapered metal dowel legs, and has a seat upholstered in distressed faux leather.",
+            "price": 254,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/69619787/resize-h800-w800%5Ecompr-r85/2108/210844823/Jewett+Upholstered+Arm+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/57977849/resize-h800-w800%5Ecompr-r85/2110/211054937/Jewett+Upholstered+Arm+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/43839320/resize-h800-w800%5Ecompr-r85/2110/211053957/Jewett+Upholstered+Arm+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/35646089/resize-h800-w800%5Ecompr-r85/1355/135524279/Jewett+Upholstered+Arm+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "34.7'' H X 21.3'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": "22 lb"
+            },
+            "features": {
+                "Frame Material": "Lether",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "250 lb"
+            }
+        },
+        {
+            "title": "Acosta Swivel Chair",
+            "description": "Work softer. This task chair showcases sleek lines and padded faux leather upholstery – ideal for the home office that’s also a bedroom. Built with a solid wood frame, the seat swivels, tilts, and adjusts for height, while five metal caster wheels help you roll through quick calls + reply-alls.",
+            "price": 485,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/91125546/resize-h800-w800%5Ecompr-r85/2017/201753102/Acosta+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/21341777/resize-h800-w800%5Ecompr-r85/2141/214152870/Acosta+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/51380366/resize-h800-w800%5Ecompr-r85/2017/201753139/Acosta+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/59679784/resize-h800-w800%5Ecompr-r85/2017/201753067/Acosta+Swivel+Office+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "35.5'' H X 23'' W X 23'' D",
+                "Seat": "23'' W X 23'' D",
+                "Overall Product Weight": "25 lb"
+            },
+            "features": {
+                "Frame Material": "Solid Wood",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "250 lb"
+            }
+        },
+        {
+            "title": "Mako Swivel Chair",
+            "description": "With its simple silhouette, the Lyle office chair fuses comfort and aesthetics together in perfect harmony. As a bonus, this adaptable chair is contract grade and suitable for commercial environments.",
+            "price": 580,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/80406456/resize-h800-w800%5Ecompr-r85/2345/234507228/Mako+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/84253564/resize-h800-w800%5Ecompr-r85/2345/234507246/Mako+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/46197275/resize-h800-w800%5Ecompr-r85/2345/234507236/Mako+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/42608254/resize-h800-w800%5Ecompr-r85/2345/234507240/Mako+Swivel+Office+Chair.jpg"
+            ],
+            "dimensions": {
+                "Overall": "37.21'' H X 20.28'' W X 24.02'' D",
+                "Seat": "20.67'' H X 20.28'' W X 20.28'' D",
+                "Overall Product Weight": "29 lb"
+            },
+            "features": {
+                "Frame Material": "Steel",
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "299 lb"
             }
         },
         {
-            "title": "",
-            "description": "",
-            "price": 610,
+            "title": "Chaely Swivel Chair",
+            "description": "Real talk: If you're on the WFH grind, you deserve an office chair that supports you *and* is stylish. This one has you covered. Crafted with an engineered wood and iron frame, it features a high arching back and wraparound arms for a sleek look with retro vibes. Plus, it's upholstered in foam-filled velvet fabric for an inviting seat while you tackle your to-do list.",
+            "price": 260,
             "quantity": 10,
             "category": "Workspace",
             "type": "chair",
             "images": [
-                "",
-                "",
-                "",
-                ""
+                "https://secure.img1-cg.wfcdn.com/im/92535240/resize-h800-w800%5Ecompr-r85/1186/118677195/Chaely+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/70871270/resize-h800-w800%5Ecompr-r85/4285/42858772/Chaely+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/12221850/resize-h800-w800%5Ecompr-r85/1186/118678709/Chaely+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/80124835/resize-h800-w800%5Ecompr-r85/1186/118678191/Chaely+Swivel+Office+Chair.jpg"
             ],
             "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
+                "Overall": "35.4'' H X 24'' W X 22'' D",
+                "Seat": "21.26'' H X 18.31'' W X 18.7'' D",
+                "Overall Product Weight": "27 lb"
             },
             "features": {
-                "Frame Material": "Aluminum",
+                "Frame Material": "Iron",
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
+                "Weight Capacity": "275 lb"
             }
         },
         {
-            "title": "",
-            "description": "",
-            "price": 610,
+            "title": "Max Swivel Chair",
+            "description": "Work smarter. Ergonomic and easy to assemble, this task chair is your new favorite coworker. It features a high mesh backrest for breathability + lumbar support, and it rests on a five-star caster base. Adjustable armrests and a swiveling, tilting, adjustable seat keep you aligned and productive.",
+            "price": 451,
             "quantity": 10,
             "category": "Workspace",
             "type": "chair",
             "images": [
-                "",
-                "",
-                "",
-                ""
+                "https://secure.img1-cg.wfcdn.com/im/13194107/resize-h800-w800%5Ecompr-r85/2837/28371418/Max+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/25120280/resize-h800-w800%5Ecompr-r85/3578/35780840/Max+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/69309501/resize-h800-w800%5Ecompr-r85/2837/28371317/Max+Swivel+Office+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/05817053/resize-h800-w800%5Ecompr-r85/2837/28371443/Max+Swivel+Office+Chair.jpg"
             ],
             "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
+                "Overall": "25'' W X 27'' D",
+                "Seat": "25'' W X 25'' D",
+                "Overall Product Weight": "40 lb"
             },
             "features": {
-                "Frame Material": "Aluminum",
+                "Frame Material": "Plastic",
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
+                "Weight Capacity": "300 lb"
             }
         },
         {
-            "title": "",
-            "description": "",
-            "price": 610,
+            "title": "Buttercup Task Chair",
+            "description": "With plywood bent for beauty and comfort, the Buttercup Task Chair cradles you in swiveling recline.",
+            "price": 990,
             "quantity": 10,
             "category": "Workspace",
             "type": "chair",
             "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "dimensions": {
-                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
-                "Seat": "18'' H X 18.5'' W X 16.5'' D",
-                "Overall Product Weight": " lb"
-            },
-            "features": {
-                "Frame Material": "Aluminum",
-                "Seat Material ": "Upholstered",
-                "Adjustable Height": "Yes",
-                "Weight Capacity": "299 lb"
-            }
-        },
-        {
-            "title": "",
-            "description": "",
-            "price": 610,
-            "quantity": 10,
-            "category": "Workspace",
-            "type": "chair",
-            "images": [
-                "",
-                "",
-                "",
-                ""
+                "https://secure.img1-cg.wfcdn.com/im/48888211/resize-h800-w800%5Ecompr-r85/1694/169475035/Buttercup+Task+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/43764426/resize-h800-w800%5Ecompr-r85/1694/169475021/Buttercup+Task+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/05642776/resize-h800-w800%5Ecompr-r85/1694/169475030/Buttercup+Task+Chair.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/77817165/resize-h800-w800%5Ecompr-r85/1694/169475024/Buttercup+Task+Chair.jpg"
             ],
             "dimensions": {
                 "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
