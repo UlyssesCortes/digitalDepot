@@ -23,7 +23,7 @@ export default function Desktop({ setFilterName }) {
                     </div>
 
                 </section>
-                <Link to='/promo' className='navLink'>Special Offers</Link>
+                <Link to='/offers' className='navLink'>Special Offers</Link>
             </section>
         </section>
     )

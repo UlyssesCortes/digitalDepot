@@ -10,6 +10,8 @@ import Cart from './components/Products/Cart';
 // import Order from './components/Products/Orders';
 import Orders from './components/Products/Profile/Orders';
 import Favorites from './components/Products/Profile/Favorites';
+import Offers from './components/SpecialOffers/Offers';
+
 function App() {
 
   const API_URL = "https://digital-depot.onrender.com/api/";
@@ -85,6 +87,10 @@ function App() {
           <Route
             path='/favorites'
             element={<Favorites API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
+          />
+          <Route
+            path='/offers'
+            element={<Offers API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
           />
           <Route path="/product/:id"
             element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} />}

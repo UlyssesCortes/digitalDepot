@@ -18,8 +18,8 @@ export default function Hero({ isLoggedIn, setIsLoggedIn, setFilterName }) {
             <Companies />
             <Furniture setFilterName={setFilterName} />
             <Sale />
-            <BestSellers />
             <Benefits />
+            <BestSellers />
             {/* <Footer /> */}
         </section>
     )

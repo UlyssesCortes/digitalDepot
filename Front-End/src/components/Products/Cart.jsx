@@ -199,9 +199,14 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                 <div className='contentBox'>
                                     <div className='topContentBox'>
                                         <h3>{data.title}</h3>
-                                        <h3>${data.price}</h3>
+                                        {data.type === "chair" ? <div className='discount'>
+                                            <h3 className='discountPrice'> ${data.price * .75}</h3><h3 className='originalPrice'> ${data.price}</h3>
+                                        </div>
+                                            : <h3>${data.price}</h3>}
                                         <p className='invisSum'>
-                                            {products.length === myCart.length ? sum += parseFloat(myCart[index].quantity) * data.price : sum += parseFloat(data.price)}
+                                            {products.length === myCart.length ?
+                                                data.type === "chair" ? sum += parseFloat(((myCart[index].quantity) * data.price) * .75) :
+                                                    sum += parseFloat(myCart[index].quantity) * data.price : sum += parseFloat(data.price)}
                                         </p>
                                     </div>
 

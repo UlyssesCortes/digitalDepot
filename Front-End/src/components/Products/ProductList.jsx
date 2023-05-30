@@ -210,7 +210,11 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                             </Link>
                             <div className="productContent">
                                 <p>{product.title}</p>
-                                <p>${product.price}</p>
+                                {product.type === "chair" ? <div className='discount'>
+                                    <p className='discountPrice'> ${product.price * .75}</p><p className='originalPrice'> ${product.price}</p>
+                                </div>
+                                    : <p>${product.price}</p>}
+                                {/* <p>${product.price}</p> */}
                             </div>
                         </section>
                     );

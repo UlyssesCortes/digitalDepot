@@ -1,0 +1,45 @@
+.topOffer {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    border-radius: 20px;
+    background-image: url("../assets/SpringSale2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+}
+
+.bottomOffer {
+    display: flex;
+    margin-top: 100px;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.firstBottom {
+    display: flex;
+    height: 1000px;
+    width: 700px;
+    border-radius: 20px;
+    background-image: url("../assets/ChairDiscount.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-position: top;
+    cursor: pointer;
+}
+
+.secondBottom {
+    display: flex;
+    height: 1000px;
+    width: 700px;
+    border-radius: 20px;
+    background-image: url("../assets/SpringSale.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    cursor: pointer;
+}

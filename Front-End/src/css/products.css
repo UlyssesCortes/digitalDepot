@@ -121,6 +121,23 @@
     background-image: url("../assets/redHeart.png");
 }
 
+.discount {
+    display: flex;
+    gap: 5px;
+}
+
+.originalPrice {
+    display: flex;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    text-decoration: line-through;
+}
+
+.discountPrice {
+    color: red;
+}
+
 /* STAR RATING */
 .star-rating {
     font-size: 24px;
@@ -193,10 +210,6 @@
 
 .nameAndPrice h2 {
     font-size: 40px;
-}
-
-.nameAndPrice p {
-    font-size: 28px;
 }
 
 .quantity {
@@ -356,6 +369,27 @@
 
 .dots {
     display: none;
+}
+
+.discountD {
+    display: flex;
+    gap: 5px;
+}
+
+.discountPriceD {
+    color: red;
+    font-size: 24px;
+}
+
+.originalPriceD {
+    display: flex;
+    align-items: flex-end;
+    font-size: 18px;
+    text-decoration: line-through;
+}
+
+.regularPrice {
+    font-size: 24px;
 }
 
 
