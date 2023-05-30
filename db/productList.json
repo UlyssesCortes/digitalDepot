@@ -971,6 +971,256 @@
             }
         },
         {
+            "title": "Covington Desk",
+            "description": "This desk features a compartmentalized drawer beneath a clear glass top, to keep your supplies organized + on display – a great excuse to buy some beautiful pencils. The storage pouch holds bulkier items, while mixing in material contrast and artful asymmetry. An open iron base lightens the look.",
+            "price": 340,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "desk",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/72386346/resize-h800-w800%5Ecompr-r85/2075/207560102/Covington+39%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/34227536/resize-h800-w800%5Ecompr-r85/1972/197281993/Covington+39%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/20125498/resize-h800-w800%5Ecompr-r85/2078/207829685/Covington+39%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/33285254/resize-h800-w800%5Ecompr-r85/2078/207829663/Covington+39%27%27+Desk.jpg"
+            ],
+            "dimensions": {
+                "Overall": "29.3'' H X 39'' W X 19.5'' D",
+                "Desktop": "24.5'' H X 37.75'' W X 18'' D",
+                "Overall Product Weight": "48 lb"
+            },
+            "features": {
+                "Desk Type": "Writing desk",
+                "Top Material": "Glass",
+                "Base Material": "Walnut",
+                "Weight Capacity": "48 lb"
+            }
+        },
+        {
+            "title": "Series L Desk",
+            "description": "Work smarter. This adjustable desk allows you to switch from sitting to standing throughout your workday, and it remembers your favorite heights for fuss-free transitions. Its minimalist steel base won’t weigh down your space, and the desktop is stain-resistant for worry-free coffee breaks.",
+            "price": 765,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "desk",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/71562312/resize-h800-w800%5Ecompr-r85/2335/233542110/Series+L+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/08977399/resize-h800-w800%5Ecompr-r85/1854/185442994/Series+L+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/65929736/resize-h800-w800%5Ecompr-r85/2335/233589245/Series+L+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/35724105/resize-h800-w800%5Ecompr-r85/2335/233589224/Series+L+Desk.jpg"
+            ],
+            "dimensions": {
+                "Overall": "28'' H X 37'' W",
+                "Desktop": "29'' H X 47'' W X 27'' D",
+                "Overall Product Weight": "50.5 lb"
+            },
+            "features": {
+                "Desk Type": "Standing desk",
+                "Top Material": "Manufactured Wood",
+                "Base Material": "Steel",
+                "Weight Capacity": "300 lb"
+            }
+        },
+        {
+            "title": "Sequel Desk",
+            "description": "Featuring satin-etched glass work surfaces, and natural wood finishes, and boasting a host of innovative design features, BDI’s sequel office collection creates workspaces that are equal parts of organization and inspiration.",
+            "price": 1814,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "desk",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/78888939/resize-h800-w800%5Ecompr-r85/1231/123107569/Sequel+20+66%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/89186330/resize-h800-w800%5Ecompr-r85/1234/123439511/Sequel+20+66%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/86561511/resize-h800-w800%5Ecompr-r85/1231/123124571/Sequel+20+66%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/14894613/resize-h800-w800%5Ecompr-r85/1364/136462471/Sequel+20+66%27%27+Desk.jpg"
+            ],
+            "dimensions": {
+                "Overall": "66'' W X 24'' D",
+                "Desktop": "29'' H X 62'' W X 27.5'' D",
+                "Overall Product Weight": "135 lb"
+            },
+            "features": {
+                "Desk Type": "Computer desk",
+                "Top Material": "Glass",
+                "Base Material": "Solid Wood",
+                "Weight Capacity": "200 lb"
+            }
+        },
+        {
+            "title": "Duran Desk",
+            "description": "Elevate your live-work space with this desk that draws on clean modern lines and bold mixed materials. Crafted from steel, the frame features a scaled-back design with a blackened bronze finish and an open design for a minimalist industrial look. A tempered glass top complements the airy vibe and creates a resilient workspace, while a shelf just below it lets you keep a keyboard or office essentials in easy reach. This desk is sized to easily fit into smaller workspaces, like space corners of a room.",
+            "price": 236,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "desk",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/06524597/resize-h800-w800%5Ecompr-r85/1616/161696218/Duran+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/49870097/resize-h800-w800%5Ecompr-r85/1452/145287456/Duran+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/58114417/resize-h800-w800%5Ecompr-r85/1361/136195298/Duran+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/48726861/resize-h800-w800%5Ecompr-r85/1620/162099887/Duran+Desk.jpg"
+            ],
+            "dimensions": {
+                "Overall": "25.75'' H X 44.75'' W X 20'' D",
+                "Desktop": "30'' H X 46'' W X 20'' D",
+                "Overall Product Weight": "41.7 lb"
+            },
+            "features": {
+                "Desk Type": "Writing desk",
+                "Top Material": "Glass",
+                "Base Material": "Solid Wood",
+                "Weight Capacity": "40 lb"
+            }
+        },
+        {
+            "title": "Ando Desk",
+            "description": "Crafted from eco-friendly, sustainably harvested mango wood that has been kiln dried for strength and durability thereby showcasing the beauty of its solid wood construction. With a clean, uncluttered silhouette, this desk offers plenty of room to spread out as you work while making the most of your living space. ",
+            "price": 760,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "desk",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/24278406/resize-h800-w800%5Ecompr-r85/2197/219739000/Ando+47.25%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/44212462/resize-h800-w800%5Ecompr-r85/2198/219805349/Ando+47.25%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/38038716/resize-h800-w800%5Ecompr-r85/1218/121843486/Ando+47.25%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/00174015/resize-h800-w800%5Ecompr-r85/1218/121843481/Ando+47.25%27%27+Desk.jpg"
+            ],
+            "dimensions": {
+                "Overall": "36'' H X 47.25'' W X 23.75'' D",
+                "Desktop": "29'' H X 62'' W X 27.5'' D",
+                "Overall Product Weight": "59 lb"
+            },
+            "features": {
+                "Desk Type": "Writing desk",
+                "Top Material": "Solid Wood",
+                "Base Material": "Solid Wood",
+                "Weight Capacity": "300 lb"
+            }
+        },
+        {
+            "title": "Pietsch Desk",
+            "description": "Add minimal modern style to your workspace with the Meridien wall-mounted desk. Inspired by decorative simplicity, the Meridien desk features a two-tier design with a minimalist modern frame and a warm, rustic brown finish. A wall-mounted desk for your office saves space in your office, giving it a less cluttered look and an intelligent aesthetic. The Meridien is crafted with 100% solid wood for a robust texture with resilient performance. The actual desktop has a 20 lbs. ",
+            "price": 140,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "desk",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/18836142/resize-h800-w800%5Ecompr-r85/1541/154188204/Pietsch+30%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/13230209/resize-h800-w800%5Ecompr-r85/1844/184459564/Pietsch+30%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/12895280/resize-h800-w800%5Ecompr-r85/1704/170420719/Pietsch+30%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/43162104/resize-h800-w800%5Ecompr-r85/1541/154188198/Pietsch+30%27%27+Desk.jpg"
+            ],
+            "dimensions": {
+                "Overall": "26'' H X 30'' W X 14'' D",
+                "Shelf": "21'' H",
+                "Overall Product Weight": "9.43 lb"
+            },
+            "features": {
+                "Desk Type": "Floating desk",
+                "Top Material": "Solid Wood",
+                "Base Material": "Solid Wood",
+                "Weight Capacity": "30 lb"
+            }
+        },
+        {
+            "title": "Corridor Desk",
+            "description": "This handsome L-shaped executive desk provides plenty of workspace and storage, whether placed in a corner or commanding the center of your home office.",
+            "price": 4509,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "desk",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/06787065/resize-h800-w800%5Ecompr-r85/1752/175280616/Corridor+89%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/31112782/resize-h800-w800%5Ecompr-r85/1752/175280631/Corridor+89%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/59694522/resize-h800-w800%5Ecompr-r85/1752/175280639/Corridor+89%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/08567398/resize-h800-w800%5Ecompr-r85/1752/175280628/Corridor+89%27%27+Desk.jpg"
+            ],
+            "dimensions": {
+                "Overall": "29'' H X 89'' W X 70'' D",
+                "Desktop": "9'' H X 70'' W X 32'' D",
+                "Overall Product Weight": "381 lb"
+            },
+            "features": {
+                "Desk Type": "Executive desk",
+                "Top Material": "Glass",
+                "Base Material": "Solid Wood",
+                "Weight Capacity": "250 lb"
+            }
+        },
+        {
+            "title": "Alem Desk",
+            "description": "We've got major heart eyes for this mid-century modern desk. The desktop is crafted from tempered glass and bentwood in a rich wood grain finish, while the four hairpin legs are made from black steel for an on-trend look. Since the desk is fully finished, it can be oriented with the open cubby on the left or right side. Use the compartment to keep the desktop clear of clutter and your phone or other supplies in easy reach. Simple assembly is required.",
+            "price": 264,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "desk",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/93402894/resize-h800-w800%5Ecompr-r85/9007/90078711/Alem+44.5%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/77098438/resize-h800-w800%5Ecompr-r85/9331/93317114/Alem+44.5%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/59109077/resize-h800-w800%5Ecompr-r85/9428/94288265/Alem+44.5%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/50157459/resize-h800-w800%5Ecompr-r85/9007/90078716/Alem+44.5%27%27+Desk.jpg"
+            ],
+            "dimensions": {
+                "Overall": "31'' H X 44.5'' W X 23'' D",
+                "Desktop": "29'' H X 62'' W X 27.5'' D",
+                "Overall Product Weight": "77 lb"
+            },
+            "features": {
+                "Desk Type": "Writing desk",
+                "Top Material": "Glass",
+                "Base Material": "Wood",
+                "Weight Capacity": "140 lb"
+            }
+        },
+        {
+            "title": "Carson Desk",
+            "description": "Sturdy + sleek. Displaying minimalist lines + a glossy white finish, this L-shaped desk delivers space to work, while keeping visual clutter OOO. A file drawer and a normal drawer stow papers and supplies, while the finished back provides placement options – hello corner office.",
+            "price": 1080,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "desk",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/89280155/resize-h800-w800%5Ecompr-r85/2298/229819597/Carson+59.85%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/86187150/resize-h800-w800%5Ecompr-r85/2264/226493481/Carson+59.85%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/36356430/resize-h800-w800%5Ecompr-r85/2236/223649919/Carson+59.85%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/74762096/resize-h800-w800%5Ecompr-r85/2302/230200208/Carson+59.85%27%27+Desk.jpg"
+            ],
+            "dimensions": {
+                "Overall": "27'' H X 35.43'' W X 19.49'' D",
+                "Desktop": "29.93'' H X 59.85'' W X 23.63'' D",
+                "Overall Product Weight": "130 lb"
+            },
+            "features": {
+                "Desk Type": "Writing desk",
+                "Top Material": "Solid Wood",
+                "Base Material": "Solid Wood",
+                "Weight Capacity": "66 lb"
+            }
+        },
+        {
+            "title": "Wyman Desk",
+            "description": "A contemporary desk from our Artezia collection designed to add a beautiful touch to office spaces. Crafted from raw umber oak veneer with three soft closing drawers for ample storage. Brushed gold iron hardware completes the look. Also available in a taupe oak veneer with a black iron frame",
+            "price": 1240,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "desk",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/51985720/resize-h800-w800%5Ecompr-r85/1048/104834575/Wyman+59%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/65821807/resize-h800-w800%5Ecompr-r85/2111/211173685/Wyman+59%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/41546179/resize-h800-w800%5Ecompr-r85/1016/101644091/Wyman+59%27%27+Desk.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/28488281/resize-h800-w800%5Ecompr-r85/1048/104834486/Wyman+59%27%27+Desk.jpg"
+            ],
+            "dimensions": {
+                "Overall": "27'' H X 35.43'' W X 19.49'' D",
+                "Desktop": "29.93'' H X 59.85'' W X 23.63'' D",
+                "Overall Product Weight": "130 lb"
+            },
+            "features": {
+                "Desk Type": "Writing desk",
+                "Top Material": "Solid Wood",
+                "Base Material": "Solid Wood",
+                "Weight Capacity": "66 lb"
+            }
+        },
+        {
             "title": "Cal Swivel Office Chair",
             "description": "Small home office? No problem. This task chair is an eye-catching addition to your office no matter the size. The bucket-style seat has a cutout in the back, and two short arms with a slight scroll for some mid-century modern vibes.",
             "price": 1540,
@@ -1090,6 +1340,406 @@
                 "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
                 "Seat": "18'' H X 18.5'' W X 16.5'' D",
                 "Overall Product Weight": "8 lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
+            },
+            "features": {
+                "Frame Material": "Aluminum",
+                "Seat Material ": "Upholstered",
+                "Adjustable Height": "Yes",
+                "Weight Capacity": "299 lb"
+            }
+        },
+        {
+            "title": "",
+            "description": "",
+            "price": 610,
+            "quantity": 10,
+            "category": "Workspace",
+            "type": "chair",
+            "images": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            "dimensions": {
+                "Overall": "39.97'' H X 25.79'' W X 25.2'' D",
+                "Seat": "18'' H X 18.5'' W X 16.5'' D",
+                "Overall Product Weight": " lb"
             },
             "features": {
                 "Frame Material": "Aluminum",
