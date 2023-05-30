@@ -80,8 +80,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         setHoveredIndex(null);
     };
 
-
-
     const fetchFavorites = async () => {
         try {
             const favoriteResponse = await fetch(`${API_URL}favorite`, {

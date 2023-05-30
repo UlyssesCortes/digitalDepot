@@ -296,35 +296,6 @@
             }
         },
         {
-            "title": "Luxury Channel Couch",
-            "description": "This comfortable living room couch will provide a fresh and pleasing look to your space and will be the center of attention thanks to its tufted design. These designer-style French boucle sofas create an inviting space for your guests or family entertainment activities. Combining top-quality craftsmanship and high-density foam, this set will provide you with great comfort and undoubtedly become the centerpiece of your apartment, living room, den, urban loft, or condo.",
-            "price": 1380,
-            "quantity": 10,
-            "category": "Living Room",
-            "type": "sofa",
-            "images": [
-                "https://secure.img1-cg.wfcdn.com/im/55263541/resize-h800-w800%5Ecompr-r85/2265/226523332/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg",
-                "https://secure.img1-cg.wfcdn.com/im/50898226/resize-h800-w800%5Ecompr-r85/2265/226523328/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg",
-                "https://secure.img1-cg.wfcdn.com/im/32043508/resize-h800-w800%5Ecompr-r85/2265/226523308/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg",
-                "https://secure.img1-cg.wfcdn.com/im/28196400/resize-h800-w800%5Ecompr-r85/2265/226523326/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg"
-            ],
-            "dimensions": {
-                "Overall": "27'' H X 88'' W X 34.5'' D",
-                "Seat": "18'' H X 74.5'' W X 24'' D",
-                "Back Height - Seat to Top of Back": "11.03'' H",
-                "Arm Height - Floor to Arm": "29.92'' H",
-                "Overall Product Weight": "122 lb"
-            },
-            "features": {
-                "Sofa Design": "Standard",
-                "Upholstery Material": "Solid Wood",
-                "Frame Material": "Solid Wood",
-                "Seat Fill Material": "Foam",
-                "Leg Material": "Wood",
-                "Removable Cushions": "No"
-            }
-        },
-        {
             "title": "Easy Sofa",
             "description": "Our Seat Couches are carefully constructed from top to bottom. The right sofa may not help you read that new novel faster, but it can help you stay comfortable while you try. We know that your decision when shopping for the right love seat comes down to a few factors, including durability, style, and upkeep. ",
             "price": 3900,
@@ -405,6 +376,35 @@
             "features": {
                 "Sofa Design": "Standard",
                 "Upholstery Material": "Polyester",
+                "Frame Material": "Solid Wood",
+                "Seat Fill Material": "Foam",
+                "Leg Material": "Wood",
+                "Removable Cushions": "No"
+            }
+        },
+        {
+            "title": "Luxury Channel Couch",
+            "description": "This comfortable living room couch will provide a fresh and pleasing look to your space and will be the center of attention thanks to its tufted design. These designer-style French boucle sofas create an inviting space for your guests or family entertainment activities. Combining top-quality craftsmanship and high-density foam, this set will provide you with great comfort and undoubtedly become the centerpiece of your apartment, living room, den, urban loft, or condo.",
+            "price": 1380,
+            "quantity": 10,
+            "category": "Living Room",
+            "type": "sofa",
+            "images": [
+                "https://secure.img1-cg.wfcdn.com/im/55263541/resize-h800-w800%5Ecompr-r85/2265/226523332/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/50898226/resize-h800-w800%5Ecompr-r85/2265/226523328/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/32043508/resize-h800-w800%5Ecompr-r85/2265/226523308/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg",
+                "https://secure.img1-cg.wfcdn.com/im/28196400/resize-h800-w800%5Ecompr-r85/2265/226523326/88%22+Luxury+Modern+Channel+Tufted+Boucle+Fabric+Couch.jpg"
+            ],
+            "dimensions": {
+                "Overall": "27'' H X 88'' W X 34.5'' D",
+                "Seat": "18'' H X 74.5'' W X 24'' D",
+                "Back Height - Seat to Top of Back": "11.03'' H",
+                "Arm Height - Floor to Arm": "29.92'' H",
+                "Overall Product Weight": "122 lb"
+            },
+            "features": {
+                "Sofa Design": "Standard",
+                "Upholstery Material": "Solid Wood",
                 "Frame Material": "Solid Wood",
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",

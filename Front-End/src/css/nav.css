@@ -102,9 +102,10 @@
     flex-direction: column;
     gap: 5px;
     position: absolute;
-    margin-top: 40px;
+    margin-top: 30px;
     background-color: rgb(253, 252, 252);
     padding: 15px;
+    margin-left: -10px;
     border-radius: 5px;
     opacity: 0;
     border: #2f2f2f46 1px solid;
