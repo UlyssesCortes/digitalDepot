@@ -92,7 +92,6 @@
     cursor: pointer;
 }
 
-
 .navCategorieSec {
     display: flex;
     flex-direction: column;
@@ -151,7 +150,6 @@
     transform: translateX(0);
     opacity: 1;
 }
-
 
 .triShape {
     position: absolute;
@@ -244,7 +242,7 @@
     height: 3px;
     bottom: 0;
     left: 0;
-    background-color: #0e0e0e;
+    background-color: #8b8b8b;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
@@ -254,9 +252,7 @@
     transform-origin: bottom left;
 }
 
-
 /* MOBILE NAV  */
-
 .hamburgerNavContainer {
     display: none;
     z-index: 999;

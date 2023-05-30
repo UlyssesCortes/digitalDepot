@@ -66,9 +66,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
             <div className='productDetailBox'>
                 <section className='imageGallery'>
 
-
                     <img className="productImg1" src={productInfo.images[0]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(0) }} />
-
 
                     <div className='bottomImages' >
                         <img className="productImg2" src={productInfo.images[1]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(1) }} />
