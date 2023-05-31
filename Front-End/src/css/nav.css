@@ -348,6 +348,10 @@
     #signUpBtn {
         display: none;
     }
+
+    .navbar {
+        height: 100px;
+    }
 }
 
 

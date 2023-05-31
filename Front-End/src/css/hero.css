@@ -363,7 +363,7 @@
 
     .bannerContent {
         gap: 20px;
-        padding: 25px 0 0 50px;
+        padding: 35px 0 0 35px;
     }
 
     .banner {
@@ -371,7 +371,7 @@
     }
 
     .bannerSlogan {
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .bannerSubSlogan {
@@ -380,7 +380,12 @@
 
     .bannerBtnContainer {
         flex-direction: column;
-        gap: 30px;
+        gap: 20px;
+    }
+
+    .bannerBtn {
+        height: 50px;
+        width: 150px;
     }
 
     .topFurniture h1,

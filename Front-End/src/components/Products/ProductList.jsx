@@ -9,11 +9,13 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const [furniture, setFurniture] = useState([]);
     const [myFavorites, setMyFavorites] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
+    const [showAll, setShowAll] = useState(false);
     const [productsPerPage] = useState(8);
 
     const token = window.localStorage.getItem('token');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     const lowerCaseFilterName = filterName.toLowerCase();
+
     const getProducts = async () => {
         try {
             const response = await fetch(`${API_URL}products`, {
@@ -169,6 +171,11 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             </>
         );
     }
+    const handleClick = () => {
+        setShowAll(!showAll);
+    };
+
+    const visibleButtons = showAll ? furniture.length : 7;
 
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -212,7 +219,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                                     <p className='discountPrice'> ${product.price * .75}</p><p className='originalPrice'> ${product.price}</p>
                                 </div>
                                     : <p>${product.price}</p>}
-                                {/* <p>${product.price}</p> */}
                             </div>
                         </section>
                     );
@@ -220,17 +226,26 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 <section className="paginationBtns">
                     {Array.from(
                         { length: Math.ceil(furniture.length / productsPerPage) },
-                        (_, index) => (
-                            <a
-                                href="#topNav"
-                                className={`paginationBtn ${index + 1 === currentPage ? 'selected' : ''
-                                    }`}
-                                key={index}
-                                onClick={() => paginate(index + 1)}
-                            >
-                                {index + 1}
-                            </a>
-                        )
+                        (_, index) => {
+                            if (index < visibleButtons) {
+                                return (
+                                    <a
+                                        href="#topNav"
+                                        className={`paginationBtn ${index + 1 === currentPage ? 'selected' : ''}`}
+                                        key={index}
+                                        onClick={() => paginate(index + 1)}
+                                    >
+                                        {index + 1}
+                                    </a>
+                                );
+                            }
+                            return null;
+                        }
+                    )}
+                    {furniture.length > 7 && (
+                        <button className='showMoreBtn' onClick={handleClick}>
+                            {showAll ? '‣' : '‣'}
+                        </button>
                     )}
                 </section>
             </section>
