@@ -17,6 +17,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
 
         // Check if there is an order with isCheckedOut set to false
         const hasUncheckedOrder = data.some((order) => !order.isCheckedOut);
+
         if (hasUncheckedOrder) {
             // Get the order with isCheckedOut set to false
             const uncheckedOrder = data.find((order) => !order.isCheckedOut);

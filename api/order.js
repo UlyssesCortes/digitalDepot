@@ -7,7 +7,8 @@ const {
     createOrder,
     updateOrders,
     deleteOrder,
-    getOrderByUserId
+    getOrderByUserId,
+    getOrderCheckoutByUserId
 } = require('../db');
 
 apiRouter.get("/", async (req, res, next) => {
@@ -21,9 +22,15 @@ apiRouter.get("/", async (req, res, next) => {
 
 apiRouter.get("/myOrders", requireUser, async (req, res, next) => {
     try {
-
-        console.log(await getOrderByUserId(req.user.id))
         const usersOrders = await getOrderByUserId(req.user.id);
+        res.send(usersOrders);
+    } catch (error) {
+        next(error);
+    }
+});
+apiRouter.get("/myOrders/finialized", requireUser, async (req, res, next) => {
+    try {
+        const usersOrders = await getOrderCheckoutByUserId(req.user.id);
         res.send(usersOrders);
     } catch (error) {
         next(error);

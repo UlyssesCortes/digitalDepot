@@ -56,6 +56,19 @@ async function getOrderByUserId(userId) {
         throw error;
     }
 }
+async function getOrderCheckoutByUserId(userId) {
+    try {
+        const { rows } = await client.query(`
+        SELECT * 
+        FROM orders
+        WHERE "userId"=${userId} AND "isCheckedOut"=true;
+      `);
+
+        return rows;
+    } catch (error) {
+        throw error;
+    }
+}
 
 async function updateOrders({ id, ...fields }) {
     const setString = Object.keys(fields)
@@ -96,4 +109,5 @@ module.exports = {
     deleteOrder,
     getOrderById,
     updateOrders,
+    getOrderCheckoutByUserId
 };

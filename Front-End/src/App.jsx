@@ -64,6 +64,19 @@ function App() {
     }
   };
 
+  const fetchOrders = async () => {
+    const response = await fetch(`${API_URL}order/myOrders`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    const data = await response.json();
+
+    const hasUncheckedOrder = data.find((order) => order.isCheckedOut === true);
+    console.log(data)
+  }
+
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
     const currentOrderId = window.localStorage.getItem('currentOrderId');
@@ -88,7 +101,7 @@ function App() {
         .catch((error) => console.log(error));
     }
     fetchFavorites();
-
+    fetchOrders()
   }, [token]);
 
   return (
