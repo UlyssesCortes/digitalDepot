@@ -12,8 +12,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const [showAll, setShowAll] = useState(false);
     const [productsPerPage] = useState(8);
 
-    console.log(myFavorites)
-
     const token = window.localStorage.getItem('token');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     const lowerCaseFilterName = filterName.toLowerCase();

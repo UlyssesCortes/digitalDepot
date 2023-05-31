@@ -127,10 +127,10 @@ function App() {
             element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} />}
           />
 
-          <Route
+          {/* <Route
             path='/orders'
             element={<Orders API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
-          />
+          /> */}
           {/* <Route
             path='/favorites'
             element={<Favorites API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}

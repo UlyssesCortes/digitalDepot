@@ -5,6 +5,7 @@ import Favorites from '../Products/Profile/Favorites';
 export default function Profile({ setIsLoggedIn, favorites, setShowProfile }) {
 
     const [showFavorite, setShowFavorite] = useState(false)
+    const [showOrder, setShowOrder] = useState(false)
 
     const handleLogOutBtn = () => {
         localStorage.removeItem('isLoggedIn')
@@ -21,12 +22,14 @@ export default function Profile({ setIsLoggedIn, favorites, setShowProfile }) {
                     <div className='profileIcon1'></div>
                 </div>
             </Link>
-            <Link to='/orders' className='profileBtns profileBtn2'>
+
+            <div className='profileBtns profileBtn2' onClick={() => { setShowOrder(!showOrder) }}>
                 <div className='btnContainer'>
                     <p>Orders</p>
                     <div className='profileIcon2'></div>
                 </div>
-            </Link>
+            </div>
+
             <div className='profileBtns profileBtn3' onClick={() => { setShowFavorite(!showFavorite) }}>
                 <div className='btnContainer' >
                     <p>Favorites</p>

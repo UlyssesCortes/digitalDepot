@@ -142,7 +142,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
     };
 
-
     useEffect(() => {
         getOrderItems()
     }, [token]);
@@ -194,8 +193,11 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
                         {!loading && isLoggedIn && products && products.map((data, index) =>
                             <div className="cartProduct" key={data.id + '-' + index}>
-                                <img className='cartProductImg' src={data.images[0]} alt="" />
+
                                 <div className='contentBox'>
+                                    <Link to={`/product/${data.id}`}>
+                                        <img className='cartProductImg' src={data.images[0]} alt="" />
+                                    </Link>
                                     <div className='topContentBox'>
                                         <h3>{data.title}</h3>
                                         {data.type === "chair" ? <div className='discount'>
@@ -218,9 +220,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                             <div className='minusIcon' onClick={() => { decreaseQuantity(index) }}>-</div>
                                         </div>
                                         <button className='removeBtn' onClick={() => deleteItem(data.id)}>Remove item</button>
-
                                     </div>
-
                                 </div>
                             </div>
                         )}

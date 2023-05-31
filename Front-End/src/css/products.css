@@ -258,6 +258,13 @@
     font-size: 20px;
     cursor: pointer;
     user-select: none;
+
+}
+
+.minusIcon:hover,
+.plusIcon:hover {
+    background-color: #333333;
+    color: white;
 }
 
 .tooManyError {
@@ -503,8 +510,15 @@
 }
 
 .cartProduct {
+    text-decoration: none;
+    color: #333333;
     height: 450px;
     width: 350px;
+    transition: all ease-in-out .2s;
+}
+
+.cartProduct:hover {
+    scale: 1.01;
 }
 
 .cartProductImg {
@@ -682,12 +696,12 @@
 .favTitle {
     display: flex;
     justify-content: flex-end;
-    font-size: 18px;
+    font-size: 16px;
     color: #333333;
 }
 
 .favTitle {
-    font-weight: bold;
+    font-size: 18px;
 }
 
 @media only screen and (max-width: 1160px) {
@@ -812,7 +826,6 @@
     }
 
     /* ImageSlider */
-
     .imageSliderContainerBox {
         position: relative;
     }
