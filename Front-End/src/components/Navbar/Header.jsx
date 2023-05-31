@@ -55,8 +55,8 @@ export default function Header({ setIsLoggedIn, setFilterName }) {
                     </section>
                     :
                     <section className='navLogContainer'>
-                        <Link to='/register' className='navBtn navLink'>Sign Up</Link>
-                        <Link to='/login' className='navBtn navLog navLink'>Login</Link>
+                        <Link to='/register' id='signUpBtn' className='navBtn '>Sign Up</Link>
+                        <Link to='/login' className='navBtn navLog'>Login</Link>
                     </section>
                 }
             </section>

@@ -75,6 +75,7 @@
     cursor: pointer;
     color: #2f2f2f;
     text-align: center;
+    text-decoration: none;
 }
 
 .navLog {
@@ -134,7 +135,7 @@
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    margin-top: 3%;
+    margin-top: 2%;
     position: absolute;
     background-color: rgba(255, 255, 255, 0.918);
     backdrop-filter: blur(20px);
@@ -333,7 +334,7 @@
     background-color: transparent;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1200px) {
     .hamburgerNavContainer {
         display: block;
     }
@@ -341,7 +342,12 @@
     .leftNav {
         display: none;
     }
+}
 
+@media only screen and (max-width: 600px) {
+    #signUpBtn {
+        display: none;
+    }
 }
 
 

@@ -13,7 +13,7 @@ export default function Profile({ setIsLoggedIn }) {
 
     return (
         <section className='profileSectionBtn' >
-            <div className='triShape'></div>
+            {/* <div className='triShape'></div> */}
             <Link to='/cart' className='profileBtns profileBtn1'>
                 <div className='btnContainer'>
                     <div className='userLink'>Cart</div>
