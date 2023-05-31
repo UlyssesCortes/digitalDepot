@@ -218,7 +218,7 @@
 .profileIcon4 {
     width: 25px;
     height: 25px;
-    background-image: url("../assets/cart.png");
+    background-image: url("../assets/");
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;

@@ -644,10 +644,50 @@
 }
 
 /* FAVORITE */
-.favoriteProduct {
+
+.favoriteContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-left: -402px;
+    width: 400px;
+    background-color: white;
+    left: 0;
+    top: 0;
+}
+
+.favoriteProd {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
+    border-bottom: #333333 1px solid;
+    padding: 15px;
+    border: 1px solid #333333;
+    text-decoration: none;
+
+}
+
+.favoriteProd:hover {
+    background-color: rgba(243, 243, 243, 0.596);
+}
+
+.favProductImg {
+    height: 80px;
+    width: 80px;
+}
+
+.favPrice,
+.favTitle {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 18px;
+    color: #333333;
+}
+
+.favTitle {
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 1160px) {

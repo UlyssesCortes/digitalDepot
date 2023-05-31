@@ -80,9 +80,9 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         }, 200);
     };
 
-    const handleMouseLeave = () => {
-        setHoveredIndex(null);
-    };
+    // const handleMouseLeave = () => {
+    //     setHoveredIndex(null);
+    // };
 
     const fetchFavorites = async () => {
         try {
@@ -194,11 +194,11 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                     const imageSource = isHovered ? product.images[1] : product.images[0];
                     return (
                         <section
-                            to={`/product/${product.id}`}
+                            // to={`/product/${product.id}`}
                             key={product.id}
                             className="productCard"
-                            onMouseEnter={() => handleMouseEnter(index)}
-                            onMouseLeave={handleMouseLeave}
+                        // onMouseEnter={() => handleMouseEnter(index)}
+                        // onMouseLeave={handleMouseLeave}
                         >
                             {isLoggedInLocal && (
                                 <div className="favorite">{checkFavorite(product.id)}</div>
@@ -215,6 +215,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                                     </div>
                                 </Suspense>
                             </Link>
+
                             <div className="productContent">
                                 <p>{product.title}</p>
                                 {product.type === "chair" ? <div className='discount'>

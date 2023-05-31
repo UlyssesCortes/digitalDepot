@@ -10,7 +10,7 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName, setHideNav }) {
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favorites }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showProfile, setShowProfile] = useState(false)
     const [showSearch, setShowSearch] = useState(false)
@@ -35,7 +35,6 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav }) {
                             onChange={handleSearch}
                             placeholder="Search..."
                         />
-
                     </div>
                     <Lottie className="headerIcon" animationData={search} loop={false} onClick={() => {
                         setShowSearch(!showSearch);
@@ -51,7 +50,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav }) {
                         <section className='profileSection'>
                             <Lottie className="userIcon" animationData={user} loop={false} onClick={() => { setShowProfile(!showProfile) }} />
                         </section>
-                        {showProfile && <Profile showProfile={showProfile} setIsLoggedIn={setIsLoggedIn} />}
+                        {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} favorites={favorites} setShowProfile={setShowProfile} />}
                     </section>
                     :
                     <section className='navLogContainer'>

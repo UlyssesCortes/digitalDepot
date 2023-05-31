@@ -26,6 +26,44 @@ function App() {
 
   // localStorage.setItem('currentOrderId', "");
 
+  const [favorites, setFavorites] = useState([])
+
+  const fetchFavorites = async () => {
+    try {
+      const favoriteResponse = await fetch(`${API_URL}favorite`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const favorite = await favoriteResponse.json();
+
+      if (favorite && favorite.length > 0) {
+        try {
+          let productIndex = favorite.length - 1;
+          const favoriteProductsArray = [];
+          while (productIndex >= 0) {
+            const favoriteProducts = await fetch(`${API_URL}products/${favorite[productIndex].productId}`, {
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+              },
+            });
+
+            const products = await favoriteProducts.json();
+            favoriteProductsArray.push(...products);
+            productIndex--;
+          }
+          setFavorites(favoriteProductsArray)
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
     const currentOrderId = window.localStorage.getItem('currentOrderId');
@@ -49,13 +87,16 @@ function App() {
         })
         .catch((error) => console.log(error));
     }
+    fetchFavorites();
+
   }, [token]);
+
   return (
     <>
       <BrowserRouter>
         {!hideNav &&
           <div className='marginReducer'>
-            <Header setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} />
+            <Header setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} favorites={favorites} />
           </div>
         }
         <Routes>
@@ -90,10 +131,10 @@ function App() {
             path='/orders'
             element={<Orders API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
           />
-          <Route
+          {/* <Route
             path='/favorites'
             element={<Favorites API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
-          />
+          /> */}
           <Route
             path='/offers'
             element={<Offers API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}

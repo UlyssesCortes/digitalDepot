@@ -2,16 +2,15 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import Favorites from '../Products/Profile/Favorites';
 
+export default function Profile({ setIsLoggedIn, favorites, setShowProfile }) {
 
-export default function Profile({ setIsLoggedIn }) {
-
+    const [showFavorite, setShowFavorite] = useState(false)
 
     const handleLogOutBtn = () => {
         localStorage.removeItem('isLoggedIn')
         window.localStorage.removeItem('token');
         setIsLoggedIn(false)
     }
-
 
     return (
         <section className='profileSectionBtn' >
@@ -28,13 +27,13 @@ export default function Profile({ setIsLoggedIn }) {
                     <div className='profileIcon2'></div>
                 </div>
             </Link>
-            <Link to='/favorites' className='profileBtns profileBtn3'>
-                <div className='btnContainer'>
+            <div className='profileBtns profileBtn3' onClick={() => { setShowFavorite(!showFavorite) }}>
+                <div className='btnContainer' >
                     <p>Favorites</p>
                     <div className='profileIcon3'></div>
+                    {showFavorite && <Favorites favorites={favorites} setShowProfile={setShowProfile} />}
                 </div>
-            </Link>
-            {/* <Favorites /> */}
+            </div>
             <button className='profileBtns profileBtn4'>
                 <div className='btnContainer' onClick={() => { handleLogOutBtn() }}>
                     <p>Logout</p>
