@@ -65,7 +65,7 @@ function App() {
   };
 
   const fetchOrders = async () => {
-    const response = await fetch(`${API_URL}order/myOrders`, {
+    const response = await fetch(`${API_URL}order/myOrders/finalized`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -73,7 +73,7 @@ function App() {
 
     const data = await response.json();
 
-    const hasUncheckedOrder = data.find((order) => order.isCheckedOut === true);
+    // const hasUncheckedOrder = data.find((order) => order.isCheckedOut === true);
     console.log(data)
   }
 
