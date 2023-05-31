@@ -12,6 +12,8 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const [showAll, setShowAll] = useState(false);
     const [productsPerPage] = useState(8);
 
+    console.log(myFavorites)
+
     const token = window.localStorage.getItem('token');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     const lowerCaseFilterName = filterName.toLowerCase();
@@ -242,7 +244,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                             return null;
                         }
                     )}
-                    {furniture.length > 7 && (
+                    {furniture.length / 8 > 7 && (
                         <button className='showMoreBtn' onClick={handleClick}>
                             {showAll ? '‣' : '‣'}
                         </button>
