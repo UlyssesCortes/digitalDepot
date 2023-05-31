@@ -12,6 +12,7 @@ export default function Profile({ setIsLoggedIn }) {
         setIsLoggedIn(false)
     }
 
+
     return (
         <section className='profileSectionBtn' >
             {/* <div className='triShape'></div> */}

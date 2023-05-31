@@ -10,7 +10,7 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName }) {
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showProfile, setShowProfile] = useState(false)
     const [showSearch, setShowSearch] = useState(false)
@@ -55,8 +55,8 @@ export default function Header({ setIsLoggedIn, setFilterName }) {
                     </section>
                     :
                     <section className='navLogContainer'>
-                        <Link to='/register' id='signUpBtn' className='navBtn '>Sign Up</Link>
-                        <Link to='/login' className='navBtn navLog'>Login</Link>
+                        <Link to='/register' id='signUpBtn' className='navBtn' onClick={() => { setHideNav(true) }}>Sign Up</Link>
+                        <Link to='/login' className='navBtn navLog' onClick={() => { setHideNav(true) }}>Login</Link>
                     </section>
                 }
             </section>

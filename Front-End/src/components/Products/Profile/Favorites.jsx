@@ -46,7 +46,6 @@ export default function Favorites({ setIsLoggedIn, isLoggedIn, token, API_URL })
 
     return (
         <section className='marginReducer'>
-            <Header setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
             <h1>Favorites</h1>
 
             <section className='favoriteProduct'>

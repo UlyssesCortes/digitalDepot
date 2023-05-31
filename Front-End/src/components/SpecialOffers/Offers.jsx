@@ -1,13 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import Header from "../Navbar/Header"
 import '../../css/offer.css'
 
 export default function Offers() {
     return (
         <section className='marginReducer'>
-            <Header />
-
             <section className='offers'>
                 <section className='topOffers'>
                     <Link to='/products' className='topOffer'></Link>

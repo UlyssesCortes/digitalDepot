@@ -1,12 +1,9 @@
 import React from 'react'
-import Header from '../Navbar/Header'
 import '../../css/loading.css'
 
-
-export default function ProductLoading({ isLoggedIn }) {
+export default function ProductLoading() {
     return (
         <section className='marginReducer'>
-            <Header isLoggedIn={isLoggedIn} />
             <div className='productDetailBox'>
                 <section className='imageGallery '>
                     <div className="productImg1 loadingGrey shinny" />

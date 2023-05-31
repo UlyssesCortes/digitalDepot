@@ -4,7 +4,7 @@ import Lottie from "lottie-react"
 import authorization from "../../assets/registered3.json"
 import { usernameTakenAlert, passwordTooWeekAlert, invalidEmailAlert } from './Alerts';
 
-const Register = ({ API_URL }) => {
+const Register = ({ API_URL, setHideNav }) => {
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -110,7 +110,8 @@ const Register = ({ API_URL }) => {
                             Sign up with Google
                         </button>
                     </form>
-                    <Link to='/products' className="link-2 navLink"></Link>
+                    <Link to='/products' className="link-2" onClick={() => { setHideNav(false) }}></Link>
+
                     <div className='memberDetail'>
                         <p className="signUpContainer">Have an account?</p>
 

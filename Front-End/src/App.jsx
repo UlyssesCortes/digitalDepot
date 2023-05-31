@@ -11,6 +11,7 @@ import Cart from './components/Products/Cart';
 import Orders from './components/Products/Profile/Orders';
 import Favorites from './components/Products/Profile/Favorites';
 import Offers from './components/SpecialOffers/Offers';
+import Header from './components/Navbar/Header';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
   const [currentOrderId, setCurrentOrderId] = useState("")
   const [quantity, setQuantity] = useState(1);
   const [filterName, setFilterName] = useState("")
+  const [hideNav, setHideNav] = useState(false)
 
   // localStorage.setItem('currentOrderId', "");
 
@@ -30,7 +32,6 @@ function App() {
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     setCurrentOrderId(currentOrderId)
     setIsLoggedIn(isLoggedInLocal)
-    console.log(currentOrderId)
     setToken(localToken)
     if (localToken) {
       setIsLoggedIn(true)
@@ -52,6 +53,11 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        {!hideNav &&
+          <div className='marginReducer'>
+            <Header setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} />
+          </div>
+        }
         <Routes>
           <Route
             path='/'
@@ -64,11 +70,11 @@ function App() {
 
           <Route
             path='/register'
-            element={<Register API_URL={API_URL} />}
+            element={<Register API_URL={API_URL} setHideNav={setHideNav} />}
           />
           <Route
             path='/login'
-            element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} setToken={setToken} user={user} token={token} />}
+            element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} setToken={setToken} user={user} token={token} setHideNav={setHideNav} />}
           />
           <Route
             path='/cart'
