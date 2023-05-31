@@ -134,6 +134,8 @@
     align-items: center;
     transition: .2s;
     cursor: pointer;
+    text-decoration: none;
+
 }
 
 .link-2::before {

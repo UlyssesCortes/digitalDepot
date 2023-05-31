@@ -3,15 +3,16 @@ import '../../css/login.css'
 import Lottie from "lottie-react"
 import authorization from "../../assets/logged.json"
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { wrongUserAlert } from './Alerts';
 
-const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
+const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken, setHideNav }) => {
 
     const [email, setEamil] = useState("")
     const [password, setPassword] = useState("")
     const [validInfo, setValidInfo] = useState(true)
 
+    const navigate = useNavigate();
 
 
     const handleChangeEmail = (event) => {
@@ -49,9 +50,11 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
                     }
                     if (result.token) {
                         setTimeout(() => {
-                            window.location.href = '/home';
+                            navigate('/home');
+                            setHideNav(false)
                         }, 4200);
                     }
+
                 })
                 .catch(console.error);
         }
@@ -81,7 +84,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken }) => {
                         <button type="submit" className="loginBtn">Log In &rarr;</button>
                     </form>
 
-                    <Link to='/products' className="link-2 navLink"></Link>
+                    <Link to='/products' className="link-2" onClick={() => { setHideNav(false) }}></Link>
 
                     <div className='memberDetail'>
                         <p className="signUpContainer">Not a member?</p>

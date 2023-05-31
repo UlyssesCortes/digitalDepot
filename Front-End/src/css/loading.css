@@ -46,7 +46,7 @@
 .loadingProductContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-top: 50px;
 }
 
@@ -235,12 +235,4 @@
     margin: 0 auto;
     text-align: center;
     background-color: #888;
-}
-
-
-@media only screen and (max-width: 1160px) {
-
-    .loadingProductContainer {
-        justify-content: center;
-    }
 }

@@ -28,6 +28,6 @@ export default function MobileNav() {
                     <Link to='/promo' className='linksMobile contactLink'>Promo</Link>
                 </div>
             </div>
-        </section>
+        </section >
     )
 }

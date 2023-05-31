@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import Favorites from '../Products/Profile/Favorites';
 
 
 export default function Profile({ setIsLoggedIn }) {
@@ -11,9 +12,10 @@ export default function Profile({ setIsLoggedIn }) {
         setIsLoggedIn(false)
     }
 
+
     return (
         <section className='profileSectionBtn' >
-            <div className='triShape'></div>
+            {/* <div className='triShape'></div> */}
             <Link to='/cart' className='profileBtns profileBtn1'>
                 <div className='btnContainer'>
                     <div className='userLink'>Cart</div>
@@ -32,6 +34,7 @@ export default function Profile({ setIsLoggedIn }) {
                     <div className='profileIcon3'></div>
                 </div>
             </Link>
+            {/* <Favorites /> */}
             <button className='profileBtns profileBtn4'>
                 <div className='btnContainer' onClick={() => { handleLogOutBtn() }}>
                     <p>Logout</p>
