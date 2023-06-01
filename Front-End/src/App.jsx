@@ -7,9 +7,6 @@ import ProductDetails from './components/Products/ProductDetails';
 import Register from './components/Login-Register/Register';
 import Login from './components/Login-Register/Login';
 import Cart from './components/Products/Cart';
-// import Order from './components/Products/Orders';
-import Orders from './components/Products/Profile/Orders';
-import Favorites from './components/Products/Profile/Favorites';
 import Offers from './components/SpecialOffers/Offers';
 import Header from './components/Navbar/Header';
 
@@ -25,41 +22,21 @@ function App() {
   const [hideNav, setHideNav] = useState(false)
   const [finializedOrders, setFinalizedOrders] = useState([])
   const [finializedProducts, setFinalizedProducts] = useState([])
-
-  // localStorage.setItem('currentOrderId', "");
-
   const [favorites, setFavorites] = useState([])
 
   const fetchFavorites = async () => {
     try {
-      const favoriteResponse = await fetch(`${API_URL}favorite`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const favorite = await favoriteResponse.json();
-
-      if (favorite && favorite.length > 0) {
-        try {
-          let productIndex = favorite.length - 1;
-          const favoriteProductsArray = [];
-          while (productIndex >= 0) {
-            const favoriteProducts = await fetch(`${API_URL}products/${favorite[productIndex].productId}`, {
-              headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-              },
-            });
-
-            const products = await favoriteProducts.json();
-            favoriteProductsArray.push(...products);
-            productIndex--;
-          }
-          setFavorites(favoriteProductsArray)
-        } catch (error) {
-          console.log(error);
-        }
+      try {
+        const favoriteProducts = await fetch(`${API_URL}favorite/myFavorites`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const products = await favoriteProducts.json();
+        setFavorites(products)
+      } catch (error) {
+        console.log(error);
       }
     } catch (error) {
       console.log(error);
@@ -80,7 +57,6 @@ function App() {
   }
 
   const fetchOrderItems = async (orderId) => {
-    // finializedOrders.map(async (order) => {
     const response = await fetch(`${API_URL}order-items/${orderId}`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -90,7 +66,6 @@ function App() {
     const data = await response.json();
     setFinalizedProducts(data)
     console.log("ITEMS: ", finializedProducts)
-    // })
   }
 
   useEffect(() => {
@@ -138,7 +113,6 @@ function App() {
             path='/home'
             element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} />}
           />
-
           <Route
             path='/register'
             element={<Register API_URL={API_URL} setHideNav={setHideNav} />}
@@ -151,20 +125,10 @@ function App() {
             path='/cart'
             element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} />}
           />
-
           <Route
             path='/products'
             element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} />}
           />
-
-          {/* <Route
-            path='/orders'
-            element={<Orders API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
-          /> */}
-          {/* <Route
-            path='/favorites'
-            element={<Favorites API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
-          /> */}
           <Route
             path='/offers'
             element={<Offers API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />}
