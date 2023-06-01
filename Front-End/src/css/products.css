@@ -680,7 +680,21 @@
     padding: 15px;
     border: 1px solid #333333;
     text-decoration: none;
+}
 
+.checkoutOrders {
+    border-bottom: #333333 1px solid;
+    padding: 25px;
+    border: 1px solid #333333;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all ease-in-out .5s;
+}
+
+.itemCheckout {
+    display: flex;
+    margin: 10px 0 10px 0;
+    justify-content: space-between;
 }
 
 .favoriteProd:hover {
@@ -698,6 +712,12 @@
     justify-content: flex-end;
     font-size: 16px;
     color: #333333;
+}
+
+.topContentBoxOrder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .favTitle {

@@ -23,6 +23,8 @@ function App() {
   const [quantity, setQuantity] = useState(1);
   const [filterName, setFilterName] = useState("")
   const [hideNav, setHideNav] = useState(false)
+  const [finializedOrders, setFinalizedOrders] = useState([])
+  const [finializedProducts, setFinalizedProducts] = useState([])
 
   // localStorage.setItem('currentOrderId', "");
 
@@ -65,16 +67,30 @@ function App() {
   };
 
   const fetchOrders = async () => {
-    const response = await fetch(`${API_URL}order/myOrders/finalized`, {
+    if (token) {
+      const response = await fetch(`${API_URL}order/myOrders/finalized`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      const data = await response.json();
+      setFinalizedOrders(data)
+    }
+  }
+
+  const fetchOrderItems = async (orderId) => {
+    // finializedOrders.map(async (order) => {
+    const response = await fetch(`${API_URL}order-items/${orderId}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
 
     const data = await response.json();
-
-    // const hasUncheckedOrder = data.find((order) => order.isCheckedOut === true);
-    console.log(data)
+    setFinalizedProducts(data)
+    console.log("ITEMS: ", finializedProducts)
+    // })
   }
 
   useEffect(() => {
@@ -102,6 +118,7 @@ function App() {
     }
     fetchFavorites();
     fetchOrders()
+    // fetchOrderItems()
   }, [token]);
 
   return (
@@ -109,7 +126,7 @@ function App() {
       <BrowserRouter>
         {!hideNav &&
           <div className='marginReducer'>
-            <Header setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} favorites={favorites} />
+            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} favorites={favorites} finializedOrders={finializedOrders} token={token} />
           </div>
         }
         <Routes>

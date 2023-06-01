@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import Favorites from '../Products/Profile/Favorites';
+import Orders from '../Products/Profile/Orders';
 
-export default function Profile({ setIsLoggedIn, favorites, setShowProfile }) {
+export default function Profile({ setIsLoggedIn, favorites, setShowProfile, finializedOrders, token, API_URL }) {
 
     const [showFavorite, setShowFavorite] = useState(false)
     const [showOrder, setShowOrder] = useState(false)
@@ -23,14 +24,16 @@ export default function Profile({ setIsLoggedIn, favorites, setShowProfile }) {
                 </div>
             </Link>
 
-            <div className='profileBtns profileBtn2' onClick={() => { setShowOrder(!showOrder) }}>
-                <div className='btnContainer'>
+            <div className='profileBtns profileBtn2' onClick={() => { setShowOrder(!showOrder); setShowFavorite(false) }}>
+                <div className='btnContainer' >
                     <p>Orders</p>
                     <div className='profileIcon2'></div>
+
                 </div>
             </div>
+            {showOrder && <Orders finializedOrders={finializedOrders} token={token} API_URL={API_URL} />}
 
-            <div className='profileBtns profileBtn3' onClick={() => { setShowFavorite(!showFavorite) }}>
+            <div className='profileBtns profileBtn3' onClick={() => { setShowFavorite(!showFavorite); setShowOrder(false) }}>
                 <div className='btnContainer' >
                     <p>Favorites</p>
                     <div className='profileIcon3'></div>
