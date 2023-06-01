@@ -8,7 +8,9 @@ const {
     updateOrders,
     deleteOrder,
     getOrderByUserId,
-    getOrderCheckoutByUserId
+    getOrderCheckoutByUserId,
+    getOrderDetails,
+    getCart
 } = require('../db');
 
 apiRouter.get("/", async (req, res, next) => {
@@ -36,6 +38,27 @@ apiRouter.get("/myOrders/finalized", requireUser, async (req, res, next) => {
         next(error);
     }
 });
+
+apiRouter.get('/history', requireUser, async (req, res) => {
+    try {
+        const orderDetails = await getOrderDetails();
+        res.json(orderDetails);
+    } catch (error) {
+        console.error('Error retrieving order details:', error);
+        res.status(500).json({ error: 'An error occurred' });
+    }
+});
+
+apiRouter.get('/cart', requireUser, async (req, res) => {
+    try {
+        const cart = await getCart();
+        res.json(cart);
+    } catch (error) {
+        console.error('Error retrieving order details:', error);
+        res.status(500).json({ error: 'An error occurred' });
+    }
+});
+
 
 apiRouter.post("/", requireUser, async (req, res, next) => {
     try {
