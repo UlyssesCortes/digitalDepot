@@ -5,7 +5,8 @@ const { requireUser } = require("./utils");
 const {
     addToFavorite,
     getFavoriteByUserId,
-    deleteFavorite
+    deleteFavorite,
+    getFavoriteProducts
 } = require('../db');
 
 apiRouter.get("/", requireUser, async (req, res, next) => {
@@ -29,6 +30,19 @@ apiRouter.post("/:productId", requireUser, async (req, res, next) => {
         next(error);
     }
 });
+
+
+apiRouter.get('/myFavorites', requireUser, async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const favoriteProducts = await getFavoriteProducts(userId);
+        res.json(favoriteProducts);
+    } catch (error) {
+        console.error('Error retrieving favorite products:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 apiRouter.delete("/:productId", async (req, res, next) => {
     const { productId } = req.params;

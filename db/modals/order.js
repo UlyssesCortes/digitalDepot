@@ -17,6 +17,42 @@ async function createOrder(userId) {
     }
 }
 
+async function getOrderDetails() {
+    try {
+        const { rows } = await client.query(`
+        SELECT o.id AS order_id, o."orderDate", o."isCheckedOut", o."checkoutDate", o."checkoutSum",
+          oi.quantity, p.id AS "productId", p.title, p.price, p.images[1] AS image
+        FROM orders o
+        JOIN order_items oi ON o.id = oi."orderId"
+        JOIN products p ON oi."productId" = p.id
+        WHERE o."isCheckedOut" = true;
+      `);
+        return rows;
+    } catch (error) {
+        console.error('Error executing query:', error);
+        throw error;
+    }
+}
+async function getCart() {
+    try {
+        const { rows } = await client.query(`
+        SELECT o.id AS order_id, o."isCheckedOut",
+          oi.quantity, p.id AS "productId", p.title, p.price, p.images[1] AS image
+        FROM orders o
+        JOIN order_items oi ON o.id = oi."orderId"
+        JOIN products p ON oi."productId" = p.id
+        WHERE o."isCheckedOut" = false;
+      `);
+        return rows;
+    } catch (error) {
+        console.error('Error executing query:', error);
+        throw error;
+    }
+}
+
+
+
+
 async function getAllOrders() {
     try {
         const { rows } = await client.query(`
@@ -109,5 +145,7 @@ module.exports = {
     deleteOrder,
     getOrderById,
     updateOrders,
-    getOrderCheckoutByUserId
+    getOrderCheckoutByUserId,
+    getOrderDetails,
+    getCart
 };

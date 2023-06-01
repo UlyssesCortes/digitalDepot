@@ -5,7 +5,8 @@ const {
     getAllProducts,
     createProduct,
     updateProducts,
-    getProductById
+    getProductById,
+    getAllProductsFavorite
 } = require('../db');
 const { requireUser } = require("./utils");
 
@@ -17,6 +18,18 @@ apiRouter.get('/', async (req, res, next) => {
         next(error)
     }
 })
+
+apiRouter.get('/all', requireUser, async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const products = await getAllProductsFavorite(userId);
+        res.json(products);
+    } catch (error) {
+        console.error('Error retrieving products:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 apiRouter.post("/createProduct", async (req, res, next) => {
     const { title, description, price, quantity, category, type, images, dimensions, features } = req.body;

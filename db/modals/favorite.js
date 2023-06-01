@@ -18,6 +18,25 @@ async function addToFavorite(userId, productId) {
     }
 }
 
+async function getFavoriteProducts(userId) {
+    try {
+        const { rows } = await client.query(`
+        SELECT p.id, p.title, p.price, p.images[1] AS image
+        FROM favorite f
+        JOIN products p ON f."productId" = p.id
+        WHERE f."userId" = $1;
+      `, [userId]);
+        return rows;
+    } catch (error) {
+        console.error('Error executing query:', error);
+        throw error;
+    }
+}
+
+
+
+
+
 async function getFavoriteByUserId(userId) {
     try {
         const { rows } = await client.query(`
@@ -51,16 +70,17 @@ async function deleteFavorite(userId, productId) {
     }
 }
 
-async function deleteFavorite(productId) {
-    const {
-        rows: [favorite],
-    } = await client.query(`DELETE FROM favorite WHERE "productId"=$1;`,
-        [productId]);
-    return favorite;
-}
+// async function deleteFavorite(productId) {
+//     const {
+//         rows: [favorite],
+//     } = await client.query(`DELETE FROM favorite WHERE "productId"=$1;`,
+//         [productId]);
+//     return favorite;
+// }
 
 module.exports = {
     addToFavorite,
     getFavoriteByUserId,
     deleteFavorite,
+    getFavoriteProducts
 };
