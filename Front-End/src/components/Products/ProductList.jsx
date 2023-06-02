@@ -4,10 +4,9 @@ import LazyImages from './LazyImages';
 
 import ProductListLoading from '../Loading/ProductListLoading';
 
-export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setFilterName }) {
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn }) {
     const [products, setProducts] = useState([]);
     const [furniture, setFurniture] = useState([]);
-    const [myFavorites, setMyFavorites] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [showAll, setShowAll] = useState(false);
     const [productsPerPage] = useState(8);
@@ -18,30 +17,41 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
 
     const getProducts = async () => {
         try {
-            const response = await fetch(`${API_URL}products/all`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-
-                },
-            });
-            const result = await response.json();
-            if (result) {
-                setProducts(result);
+            if (isLoggedInLocal) {
+                const response = await fetch(`${API_URL}products/all`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                const result = await response.json();
+                if (result) {
+                    setProducts(result);
+                }
+                return result;
+            } else if (!isLoggedInLocal) {
+                console.log(isLoggedIn)
+                const response = await fetch(`${API_URL}products`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const result = await response.json();
+                if (result) {
+                    setProducts(result);
+                }
+                return result;
             }
-            return result;
+
         } catch (error) {
             console.error(error);
         }
     };
 
     useEffect(() => {
+        setIsLoggedIn(isLoggedInLocal)
         getProducts();
     }, []);
-
-    // if (!filterName) {
-    //     setFilterName("all")
-    // }
 
     useEffect(() => {
         if (!filterName || filterName === 'all') {
@@ -80,37 +90,11 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         }, 200);
     };
 
-    // const handleMouseLeave = () => {
-    //     setHoveredIndex(null);
-    // };
-
-    // const fetchFavorites = async () => {
-    //     try {
-    //         const favoriteResponse = await fetch(`${API_URL}favorite`, {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 Authorization: `Bearer ${token}`,
-    //             },
-    //         });
-    //         const favorite = await favoriteResponse.json();
-    //         setMyFavorites(favorite);
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     fetchFavorites();
-    // }, []);
-
-
     const handleFavoriteBtn = async (productId) => {
-        if (isLoggedIn) {
-            // Optimistically update the UI
+        if (isLoggedInLocal) {
             setFurniture((prevFurniture) => {
                 return prevFurniture.map((product) => {
                     if (product.id === productId) {
-                        // Toggle the isFavorite status
                         return { ...product, isFavorite: !product.isFavorite };
                     }
                     return product;
@@ -127,7 +111,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 });
 
                 if (!favoriteResponse.ok) {
-                    // If there is an error, revert the local update
                     setFurniture((prevFurniture) => {
                         return prevFurniture.map((product) => {
                             if (product.id === productId) {
@@ -143,7 +126,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 }
             } catch (error) {
                 console.error(error);
-                // Handle the error, show an error message, etc.
             }
         } else {
             alert('Need to be logged in to perform this action');
@@ -152,7 +134,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
 
 
     const removeFavorite = async (productId) => {
-        // Optimistically update the UI
         setFurniture((prevFurniture) => {
             return prevFurniture.map((product) => {
                 if (product.id === productId) {
@@ -172,7 +153,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             });
 
             if (!favoriteResponse.ok) {
-                // If there is an error, revert the local update
                 setFurniture((prevFurniture) => {
                     return prevFurniture.map((product) => {
                         if (product.id === productId) {
@@ -188,32 +168,8 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             }
         } catch (error) {
             console.error(error);
-            // Handle the error, show an error message, etc.
         }
     };
-
-
-    // const checkFavorite = (productId) => {
-    //     if (isLoggedInLocal) {
-    //         if (myFavorites.some((favorite) => favorite.productId === productId)) {
-    //             return (
-    //                 <div
-    //                     key={productId}
-    //                     className="redHeartIcon"
-    //                     onClick={() => removeFavorite(productId)}></div>
-    //             );
-    //         } else {
-    //             return (
-    //                 <div
-    //                     key={productId}
-    //                     className="heartIcon"
-    //                     onClick={() => handleFavoriteBtn(productId)}
-    //                 >
-    //                 </div>
-    //             );
-    //         }
-    //     }
-    // };
 
     if (products.length === 0) {
         return (
@@ -226,15 +182,15 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         setShowAll(!showAll);
     };
 
-    const visibleButtons = showAll ? furniture.length : 7;
 
+    const visibleButtons = showAll ? furniture.length : 7;
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = furniture.slice(indexOfFirstProduct, indexOfLastProduct);
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-
+    console.log(currentProducts)
     return (
         <>
             <section className="productsLis">
@@ -243,16 +199,9 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                     const imageSource = isHovered ? product.images[1] : product.images[0];
                     return (
                         <section
-                            // to={`/product/${product.id}`}
                             key={product.id}
                             className="productCard"
-                        // onMouseEnter={() => handleMouseEnter(index)}
-                        // onMouseLeave={handleMouseLeave}
                         >
-                            {/* {isLoggedInLocal && (
-                                <div className="favorite">{checkFavorite(product.id)}</div>
-                            )} */}
-
                             <div className="favorite">
                                 {isLoggedInLocal && product.isFavorite ? (
                                     <div
@@ -287,8 +236,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                                     <p className='discountPrice'> ${product.price * .75}</p><p className='originalPrice'> ${product.price}</p>
                                 </div>
                                     : <p>${product.price}</p>}
-                                {/* <p>{product.isFavorite}</p> */}
-
                             </div>
                         </section>
                     );

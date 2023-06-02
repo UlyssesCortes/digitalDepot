@@ -6,7 +6,7 @@ import Lottie from "lottie-react"
 import checkout from "../../assets/checkout.json"
 
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile }) {
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
@@ -175,7 +175,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     const segments = [2.5, 3];
 
     return (
-        <section className='cartContainer marginReducer'>
+        <section className='cartContainer marginReducer' onClick={() => { setShowProfile(false) }}>
             <section className='cartSection'>
                 <div className='subHeaderCart'>
                     <h1>SHOPPING CART</h1>

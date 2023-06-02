@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import '../../css/offer.css'
 
-export default function Offers() {
+export default function Offers({ setShowProfile }) {
     return (
-        <section className='marginReducer'>
+        <section className='marginReducer' onClick={() => { setShowProfile(false) }}>
             <section className='offers'>
                 <section className='topOffers'>
                     <Link to='/products' className='topOffer'></Link>

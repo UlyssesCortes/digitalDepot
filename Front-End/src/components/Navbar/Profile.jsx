@@ -40,8 +40,8 @@ export default function Profile({ setIsLoggedIn, favorites, setShowProfile, fini
                     {showFavorite && <Favorites favorites={favorites} setShowProfile={setShowProfile} />}
                 </div>
             </div>
-            <button className='profileBtns profileBtn4'>
-                <div className='btnContainer' onClick={() => { handleLogOutBtn() }}>
+            <button className='profileBtns profileBtn4' onClick={() => { handleLogOutBtn() }}>
+                <div className='btnContainer'>
                     <p>Logout</p>
                     <div className='profileIcon4'></div>
                 </div>

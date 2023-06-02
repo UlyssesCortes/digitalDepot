@@ -12,7 +12,7 @@ import addToCart from './addToCart';
 import ProductLoading from '../Loading/ProductLoading';
 import ImageSlider from './ImageSlider';
 
-export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity }) {
+export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [displayFeatures, setDisplayFeatures] = useState(false)
@@ -24,6 +24,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const [imgIndex, setImgIndex] = useState(0)
 
     useEffect(() => {
+        console.log("GETING PRODUCT DETAILS")
         const fetchProductDetails = async () => {
             try {
                 const response = await fetch(`${API_URL}products/${id}`, {
@@ -53,7 +54,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
 
     const productInfo = product[0];
     return (
-        <section id="topDetails" className='marginReducer'>
+        <section id="topDetails" className='marginReducer' onClick={() => { setShowProfile(false) }}>
             {showImageSlider &&
                 <div className='imageSliderContainerBox'>
                     <ImageSlider images={productInfo.images} setShowImageSlider={setShowImageSlider} imgIndex={imgIndex} />

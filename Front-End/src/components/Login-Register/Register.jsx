@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react"
-import authorization from "../../assets/registered3.json"
+import authorization from "../../assets/loadingLogin.json"
 import { usernameTakenAlert, passwordTooWeekAlert, invalidEmailAlert } from './Alerts';
 
 const Register = ({ API_URL, setHideNav }) => {
@@ -14,6 +14,13 @@ const Register = ({ API_URL, setHideNav }) => {
     const [weakPass, setWeakPass] = useState(false)
     const [invalidEmail, setInvalidEmail] = useState(false)
     const [registered, setRegistered] = useState(false)
+    const [showAnimation, setShowAnimation] = useState(false)
+
+    useEffect(() => {
+        setHideNav(true)
+    }, []);
+    const navigate = useNavigate();
+
 
     const handleChangeFirstName = (event) => {
         setFirstName(event.target.value)
@@ -69,12 +76,18 @@ const Register = ({ API_URL, setHideNav }) => {
                 setRegistered(true);
                 setWeakPass(false)
                 setUserNameTaken(false)
+                setShowAnimation(true)
+
             }
 
             if (result.token) {
                 setTimeout(() => {
-                    window.location.href = '/login';
-                }, 3200);
+                    navigate('/login');
+                    setHideNav(false)
+                }, 1500);
+            }
+            if (!result.token) {
+                setShowAnimation(false)
             }
 
         } catch (error) {
@@ -122,7 +135,7 @@ const Register = ({ API_URL, setHideNav }) => {
                 </section>
 
                 <div className='authContainer'>
-                    {registered && <Lottie className="authorizationAnimation2" animationData={authorization} loop={false} />}
+                    {showAnimation && <Lottie className="authorizationAnimation2" animationData={authorization} loop={false} />}
                 </div>
 
                 <section className='rightLoginImg'>

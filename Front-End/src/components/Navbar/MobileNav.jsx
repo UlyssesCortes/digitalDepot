@@ -23,9 +23,9 @@ export default function MobileNav() {
 
             <div className={`links-container ${isOpen && "active"}`}>
                 <div className="mobileNav">
-                    <Link to='/home' className='linksMobile'>Home</Link>
-                    <Link to='/products' className='linksMobile'>Products</Link>
-                    <Link to='/promo' className='linksMobile contactLink'>Promo</Link>
+                    <Link to='/home' className='linksMobile' onClick={() => { setIsOpen(!isOpen) }}>Home</Link>
+                    <Link to='/products' className='linksMobile' onClick={() => { setIsOpen(!isOpen) }}>Products</Link>
+                    <Link to='/offers' className='linksMobile contactLink' onClick={() => { setIsOpen(!isOpen) }}>Offers</Link>
                 </div>
             </div>
         </section >

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../css/login.css'
 import Lottie from "lottie-react"
-import authorization from "../../assets/logged.json"
+import authorization from "../../assets/loadingLogin.json"
 
 import { Link, useNavigate } from 'react-router-dom';
 import { wrongUserAlert } from './Alerts';
@@ -11,9 +11,13 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken, setHideN
     const [email, setEamil] = useState("")
     const [password, setPassword] = useState("")
     const [validInfo, setValidInfo] = useState(true)
+    const [showAnimation, setShowAnimation] = useState(false)
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        setHideNav(true)
+    }, []);
 
     const handleChangeEmail = (event) => {
         setEamil(event.target.value)
@@ -24,7 +28,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken, setHideN
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-
+        setShowAnimation(true)
         const fetchLogin = async () => {
             await fetch(`${API_URL}users/login`, {
                 method: "POST",
@@ -38,7 +42,6 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken, setHideN
                 })
             }).then(response => response.json())
                 .then(result => {
-                    console.log(result)
                     if (result.token) {
                         setIsLoggedIn(true)
                         localStorage.setItem('isLoggedIn', true)
@@ -48,11 +51,15 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken, setHideN
                     } else {
                         setValidInfo(false)
                     }
+
                     if (result.token) {
                         setTimeout(() => {
-                            navigate('/home');
+                            navigate('/');
                             setHideNav(false)
-                        }, 4200);
+                        }, 1500);
+                    }
+                    if (!result.token) {
+                        setShowAnimation(false)
                     }
 
                 })
@@ -96,7 +103,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken, setHideN
                 </section>
 
                 <div className='authContainer'>
-                    {isLoggedIn && <Lottie className="authorizationAnimation" animationData={authorization} loop={false} />}
+                    {showAnimation && <Lottie className="authorizationAnimation" animationData={authorization} loop={false} />}
                 </div>
 
                 <section className='rightLoginImg'>

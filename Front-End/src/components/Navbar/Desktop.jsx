@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
 
-export default function Desktop({ setFilterName }) {
+export default function Desktop({ setFilterName, setShowProfile }) {
     return (
-        <section className='leftNav'>
+        <section className='leftNav' onClick={() => { setShowProfile(false) }}>
             <section className='titleContainer'>
-                <Link to='/' className='companyTitle'>DigitalDepot2</Link>
+                <Link to='/' className='companyTitle'>DigitalDepot</Link>
 
             </section>
             <section className='navLinks'>

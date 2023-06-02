@@ -11,6 +11,7 @@
     font-size: 100px;
     letter-spacing: 4px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: default;
 }
 
 .bottomNavProduct {
@@ -848,6 +849,7 @@
     /* ImageSlider */
     .imageSliderContainerBox {
         position: relative;
+        background-color: white;
     }
 
     .image-slider-container {
@@ -870,5 +872,9 @@
 
     .mobileImgView {
         display: block;
+    }
+
+    .nameAndPrice h2 {
+        font-size: 30px;
     }
 }

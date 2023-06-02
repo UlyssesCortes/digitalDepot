@@ -14,7 +14,7 @@
     flex-direction: column;
     overflow: hidden;
     gap: 40px;
-    padding: 50px 0 0 100px;
+    padding: 50px 0 0 50px;
 }
 
 .bannerSlogan {
@@ -357,6 +357,13 @@
 .benefitImg4 {
     background-image: url("../assets/contact.png");
     cursor: pointer;
+}
+
+@media only screen and (max-width: 1200px) {
+    .bannerContent {
+        gap: 40px;
+        padding: 65px 0 0 45px;
+    }
 }
 
 @media only screen and (max-width: 750px) {
