@@ -21,52 +21,8 @@ function App() {
   const [filterName, setFilterName] = useState("")
   const [hideNav, setHideNav] = useState(false)
   const [finializedOrders, setFinalizedOrders] = useState([])
-  const [finializedProducts, setFinalizedProducts] = useState([])
   const [favorites, setFavorites] = useState([])
 
-  const fetchFavorites = async () => {
-    try {
-      try {
-        const favoriteProducts = await fetch(`${API_URL}favorite/myFavorites`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const products = await favoriteProducts.json();
-        setFavorites(products)
-      } catch (error) {
-        console.log(error);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fetchOrders = async () => {
-    if (token) {
-      const response = await fetch(`${API_URL}order/myOrders/finalized`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-
-      const data = await response.json();
-      setFinalizedOrders(data)
-    }
-  }
-
-  const fetchOrderItems = async (orderId) => {
-    const response = await fetch(`${API_URL}order-items/${orderId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
-
-    const data = await response.json();
-    setFinalizedProducts(data)
-    console.log("ITEMS: ", finializedProducts)
-  }
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -90,11 +46,43 @@ function App() {
           setUser(result)
         })
         .catch((error) => console.log(error));
+      fetchFavorites();
+      fetchOrders()
     }
-    fetchFavorites();
-    fetchOrders()
-    // fetchOrderItems()
   }, [token]);
+
+  const fetchFavorites = async () => {
+    try {
+      try {
+        const favoriteProducts = await fetch(`${API_URL}favorite/myFavorites`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const products = await favoriteProducts.json();
+        console.log("FAVORITES: ", products)
+        setFavorites(products)
+      } catch (error) {
+        console.log(error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchOrders = async () => {
+    if (token) {
+      const response = await fetch(`${API_URL}order/history`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      const data = await response.json();
+      console.log("MY ORDERS: ", data)
+      setFinalizedOrders(data)
+    }
+  }
 
   return (
     <>
@@ -137,7 +125,6 @@ function App() {
             element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} />}
           />
         </Routes>
-
       </BrowserRouter>
     </>
   )

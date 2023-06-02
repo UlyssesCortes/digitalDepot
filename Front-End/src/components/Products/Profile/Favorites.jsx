@@ -2,10 +2,9 @@ import { Link } from 'react-router-dom';
 
 export default function Favorites({ favorites, setShowProfile }) {
 
-
-
     return (
-        <section className='favoriteContainer' onClick={() => { setShowProfile(false) }}>
+        <section className='favoriteContainer' onClick={() => { setShowProfile(false) }
+        }>
             {favorites && favorites.map((favorite) => {
                 return (
                     <Link
@@ -19,6 +18,6 @@ export default function Favorites({ favorites, setShowProfile }) {
                     </Link>
                 );
             })}
-        </section>
+        </section >
     )
 }
