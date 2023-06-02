@@ -106,8 +106,65 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
 
     const handleFavoriteBtn = async (productId) => {
         if (isLoggedIn) {
+            // Optimistically update the UI
+            setFurniture((prevFurniture) => {
+                return prevFurniture.map((product) => {
+                    if (product.id === productId) {
+                        // Toggle the isFavorite status
+                        return { ...product, isFavorite: !product.isFavorite };
+                    }
+                    return product;
+                });
+            });
+
+            try {
+                const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                if (!favoriteResponse.ok) {
+                    // If there is an error, revert the local update
+                    setFurniture((prevFurniture) => {
+                        return prevFurniture.map((product) => {
+                            if (product.id === productId) {
+                                return { ...product, isFavorite: !product.isFavorite };
+                            }
+                            return product;
+                        });
+                    });
+
+                    throw new Error(
+                        `Failed to create order. Status: ${favoriteResponse.status}`
+                    );
+                }
+            } catch (error) {
+                console.error(error);
+                // Handle the error, show an error message, etc.
+            }
+        } else {
+            alert('Need to be logged in to perform this action');
+        }
+    };
+
+
+    const removeFavorite = async (productId) => {
+        // Optimistically update the UI
+        setFurniture((prevFurniture) => {
+            return prevFurniture.map((product) => {
+                if (product.id === productId) {
+                    return { ...product, isFavorite: false };
+                }
+                return product;
+            });
+        });
+
+        try {
             const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
-                method: 'POST',
+                method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
@@ -115,34 +172,26 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             });
 
             if (!favoriteResponse.ok) {
+                // If there is an error, revert the local update
+                setFurniture((prevFurniture) => {
+                    return prevFurniture.map((product) => {
+                        if (product.id === productId) {
+                            return { ...product, isFavorite: true };
+                        }
+                        return product;
+                    });
+                });
+
                 throw new Error(
                     `Failed to create order. Status: ${favoriteResponse.status}`
                 );
             }
-        } else {
-            alert('Need to be logged in to perform this action');
+        } catch (error) {
+            console.error(error);
+            // Handle the error, show an error message, etc.
         }
-        getProducts();
     };
 
-    const removeFavorite = async (productId) => {
-        console.log("REMOVING")
-        const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-        });
-        console.log(favoriteResponse)
-
-        if (!favoriteResponse.ok) {
-            throw new Error(
-                `Failed to create order. Status: ${favoriteResponse.status}`
-            );
-        }
-        getProducts();
-    };
 
     // const checkFavorite = (productId) => {
     //     if (isLoggedInLocal) {
@@ -204,20 +253,20 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                                 <div className="favorite">{checkFavorite(product.id)}</div>
                             )} */}
 
-
                             <div className="favorite">
-                                {isLoggedInLocal && product.isFavorite ? <div
-                                    key={product.id}
-                                    className="redHeartIcon"
-                                    onClick={() => removeFavorite(product.id)}></div>
-                                    :
+                                {isLoggedInLocal && product.isFavorite ? (
+                                    <div
+                                        key={product.id}
+                                        className="redHeartIcon"
+                                        onClick={() => removeFavorite(product.id)}
+                                    ></div>
+                                ) : (
                                     <div
                                         key={product.id}
                                         className="heartIcon"
                                         onClick={() => handleFavoriteBtn(product.id)}
-                                    >
-                                    </div>
-                                }
+                                    ></div>
+                                )}
                             </div>
 
                             <Link
