@@ -30,7 +30,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 }
                 return result;
             } else if (!isLoggedInLocal) {
-                console.log(isLoggedIn)
                 const response = await fetch(`${API_URL}products`, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -190,7 +189,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-    console.log(currentProducts)
     return (
         <>
             <section className="productsLis">

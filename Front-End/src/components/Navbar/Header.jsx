@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react'
 import Lottie from "lottie-react"
 import search from "../../assets/searchClock.json"
@@ -10,13 +10,17 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favorites, finializedOrders, token, API_URL, setFavorites, showProfile, setShowProfile }) {
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favorites, finializedOrders, token, API_URL, setFavorites, showProfile, setShowProfile, filterName }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
-    // const [showProfile, setShowProfile] = useState(false)
     const [showSearch, setShowSearch] = useState(false)
+    const [searchInput, setSearchInput] = useState("")
+    const [prevFilterName, setPrevFilterName] = useState("")
+
+    const navigate = useNavigate();
 
     const handleSearch = (event) => {
         setFilterName(event.target.value)
+        setSearchInput(event.target.value)
     }
 
     const fetchFavorites = async () => {
@@ -39,6 +43,25 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
         }
     };
 
+    const handleSerachBar = (event) => {
+        event.preventDefault()
+        setFilterName(searchInput)
+        setShowSearch(!showSearch)
+        navigate('/products');
+    }
+
+    const searchClick = () => {
+        setPrevFilterName(filterName)
+        setShowSearch(!showSearch)
+        setShowProfile(false)
+        navigate('/products');
+        if (showSearch) {
+            setFilterName(prevFilterName)
+        } else {
+            setFilterName(searchInput)
+        }
+    }
+
     return (
         <nav className='navbar' >
             <Desktop setFilterName={setFilterName} setShowProfile={setShowProfile} />
@@ -47,7 +70,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
             <section className='rightNav'>
                 <section className='navIcons'>
 
-                    <div className="box">
+                    <form className="box" onSubmit={handleSerachBar}>
                         <input
                             type="text"
                             className={`searchInput ${showSearch ? 'active' : ''}`}
@@ -55,11 +78,10 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
                             onChange={handleSearch}
                             placeholder="Search..."
                         />
-                    </div>
+                    </form>
                     <Lottie className="headerIcon" animationData={search} loop={false} onClick={() => {
-                        setShowSearch(!showSearch); setShowProfile(false)
+                        searchClick()
                     }} />
-
                     <Link to='/cart' className='navCartIcons' onClick={() => { setShowProfile(false) }}>
                         <Lottie className="cartIcon" animationData={cart} loop={false} />
                     </Link >

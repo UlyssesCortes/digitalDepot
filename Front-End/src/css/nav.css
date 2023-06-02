@@ -4,6 +4,7 @@
     align-items: center;
     height: 120px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow: hidden;
 }
 
 .leftNav {
@@ -334,27 +335,6 @@
     background-color: transparent;
 }
 
-@media only screen and (max-width: 1200px) {
-    .hamburgerNavContainer {
-        display: block;
-    }
-
-    .leftNav {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    #signUpBtn {
-        display: none;
-    }
-
-    .navbar {
-        height: 100px;
-    }
-}
-
-
 .box:hover .searchInput {
     width: 300px;
 }
@@ -394,4 +374,30 @@
 .cartIcon {
     height: 35px;
     width: 35px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .hamburgerNavContainer {
+        display: block;
+
+    }
+
+    .leftNav {
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    #signUpBtn {
+        display: none;
+    }
+
+    .navbar {
+        height: 100px;
+    }
+
+    .box:hover .searchInput {
+        width: 250px;
+    }
 }

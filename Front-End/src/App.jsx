@@ -24,8 +24,6 @@ function App() {
   const [favorites, setFavorites] = useState([])
   const [showProfile, setShowProfile] = useState(false)
 
-
-
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
     const currentOrderId = window.localStorage.getItem('currentOrderId');
