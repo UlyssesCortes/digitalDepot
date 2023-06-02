@@ -11,8 +11,7 @@ export default function Favorites({ favorites, setShowProfile }) {
                     <Link
                         to={`/product/${favorite.id}`}
                         className="favoriteProd" key={favorite.id} >
-
-                        <img className='favProductImg' src={favorite.images[0]} alt="" />
+                        <img className='favProductImg' src={favorite.image} alt="" />
                         <div className='topContentBoxFav'>
                             <p className="favTitle">{favorite.title}</p>
                             <p className="favPrice">${favorite.price}</p>

@@ -37,12 +37,12 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         getProducts();
     }, []);
 
-    if (!filterName) {
-        setFilterName("all")
-    }
+    // if (!filterName) {
+    //     setFilterName("all")
+    // }
 
     useEffect(() => {
-        if (filterName === 'all') {
+        if (!filterName || filterName === 'all') {
             setFurniture(products);
         } else if (filterName === 'Living Room') {
             const filteredProducts = products.filter(
@@ -125,6 +125,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     };
 
     const removeFavorite = async (productId) => {
+        console.log("REMOVING")
         const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
             method: 'DELETE',
             headers: {
@@ -132,6 +133,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 Authorization: `Bearer ${token}`,
             },
         });
+        console.log(favoriteResponse)
 
         if (!favoriteResponse.ok) {
             throw new Error(
@@ -139,7 +141,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             );
         }
         fetchFavorites();
-
     };
 
     const checkFavorite = (productId) => {

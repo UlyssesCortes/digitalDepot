@@ -1,36 +1,6 @@
 {
     "products": [
         {
-            "title": "Square Arm Sofa Bed",
-            "description": "Sofa by day, peacekeeper by night. This warm and inviting sleeper flips forward to become a queen-sized sleeper at a moment's notice. Walnut legs coordinate thoughtfully with your choice of fabric.",
-            "price": 2195,
-            "quantity": 10,
-            "category": "Living Room",
-            "type": "sofa",
-            "images": [
-                "https://secure.img1-fg.wfcdn.com/im/50740394/resize-h800-w800%5Ecompr-r85/1130/113016894/80%22+Square+Arm+Sofa+Bed.jpg",
-                "https://secure.img1-fg.wfcdn.com/im/08944566/resize-h800-w800%5Ecompr-r85/8494/84940673/80%22+Square+Arm+Sofa+Bed.jpg",
-                "https://secure.img1-fg.wfcdn.com/im/35440466/resize-h800-w800%5Ecompr-r85/1130/113016902/80%22+Square+Arm+Sofa+Bed.jpg",
-                "https://secure.img1-fg.wfcdn.com/im/13966736/resize-h800-w800%5Ecompr-r85/1130/113016911/80%22+Square+Arm+Sofa+Bed.jpg"
-            ],
-            "dimensions": {
-                "Overall": "30'' H X 80'' W X 30'' D",
-                "Seat": "18'' H X 76'' W X 21'' D",
-                "Back Height - Seat to Top of Back": "12'' H",
-                "Leg Height - Top to Bottom ": "7'' H",
-                "Arm Height - Floor to Arm": "23'' H",
-                "Overall Product Weight": "193 lb"
-            },
-            "features": {
-                "Sofa Design": "Sofa Bed",
-                "Upholstery Material": "Polyester Blend",
-                "Frame Material": "Solid Wood",
-                "Wood Species": "Pine",
-                "Leg Material": "Solid Wood",
-                "Removable Cushions": "Yes"
-            }
-        },
-        {
             "title": "Sleeper Sofa",
             "description": "It's a modern sofa bed that doesn't look like one. Sort of like a wolf in sheep's clothing. Just remove the back cushions and flip the seat forward. Voilà, instant queen-sized mattress. Brushed stainless steel leg.",
             "price": 2195,
@@ -147,6 +117,36 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
+            }
+        },
+        {
+            "title": "Square Arm Sofa Bed",
+            "description": "Sofa by day, peacekeeper by night. This warm and inviting sleeper flips forward to become a queen-sized sleeper at a moment's notice. Walnut legs coordinate thoughtfully with your choice of fabric.",
+            "price": 2195,
+            "quantity": 10,
+            "category": "Living Room",
+            "type": "sofa",
+            "images": [
+                "https://secure.img1-fg.wfcdn.com/im/50740394/resize-h800-w800%5Ecompr-r85/1130/113016894/80%22+Square+Arm+Sofa+Bed.jpg",
+                "https://secure.img1-fg.wfcdn.com/im/08944566/resize-h800-w800%5Ecompr-r85/8494/84940673/80%22+Square+Arm+Sofa+Bed.jpg",
+                "https://secure.img1-fg.wfcdn.com/im/35440466/resize-h800-w800%5Ecompr-r85/1130/113016902/80%22+Square+Arm+Sofa+Bed.jpg",
+                "https://secure.img1-fg.wfcdn.com/im/13966736/resize-h800-w800%5Ecompr-r85/1130/113016911/80%22+Square+Arm+Sofa+Bed.jpg"
+            ],
+            "dimensions": {
+                "Overall": "30'' H X 80'' W X 30'' D",
+                "Seat": "18'' H X 76'' W X 21'' D",
+                "Back Height - Seat to Top of Back": "12'' H",
+                "Leg Height - Top to Bottom ": "7'' H",
+                "Arm Height - Floor to Arm": "23'' H",
+                "Overall Product Weight": "193 lb"
+            },
+            "features": {
+                "Sofa Design": "Sofa Bed",
+                "Upholstery Material": "Polyester Blend",
+                "Frame Material": "Solid Wood",
+                "Wood Species": "Pine",
+                "Leg Material": "Solid Wood",
+                "Removable Cushions": "Yes"
             }
         },
         {

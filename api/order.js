@@ -30,7 +30,7 @@ apiRouter.get("/myOrders", requireUser, async (req, res, next) => {
         next(error);
     }
 });
-apiRouter.get("/myOrders/finalized", requireUser, async (req, res, next) => {
+apiRouter.get("/finalized", requireUser, async (req, res, next) => {
     try {
         const usersOrders = await getOrderCheckoutByUserId(req.user.id);
         res.send(usersOrders);
