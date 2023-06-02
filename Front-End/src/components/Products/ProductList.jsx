@@ -18,9 +18,11 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
 
     const getProducts = async () => {
         try {
-            const response = await fetch(`${API_URL}products`, {
+            const response = await fetch(`${API_URL}products/all`, {
                 headers: {
                     'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+
                 },
             });
             const result = await response.json();
@@ -82,24 +84,24 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     //     setHoveredIndex(null);
     // };
 
-    const fetchFavorites = async () => {
-        try {
-            const favoriteResponse = await fetch(`${API_URL}favorite`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            const favorite = await favoriteResponse.json();
-            setMyFavorites(favorite);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // const fetchFavorites = async () => {
+    //     try {
+    //         const favoriteResponse = await fetch(`${API_URL}favorite`, {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 Authorization: `Bearer ${token}`,
+    //             },
+    //         });
+    //         const favorite = await favoriteResponse.json();
+    //         setMyFavorites(favorite);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
-    useEffect(() => {
-        fetchFavorites();
-    }, []);
+    // useEffect(() => {
+    //     fetchFavorites();
+    // }, []);
 
 
     const handleFavoriteBtn = async (productId) => {
@@ -120,8 +122,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         } else {
             alert('Need to be logged in to perform this action');
         }
-        fetchFavorites();
-
+        getProducts();
     };
 
     const removeFavorite = async (productId) => {
@@ -140,30 +141,30 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 `Failed to create order. Status: ${favoriteResponse.status}`
             );
         }
-        fetchFavorites();
+        getProducts();
     };
 
-    const checkFavorite = (productId) => {
-        if (isLoggedInLocal) {
-            if (myFavorites.some((favorite) => favorite.productId === productId)) {
-                return (
-                    <div
-                        key={productId}
-                        className="redHeartIcon"
-                        onClick={() => removeFavorite(productId)}></div>
-                );
-            } else {
-                return (
-                    <div
-                        key={productId}
-                        className="heartIcon"
-                        onClick={() => handleFavoriteBtn(productId)}
-                    >
-                    </div>
-                );
-            }
-        }
-    };
+    // const checkFavorite = (productId) => {
+    //     if (isLoggedInLocal) {
+    //         if (myFavorites.some((favorite) => favorite.productId === productId)) {
+    //             return (
+    //                 <div
+    //                     key={productId}
+    //                     className="redHeartIcon"
+    //                     onClick={() => removeFavorite(productId)}></div>
+    //             );
+    //         } else {
+    //             return (
+    //                 <div
+    //                     key={productId}
+    //                     className="heartIcon"
+    //                     onClick={() => handleFavoriteBtn(productId)}
+    //                 >
+    //                 </div>
+    //             );
+    //         }
+    //     }
+    // };
 
     if (products.length === 0) {
         return (
@@ -199,9 +200,25 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                         // onMouseEnter={() => handleMouseEnter(index)}
                         // onMouseLeave={handleMouseLeave}
                         >
-                            {isLoggedInLocal && (
+                            {/* {isLoggedInLocal && (
                                 <div className="favorite">{checkFavorite(product.id)}</div>
-                            )}
+                            )} */}
+
+
+                            <div className="favorite">
+                                {isLoggedInLocal && product.isFavorite ? <div
+                                    key={product.id}
+                                    className="redHeartIcon"
+                                    onClick={() => removeFavorite(product.id)}></div>
+                                    :
+                                    <div
+                                        key={product.id}
+                                        className="heartIcon"
+                                        onClick={() => handleFavoriteBtn(product.id)}
+                                    >
+                                    </div>
+                                }
+                            </div>
 
                             <Link
                                 to={`/product/${product.id}`}
@@ -221,6 +238,8 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                                     <p className='discountPrice'> ${product.price * .75}</p><p className='originalPrice'> ${product.price}</p>
                                 </div>
                                     : <p>${product.price}</p>}
+                                {/* <p>{product.isFavorite}</p> */}
+
                             </div>
                         </section>
                     );

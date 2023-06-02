@@ -7,6 +7,7 @@ export default function Favorites({ favorites, setShowProfile }) {
         }>
             {favorites && favorites.map((favorite) => {
                 return (
+                    // WHen Clicked make sure to use the loading animation 
                     <Link
                         to={`/product/${favorite.id}`}
                         className="favoriteProd" key={favorite.id} >
