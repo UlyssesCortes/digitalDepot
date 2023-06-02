@@ -43,7 +43,6 @@ apiRouter.get('/myFavorites', requireUser, async (req, res) => {
     }
 });
 
-
 apiRouter.delete("/:productId", async (req, res, next) => {
     const { productId } = req.params;
     // on the front end control if favorite then on click delete 

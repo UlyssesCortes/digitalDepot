@@ -27,12 +27,60 @@ async function getOrderDetails() {
         JOIN products p ON oi."productId" = p.id
         WHERE o."isCheckedOut" = true;
       `);
-        return rows;
+
+        const orders = [];
+        let currentOrderId = null;
+        let currentOrder = null;
+
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            const {
+                order_id,
+                orderDate,
+                isCheckedOut,
+                checkoutDate,
+                checkoutSum,
+                quantity,
+                productId,
+                title,
+                price,
+                image,
+            } = row;
+
+            if (order_id !== currentOrderId) {
+                // Create a new order object
+                currentOrder = {
+                    order_id,
+                    orderDate,
+                    isCheckedOut,
+                    checkoutDate,
+                    checkoutSum,
+                    orderItems: [],
+                };
+
+                orders.push(currentOrder);
+                currentOrderId = order_id;
+            }
+            // Create an order item object and add it to the current order's orderItems array
+            const orderItem = {
+                quantity,
+                productId,
+                title,
+                price,
+                image,
+            };
+
+            currentOrder.orderItems.push(orderItem);
+        }
+
+        return orders;
     } catch (error) {
         console.error('Error executing query:', error);
         throw error;
     }
 }
+
+
 async function getCart() {
     try {
         const { rows } = await client.query(`
