@@ -6,7 +6,7 @@ export default function Desktop({ setFilterName }) {
     return (
         <section className='leftNav'>
             <section className='titleContainer'>
-                <Link to='/' className='companyTitle'>DigitalDepot</Link>
+                <Link to='/' className='companyTitle'>DigitalDepot2</Link>
 
             </section>
             <section className='navLinks'>
