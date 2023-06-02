@@ -31,7 +31,7 @@ export default function Profile({ setIsLoggedIn, favorites, setShowProfile, fini
 
                 </div>
             </div>
-            {showOrder && <Orders finializedOrders={finializedOrders} token={token} API_URL={API_URL} />}
+            {showOrder && <Orders finializedOrders={finializedOrders} setShowProfile={setShowProfile} />}
 
             <div className='profileBtns profileBtn3' onClick={() => { setShowFavorite(!showFavorite); setShowOrder(false) }}>
                 <div className='btnContainer' >
