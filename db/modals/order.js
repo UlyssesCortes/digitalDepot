@@ -28,6 +28,9 @@ async function getOrderDetails() {
         WHERE o."isCheckedOut" = true;
       `);
 
+        // Log the query plan and execution time
+        // console.log(rows[0]);
+
         const orders = [];
         let currentOrderId = null;
         let currentOrder = null;
@@ -97,9 +100,6 @@ async function getCart() {
         throw error;
     }
 }
-
-
-
 
 async function getAllOrders() {
     try {
