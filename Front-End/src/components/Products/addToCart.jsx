@@ -84,6 +84,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
             });
 
             if (!itemsResponse.ok) {
+                alert(`Failed to add item to cart. Status: ${itemsResponse.status}`)
                 throw new Error(`Failed to add item to cart. Status: ${itemsResponse.status}`);
             }
             items = await itemsResponse.json();

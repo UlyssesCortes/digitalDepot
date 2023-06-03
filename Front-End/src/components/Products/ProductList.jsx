@@ -237,7 +237,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                             <div className="productContent">
                                 <p>{product.title}</p>
                                 {product.type === "chair" ? <div className='discount'>
-                                    <p className='discountPrice'> ${product.price * .75}</p><p className='originalPrice'> ${product.price}</p>
+                                    <p className='discountPrice'> ${(product.price * .75).toFixed(2)}</p><p className='originalPrice'> ${(product.price)}</p>
                                 </div>
                                     : <p>${product.price}</p>}
                             </div>

@@ -3,7 +3,6 @@ import CartLoading from '../Loading/CartLoading';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react"
 import checkout from "../../assets/checkout.json"
-import dropDown from "../../assets/dropDown.json"
 import Favorites from './Profile/Favorites';
 import Orders from './Profile/Orders';
 // import { getOrderItems2 } from '../../API/cartApi';
@@ -15,6 +14,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
     const [showCart, setShowCart] = useState(true);
+    const segments = [2.5, 3];
 
     let sum = 0;
 
@@ -193,7 +193,15 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         setPageTitle(" SHOPPING CART")
     }
 
-    const segments = [2.5, 3];
+
+    const handleAnimation = () => {
+        setTimeout(() => {
+            setCheckoutAnimation(false)
+        }, 3500);
+
+        return <Lottie className="checkoutAnimation" animationData={checkout} loop={false} segments={segments} />
+    }
+
 
     return (
         <section className='cartContainer marginReducer' onClick={() => { setShowProfile(false) }}>
@@ -207,12 +215,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                         </div>
                         <div className='dropDownBox' onClick={() => { handleFavClick() }}>
                             <p className='cartLink'>Favorites</p>
-                            {/* <Lottie className="dropDownAnimation" animationData={dropDown} loop={false} segments={segments} /> */}
-
                         </div>
                         <div className='dropDownBox' onClick={() => { handleOrderClick() }}>
                             <p className='cartLink'>Orders</p>
-                            {/* <Lottie className="dropDownAnimation" animationData={dropDown} loop={false} segments={segments} /> */}
                         </div>
                         <Link to='/products'>
                             <button>Continue Shoping</button>
@@ -224,7 +229,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     <section className='productsSec'>
                         {loading && !showFavorite && !showOrder && !checkoutAnimation && <CartLoading />}
 
-                        {checkoutAnimation && <Lottie className="checkoutAnimation" animationData={checkout} loop={false} segments={segments} />}
+                        {checkoutAnimation && !showFavorite && !showOrder && handleAnimation()}
 
                         {!loading && showCart && isLoggedIn && products && products.map((data, index) =>
                             <div className="cartProduct" key={data.id + '-' + index}>
@@ -236,13 +241,13 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                     <div className='topContentBox'>
                                         <h3>{data.title}</h3>
                                         {data.type === "chair" ? <div className='discount'>
-                                            <h3 className='discountPrice'> ${data.price * .75}</h3><h3 className='originalPrice'> ${data.price}</h3>
+                                            <h3 className='discountPrice'> ${(data.price * .75).toFixed(2)}</h3><h3 className='originalPrice'> ${data.price}</h3>
                                         </div>
                                             : <h3>${data.price}</h3>}
                                         <p className='invisSum'>
                                             {products.length === myCart.length ?
-                                                data.type === "chair" ? sum += parseFloat(((myCart[index].quantity) * data.price) * .75) :
-                                                    sum += parseFloat(myCart[index].quantity) * data.price : sum += parseFloat(data.price)}
+                                                data.type === "chair" ? sum += parseFloat((((myCart[index].quantity) * data.price) * .75).toFixed(2)) :
+                                                    sum += parseFloat((myCart[index].quantity) * data.price).toFixed(2) : sum += parseFloat(data.price)}
                                         </p>
                                     </div>
 
@@ -268,12 +273,16 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     </section>
                     {myCart.length > 0 && showCart &&
                         <section className='CartBtnContainer'>
-                            <p className='totalPrice'>Total ${sum}</p>
+                            <p className='totalPrice'>Total ${sum}.00</p>
                             <button onClick={() => { handleUpdate(currentOrderId) }}>Checkout</button>
                         </section>
                     }
                 </div>
 
+                {/* {sum % 1 === 0 ?
+                                <p className='totalPrice'>Total ${sum}</p> :
+                                <p className='totalPrice'>Total ${sum}</p>
+                            } */}
 
             </section>
 

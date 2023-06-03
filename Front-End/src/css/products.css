@@ -150,9 +150,8 @@
 
 /* ORDER */
 .checkoutOrders {
-    border-bottom: #333333 1px solid;
     padding: 25px;
-    border: 1px solid #333333;
+    border-bottom: 1px solid #333333;
     text-decoration: none;
     cursor: pointer;
 }

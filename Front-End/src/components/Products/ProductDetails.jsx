@@ -93,9 +93,9 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                     <div className='nameAndPrice'>
                         <h2>{productInfo.title}</h2>
                         {productInfo.type === "chair" ? <div className='discountD'>
-                            <p className='discountPriceD'> ${(productInfo.price * .75) * quantity}.00</p><p className='originalPriceD'> ${productInfo.price * quantity}.00</p>
+                            <p className='discountPriceD'> ${((productInfo.price * .75) * quantity).toFixed(2)}</p><p className='originalPriceD'> ${(productInfo.price * quantity).toFixed(2)}</p>
                         </div>
-                            : <p className='regularPrice'>${productInfo.price * quantity}.00 </p>}
+                            : <p className='regularPrice'>${(productInfo.price * quantity).toFixed(2)} </p>}
                     </div>
                     <div className='quantity'>
                         <div className='quntityBtns'>

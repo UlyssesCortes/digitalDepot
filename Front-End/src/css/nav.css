@@ -233,10 +233,6 @@
     background-color: transparent;
 }
 
-.box:hover .searchInput {
-    width: 300px;
-}
-
 .box {
     display: flex;
     justify-content: center;
