@@ -4,6 +4,7 @@ import CartLoading from '../Loading/CartLoading';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react"
 import checkout from "../../assets/checkout.json"
+import dropDown from "../../assets/dropDown.json"
 
 
 export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile }) {
@@ -12,6 +13,8 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
+    const [showFavorite, setShowFavorite] = useState(false);
+    const [showOrder, setShowOrder] = useState(false);
     let sum = 0;
 
     const getOrderItems = async () => {
@@ -30,7 +33,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             console.error(error);
         }
     }
-
 
     const deleteItem = async (itemId) => {
         try {
@@ -51,7 +53,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             console.error(error);
         }
     };
-
 
     const increaseQuantity = async (index) => {
         if (myCart[index].quantity < 4) {
@@ -179,11 +180,22 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             <section className='cartSection'>
                 <div className='subHeaderCart'>
                     <h1>SHOPPING CART</h1>
+
                     <section className='CartBtnContainer'>
                         <p className='totalPrice'>My Cart</p>
+                        <div className='dropDownBox' onClick={() => { setShowFavorite(!showFavorite) }}>
+                            <p className='cartLink'>Favorites</p>
+                            <Lottie className="dropDownAnimation" animationData={dropDown} loop={false} segments={segments} />
+
+                        </div>
+                        <div className='dropDownBox' onClick={() => { setShowOrder(!showOrder) }}>
+                            <p className='cartLink'>Orders</p>
+                            <Lottie className="dropDownAnimation" animationData={dropDown} loop={false} segments={segments} />
+                        </div>
                         <Link to='/products'>
                             <button>Continue Shoping</button>
                         </Link>
+
                     </section>
 
                     <section className='productsSec'>

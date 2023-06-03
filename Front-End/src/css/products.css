@@ -608,6 +608,25 @@
     width: 600px;
 }
 
+.cartLink {
+    font-size: 24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    /* outline: auto; */
+    padding: 10px;
+}
+
+.dropDownBox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.dropDownAnimation {
+    width: 45px;
+    height: 45px;
+}
+
 /* IMAGE SLIDER */
 .imageSliderContainerBox {
     position: fixed;
@@ -711,8 +730,10 @@
     margin-left: -402px;
     width: 400px;
     background-color: white;
+    outline: auto;
     left: 0;
     top: 0;
+
 }
 
 .favoriteProd {

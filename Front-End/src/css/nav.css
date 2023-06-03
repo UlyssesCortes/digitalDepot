@@ -106,41 +106,15 @@
 /* PROFILE */
 .profileSectionBtn {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
     flex-direction: column;
     margin-top: 2%;
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.918);
-    backdrop-filter: blur(20px);
-    height: 400px;
-    width: 340px;
-    border: #2f2f2f solid 1px;
+    background-color: #2f2f2f;
+    padding: 86px;
     border-radius: 10px;
     right: 0;
     z-index: 1000;
     transition: transform ease-in-out 0.5s, opacity ease-in-out 0.5s;
-}
-
-.profileSectionBtn.active {
-    transform: translateX(0);
-    opacity: 1;
-}
-
-.triShape {
-    position: absolute;
-    height: 50px;
-    width: 50px;
-    background-color: rgba(248, 248, 248, 0.932);
-    backdrop-filter: blur(20px);
-    margin-top: -26px;
-    margin-right: 48px;
-    top: 0;
-    right: 0;
-    border-top: #2f2f2f solid 1px;
-    border-left: #2f2f2f solid 1px;
-    border-radius: 3px;
-    transform: rotate(45deg);
 }
 
 .profileBtns {
@@ -159,55 +133,6 @@
     font-size: 18px;
     color: #5f5f5f;
     z-index: 999;
-}
-
-.profileBtns:hover {
-    background-color: rgba(233, 231, 231, 0.932);
-}
-
-.profileBtn1,
-.profileBtn4 {
-    border: none;
-}
-
-.profileBtn3 {
-    border-top: none;
-}
-
-.btnContainer {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    gap: 20px;
-}
-
-.userLink {
-    text-decoration: none;
-    color: #5f5f5f;
-}
-
-.profileIcon1,
-.profileIcon2,
-.profileIcon3,
-.profileIcon4 {
-    width: 25px;
-    height: 25px;
-    background-image: url("../assets/");
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
-}
-
-.profileIcon2 {
-    background-image: url("../assets/order.png");
-}
-
-.profileIcon3 {
-    background-image: url("../assets/fav.png");
-}
-
-.profileIcon4 {
-    background-image: url("../assets/exit.png");
 }
 
 .navLink::after {
@@ -422,13 +347,19 @@
     margin-top: 20px;
     background-color: #2f2f2f;
     padding: 86px;
+    padding: 86px 86px 100px 400px;
+
     right: 0;
     font-size: 18px;
     list-style: none;
 }
 
+.navUserIconDopWidth {
+    /* padding: 86px 86px 100px 400px; */
+
+}
+
 .userNavLinks {
-    background-color: #2f2f2f;
     color: white;
     padding: 10px;
     border-radius: 10px;
