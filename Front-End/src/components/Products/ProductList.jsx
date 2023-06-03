@@ -1,6 +1,7 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import LazyImages from './LazyImages';
+import { motion } from "framer-motion";
 
 import ProductListLoading from '../Loading/ProductListLoading';
 
@@ -202,17 +203,22 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                         >
                             <div className="favorite">
                                 {isLoggedInLocal && product.isFavorite ? (
-                                    <div
+
+                                    <motion.div
                                         key={product.id}
                                         className="redHeartIcon"
                                         onClick={() => removeFavorite(product.id)}
-                                    ></div>
+                                        whileHover={{ scale: [null, 1.2, 1.1] }}
+                                        transition={{ duration: 0.3 }}
+                                    ></motion.div>
                                 ) : (
-                                    <div
+                                    <motion.div
                                         key={product.id}
                                         className="heartIcon"
                                         onClick={() => handleFavoriteBtn(product.id)}
-                                    ></div>
+                                        whileHover={{ scale: [null, 1.2, 1.1] }}
+                                        transition={{ duration: 0.3 }}
+                                    ></motion.div>
                                 )}
                             </div>
 

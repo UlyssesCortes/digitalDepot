@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Favorites from '../Products/Profile/Favorites';
 import Orders from '../Products/Profile/Orders';
 
-export default function Profile({ setIsLoggedIn, favorites, setShowProfile, finializedOrders, token, API_URL }) {
+export default function Profile({ setIsLoggedIn, favorites, setShowProfile, finializedOrders }) {
 
     const [showFavorite, setShowFavorite] = useState(false)
     const [showOrder, setShowOrder] = useState(false)

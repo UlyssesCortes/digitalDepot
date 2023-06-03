@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 export default function Banner() {
     return (
@@ -14,7 +15,14 @@ export default function Banner() {
                     <p>mid-century modern accent</p>
                 </section>
                 <section className='bannerBtnContainer'>
-                    <Link to='/products' className=' bannerBtn'>Shop now</Link>
+                    <motion.div
+                        className="box"
+                        whileHover={{ scale: [null, 1.1, 1.1] }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Link to='/products' className=' bannerBtn'>Shop now</Link>
+
+                    </motion.div>
                     <section className='bannerStats'>
                         <div className='statsLeft'>
                             <h1>20k+</h1>

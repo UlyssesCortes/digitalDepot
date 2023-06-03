@@ -15,6 +15,8 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
     const [showSearch, setShowSearch] = useState(false)
     const [searchInput, setSearchInput] = useState("")
     const [prevFilterName, setPrevFilterName] = useState("")
+    const [isCategorieOpen, setIsCategorieOpen] = useState(false);
+
 
     const navigate = useNavigate();
 
@@ -47,6 +49,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
         event.preventDefault()
         setFilterName(searchInput)
         setShowSearch(!showSearch)
+        setIsCategorieOpen(false)
         navigate('/products');
     }
 
@@ -54,6 +57,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
         setPrevFilterName(filterName)
         setShowSearch(!showSearch)
         setShowProfile(false)
+        setIsCategorieOpen(false)
         navigate('/products');
         if (showSearch) {
             setFilterName(prevFilterName)
@@ -64,7 +68,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
 
     return (
         <nav className='navbar' >
-            <Desktop setFilterName={setFilterName} setShowProfile={setShowProfile} />
+            <Desktop setFilterName={setFilterName} setShowProfile={setShowProfile} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} />
             <MobileNav />
 
             <section className='rightNav'>
@@ -80,9 +84,9 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
                         />
                     </form>
                     <Lottie className="headerIcon" animationData={search} loop={false} onClick={() => {
-                        searchClick()
+                        searchClick();
                     }} />
-                    <Link to='/cart' className='navCartIcons' onClick={() => { setShowProfile(false) }}>
+                    <Link to='/cart' className='navCartIcons' onClick={() => { setShowProfile(false); setIsCategorieOpen(false) }}>
                         <Lottie className="cartIcon" animationData={cart} loop={false} />
                     </Link >
 
@@ -90,16 +94,16 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
                 {isLoggedIn ?
                     <section>
                         <section className='profileSection'>
-                            <Lottie className="userIcon" animationData={user} loop={false} onClick={() => { setShowProfile(!showProfile); fetchFavorites() }} />
+                            <Lottie className="userIcon" animationData={user} loop={false} onClick={() => { setShowProfile(!showProfile); fetchFavorites(); setIsCategorieOpen(false) }} />
                         </section>
 
 
-                        {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} favorites={favorites} setShowProfile={setShowProfile} finializedOrders={finializedOrders} token={token} API_URL={API_URL} />}
+                        {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} favorites={favorites} setShowProfile={setShowProfile} finializedOrders={finializedOrders} />}
                     </section>
                     :
                     <section className='navLogContainer'>
-                        <Link to='/register' id='signUpBtn' className='navBtn' onClick={() => { setHideNav(true) }}>Sign Up</Link>
-                        <Link to='/login' className='navBtn navLog' onClick={() => { setHideNav(true) }}>Login</Link>
+                        <Link to='/register' id='signUpBtn' className='navBtn' onClick={() => { setHideNav(true); setIsCategorieOpen(false) }}>Sign Up</Link>
+                        <Link to='/login' className='navBtn navLog' onClick={() => { setHideNav(true); setIsCategorieOpen(false) }}>Login</Link>
                     </section>
                 }
             </section>
