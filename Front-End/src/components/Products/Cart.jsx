@@ -1,20 +1,21 @@
-import Header from '../Navbar/Header'
 import React, { useState, useEffect } from 'react';
 import CartLoading from '../Loading/CartLoading';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react"
 import checkout from "../../assets/checkout.json"
 import dropDown from "../../assets/dropDown.json"
+import Favorites from './Profile/Favorites';
+import Orders from './Profile/Orders';
+// import { getOrderItems2 } from '../../API/cartApi';
 
-
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle }) {
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
-    const [showFavorite, setShowFavorite] = useState(false);
-    const [showOrder, setShowOrder] = useState(false);
+    const [showCart, setShowCart] = useState(true);
+
     let sum = 0;
 
     const getOrderItems = async () => {
@@ -173,24 +174,45 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
     }, [myCart]);
 
+    const handleFavClick = () => {
+        setShowFavorite(true)
+        setShowCart(false)
+        setShowOrder(false)
+        setPageTitle("FAVORITES")
+    }
+    const handleOrderClick = () => {
+        setShowFavorite(false)
+        setShowCart(false)
+        setShowOrder(true)
+        setPageTitle("ORDER HISTORY")
+    }
+    const handleCartClick = () => {
+        setShowFavorite(false)
+        setShowCart(true)
+        setShowOrder(false)
+        setPageTitle(" SHOPPING CART")
+    }
+
     const segments = [2.5, 3];
 
     return (
         <section className='cartContainer marginReducer' onClick={() => { setShowProfile(false) }}>
             <section className='cartSection'>
                 <div className='subHeaderCart'>
-                    <h1>SHOPPING CART</h1>
-
+                    <h1>{pageTitle}</h1>
                     <section className='CartBtnContainer'>
-                        <p className='totalPrice'>My Cart</p>
-                        <div className='dropDownBox' onClick={() => { setShowFavorite(!showFavorite) }}>
-                            <p className='cartLink'>Favorites</p>
-                            <Lottie className="dropDownAnimation" animationData={dropDown} loop={false} segments={segments} />
+                        <div className='myCartBtnContainer' onClick={() => { handleCartClick() }}>
+                            <p className='totalPrice' >My Cart</p>
 
                         </div>
-                        <div className='dropDownBox' onClick={() => { setShowOrder(!showOrder) }}>
+                        <div className='dropDownBox' onClick={() => { handleFavClick() }}>
+                            <p className='cartLink'>Favorites</p>
+                            {/* <Lottie className="dropDownAnimation" animationData={dropDown} loop={false} segments={segments} /> */}
+
+                        </div>
+                        <div className='dropDownBox' onClick={() => { handleOrderClick() }}>
                             <p className='cartLink'>Orders</p>
-                            <Lottie className="dropDownAnimation" animationData={dropDown} loop={false} segments={segments} />
+                            {/* <Lottie className="dropDownAnimation" animationData={dropDown} loop={false} segments={segments} /> */}
                         </div>
                         <Link to='/products'>
                             <button>Continue Shoping</button>
@@ -198,12 +220,13 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
                     </section>
 
+                    {/* CART COMPONENT */}
                     <section className='productsSec'>
+                        {loading && !showFavorite && !showOrder && !checkoutAnimation && <CartLoading />}
 
-                        {loading && !checkoutAnimation && <CartLoading />}
                         {checkoutAnimation && <Lottie className="checkoutAnimation" animationData={checkout} loop={false} segments={segments} />}
 
-                        {!loading && isLoggedIn && products && products.map((data, index) =>
+                        {!loading && showCart && isLoggedIn && products && products.map((data, index) =>
                             <div className="cartProduct" key={data.id + '-' + index}>
 
                                 <div className='contentBox'>
@@ -236,16 +259,26 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                 </div>
                             </div>
                         )}
-
+                        {showFavorite &&
+                            // <section className='favBox'>
+                            <Favorites favorites={favorites} />
+                            // </section>
+                        }
+                        {showOrder && <Orders finializedOrders={finializedOrders} />}
                     </section>
-                    {myCart.length > 0 &&
+                    {myCart.length > 0 && showCart &&
                         <section className='CartBtnContainer'>
                             <p className='totalPrice'>Total ${sum}</p>
                             <button onClick={() => { handleUpdate(currentOrderId) }}>Checkout</button>
                         </section>
                     }
                 </div>
+
+
             </section>
+
+
+
         </section>
     )
 }

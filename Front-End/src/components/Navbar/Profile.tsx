@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import Favorites from '../Products/Profile/Favorites';
-import Orders from '../Products/Profile/Orders';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 
-export default function Profile({ setIsLoggedIn, favorites, setShowProfile, finializedOrders, showProfile }) {
-    const [showFavorite, setShowFavorite] = useState(false);
-    const [showOrder, setShowOrder] = useState(false);
+export default function Profile({ setIsLoggedIn, favorites, setShowProfile, finializedOrders, showProfile, setShowFavorite, setShowOrder, setPageTitle }) {
 
     const handleLogOutBtn = () => {
         localStorage.removeItem('isLoggedIn');
         window.localStorage.removeItem('token');
         setIsLoggedIn(false);
+        setShowProfile(false)
     };
 
     const itemVariants: Variants = {
@@ -45,6 +42,26 @@ export default function Profile({ setIsLoggedIn, favorites, setShowProfile, fini
         },
     };
 
+    const handleFavClick = () => {
+        setShowFavorite(true)
+        setShowOrder(false)
+        setShowProfile(false)
+        setPageTitle("FAVORITES")
+    }
+    const handleOrderClick = () => {
+        setShowFavorite(false)
+        setShowProfile(false)
+        setShowOrder(true)
+        setPageTitle("ORDER HISTORY")
+    }
+    const handleCartClick = () => {
+        setShowFavorite(false)
+        setShowOrder(false)
+        setShowProfile(false)
+        setPageTitle("SHOPPING CART")
+    }
+
+
     return (
 
         <motion.section className='profileSectionBtn'
@@ -53,15 +70,10 @@ export default function Profile({ setIsLoggedIn, favorites, setShowProfile, fini
             style={{ pointerEvents: showProfile ? "auto" : "none" }}
             variants={containerVariants}
         >
-            {/* <motion.div
-                className='container'
-
-                variants={containerVariants}
-
-            > */}
             <motion.div
                 variants={itemVariants}
                 whileHover={{ scale: 1.04 }}
+                onClick={() => { handleCartClick() }}
             >
                 <Link to='/cart' className='profileBtns'>
                     <div className='btnContainer'>
@@ -72,12 +84,9 @@ export default function Profile({ setIsLoggedIn, favorites, setShowProfile, fini
 
             <motion.div
                 className='profileBtns'
-                // onClick={() => {
-                //     setShowOrder(!showOrder);
-                //     setShowFavorite(false);
-                // }}
                 variants={itemVariants}
                 whileHover={{ scale: 1.04 }}
+                onClick={() => { handleOrderClick() }}
             >
                 <Link to='/cart' className='profileBtns'>
                     <p className='userNavLinks'>Orders</p>
@@ -87,12 +96,10 @@ export default function Profile({ setIsLoggedIn, favorites, setShowProfile, fini
 
             <motion.div
                 className='profileBtns'
-                // onClick={() => {
-                //     setShowFavorite(!showFavorite);
-                //     setShowOrder(false);
-                // }}
                 variants={itemVariants}
                 whileHover={{ scale: 1.04 }}
+                onClick={() => { handleFavClick() }}
+
             >
                 <Link to='/cart' className='btnContainer profileBtns'>
                     <p className='userNavLinks'>Favorites</p>
@@ -108,74 +115,6 @@ export default function Profile({ setIsLoggedIn, favorites, setShowProfile, fini
 
                 </div>
             </motion.button>
-
-            {showOrder && <Orders finializedOrders={finializedOrders} setShowProfile={setShowProfile} />}
-            {showFavorite && <Favorites favorites={favorites} setShowProfile={setShowProfile} />}
         </motion.section>
-
-        // <section className="">
-        //     <AnimatePresence>
-        //         {showProfile && (
-        //             <motion.nav initial="closed" animate="open" exit="closed" layout="position" className='navUserIconDop'>
-        //                 <motion.ul
-        //                     variants={{
-        //                         open: {
-        //                             clipPath: 'inset(0% 0% 0% 0% round 10px)',
-        //                             transition: {
-        //                                 type: 'spring',
-        //                                 bounce: 0,
-        //                                 duration: 0.5,
-        //                                 delayChildren: 0.3,
-        //                                 staggerChildren: 0.05,
-        //                             },
-        //                         },
-        //                         closed: {
-        //                             clipPath: 'inset(10% 50% 90% 50% round 10px)',
-        //                             transition: {
-        //                                 type: 'spring',
-        //                                 bounce: 0,
-        //                                 duration: 0.2,
-        //                             },
-        //                         },
-        //                     }}
-        //                     style={{ pointerEvents: 'auto' }}
-        //                     className={`${showFavorite ? "navUserIconDopWidth" : ""}`}
-        //                 >
-        //                     <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
-        //                         <Link to="/cart" className="profileBtns profileBtn1">
-        //                             <div className="btnContainer">
-        //                                 <div className="userLink userNavLinks">Cart</div>
-        //                             </div>
-        //                         </Link>
-        //                     </motion.li>
-        //                     <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
-        //                         <div className="profileBtns profileBtn2" onClick={() => { setShowOrder(!showOrder); setShowFavorite(false) }}>
-        //                             <div className="btnContainer">
-        //                                 <p className='userNavLinks'>Orders</p>
-        //                             </div>
-        //                         </div>
-        //                         {showOrder && <Orders finializedOrders={finializedOrders} setShowProfile={setShowProfile} />}
-
-        //                     </motion.li>
-        //                     <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
-        //                         <div className="profileBtns profileBtn3" onClick={() => { setShowFavorite(!showFavorite); setShowOrder(false) }}>
-        //                             <div className="btnContainer">
-        //                                 <p className='userNavLinks'>Favorites</p>
-        //                                 {showFavorite && <Favorites favorites={favorites} setShowProfile={setShowProfile} />}
-        //                             </div>
-        //                         </div>
-        //                     </motion.li>
-        //                     <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
-        //                         <button className="profileBtns profileBtn4" onClick={() => { handleLogOutBtn() }}>
-        //                             <div className="btnContainer">
-        //                                 <p className='userNavLinks'>Logout</p>
-        //                             </div>
-        //                         </button>
-        //                     </motion.li>
-        //                 </motion.ul>
-        //             </motion.nav>
-        //         )}
-        //     </AnimatePresence>
-        // </section >
     );
 }      

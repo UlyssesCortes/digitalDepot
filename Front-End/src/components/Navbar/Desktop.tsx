@@ -5,6 +5,8 @@ import { motion, Variants } from "framer-motion";
 
 export default function Desktop({ setFilterName, setShowProfile, setIsCategorieOpen, isCategorieOpen }) {
 
+
+
     const itemVariants: Variants = {
         open: {
             opacity: 1,

@@ -9,41 +9,48 @@ export default function Orders({ finializedOrders, setShowProfile }) {
     };
 
     return (
-        <section className="favoriteContainer">
-            {finializedOrders &&
-                finializedOrders.map((order) => {
-                    const isOpen = selectedOrderId === order.order_id;
+        <section className='favBox'>
+            <section className="favoriteContainer">
+                {finializedOrders &&
+                    finializedOrders.map((order) => {
+                        const isOpen = selectedOrderId === order.order_id;
 
-                    return (
-                        <div
-                            className="checkoutOrders"
-                            key={order.order_id}
-                            onClick={() => handleClick(order.order_id)}
-                        >
-                            <div className="topContentBoxOrder">
-                                <p className="favTitle">{order.checkoutDate}</p>
-                                <div className='leftOrder'>
-                                    <p className="itemsQuantity">Items: {order.orderItems.length}</p>
-                                    <p className="favPrice"> Price:  ${order.checkoutSum}</p>
+                        return (
+                            <div
+                                className="checkoutOrders"
+                                key={order.order_id}
+                                onClick={() => handleClick(order.order_id)}
+                            >
+                                <div className="topContentBoxOrder">
+                                    <p className="favTitle">{order.checkoutDate}</p>
+                                    <div className='leftOrder'>
+                                        <p className="itemsQuantity">Items: {order.orderItems.length}</p>
+                                        <p className="favPrice"> Price:  ${order.checkoutSum}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <section className='itemsContainer'>
-                                {isOpen && order.orderItems.map((item) => {
-                                    return (
-                                        <Link to={`/product/${item.productId}`} className='item' key={item.productId} onClick={() => { setShowProfile(false) }}>
-                                            <img className='orderImg' src={item.image} alt="" />
-                                            <div className='leftItem'>
-                                                <p className='favTitle'>{item.title}</p>
-                                                <p className='favPrice'>{item.price} * {item.quantity}</p>
-                                            </div>
-                                        </Link>
-                                    )
-                                })}
-                            </section>
+                                <section className='itemsContainer'>
+                                    {isOpen && order.orderItems.map((item) => {
+                                        return (
+                                            <Link to={`/product/${item.productId}`} className='item' key={item.productId} onClick={() => { setShowProfile(false) }}>
+                                                <img className='orderImg' src={item.image} alt="" />
+                                                <div className='leftItem'>
+                                                    <p className='favTitle'>{item.title}</p>
+                                                    <p className='favPrice'>{item.price} * {item.quantity}</p>
+                                                </div>
+                                            </Link>
+                                        )
+                                    })}
+                                </section>
 
-                        </div >
-                    );
-                })}
-        </section >
+                            </div >
+                        );
+                    })}
+
+            </section >
+            <section className='recomendations'>
+
+            </section>
+        </section>
+
     );
 }

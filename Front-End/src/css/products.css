@@ -537,6 +537,10 @@
     color: white;
 }
 
+.myCartBtnContainer {
+    cursor: pointer;
+}
+
 .totalPrice {
     font-size: 24px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -723,17 +727,23 @@
 
 /* FAVORITE */
 
+.favBox {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.recomendations {
+    width: 600px;
+    outline: auto;
+}
+
 .favoriteContainer {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    margin-left: -402px;
-    width: 400px;
+    justify-content: center;
+    width: 600px;
     background-color: white;
-    outline: auto;
-    left: 0;
-    top: 0;
-
 }
 
 .favoriteProd {
@@ -743,12 +753,10 @@
     align-items: center;
     justify-content: space-between;
     border-bottom: #333333 1px solid;
-    padding: 15px;
-    border: 1px solid #333333;
+    padding: 16px;
+    border-top: 1px solid #333333;
     text-decoration: none;
 }
-
-
 
 .itemCheckout {
     display: flex;
@@ -761,15 +769,15 @@
 }
 
 .favProductImg {
-    height: 80px;
-    width: 80px;
+    height: 110px;
+    width: 110px;
 }
 
 .favPrice,
 .favTitle {
     display: flex;
     justify-content: flex-end;
-    font-size: 18px;
+    font-size: 22px;
     color: #333333;
 }
 
@@ -782,7 +790,7 @@
 }
 
 .favTitle {
-    font-size: 18px;
+    font-size: 24px;
 }
 
 @media only screen and (max-width: 1160px) {

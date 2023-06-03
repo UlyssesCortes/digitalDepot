@@ -23,6 +23,9 @@ function App() {
   const [finializedOrders, setFinalizedOrders] = useState([])
   const [favorites, setFavorites] = useState([])
   const [showProfile, setShowProfile] = useState(false)
+  const [showOrder, setShowOrder] = useState(false);
+  const [showFavorite, setShowFavorite] = useState(false);
+  const [pageTitle, setPageTitle] = useState("SHOPPING CART");
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -89,7 +92,7 @@ function App() {
       <BrowserRouter>
         {!hideNav &&
           <div className='marginReducer'>
-            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} favorites={favorites} finializedOrders={finializedOrders} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} />
+            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} />
           </div>
         }
         <Routes>
@@ -111,7 +114,7 @@ function App() {
           />
           <Route
             path='/cart'
-            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} />}
+            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} favorites={favorites} finializedOrders={finializedOrders} showOrder={showOrder} setShowOrder={setShowOrder} showFavorite={showFavorite} setShowFavorite={setShowFavorite} pageTitle={pageTitle} setPageTitle={setPageTitle} />}
           />
           <Route
             path='/products'

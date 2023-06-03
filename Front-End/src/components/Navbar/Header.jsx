@@ -10,13 +10,12 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favorites, finializedOrders, token, API_URL, setFavorites, showProfile, setShowProfile, filterName }) {
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showSearch, setShowSearch] = useState(false)
     const [searchInput, setSearchInput] = useState("")
     const [prevFilterName, setPrevFilterName] = useState("")
     const [isCategorieOpen, setIsCategorieOpen] = useState(false);
-
 
     const navigate = useNavigate();
 
@@ -66,6 +65,13 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
         }
     }
 
+    const handleCartIconClick = () => {
+        setShowProfile(false)
+        setIsCategorieOpen(false)
+        setShowFavorite(false)
+        setShowOrder(false)
+    }
+
     return (
         <nav className='navbar' >
             <Desktop setFilterName={setFilterName} setShowProfile={setShowProfile} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} />
@@ -86,7 +92,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
                     <Lottie className="headerIcon" animationData={search} loop={false} onClick={() => {
                         searchClick();
                     }} />
-                    <Link to='/cart' className='navCartIcons' onClick={() => { setShowProfile(false); setIsCategorieOpen(false) }}>
+                    <Link to='/cart' className='navCartIcons' onClick={() => { handleCartIconClick() }}>
                         <Lottie className="cartIcon" animationData={cart} loop={false} />
                     </Link >
 
@@ -98,7 +104,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
                         </section>
 
 
-                        {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} favorites={favorites} setShowProfile={setShowProfile} finializedOrders={finializedOrders} showProfile={showProfile} />}
+                        {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} setShowProfile={setShowProfile} showProfile={showProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} />}
                     </section>
                     :
                     <section className='navLogContainer'>

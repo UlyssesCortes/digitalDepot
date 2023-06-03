@@ -312,19 +312,19 @@
 .navCategorieSec ul {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     position: absolute;
     z-index: 9999;
-    margin-top: 50px;
+    margin-top: 58px;
     background-color: #2f2f2f;
-    padding: 16px;
+    padding: 22px;
     font-size: 18px;
 }
 
 .categoryLink {
     background-color: #2f2f2f;
     color: white;
-    padding: 12px;
+    padding: 14px;
     border-radius: 10px;
     transition: all ease-in-out .4s;
 }
@@ -348,15 +348,9 @@
     background-color: #2f2f2f;
     padding: 86px;
     padding: 86px 86px 100px 400px;
-
     right: 0;
     font-size: 18px;
     list-style: none;
-}
-
-.navUserIconDopWidth {
-    /* padding: 86px 86px 100px 400px; */
-
 }
 
 .userNavLinks {
