@@ -98,7 +98,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, favor
                         </section>
 
 
-                        {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} favorites={favorites} setShowProfile={setShowProfile} finializedOrders={finializedOrders} />}
+                        {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} favorites={favorites} setShowProfile={setShowProfile} finializedOrders={finializedOrders} showProfile={showProfile} />}
                     </section>
                     :
                     <section className='navLogContainer'>
