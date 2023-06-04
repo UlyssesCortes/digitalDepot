@@ -202,7 +202,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         return <Lottie className="checkoutAnimation" animationData={checkout} loop={false} segments={segments} />
     }
 
-
     return (
         <section className='cartContainer marginReducer' onClick={() => { setShowProfile(false) }}>
             <section className='cartSection'>
@@ -247,7 +246,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                         <p className='invisSum'>
                                             {products.length === myCart.length ?
                                                 data.type === "chair" ? sum += parseFloat((((myCart[index].quantity) * data.price) * .75).toFixed(2)) :
-                                                    sum += parseFloat((myCart[index].quantity) * data.price).toFixed(2) : sum += parseFloat(data.price)}
+                                                    sum += parseFloat((myCart[index].quantity) * data.price) : sum += parseFloat(data.price)}
                                         </p>
                                     </div>
 
@@ -273,16 +272,16 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     </section>
                     {myCart.length > 0 && showCart &&
                         <section className='CartBtnContainer'>
-                            <p className='totalPrice'>Total ${sum}.00</p>
+                            <p className='totalPrice'>Total ${parseFloat(sum)}</p>
                             <button onClick={() => { handleUpdate(currentOrderId) }}>Checkout</button>
                         </section>
                     }
                 </div>
 
                 {/* {sum % 1 === 0 ?
-                                <p className='totalPrice'>Total ${sum}</p> :
-                                <p className='totalPrice'>Total ${sum}</p>
-                            } */}
+                    <p className='totalPrice'>Total ${sum}</p> :
+                    <p className='totalPrice'>Total ${sum.toFixed}</p>
+                } */}
 
             </section>
 
