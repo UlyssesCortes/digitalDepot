@@ -13,7 +13,6 @@ const Register = ({ API_URL, setHideNav }) => {
     const [userNameTaken, setUserNameTaken] = useState(false)
     const [weakPass, setWeakPass] = useState(false)
     const [invalidEmail, setInvalidEmail] = useState(false)
-    const [registered, setRegistered] = useState(false)
     const [showAnimation, setShowAnimation] = useState(false)
 
     useEffect(() => {
@@ -29,7 +28,7 @@ const Register = ({ API_URL, setHideNav }) => {
         setLastName(event.target.value)
     }
     const handleChangeEmailReg = (event) => {
-        setEmailReg(event.target.value)
+        setEmailReg(event.target.value.toLowerCase())
         if (event.target.value.includes('@') || emailReg.includes('.com')) {
             setInvalidEmail(false)
         }
@@ -73,7 +72,6 @@ const Register = ({ API_URL, setHideNav }) => {
             } else if (result.message === 'UserTakenError' && emailReg.length > 0) {
                 setUserNameTaken(true);
             } else if (result.token) {
-                setRegistered(true);
                 setWeakPass(false)
                 setUserNameTaken(false)
                 setShowAnimation(true)

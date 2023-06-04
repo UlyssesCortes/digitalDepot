@@ -46,6 +46,8 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
 
     const handleSerachBar = (event) => {
         event.preventDefault()
+        // Makes the keyboard disapear on mobile
+        event.target.elements.txt.blur()
         setFilterName(searchInput)
         setShowSearch(!showSearch)
         setIsCategorieOpen(false)
@@ -73,7 +75,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
     }
 
     return (
-        <nav className='navbar' >
+        <nav className='navbar' id='topHeader'>
             <Desktop setFilterName={setFilterName} setShowProfile={setShowProfile} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} />
             <MobileNav />
 

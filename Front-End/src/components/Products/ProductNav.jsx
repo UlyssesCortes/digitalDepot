@@ -11,7 +11,7 @@ export default function ProductNav({ setFilterName, setCurrentPage }) {
             <section className="topNavProduct">
                 <p>MODERN FURNITURE</p>
             </section>
-            <section className="bottomNavProduct">
+            <section className="bottomNavProduct" id='topSubNav'>
                 <button className="productLinks"
                     onClick={() => handleNavBtn("all")}>All Furniture</button>
                 <button className="productLinks"

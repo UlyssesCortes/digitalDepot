@@ -209,7 +209,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     <h1>{pageTitle}</h1>
                     <section className='CartBtnContainer'>
                         <div className='myCartBtnContainer' onClick={() => { handleCartClick() }}>
-                            <p className='totalPrice' >My Cart</p>
+                            <p className='cartLink' >My Cart</p>
 
                         </div>
                         <div className='dropDownBox' onClick={() => { handleFavClick() }}>

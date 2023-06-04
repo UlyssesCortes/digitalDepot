@@ -4,13 +4,15 @@ import LazyImages from './LazyImages';
 import { motion } from "framer-motion";
 
 import ProductListLoading from '../Loading/ProductListLoading';
+import LoginAlert from '../Login-Register/LoginAlert';
 
-export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn }) {
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail }) {
     const [products, setProducts] = useState([]);
     const [furniture, setFurniture] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [showAll, setShowAll] = useState(false);
     const [productsPerPage] = useState(8);
+    const [loginAlert, setLoginAlert] = useState(false)
 
     const token = window.localStorage.getItem('token');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
@@ -128,7 +130,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 console.error(error);
             }
         } else {
-            alert('Need to be logged in to perform this action');
+            setLoginAlert(true)
         }
     };
 
@@ -193,6 +195,10 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     return (
         <>
             <section className="productsLis">
+                {loginAlert &&
+                    <div className='loginAlertWrapper'>
+                        <LoginAlert setLoginAlert={setLoginAlert} setModalEmail={setModalEmail} modalEmail={modalEmail} />
+                    </div>}
                 {currentProducts.map((product, index) => {
                     const isHovered = index === hoveredIndex;
                     const imageSource = isHovered ? product.images[1] : product.images[0];
@@ -201,7 +207,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                             key={product.id}
                             className="productCard"
                         >
-                            <div className="favorite">
+                            <div className="favorite" href="#topNav">
                                 {isLoggedInLocal && product.isFavorite ? (
 
                                     <motion.div

@@ -14,7 +14,7 @@ const StarRating = () => {
                 <span
                     key={i}
                     className={`star ${i <= rating ? 'selected' : ''}`}
-                    onClick={() => handleStarClick(i)}
+                // onClick={() => handleStarClick(i)}
                 >
                     &#9733;
                 </span>

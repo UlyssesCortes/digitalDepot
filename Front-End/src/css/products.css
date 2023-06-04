@@ -466,6 +466,7 @@
     }
 }
 
+
 /* FEATURES */
 .moreDetailsListAnimation {
     transform: translateX(-360px);
@@ -515,6 +516,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     border-top: 1px solid grey;
     border-bottom: 1px solid grey;
     margin: 50px 0 50px 0;
@@ -622,7 +624,6 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-
 }
 
 .dropDownAnimation {
@@ -717,7 +718,41 @@
 
 .zIndex {
     z-index: 999;
+}
 
+.sliderClose {
+    width: 4rem;
+    height: 4rem;
+    border: .5px solid hsla(0, 0%, 55%, 0.4);
+    border-radius: 100rem;
+    font-size: 2.2rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .2s;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+}
+
+.sliderClose::before {
+    content: 'x';
+    margin-bottom: 10px;
+    -webkit-transform: translateY(-.1rem);
+    transform: translateY(-.1rem);
+}
+
+
+.sliderClose:hover,
+.sliderClose:focus {
+    border-color: hsla(0, 0%, 0%, 0.6);
+    -webkit-transform: translateY(-.2rem);
+    transform: translateY(-.2rem);
 }
 
 .mobileImgView {
@@ -850,7 +885,9 @@
         font-size: 40px;
     }
 
-
+    .productsSec {
+        justify-content: center;
+    }
 }
 
 @media only screen and (max-width: 700px) {
@@ -860,6 +897,11 @@
 
     .productLinks {
         font-size: 15px;
+    }
+
+    .CartBtnContainer button {
+        font-size: 16px;
+        width: 120px;
     }
 }
 
@@ -888,6 +930,12 @@
     .CartBtnContainer button {
         font-size: 14px;
         width: 180px;
+        display: none;
+    }
+
+    .CartBtnContainer {
+        justify-content: center;
+        gap: 10px;
     }
 
     .imageGallery {
@@ -943,5 +991,14 @@
 
     .nameAndPrice h2 {
         font-size: 30px;
+    }
+
+    .imageSliderContainerBox {
+        z-index: 1;
+    }
+
+    .cartLink,
+    .totalPrice {
+        font-size: 18px;
     }
 }

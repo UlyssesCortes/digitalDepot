@@ -15,8 +15,8 @@ export default function MobileNav() {
                 <section className='subnavIcons'>
                     <div className="hamburger" onClick={toggleMenu}>
                         <div className={`${isOpen && "bar1"}`}></div>
-                        <div className={`${isOpen && "bar2"}`}></div>
-                        <div className={`${isOpen && "bar3"}`}></div>
+                        <div className={`${isOpen ? "bar2" : "midBar"}`}></div>
+                        <div className={`${isOpen ? "bar3" : "lastBar"}`}></div>
                     </div>
                 </section>
             </section>

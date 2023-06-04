@@ -1,5 +1,6 @@
 
-const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn) => {
+const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert) => {
+
     let items = null;
     console.log("isLoggedIn: ", isLoggedIn)
 
@@ -15,11 +16,9 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
 
         const data = await response.json();
 
-        // Check if there is an order with isCheckedOut set to false
         const hasUncheckedOrder = data.some((order) => !order.isCheckedOut);
 
         if (hasUncheckedOrder) {
-            // Get the order with isCheckedOut set to false
             const uncheckedOrder = data.find((order) => !order.isCheckedOut);
             setCurrentOrderId(uncheckedOrder.id);
             localStorage.setItem('currentOrderId', uncheckedOrder.id);
@@ -59,12 +58,11 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
             if (!itemsResponse.ok) {
                 throw new Error(`Failed to add item to cart. Status: ${itemsResponse.status}`);
             }
-
             items = await itemsResponse.json();
         }
 
     } else if (!isLoggedIn) {
-        alert("Need to login to add product")
+        setLoginAlert(true)
     }
 
     try {

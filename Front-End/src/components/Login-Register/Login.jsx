@@ -6,7 +6,7 @@ import authorization from "../../assets/loadingLogin.json"
 import { Link, useNavigate } from 'react-router-dom';
 import { wrongUserAlert } from './Alerts';
 
-const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken, setHideNav }) => {
+const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEmail }) => {
 
     const [email, setEamil] = useState("")
     const [password, setPassword] = useState("")
@@ -16,11 +16,14 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken, setHideN
     const navigate = useNavigate();
 
     useEffect(() => {
+        if (modalEmail) {
+            setEamil(modalEmail)
+        }
         setHideNav(true)
     }, []);
 
     const handleChangeEmail = (event) => {
-        setEamil(event.target.value)
+        setEamil(event.target.value.toLowerCase())
     }
     const handleChangePassword = (event) => {
         setPassword(event.target.value)
@@ -56,7 +59,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken, setHideN
                         setTimeout(() => {
                             navigate('/');
                             setHideNav(false)
-                        }, 1500);
+                        }, 800);
                     }
                     if (!result.token) {
                         setShowAnimation(false)

@@ -75,7 +75,7 @@ const ImageSlider = ({ images, setShowImageSlider, imgIndex }) => {
                         </button>
                     </div>
                     <div className="hideMobile">
-                        <div to='/products' className="link-2 zIndex" onClick={() => { setShowImageSlider(false) }} ></div>
+                        <div to='/products' className="sliderClose" onClick={() => { setShowImageSlider(false) }} ></div>
                     </div>
 
                 </div>

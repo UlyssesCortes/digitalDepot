@@ -11,8 +11,9 @@ import Description from './Description';
 import addToCart from './addToCart';
 import ProductLoading from '../Loading/ProductLoading';
 import ImageSlider from './ImageSlider';
+import LoginAlert from '../Login-Register/LoginAlert';
 
-export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile }) {
+export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [displayFeatures, setDisplayFeatures] = useState(false)
@@ -22,6 +23,8 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const [displayDescription, setDisplayDescription] = useState(false)
     const [showImageSlider, setShowImageSlider] = useState(false)
     const [imgIndex, setImgIndex] = useState(0)
+    const [loginAlert, setLoginAlert] = useState(false)
+
 
     useEffect(() => {
         console.log("GETING PRODUCT DETAILS")
@@ -55,6 +58,10 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const productInfo = product[0];
     return (
         <section id="topDetails" className='marginReducer' onClick={() => { setShowProfile(false) }}>
+            {loginAlert &&
+                <div className='loginAlertWrapper'>
+                    <LoginAlert setLoginAlert={setLoginAlert} setModalEmail={setModalEmail} modalEmail={modalEmail} />
+                </div>}
             {showImageSlider &&
                 <div className='imageSliderContainerBox'>
                     <ImageSlider images={productInfo.images} setShowImageSlider={setShowImageSlider} imgIndex={imgIndex} />
@@ -113,7 +120,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                         <button
                             className="addCartBtn"
                             onClick={() => {
-                                addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn);
+                                addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert);
                                 setAdded(true);
                             }}
                         >

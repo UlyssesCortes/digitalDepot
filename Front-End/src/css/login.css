@@ -203,6 +203,66 @@
     width: 700px;
 }
 
+/* LOGINALERT */
+.loginAlertWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: rgba(51, 51, 51, 0.4);
+    overflow: hidden;
+}
+
+.loginAlert {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: white;
+    width: 600px;
+    gap: 20px;
+    height: 300px;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.alertClose {
+    top: 0;
+    scale: .6;
+    right: 0;
+}
+
+.loginAlertInp {
+    border: 1px solid black;
+}
+
+.topLoginAlert p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+
+}
+
+.bottomLoginAlert form {
+    display: flex;
+    flex-direction: column;
+    width: 540px;
+}
+
+.continueLogBtn {
+    height: 50px;
+    background-color: #333333;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
 @keyframes animatetop {
     from {
         opacity: 0
