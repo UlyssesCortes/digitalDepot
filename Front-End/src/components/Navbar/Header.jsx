@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Lottie from "lottie-react"
 import search from "../../assets/searchClock.json"
 import cart from "../../assets/cart.json"
@@ -10,14 +10,22 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle }) {
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showSearch, setShowSearch] = useState(false)
     const [searchInput, setSearchInput] = useState("")
     const [prevFilterName, setPrevFilterName] = useState("")
     const [isCategorieOpen, setIsCategorieOpen] = useState(false);
+    const inputRef = useRef(null);
 
     const navigate = useNavigate();
+
+
+    useEffect(() => {
+        if (showSearch && inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, [showSearch]);
 
     const handleSearch = (event) => {
         setFilterName(event.target.value)
@@ -46,7 +54,6 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
 
     const handleSerachBar = (event) => {
         event.preventDefault()
-        // Makes the keyboard disapear on mobile
         event.target.elements.txt.blur()
         setFilterName(searchInput)
         setShowSearch(!showSearch)
@@ -72,6 +79,8 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
         setIsCategorieOpen(false)
         setShowFavorite(false)
         setShowOrder(false)
+        setShowCart(true)
+        setPageTitle("SHOPPING CART")
     }
 
     return (
@@ -89,6 +98,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                             name="txt"
                             onChange={handleSearch}
                             placeholder="Search..."
+                            ref={inputRef}
                         />
                     </form>
                     <Lottie className="headerIcon" animationData={search} loop={false} onClick={() => {
@@ -106,7 +116,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                         </section>
 
 
-                        {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} setShowProfile={setShowProfile} showProfile={showProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} />}
+                        {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} setShowProfile={setShowProfile} showProfile={showProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setShowCart={setShowCart} setPageTitle={setPageTitle} />}
                     </section>
                     :
                     <section className='navLogContainer'>

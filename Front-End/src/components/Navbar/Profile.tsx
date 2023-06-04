@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, Variants } from 'framer-motion';
 
-export default function Profile({ setIsLoggedIn, favorites, setShowProfile, finializedOrders, showProfile, setShowFavorite, setShowOrder, setPageTitle }) {
+export default function Profile({ setIsLoggedIn, favorites, setShowProfile, finializedOrders, showProfile, setShowFavorite, setShowOrder, setPageTitle, setShowCart }) {
 
     const handleLogOutBtn = () => {
         localStorage.removeItem('isLoggedIn');
@@ -46,21 +46,23 @@ export default function Profile({ setIsLoggedIn, favorites, setShowProfile, fini
         setShowFavorite(true)
         setShowOrder(false)
         setShowProfile(false)
+        setShowCart(false)
         setPageTitle("FAVORITES")
     }
     const handleOrderClick = () => {
         setShowFavorite(false)
         setShowProfile(false)
         setShowOrder(true)
+        setShowCart(false)
         setPageTitle("ORDER HISTORY")
     }
     const handleCartClick = () => {
         setShowFavorite(false)
         setShowOrder(false)
         setShowProfile(false)
+        setShowCart(true)
         setPageTitle("SHOPPING CART")
     }
-
 
     return (
 

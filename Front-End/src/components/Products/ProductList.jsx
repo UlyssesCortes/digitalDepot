@@ -6,8 +6,7 @@ import { motion } from "framer-motion";
 import ProductListLoading from '../Loading/ProductListLoading';
 import LoginAlert from '../Login-Register/LoginAlert';
 
-export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail }) {
-    const [products, setProducts] = useState([]);
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products }) {
     const [furniture, setFurniture] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [showAll, setShowAll] = useState(false);
@@ -18,41 +17,8 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     const lowerCaseFilterName = filterName.toLowerCase();
 
-    const getProducts = async () => {
-        try {
-            if (isLoggedInLocal) {
-                const response = await fetch(`${API_URL}products/all`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                const result = await response.json();
-                if (result) {
-                    setProducts(result);
-                }
-                return result;
-            } else if (!isLoggedInLocal) {
-                const response = await fetch(`${API_URL}products`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const result = await response.json();
-                if (result) {
-                    setProducts(result);
-                }
-                return result;
-            }
-
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
     useEffect(() => {
         setIsLoggedIn(isLoggedInLocal)
-        getProducts();
     }, []);
 
     useEffect(() => {
@@ -85,6 +51,36 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             setFurniture(filteredProducts);
         }
     }, [filterName, products]);
+
+
+    // let filteredProducts;
+
+    // switch (filterName) {
+    //     case 'all': {
+    //         setFurniture(products);
+    //         break;
+    //     }
+    //     case 'Living Room':
+    //     case 'Bedroom':
+    //     case 'Workspace':
+    //     case 'Kitchen':
+    //         filteredProducts = products.filter(
+    //             (product) => product.category === filterName
+    //         );
+    //         setFurniture(filteredProducts);
+    //         break;
+    //     default:
+    //         const lowerCaseFilterName = filterName.toLowerCase();
+    //         filteredProducts = products.filter(
+    //             (product) =>
+    //                 product.type.toLowerCase() === lowerCaseFilterName ||
+    //                 product.title.toLowerCase().includes(lowerCaseFilterName) ||
+    //                 product.id == filterName ||
+    //                 product.category.toLowerCase().includes(lowerCaseFilterName)
+    //         );
+    //         setFurniture(filteredProducts);
+    //         break;
+    // }
 
     const handleMouseEnter = (index) => {
         setTimeout(() => {

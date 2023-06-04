@@ -22,8 +22,10 @@ function App() {
   const [hideNav, setHideNav] = useState(false)
   const [finializedOrders, setFinalizedOrders] = useState([])
   const [favorites, setFavorites] = useState([])
+  const [products, setProducts] = useState([])
   const [showProfile, setShowProfile] = useState(false)
   const [showOrder, setShowOrder] = useState(false);
+  const [showCart, setShowCart] = useState(true);
   const [showFavorite, setShowFavorite] = useState(false);
   const [pageTitle, setPageTitle] = useState("SHOPPING CART");
   const [modalEmail, setModalEmail] = useState("")
@@ -50,10 +52,43 @@ function App() {
           setUser(result)
         })
         .catch((error) => console.log(error));
+      getProducts();
       fetchFavorites();
-      fetchOrders()
+      fetchOrders();
     }
   }, [token]);
+
+  const getProducts = async () => {
+    try {
+      if (isLoggedIn) {
+        const response = await fetch(`${API_URL}products/all`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const result = await response.json();
+        if (result) {
+          setProducts(result);
+        }
+        return result;
+      } else if (!isLoggedIn) {
+        const response = await fetch(`${API_URL}products`, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const result = await response.json();
+        if (result) {
+          setProducts(result);
+        }
+        return result;
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const fetchFavorites = async () => {
     try {
@@ -93,7 +128,7 @@ function App() {
       <BrowserRouter>
         {!hideNav &&
           <div className='marginReducer'>
-            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} />
+            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} />
           </div>
         }
         <Routes>
@@ -115,11 +150,11 @@ function App() {
           />
           <Route
             path='/cart'
-            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} favorites={favorites} finializedOrders={finializedOrders} showOrder={showOrder} setShowOrder={setShowOrder} showFavorite={showFavorite} setShowFavorite={setShowFavorite} pageTitle={pageTitle} setPageTitle={setPageTitle} />}
+            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} favorites={favorites} finializedOrders={finializedOrders} showOrder={showOrder} setShowOrder={setShowOrder} showFavorite={showFavorite} setShowFavorite={setShowFavorite} pageTitle={pageTitle} setPageTitle={setPageTitle} setShowCart={setShowCart} showCart={showCart} />}
           />
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} />}
+            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} />}
           />
           <Route
             path='/offers'

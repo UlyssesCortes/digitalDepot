@@ -7,13 +7,12 @@ import Favorites from './Profile/Favorites';
 import Orders from './Profile/Orders';
 // import { getOrderItems2 } from '../../API/cartApi';
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart }) {
 
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
-    const [showCart, setShowCart] = useState(true);
     const segments = [2.5, 3];
 
     let sum = 0;
