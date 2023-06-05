@@ -3,8 +3,6 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
 
     let items = null;
     console.log("isLoggedIn: ", isLoggedIn)
-
-
     setCurrentOrderId(currentOrderId)
 
     if (!currentOrderId && isLoggedIn) {
@@ -66,6 +64,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
     }
 
     try {
+        console.log(token)
         // error occurs because currentOrder does not get registered fast enought
         if (currentOrderId && isLoggedIn) {
             const itemsResponse = await fetch(`${API_URL}order-items/${currentOrderId}`, {
@@ -86,6 +85,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
                 throw new Error(`Failed to add item to cart. Status: ${itemsResponse.status}`);
             }
             items = await itemsResponse.json();
+            console.log(items)
         }
 
 

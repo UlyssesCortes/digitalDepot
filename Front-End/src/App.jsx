@@ -31,6 +31,7 @@ function App() {
   const [modalEmail, setModalEmail] = useState("")
   const [currentPage, setCurrentPage] = useState(1);
 
+  // localStorage.setItem('currentOrderId', "");
   useEffect(() => {
     const currentOrderId = window.localStorage.getItem('currentOrderId');
     if (!currentOrderId) {

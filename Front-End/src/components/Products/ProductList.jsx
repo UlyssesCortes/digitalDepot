@@ -150,7 +150,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         setShowAll(!showAll);
     };
 
-
     const visibleButtons = showAll ? furniture.length : 7;
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;

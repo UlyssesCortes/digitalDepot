@@ -5,6 +5,7 @@ export default function Orders({ finializedOrders, setShowProfile }) {
     const [selectedOrderId, setSelectedOrderId] = useState(null);
 
     const handleClick = (orderId) => {
+        // event.prevent.default()
         setSelectedOrderId(orderId === selectedOrderId ? null : orderId);
     };
 
@@ -41,7 +42,6 @@ export default function Orders({ finializedOrders, setShowProfile }) {
                                         )
                                     })}
                                 </section>
-
                             </div >
                         );
                     })}
