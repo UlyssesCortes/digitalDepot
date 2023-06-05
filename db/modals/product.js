@@ -72,6 +72,23 @@ async function getProductById(id) {
         throw error;
     }
 }
+async function getProductByUserId(userId, productId) {
+    try {
+        const { rows } = await client.query(`
+            SELECT p.*, 
+              CASE WHEN f."productId" IS NOT NULL THEN true ELSE false END AS "isFavorite"
+            FROM products p
+            LEFT JOIN favorite f ON p.id = f."productId" AND f."userId" = $1
+            WHERE p.id = $2;
+        `, [userId, productId]);
+
+        return rows;
+    } catch (error) {
+        console.error('Error executing query:', error);
+        throw error;
+    }
+}
+
 
 async function updateProducts({ id, ...fields }) {
     const setString = Object.keys(fields)
@@ -114,5 +131,6 @@ module.exports = {
     updateProducts,
     deleteProduct,
     getProductById,
-    getAllProductsFavorite
+    getAllProductsFavorite,
+    getProductByUserId
 };
