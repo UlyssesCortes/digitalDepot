@@ -29,9 +29,12 @@ function App() {
   const [showFavorite, setShowFavorite] = useState(false);
   const [pageTitle, setPageTitle] = useState("SHOPPING CART");
   const [modalEmail, setModalEmail] = useState("")
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
+    const currentOrderId = window.localStorage.getItem('currentOrderId');
     if (!currentOrderId) {
+      console.log("ORDER ID: ", currentOrderId)
       fetchOrder()
     }
   }, [])
@@ -100,7 +103,6 @@ function App() {
 
   const fetchGuestProducts = async () => {
     const localToken = window.localStorage.getItem('token');
-    console.log(localToken)
     if (!localToken) {
       const response = await fetch(`${API_URL}products`, {
         headers: {
@@ -110,7 +112,6 @@ function App() {
       const result = await response.json();
       if (result) {
         console.log("FETCHING GUEST PRODUCTS: ", result)
-
         setProducts(result);
       }
       return result;
@@ -128,7 +129,6 @@ function App() {
           },
         });
         const products = await favoriteProducts.json();
-        console.log("FAVORITES: ", products)
         setFavorites(products)
       } catch (error) {
         console.log(error);
@@ -146,13 +146,12 @@ function App() {
         }
       });
       const data = await response.json();
-      console.log("MY ORDERS: ", data)
       setFinalizedOrders(data)
     }
   }
 
   const fetchOrder = async () => {
-    if (!currentOrderId) {
+    if (token) {
       const response = await fetch(`${API_URL}order/myOrders`, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -162,17 +161,14 @@ function App() {
       const orderId = data[0].id
       localStorage.setItem('currentOrderId', orderId);
     }
-
   }
-
-  console.log("APP ORDERID", currentOrderId)
 
   return (
     <>
       <BrowserRouter>
         {!hideNav &&
           <div className='marginReducer'>
-            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} />
+            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} />
           </div>
         }
         <Routes>
@@ -198,14 +194,14 @@ function App() {
           />
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} />}
+            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setCurrentPage={setCurrentPage} currentPage={currentPage} />}
           />
           <Route
             path='/offers'
             element={<Offers API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setShowProfile={setShowProfile} />}
           />
           <Route path="/product/:id"
-            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} />}
+            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} favorites={favorites} />}
           />
         </Routes>
       </BrowserRouter>

@@ -10,7 +10,7 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart }) {
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showSearch, setShowSearch] = useState(false)
     const [searchInput, setSearchInput] = useState("")
@@ -85,7 +85,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
 
     return (
         <nav className='navbar' id='topHeader'>
-            <Desktop setFilterName={setFilterName} setShowProfile={setShowProfile} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} />
+            <Desktop setFilterName={setFilterName} setShowProfile={setShowProfile} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} setCurrentPage={setCurrentPage} />
             <MobileNav setShowProfile={setShowProfile} />
 
             <section className='rightNav'>

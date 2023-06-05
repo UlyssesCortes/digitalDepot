@@ -13,7 +13,7 @@ import ProductLoading from '../Loading/ProductLoading';
 import ImageSlider from './ImageSlider';
 import LoginAlert from '../Login-Register/LoginAlert';
 
-export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail }) {
+export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, favorites }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [displayFeatures, setDisplayFeatures] = useState(false)
@@ -25,9 +25,8 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const [imgIndex, setImgIndex] = useState(0)
     const [loginAlert, setLoginAlert] = useState(false)
 
-
     useEffect(() => {
-        console.log("GETING PRODUCT DETAILS")
+
         const fetchProductDetails = async () => {
             try {
                 const response = await fetch(`${API_URL}products/${id}`, {
@@ -54,6 +53,8 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
             </>
         )
     }
+
+
 
     const productInfo = product[0];
     return (

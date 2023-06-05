@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, Variants } from "framer-motion";
 
 
-export default function Desktop({ setFilterName, setShowProfile, setIsCategorieOpen, isCategorieOpen }) {
-
-
+export default function Desktop({ setFilterName, setShowProfile, setIsCategorieOpen, isCategorieOpen, setCurrentPage }) {
 
     const itemVariants: Variants = {
         open: {
@@ -14,8 +12,13 @@ export default function Desktop({ setFilterName, setShowProfile, setIsCategorieO
             transition: { type: "spring", stiffness: 300, damping: 24 }
         },
         closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
-
     };
+
+    const handleCategorySelect = (filterName) => {
+        setFilterName(filterName)
+        setIsCategorieOpen(false)
+        setCurrentPage(1)
+    }
 
     return (
         <section className='leftNav' onClick={() => { setShowProfile(false) }}>
@@ -67,7 +70,7 @@ export default function Desktop({ setFilterName, setShowProfile, setIsCategorieO
                                 to="/products"
                                 className="navCategory"
                                 onClick={() => {
-                                    setFilterName("Living Room"); setIsCategorieOpen(false)
+                                    handleCategorySelect("Living Room")
                                 }}
                             >
                                 Living Room
@@ -78,7 +81,7 @@ export default function Desktop({ setFilterName, setShowProfile, setIsCategorieO
                                 to="/products"
                                 className="navCategory"
                                 onClick={() => {
-                                    setFilterName("Bedroom"); setIsCategorieOpen(false);
+                                    handleCategorySelect("Bedroom")
                                 }}
                             >
                                 Bedroom
@@ -89,7 +92,7 @@ export default function Desktop({ setFilterName, setShowProfile, setIsCategorieO
                                 to="/products"
                                 className="navCategory"
                                 onClick={() => {
-                                    setFilterName("Workspace"); setIsCategorieOpen(false)
+                                    handleCategorySelect("Workspace")
                                 }}
                             >
                                 Workspace
@@ -100,7 +103,7 @@ export default function Desktop({ setFilterName, setShowProfile, setIsCategorieO
                                 to="/products"
                                 className="navCategory"
                                 onClick={() => {
-                                    setFilterName("Kitchen"); setIsCategorieOpen(false)
+                                    handleCategorySelect("Kitchen")
                                 }}
                             >
                                 Kitchen

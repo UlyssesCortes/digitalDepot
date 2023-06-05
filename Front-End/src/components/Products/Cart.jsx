@@ -18,9 +18,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     let sum = 0;
 
     const getOrderItems = async () => {
-        console.log("ORDER ITEMS RUNNIG")
         try {
-            console.log("CURRENT ORDER ID", currentOrderId)
             if (currentOrderId) {
                 console.log("ITEMS RUNNING")
 
@@ -31,7 +29,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 })
                 const items = await response.json();
                 setMyCart(items)
-                console.log("ITEMS", items)
             }
 
         } catch (error) {
@@ -274,8 +271,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                         }
                         {showOrder && <Orders finializedOrders={finializedOrders} />}
                     </section>
-                    {console.log(myCart)}
-
                     {isLoggedIn && showCart &&
                         <section className='CartBtnContainer'>
                             <p className='totalPrice'>Total ${parseFloat(sum)}</p>
