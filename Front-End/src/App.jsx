@@ -31,6 +31,12 @@ function App() {
   const [modalEmail, setModalEmail] = useState("")
 
   useEffect(() => {
+    if (!currentOrderId) {
+      fetchOrder()
+    }
+  }, [])
+
+  useEffect(() => {
     const localToken = window.localStorage.getItem('token');
     const currentOrderId = window.localStorage.getItem('currentOrderId');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
@@ -55,7 +61,10 @@ function App() {
       getProducts();
       fetchFavorites();
       fetchOrders();
+    } else {
+      fetchGuestProducts()
     }
+
   }, [token]);
 
   const getProducts = async () => {
@@ -72,7 +81,7 @@ function App() {
           setProducts(result);
         }
         return result;
-      } else if (!isLoggedIn) {
+      } else {
         const response = await fetch(`${API_URL}products`, {
           headers: {
             'Content-Type': 'application/json',
@@ -84,11 +93,30 @@ function App() {
         }
         return result;
       }
-
     } catch (error) {
       console.error(error);
     }
   };
+
+  const fetchGuestProducts = async () => {
+    const localToken = window.localStorage.getItem('token');
+    console.log(localToken)
+    if (!localToken) {
+      const response = await fetch(`${API_URL}products`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const result = await response.json();
+      if (result) {
+        console.log("FETCHING GUEST PRODUCTS: ", result)
+
+        setProducts(result);
+      }
+      return result;
+    }
+  }
+
 
   const fetchFavorites = async () => {
     try {
@@ -122,6 +150,22 @@ function App() {
       setFinalizedOrders(data)
     }
   }
+
+  const fetchOrder = async () => {
+    if (!currentOrderId) {
+      const response = await fetch(`${API_URL}order/myOrders`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      const data = await response.json();
+      const orderId = data[0].id
+      localStorage.setItem('currentOrderId', orderId);
+    }
+
+  }
+
+  console.log("APP ORDERID", currentOrderId)
 
   return (
     <>

@@ -86,7 +86,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
     return (
         <nav className='navbar' id='topHeader'>
             <Desktop setFilterName={setFilterName} setShowProfile={setShowProfile} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} />
-            <MobileNav />
+            <MobileNav setShowProfile={setShowProfile} />
 
             <section className='rightNav'>
                 <section className='navIcons'>

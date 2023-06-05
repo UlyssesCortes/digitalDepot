@@ -17,8 +17,23 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     const lowerCaseFilterName = filterName.toLowerCase();
 
+
+    // useEffect(() => {
+    //     const handleBeforeUnload = () => {
+    //         getProducts();
+    //     };
+
+    //     window.addEventListener('beforeunload', handleBeforeUnload);
+
+    //     return () => {
+    //         window.removeEventListener('beforeunload', handleBeforeUnload);
+    //     };
+    // }, []);
+
     useEffect(() => {
         setIsLoggedIn(isLoggedInLocal)
+        console.log(products)
+
     }, []);
 
     useEffect(() => {
@@ -52,41 +67,45 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         }
     }, [filterName, products]);
 
-
-    // let filteredProducts;
-
-    // switch (filterName) {
-    //     case 'all': {
-    //         setFurniture(products);
-    //         break;
-    //     }
-    //     case 'Living Room':
-    //     case 'Bedroom':
-    //     case 'Workspace':
-    //     case 'Kitchen':
-    //         filteredProducts = products.filter(
-    //             (product) => product.category === filterName
-    //         );
-    //         setFurniture(filteredProducts);
-    //         break;
-    //     default:
-    //         const lowerCaseFilterName = filterName.toLowerCase();
-    //         filteredProducts = products.filter(
-    //             (product) =>
-    //                 product.type.toLowerCase() === lowerCaseFilterName ||
-    //                 product.title.toLowerCase().includes(lowerCaseFilterName) ||
-    //                 product.id == filterName ||
-    //                 product.category.toLowerCase().includes(lowerCaseFilterName)
-    //         );
-    //         setFurniture(filteredProducts);
-    //         break;
-    // }
-
     const handleMouseEnter = (index) => {
         setTimeout(() => {
             setHoveredIndex(index);
         }, 200);
     };
+
+    // const getProducts = async () => {
+    //     console.log("FETCHING PRODUCTS IN PRODUCTS: ")
+    //     try {
+    //         if (isLoggedInLocal) {
+    //             console.log("PRODUCTS: ")
+    //             const response = await fetch(`${API_URL}products/all`, {
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     Authorization: `Bearer ${token}`,
+    //                 },
+    //             });
+    //             const result = await response.json();
+    //             if (result) {
+    //                 setFurniture(result);
+    //             }
+    //             return result;
+    //         } else {
+    //             const response = await fetch(`${API_URL}products`, {
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                 },
+    //             });
+    //             const result = await response.json();
+    //             console.log("PRODUCTS: ", result)
+    //             if (result) {
+    //                 setFurniture(result);
+    //             }
+    //             return result;
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // };
 
     const handleFavoriteBtn = async (productId) => {
         if (isLoggedInLocal) {

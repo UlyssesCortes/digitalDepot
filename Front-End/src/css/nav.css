@@ -211,7 +211,10 @@
     transform: all 0.5 ease-in-out;
 }
 
-
+.hamburger .bar3,
+.hamburger .bar1 {
+    background-color: white;
+}
 
 .bar3 {
     transform: translate(0, -11px) rotate(45deg);
@@ -223,6 +226,8 @@
 
 .bar1 {
     transform: translate(0, 11px) rotate(-45deg);
+    background-color: white;
+
 }
 
 .mobileNav {

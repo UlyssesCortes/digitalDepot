@@ -18,8 +18,12 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     let sum = 0;
 
     const getOrderItems = async () => {
+        console.log("ORDER ITEMS RUNNIG")
         try {
+            console.log("CURRENT ORDER ID", currentOrderId)
             if (currentOrderId) {
+                console.log("ITEMS RUNNING")
+
                 const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -27,6 +31,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 })
                 const items = await response.json();
                 setMyCart(items)
+                console.log("ITEMS", items)
             }
 
         } catch (error) {
@@ -269,19 +274,15 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                         }
                         {showOrder && <Orders finializedOrders={finializedOrders} />}
                     </section>
-                    {myCart.length > 0 && showCart &&
+                    {console.log(myCart)}
+
+                    {isLoggedIn && showCart &&
                         <section className='CartBtnContainer'>
                             <p className='totalPrice'>Total ${parseFloat(sum)}</p>
                             <button onClick={() => { handleUpdate(currentOrderId) }}>Checkout</button>
                         </section>
                     }
                 </div>
-
-                {/* {sum % 1 === 0 ?
-                    <p className='totalPrice'>Total ${sum}</p> :
-                    <p className='totalPrice'>Total ${sum.toFixed}</p>
-                } */}
-
             </section>
 
 

@@ -7,7 +7,6 @@ export default function Favorites({ favorites }) {
             <section className='favoriteContainer'>
                 {favorites && favorites.map((favorite) => {
                     return (
-                        // WHen Clicked make sure to use the loading animation 
                         <Link
                             to={`/product/${favorite.id}`}
                             className="favoriteProd" key={favorite.id} >
@@ -20,9 +19,7 @@ export default function Favorites({ favorites }) {
                     );
                 })}
             </section >
-            <section className='recomendations'>
-
-            </section>
+            <section className='recomendations'></section>
         </section>
 
     )

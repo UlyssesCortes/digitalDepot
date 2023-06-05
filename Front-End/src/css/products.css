@@ -725,7 +725,7 @@
     height: 4rem;
     border: .5px solid hsla(0, 0%, 55%, 0.4);
     border-radius: 100rem;
-    font-size: 2.2rem;
+    font-size: 2rem;
     position: absolute;
     top: 2rem;
     right: 2rem;
@@ -742,11 +742,11 @@
 
 .sliderClose::before {
     content: 'x';
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     -webkit-transform: translateY(-.1rem);
     transform: translateY(-.1rem);
+    font-family: monospace;
 }
-
 
 .sliderClose:hover,
 .sliderClose:focus {
@@ -855,6 +855,11 @@
         align-items: center;
     }
 
+    .recomendations {
+        display: none;
+    }
+
+
     .imageGallery {
         width: 90%;
     }
@@ -959,6 +964,15 @@
     .topNavProduct {
         height: 20vh;
 
+    }
+
+
+    .favTitle {
+        font-size: 20px;
+    }
+
+    .favPrice {
+        font-size: 18px;
     }
 
     /* ImageSlider */
