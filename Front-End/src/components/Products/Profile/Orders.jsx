@@ -5,7 +5,6 @@ export default function Orders({ finializedOrders, setShowProfile }) {
     const [selectedOrderId, setSelectedOrderId] = useState(null);
 
     const handleClick = (orderId) => {
-        // event.prevent.default()
         setSelectedOrderId(orderId === selectedOrderId ? null : orderId);
     };
 
@@ -36,7 +35,10 @@ export default function Orders({ finializedOrders, setShowProfile }) {
                                                 <img className='orderImg' src={item.image} alt="" />
                                                 <div className='leftItem'>
                                                     <p className='favTitle'>{item.title}</p>
-                                                    <p className='favPrice'>{item.price} * {item.quantity}</p>
+                                                    {item.quantity > 1 ?
+                                                        <p className='favPrice'>{item.price} ({item.quantity})</p> :
+                                                        <p className='favPrice'>{item.price}</p>
+                                                    }
                                                 </div>
                                             </Link>
                                         )

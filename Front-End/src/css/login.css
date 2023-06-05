@@ -283,5 +283,41 @@
         padding: 0px 50px 0px 50px;
     }
 
+    .loginAlert {
+        width: 500px;
+        height: 300px;
+    }
 
+    .topLoginAlert p {
+        font-size: 22px;
+    }
+
+    .bottomLoginAlert form {
+        display: flex;
+        flex-direction: column;
+        width: 440px;
+    }
+
+    .continueLogBtn {
+        height: 50px;
+        background-color: #333333;
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .loginAlert {
+        width: 350px;
+        height: 300px;
+    }
+
+    .topLoginAlert p {
+        font-size: 18px;
+    }
+
+    .bottomLoginAlert form {
+        width: 300px;
+    }
 }

@@ -17,7 +17,7 @@ async function createOrder(userId) {
     }
 }
 
-async function getOrderDetails() {
+async function getOrderDetails(userId) {
     try {
         const { rows } = await client.query(`
         SELECT o.id AS order_id, o."orderDate", o."isCheckedOut", o."checkoutDate", o."checkoutSum",
@@ -25,11 +25,8 @@ async function getOrderDetails() {
         FROM orders o
         JOIN order_items oi ON o.id = oi."orderId"
         JOIN products p ON oi."productId" = p.id
-        WHERE o."isCheckedOut" = true;
+        WHERE o."isCheckedOut" = true AND o."userId" = ${userId};
       `);
-
-        // Log the query plan and execution time
-        // console.log(rows[0]);
 
         const orders = [];
         let currentOrderId = null;
@@ -51,7 +48,6 @@ async function getOrderDetails() {
             } = row;
 
             if (order_id !== currentOrderId) {
-                // Create a new order object
                 currentOrder = {
                     order_id,
                     orderDate,
@@ -64,7 +60,6 @@ async function getOrderDetails() {
                 orders.push(currentOrder);
                 currentOrderId = order_id;
             }
-            // Create an order item object and add it to the current order's orderItems array
             const orderItem = {
                 quantity,
                 productId,
