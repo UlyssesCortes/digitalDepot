@@ -6,7 +6,8 @@ const {
     createProduct,
     updateProducts,
     getProductById,
-    getAllProductsFavorite
+    getAllProductsFavorite,
+    getProductByUserId
 } = require('../db');
 const { requireUser } = require("./utils");
 
@@ -55,6 +56,17 @@ apiRouter.get("/:productId", async (req, res, next) => {
     const id = req.params.productId;
     try {
         const product = await getProductById(id);
+        res.send(product);
+    } catch (error) {
+        next(error);
+    }
+});
+apiRouter.get("/details/:productId", requireUser, async (req, res, next) => {
+    const id = req.params.productId;
+    const userId = req.user.id;
+
+    try {
+        const product = await getProductByUserId(userId, id);
         res.send(product);
     } catch (error) {
         next(error);
