@@ -32,7 +32,7 @@ export default function Orders({ finializedOrders }) {
                                     {isOpen && order.orderItems.map((item) => {
                                         return (
                                             <Link to={`/product/${item.productId}`} className='item' key={item.productId} >
-                                                <img className='orderImg' src={item.image} alt="" />
+                                                <img className='orderImg' src={item.image} alt="" loading='lazy' />
                                                 <div className='leftItem'>
                                                     <p className='favTitle'>{item.title}</p>
                                                     {item.quantity > 1 ?

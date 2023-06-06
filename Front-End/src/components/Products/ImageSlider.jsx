@@ -65,6 +65,7 @@ const ImageSlider = ({ images, setShowImageSlider, imgIndex }) => {
                             }
                         }}
                         className="slider-image"
+                        loading="lazy"
                     />
                     <div className="slider-buttons">
                         <button className="prev" onClick={() => paginate(-1)}>

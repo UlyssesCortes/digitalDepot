@@ -178,12 +178,12 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
 
             <div className='productDetailBox'>
                 <section className='imageGallery'>
-                    <img className="productImg1" src={productInfo.images[0]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(0) }} />
+                    <img className="productImg1" src={productInfo.images[0]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(0) }} loading='lazy' />
 
                     <div className='bottomImages' >
-                        <img className="productImg2" src={productInfo.images[1]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(1) }} />
-                        <img className="productImg3" src={productInfo.images[2]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(2) }} />
-                        <img className="productImg4" src={productInfo.images[3]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(3) }} />
+                        <img className="productImg2" src={productInfo.images[1]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(1) }} loading='lazy' />
+                        <img className="productImg3" src={productInfo.images[2]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(2) }} loading='lazy' />
+                        <img className="productImg4" src={productInfo.images[3]} alt="product Image" onClick={() => { setShowImageSlider(true); setImgIndex(3) }} loading='lazy' />
                     </div>
                     <div className='dots'>
                         <span className='dot'></span>

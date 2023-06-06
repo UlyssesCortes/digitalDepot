@@ -232,7 +232,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
                                 <div className='contentBox'>
                                     <Link to={`/product/${data.id}`}>
-                                        <img className='cartProductImg' src={data.images[0]} alt="" />
+                                        <img className='cartProductImg' src={data.images[0]} alt="" loading='lazy' />
                                     </Link>
                                     <div className='topContentBox'>
                                         <h3>{data.title}</h3>

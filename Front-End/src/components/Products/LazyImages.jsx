@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const LazyImage = ({ src, alt }) => {
     const [imageSrc, setImageSrc] = React.useState(null);
     const imageRef = React.useRef(null);

@@ -10,7 +10,7 @@ export default function Favorites({ favorites }) {
                         <Link
                             to={`/product/${favorite.id}`}
                             className="favoriteProd" key={favorite.id} >
-                            <img className='favProductImg' src={favorite.image} alt="" />
+                            <img className='favProductImg' src={favorite.image} alt="" loading='lazy' />
                             <div className='topContentBoxFav'>
                                 <p className="favTitle">{favorite.title}</p>
                                 <p className="favPrice">${favorite.price}</p>

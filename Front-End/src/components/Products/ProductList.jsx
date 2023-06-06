@@ -1,7 +1,8 @@
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useEffect, useState, Suspense, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import LazyImages from './LazyImages';
 import { motion } from "framer-motion";
+// import { useInView } from 'react-intersection-observer';
 
 import ProductListLoading from '../Loading/ProductListLoading';
 import LoginAlert from '../Login-Register/LoginAlert';
