@@ -30,6 +30,12 @@
     gap: 30px;
     cursor: pointer;
     color: #2f2f2f;
+    list-style: none;
+}
+
+.sloganTest {
+    overflow: hidden;
+
 }
 
 .navLink {

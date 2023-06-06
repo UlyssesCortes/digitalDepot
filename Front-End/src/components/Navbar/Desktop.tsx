@@ -19,101 +19,136 @@ export default function Desktop({ setFilterName, setShowProfile, setIsCategorieO
         setIsCategorieOpen(false)
         setCurrentPage(1)
     }
+    const navAnimation = {
+        hidden: {
+            opacity: 0
+        },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0,
+                ease: "easeInOut"
+            }
+        }
+    }
+
+    const navItems = {
+        hidden: {
+            opacity: 0,
+            y: '-10px',
+        },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                ease: "easeInOut"
+            }
+        }
+    }
 
     return (
         <section className='leftNav' onClick={() => { setShowProfile(false) }}>
             <section className='titleContainer'>
                 <Link to='/' className='companyTitle' onClick={() => { setIsCategorieOpen(false) }}>DigitalDepot</Link>
             </section>
-            <section className='navLinks'>
-                <Link to='/' className='navLink ' onClick={() => { setIsCategorieOpen(false) }}>Home</Link>
+            <motion.ul className='navLinks' variants={navAnimation} initial="hidden" animate="show">
 
-                <Link to='/products' className='navLink ' onClick={() => { setIsCategorieOpen(false) }}>Shop</Link>
+                <motion.li variants={navItems}>
+                    <Link to='/' className='navLink ' onClick={() => { setIsCategorieOpen(false) }}>Home</Link>
+                </motion.li>
+                <motion.li variants={navItems}>
+                    <Link to='/products' className='navLink ' onClick={() => { setIsCategorieOpen(false) }}>Shop</Link>
+                </motion.li>
+                <motion.li variants={navItems}>
 
-                <motion.nav
-                    initial={false}
-                    animate={isCategorieOpen ? "open" : "closed"}
-                    className="navCategorieSec"
-                    layout="position"
-                >
-                    <motion.div
-                        onClick={() => setIsCategorieOpen(!isCategorieOpen)}
+                    <motion.nav
+                        initial={false}
+                        animate={isCategorieOpen ? "open" : "closed"}
+                        className="navCategorieSec"
+                        layout="position"
                     >
-                        <p className={` ${isCategorieOpen ? "categoryLink" : "navLink"}`}>Categories
-                        </p>
-                    </motion.div>
-                    <motion.ul
-                        variants={{
-                            open: {
-                                clipPath: "inset(0% 0% 0% 0% round 10px)",
-                                transition: {
-                                    type: "spring",
-                                    bounce: 0,
-                                    duration: 0.5,
-                                    delayChildren: 0.3,
-                                    staggerChildren: 0.05,
+                        <motion.div
+                            onClick={() => setIsCategorieOpen(!isCategorieOpen)}
+                        >
+                            <p className={` ${isCategorieOpen ? "categoryLink" : "navLink"}`}>Categories</p>
+                        </motion.div>
+                        <motion.ul
+                            variants={{
+                                open: {
+                                    clipPath: "inset(0% 0% 0% 0% round 10px)",
+                                    transition: {
+                                        type: "spring",
+                                        bounce: 0,
+                                        duration: 0.5,
+                                        delayChildren: 0.3,
+                                        staggerChildren: 0.05,
+                                    },
                                 },
-                            },
-                            closed: {
-                                clipPath: "inset(10% 50% 90% 50% round 10px)",
-                                transition: {
-                                    type: "spring",
-                                    bounce: 0,
-                                    duration: 0.2,
+                                closed: {
+                                    clipPath: "inset(10% 50% 90% 50% round 10px)",
+                                    transition: {
+                                        type: "spring",
+                                        bounce: 0,
+                                        duration: 0.2,
+                                    },
                                 },
-                            },
-                        }}
-                        style={{ pointerEvents: isCategorieOpen ? "auto" : "none" }}
-                    >
-                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
-                            <Link
-                                to="/products"
-                                className="navCategory"
-                                onClick={() => {
-                                    handleCategorySelect("Living Room")
-                                }}
-                            >
-                                Living Room
-                            </Link>
-                        </motion.li>
-                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
-                            <Link
-                                to="/products"
-                                className="navCategory"
-                                onClick={() => {
-                                    handleCategorySelect("Bedroom")
-                                }}
-                            >
-                                Bedroom
-                            </Link>
-                        </motion.li>
-                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
-                            <Link
-                                to="/products"
-                                className="navCategory"
-                                onClick={() => {
-                                    handleCategorySelect("Workspace")
-                                }}
-                            >
-                                Workspace
-                            </Link>
-                        </motion.li>
-                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
-                            <Link
-                                to="/products"
-                                className="navCategory"
-                                onClick={() => {
-                                    handleCategorySelect("Kitchen")
-                                }}
-                            >
-                                Kitchen
-                            </Link>
-                        </motion.li>
-                    </motion.ul>
-                </motion.nav>
+                            }}
+                            style={{ pointerEvents: isCategorieOpen ? "auto" : "none" }}
+                        >
+                            <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
+                                <Link
+                                    to="/products"
+                                    className="navCategory"
+                                    onClick={() => {
+                                        handleCategorySelect("Living Room")
+                                    }}
+                                >
+                                    Living Room
+                                </Link>
+                            </motion.li>
+                            <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
+                                <Link
+                                    to="/products"
+                                    className="navCategory"
+                                    onClick={() => {
+                                        handleCategorySelect("Bedroom")
+                                    }}
+                                >
+                                    Bedroom
+                                </Link>
+                            </motion.li>
+                            <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
+                                <Link
+                                    to="/products"
+                                    className="navCategory"
+                                    onClick={() => {
+                                        handleCategorySelect("Workspace")
+                                    }}
+                                >
+                                    Workspace
+                                </Link>
+                            </motion.li>
+                            <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }}>
+                                <Link
+                                    to="/products"
+                                    className="navCategory"
+                                    onClick={() => {
+                                        handleCategorySelect("Kitchen")
+                                    }}
+                                >
+                                    Kitchen
+                                </Link>
+                            </motion.li>
+                        </motion.ul>
+                    </motion.nav>
+                </motion.li>
 
-                <Link to='/offers' className='navLink' onClick={() => { setIsCategorieOpen(false) }}>Special Offers</Link>
-            </section>
+                <motion.li variants={navItems}>
+                    <Link to='/offers' className='navLink' onClick={() => { setIsCategorieOpen(false) }}>Special Offers</Link>
+                </motion.li>
+
+            </motion.ul>
         </section >
     )
 }

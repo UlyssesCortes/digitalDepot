@@ -1,418 +1,421 @@
-/* BANNER */
-.banner {
-    display: flex;
-    height: 500px;
-    border-radius: 20px;
-    background-image: url("../assets/banner.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
-}
-
-.bannerContent {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    gap: 40px;
-    padding: 50px 0 0 50px;
-}
-
-.bannerSlogan {
-    font-size: 45px;
-    color: rgb(255, 255, 255);
-}
-
-.bannerSubSlogan {
-    color: white;
-    font-size: 20px;
-}
-
-.bannerBtnContainer {
-    display: flex;
-    flex-direction: row;
-    margin-top: 40px;
-
-    gap: 100px;
-}
-
-.bannerBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #2f2f2f;
-    border: none;
-    color: white;
-    border-radius: 10px;
-    font-size: 18px;
-    height: 60px;
-    width: 160px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.bannerStats {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: white;
-}
-
-.statsLeft {
-    border-right: solid black 1.5px;
-    padding-right: 50px;
-    font-size: 18px;
-}
-
-.statsLeft h1,
-.statsRight h1 {
-    font-size: 24px;
-}
-
-.statsRight {
-    padding: 0 50px 0 50px;
-    font-size: 18px;
-
-}
-
-/* COMPANIES */
-.conpaniesContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 12vh;
-    margin: 30px 0 30px 0;
-}
-
-.huobi,
-.fastmpany,
-.duofast,
-.hornet,
-.chase {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 130px;
-    height: 30px;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.huobi {
-    background-image: url("../assets/logo1.png");
-}
-
-.fastmpany {
-    background-image: url("../assets/logo4.png");
-}
-
-.duofast {
-    background-image: url("../assets/logo3.png");
-}
-
-.hornet {
-    background-image: url("../assets/logo4.png");
-}
-
-.chase {
-    background-image: url("../assets/logo5.png");
-}
-
-/* Furniture */
-
-.furnitureComponent {
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-    gap: 100px;
-}
-
-.topFurniture {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-.topFurniture h1 {
-    font-size: 35px;
-}
-
-.topFurniture p {
-    font-size: 18px;
-}
-
-.furnitureCategory {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-
-}
-
-.furnitureCard {
-    width: 300px;
-    text-decoration: none;
-    color: #2f2f2f;
-}
-
-
-.furnitureCardImg {
-    height: 400px;
-    border-radius: 20px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
-    transition: all ease-in-out 0.3s;
-}
-
-.furnitureCardImg:hover {
-    background-position: bottom;
-}
-
-
-.furnitureCard p {
-    text-align: center;
-    padding: 25px 0 25px 0;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.livingRoomImg {
-    background-image: url('https://target.scene7.com/is/image/Target/GUEST_bb2d4af1-680c-4f85-a701-a5ec550a4b29?wid=1000&hei=1000&qlt=80&fmt=webp');
-    background-color: #efefef;
-    transition: all ease-in-out 0.5s;
-}
-
-.bedroomImg {
-    background-image: url('https://secure.img1-fg.wfcdn.com/im/69316589/resize-h800-w800%5Ecompr-r85/1961/196176567/Javi+Upholstered+Bed.jpg');
-    border: #8888881e solid .5px;
-    background-color: #fffeff;
-}
-
-.workspaceImg {
-    background-image: url('https://target.scene7.com/is/image/Target/GUEST_677d0a83-4e74-46b3-9fc4-35ee1a3c29b2?wid=1000&hei=1000&qlt=80&fmt=webp');
-    background-color: #efefef;
-
-}
-
-.kitchenImg {
-    background-image: url('https://secure.img1-fg.wfcdn.com/im/23980700/resize-h800-w800%5Ecompr-r85/2330/233090723/Lincoln+5+-+Piece+Dining+Set.jpg');
-    background-color: #eaeaea;
-}
-
-/* DISCOUNTS */
-
-.discountsContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 50px;
-}
-
-.discountsTop {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-}
-
-.discountsTop h1 {
-    font-size: 35px;
-}
-
-.discountsTop p {
-    font-size: 18px;
-}
-
-.saleLine {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    color: white;
-    margin-top: 30px;
-    font-size: 20px;
-    width: 100%;
-    height: 60px;
-    background-color: #ab856c;
-
-}
-
-.saleLine h1 {
-    border-right: solid white 1px;
-    padding-right: 50px;
-    font-size: 28px;
-}
-
-.saleLine span {
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* BEST SELLER */
-
-.bestSellerContainer {
-    margin-top: 50px;
-}
-
-.title h1 {
-    font-size: 35px;
-}
-
-.bestSellerProducts {
-    display: flex;
-    flex-direction: row;
-    margin-top: 50px;
-    gap: 10px;
-}
-
-.bestLeft {
-    width: 45%;
-    flex-grow: 1;
-}
-
-.bestRight {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 45%;
-}
-
-.bestProduct1,
-.bestProduct2,
-.bestProduct3 {
-    height: 550px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    cursor: pointer;
-    background-position: center;
-}
-
-.bestProduct2,
-.bestProduct3 {
-    height: 50%;
-}
-
-.bestProduct1 {
-    background-image: url('https://target.scene7.com/is/image/Target/GUEST_471b6522-5536-49b0-a13f-d0da02dbaea9?wid=1000&hei=1000&qlt=80&fmt=webp');
-}
-
-.bestProduct2 {
-    background-image: url('https://target.scene7.com/is/image/Target/GUEST_eb9906ac-a24e-4f02-a85c-d6a01ab82cef?wid=1000&hei=1000&qlt=80&fmt=webp');
-    background-position: center;
-
-}
-
-.bestProduct3 {
-    background-image: url('https://target.scene7.com/is/image/Target/GUEST_4ea1adad-92b9-4d9f-a95c-6ad8a3e06507?wid=1000&hei=1000&qlt=80&fmt=webp');
-    background-position: bottom;
-}
-
-/* BENEFITS */
-
-.benefitsStripe {
-    display: flex;
-    justify-content: space-evenly;
-    height: 150px;
-    margin: 100px 0 100px 0;
-}
-
-.benefitsBox {
-    width: 180px;
-    height: 100%;
-    /* outline: auto; */
-}
-
-.benefitsBox p {
-    text-align: center;
-    text-transform: uppercase;
-    margin-top: 20px;
-    font-size: 18px;
-}
-
-.benefitImg1,
-.benefitImg2,
-.benefitImg3,
-.benefitImg4 {
-    height: 80%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-}
-
-.benefitImg1 {
-    background-image: url("../assets/click.png");
-}
-
-.benefitImg2 {
-    background-image: url("../assets/shiping.png");
-}
-
-.benefitImg3 {
-    background-image: url("../assets/card.png");
-}
-
-.benefitImg4 {
-    background-image: url("../assets/contact.png");
-    cursor: pointer;
-}
-
-@media only screen and (max-width: 1200px) {
-    .bannerContent {
-        gap: 40px;
-        padding: 65px 0 0 45px;
-    }
-}
-
-@media only screen and (max-width: 750px) {
-
-    .bannerContent {
-        gap: 20px;
-        padding: 35px 0 0 35px;
-    }
-
-    .banner {
-        height: 400px;
-    }
-
-    .bannerSlogan {
-        font-size: 25px;
-    }
-
-    .bannerSubSlogan {
-        font-size: 16px;
-    }
-
-    .bannerBtnContainer {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .bannerBtn {
-        height: 50px;
-        width: 150px;
-    }
-
-    .topFurniture h1,
-    .discountsTop h1,
-    .title h1 {
-        font-size: 30px;
-    }
-
-    .saleLine h1 {
-        font-size: 20px;
-        padding-left: 20px;
-    }
-
-    .saleLine p {
-        font-size: 14px;
-    }
-
-    .huobi,
-    .hornet,
-    .duofast {
-        display: none;
-    }
-}
+  @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Inter:wght@600&family=Merriweather&family=Montserrat:wght@300&display=swap');
+
+  /* BANNER */
+  .banner {
+      display: flex;
+      height: 500px;
+      border-radius: 20px;
+      background-image: url("../assets/banner.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top;
+  }
+
+  .bannerContent {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      gap: 40px;
+      padding: 50px 0 0 50px;
+      font-family: 'Inter', sans-serif;
+  }
+
+  .bannerSlogan {
+      font-size: 45px;
+      color: rgb(255, 255, 255);
+  }
+
+  .bannerSubSlogan {
+      color: white;
+      font-size: 20px;
+  }
+
+  .bannerBtnContainer {
+      display: flex;
+      flex-direction: row;
+      margin-top: 40px;
+
+      gap: 100px;
+  }
+
+  .bannerBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #2f2f2f;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      font-size: 18px;
+      height: 60px;
+      width: 160px;
+      text-decoration: none;
+      cursor: pointer;
+  }
+
+  .bannerStats {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: white;
+  }
+
+  .statsLeft {
+      border-right: solid black 1.5px;
+      padding-right: 50px;
+      font-size: 18px;
+  }
+
+  .statsLeft h1,
+  .statsRight h1 {
+      font-size: 24px;
+  }
+
+  .statsRight {
+      padding: 0 50px 0 50px;
+      font-size: 18px;
+
+  }
+
+  /* COMPANIES */
+  .conpaniesContainer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 12vh;
+      margin: 30px 0 30px 0;
+  }
+
+  .huobi,
+  .fastmpany,
+  .duofast,
+  .hornet,
+  .chase {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 130px;
+      height: 30px;
+      background-repeat: no-repeat;
+      background-size: contain;
+  }
+
+  .huobi {
+      background-image: url("../assets/logo1.png");
+  }
+
+  .fastmpany {
+      background-image: url("../assets/logo4.png");
+  }
+
+  .duofast {
+      background-image: url("../assets/logo3.png");
+  }
+
+  .hornet {
+      background-image: url("../assets/logo4.png");
+  }
+
+  .chase {
+      background-image: url("../assets/logo5.png");
+  }
+
+  /* Furniture */
+
+  .furnitureComponent {
+      display: flex;
+      flex-direction: column;
+      margin-top: 50px;
+      gap: 100px;
+  }
+
+  .topFurniture {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+  }
+
+  .topFurniture h1 {
+      font-size: 35px;
+  }
+
+  .topFurniture p {
+      font-size: 18px;
+  }
+
+  .furnitureCategory {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+
+  }
+
+  .furnitureCard {
+      width: 300px;
+      text-decoration: none;
+      color: #2f2f2f;
+  }
+
+
+  .furnitureCardImg {
+      height: 400px;
+      border-radius: 20px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      cursor: pointer;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
+      transition: all ease-in-out 0.3s;
+  }
+
+  .furnitureCardImg:hover {
+      background-position: bottom;
+  }
+
+
+  .furnitureCard p {
+      text-align: center;
+      padding: 25px 0 25px 0;
+      font-size: 18px;
+      font-weight: bold;
+  }
+
+  .livingRoomImg {
+      background-image: url('https://target.scene7.com/is/image/Target/GUEST_bb2d4af1-680c-4f85-a701-a5ec550a4b29?wid=1000&hei=1000&qlt=80&fmt=webp');
+      background-color: #efefef;
+      transition: all ease-in-out 0.5s;
+  }
+
+  .bedroomImg {
+      background-image: url('https://secure.img1-fg.wfcdn.com/im/69316589/resize-h800-w800%5Ecompr-r85/1961/196176567/Javi+Upholstered+Bed.jpg');
+      border: #8888881e solid .5px;
+      background-color: #fffeff;
+  }
+
+  .workspaceImg {
+      background-image: url('https://target.scene7.com/is/image/Target/GUEST_677d0a83-4e74-46b3-9fc4-35ee1a3c29b2?wid=1000&hei=1000&qlt=80&fmt=webp');
+      background-color: #efefef;
+
+  }
+
+  .kitchenImg {
+      background-image: url('https://secure.img1-fg.wfcdn.com/im/23980700/resize-h800-w800%5Ecompr-r85/2330/233090723/Lincoln+5+-+Piece+Dining+Set.jpg');
+      background-color: #eaeaea;
+  }
+
+  /* DISCOUNTS */
+
+  .discountsContainer {
+      display: flex;
+      flex-direction: column;
+      margin-top: 50px;
+  }
+
+  .discountsTop {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+  }
+
+  .discountsTop h1 {
+      font-size: 35px;
+  }
+
+  .discountsTop p {
+      font-size: 18px;
+  }
+
+  .saleLine {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      color: white;
+      margin-top: 30px;
+      font-size: 20px;
+      width: 100%;
+      height: 60px;
+      background-color: #ab856c;
+
+  }
+
+  .saleLine h1 {
+      border-right: solid white 1px;
+      padding-right: 50px;
+      font-size: 28px;
+  }
+
+  .saleLine span {
+      font-weight: bold;
+      cursor: pointer;
+  }
+
+  /* BEST SELLER */
+
+  .bestSellerContainer {
+      margin-top: 50px;
+  }
+
+  .title h1 {
+      font-size: 35px;
+  }
+
+  .bestSellerProducts {
+      display: flex;
+      flex-direction: row;
+      margin-top: 50px;
+      gap: 10px;
+  }
+
+  .bestLeft {
+      width: 45%;
+      flex-grow: 1;
+  }
+
+  .bestRight {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 45%;
+  }
+
+  .bestProduct1,
+  .bestProduct2,
+  .bestProduct3 {
+      height: 550px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      cursor: pointer;
+      background-position: center;
+  }
+
+  .bestProduct2,
+  .bestProduct3 {
+      height: 50%;
+  }
+
+  .bestProduct1 {
+      background-image: url('https://target.scene7.com/is/image/Target/GUEST_471b6522-5536-49b0-a13f-d0da02dbaea9?wid=1000&hei=1000&qlt=80&fmt=webp');
+  }
+
+  .bestProduct2 {
+      background-image: url('https://target.scene7.com/is/image/Target/GUEST_eb9906ac-a24e-4f02-a85c-d6a01ab82cef?wid=1000&hei=1000&qlt=80&fmt=webp');
+      background-position: center;
+
+  }
+
+  .bestProduct3 {
+      background-image: url('https://target.scene7.com/is/image/Target/GUEST_4ea1adad-92b9-4d9f-a95c-6ad8a3e06507?wid=1000&hei=1000&qlt=80&fmt=webp');
+      background-position: bottom;
+  }
+
+  /* BENEFITS */
+
+  .benefitsStripe {
+      display: flex;
+      justify-content: space-evenly;
+      height: 150px;
+      margin: 100px 0 100px 0;
+  }
+
+  .benefitsBox {
+      width: 180px;
+      height: 100%;
+      /* outline: auto; */
+  }
+
+  .benefitsBox p {
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 20px;
+      font-size: 18px;
+  }
+
+  .benefitImg1,
+  .benefitImg2,
+  .benefitImg3,
+  .benefitImg4 {
+      height: 80%;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+  }
+
+  .benefitImg1 {
+      background-image: url("../assets/click.png");
+  }
+
+  .benefitImg2 {
+      background-image: url("../assets/shiping.png");
+  }
+
+  .benefitImg3 {
+      background-image: url("../assets/card.png");
+  }
+
+  .benefitImg4 {
+      background-image: url("../assets/contact.png");
+      cursor: pointer;
+  }
+
+  @media only screen and (max-width: 1200px) {
+      .bannerContent {
+          gap: 40px;
+          padding: 65px 0 0 45px;
+      }
+  }
+
+  @media only screen and (max-width: 750px) {
+
+      .bannerContent {
+          gap: 20px;
+          padding: 35px 0 0 35px;
+      }
+
+      .banner {
+          height: 400px;
+      }
+
+      .bannerSlogan {
+          font-size: 25px;
+      }
+
+      .bannerSubSlogan {
+          font-size: 16px;
+      }
+
+      .bannerBtnContainer {
+          flex-direction: column;
+          gap: 20px;
+      }
+
+      .bannerBtn {
+          height: 50px;
+          width: 150px;
+      }
+
+      .topFurniture h1,
+      .discountsTop h1,
+      .title h1 {
+          font-size: 30px;
+      }
+
+      .saleLine h1 {
+          font-size: 20px;
+          padding-left: 20px;
+      }
+
+      .saleLine p {
+          font-size: 14px;
+      }
+
+      .huobi,
+      .hornet,
+      .duofast {
+          display: none;
+      }
+  }
