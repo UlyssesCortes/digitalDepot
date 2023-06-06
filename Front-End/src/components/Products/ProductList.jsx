@@ -1,12 +1,12 @@
 import React, { useEffect, useState, Suspense } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import LazyImages from './LazyImages';
 import { motion } from "framer-motion";
 
 import ProductListLoading from '../Loading/ProductListLoading';
 import LoginAlert from '../Login-Register/LoginAlert';
 
-export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products }) {
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts }) {
     const [furniture, setFurniture] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [showAll, setShowAll] = useState(false);
@@ -16,10 +16,21 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const token = window.localStorage.getItem('token');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     const lowerCaseFilterName = filterName.toLowerCase();
+    const location = useLocation();
 
     useEffect(() => {
         setIsLoggedIn(isLoggedInLocal)
     }, []);
+
+    useEffect(() => {
+        const cleanup = async () => {
+            await getProducts();
+        };
+
+        return () => {
+            cleanup();
+        };
+    }, [location.pathname]);
 
     useEffect(() => {
         if (!filterName || filterName === 'all') {
@@ -51,6 +62,37 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             setFurniture(filteredProducts);
         }
     }, [filterName, products]);
+
+    const getProducts = async () => {
+        try {
+            if (isLoggedIn) {
+                const response = await fetch(`${API_URL}products/all`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                const result = await response.json();
+                if (result) {
+                    setProducts(result);
+                }
+                return result;
+            } else {
+                const response = await fetch(`${API_URL}products`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const result = await response.json();
+                if (result) {
+                    setProducts(result);
+                }
+                return result;
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const handleMouseEnter = (index) => {
         setTimeout(() => {
@@ -197,6 +239,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                                 to={`/product/${product.id}`}
                                 key={product.id}
                                 onMouseEnter={() => handleMouseEnter(index)}
+                                onClick={() => { getProducts() }}
                             >
                                 <Suspense fallback={<div>Loading...</div>}>
                                     <div className="imageContainer">

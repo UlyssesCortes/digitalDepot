@@ -13,7 +13,7 @@ import ProductLoading from '../Loading/ProductLoading';
 import ImageSlider from './ImageSlider';
 import LoginAlert from '../Login-Register/LoginAlert';
 
-export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, favorites }) {
+export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, setProducts }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [displayFeatures, setDisplayFeatures] = useState(false)
@@ -26,17 +26,19 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const [loginAlert, setLoginAlert] = useState(false)
 
     useEffect(() => {
-
+        const localToken = window.localStorage.getItem('token');
         const fetchProductDetails = async () => {
             try {
-                const response = await fetch(`${API_URL}products/${id}`, {
+                const response = await fetch(`${API_URL}products/details/${id}`, {
                     headers: {
                         "Content-Type": "application/json",
+                        Authorization: `Bearer ${localToken}`,
                     },
                 });
                 const result = await response.json();
                 if (result) {
                     setProduct(result);
+                    console.log(result)
                 }
             } catch (error) {
                 console.error(error);
@@ -46,6 +48,23 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
         fetchProductDetails();
     }, [API_URL, id]);
 
+    const fetchProductDetails = async () => {
+        try {
+            const response = await fetch(`${API_URL}products/details/${id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            const result = await response.json();
+            if (result) {
+                setProduct(result);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     if (!product) {
         return (
             <>
@@ -54,7 +73,89 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
         )
     }
 
+    const handleFavoriteBtn = async (productId) => {
+        if (isLoggedIn) {
+            try {
+                const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                if (favoriteResponse.ok) {
+                    fetchProductDetails()
+                    getProducts()
+                }
+                if (!favoriteResponse.ok) {
 
+                    throw new Error(
+                        `Failed to create order. Status: ${favoriteResponse.status}`
+                    );
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        } else {
+            setLoginAlert(true)
+        }
+    };
+
+    const removeFavorite = async (productId) => {
+        if (isLoggedIn) {
+            try {
+                const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                if (favoriteResponse.ok) {
+                    fetchProductDetails()
+                    getProducts()
+                }
+                if (!favoriteResponse.ok) {
+                    throw new Error(
+                        `Failed to create order. Status: ${favoriteResponse.status}`
+                    );
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    };
+
+    const getProducts = async () => {
+        try {
+            if (isLoggedIn) {
+                const response = await fetch(`${API_URL}products/all`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                const result = await response.json();
+                if (result) {
+                    setProducts(result);
+                }
+                return result;
+            } else {
+                const response = await fetch(`${API_URL}products`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const result = await response.json();
+                if (result) {
+                    setProducts(result);
+                }
+                return result;
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const productInfo = product[0];
     return (
@@ -131,7 +232,12 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                                 <p>Add to cart</p>
                             }
                         </button>
-                        <button className='saveToWishlist'>Save To Wishlist</button>
+
+                        {isLoggedIn && productInfo.isFavorite ?
+                            <button className='saveToWishlist' onClick={() => { removeFavorite(productInfo.id) }}>Remove from Wishlist</button> :
+                            <button className='saveToWishlist' onClick={() => { handleFavoriteBtn(productInfo.id) }}>Save To Wishlist</button>
+                        }
+
                     </div>
 
                     <div className='moreDetails'>

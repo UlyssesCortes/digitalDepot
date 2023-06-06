@@ -112,7 +112,6 @@ apiRouter.get("/", async (req, res, next) => {
 // GET /api/users/me
 apiRouter.get("/me", requireUser, async (req, res, next) => {
     const user = await getUserById(req.user.id);
-    console.log(user);
     try {
         res.send({
             user: req.user,
