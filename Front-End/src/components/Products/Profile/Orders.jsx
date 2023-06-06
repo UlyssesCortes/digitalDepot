@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Orders({ finializedOrders, setShowProfile }) {
+export default function Orders({ finializedOrders }) {
     const [selectedOrderId, setSelectedOrderId] = useState(null);
 
     const handleClick = (orderId) => {
@@ -31,7 +31,7 @@ export default function Orders({ finializedOrders, setShowProfile }) {
                                 <section className='itemsContainer'>
                                     {isOpen && order.orderItems.map((item) => {
                                         return (
-                                            <Link to={`/product/${item.productId}`} className='item' key={item.productId} onClick={() => { setShowProfile(false) }}>
+                                            <Link to={`/product/${item.productId}`} className='item' key={item.productId} >
                                                 <img className='orderImg' src={item.image} alt="" />
                                                 <div className='leftItem'>
                                                     <p className='favTitle'>{item.title}</p>

@@ -10,7 +10,7 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage }) {
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage, setFinalizedOrders }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showSearch, setShowSearch] = useState(false)
     const [searchInput, setSearchInput] = useState("")
@@ -19,7 +19,6 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
     const inputRef = useRef(null);
 
     const navigate = useNavigate();
-
 
     useEffect(() => {
         if (showSearch && inputRef.current) {
@@ -42,7 +41,6 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                     },
                 });
                 const products = await favoriteProducts.json();
-                console.log("FAVORITES: ", products)
                 setFavorites(products)
             } catch (error) {
                 console.log(error);
@@ -51,6 +49,18 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
             console.log(error);
         }
     };
+
+    const fetchOrders = async () => {
+        if (token) {
+            const response = await fetch(`${API_URL}order/history`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const data = await response.json();
+            setFinalizedOrders(data)
+        }
+    }
 
     const handleSerachBar = (event) => {
         event.preventDefault()
@@ -80,7 +90,16 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
         setShowFavorite(false)
         setShowOrder(false)
         setShowCart(true)
+        fetchFavorites()
+        fetchOrders()
         setPageTitle("SHOPPING CART")
+    }
+
+    const handleProfileClick = () => {
+        setShowProfile(!showProfile)
+        fetchFavorites()
+        fetchOrders()
+        setIsCategorieOpen(false)
     }
 
     return (
@@ -104,6 +123,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                     <Lottie className="headerIcon" animationData={search} loop={false} onClick={() => {
                         searchClick();
                     }} />
+
                     <Link to='/cart' className='navCartIcons' onClick={() => { handleCartIconClick() }}>
                         <Lottie className="cartIcon" animationData={cart} loop={false} />
                     </Link >
@@ -112,7 +132,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                 {isLoggedIn ?
                     <section>
                         <section className='profileSection'>
-                            <Lottie className="userIcon" animationData={user} loop={false} onClick={() => { setShowProfile(!showProfile); fetchFavorites(); setIsCategorieOpen(false) }} />
+                            <Lottie className="userIcon" animationData={user} loop={false} onClick={() => { handleProfileClick() }} />
                         </section>
 
 

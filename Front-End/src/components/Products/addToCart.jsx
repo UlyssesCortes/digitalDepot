@@ -64,7 +64,6 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
     }
 
     try {
-        console.log(token)
         // error occurs because currentOrder does not get registered fast enought
         if (currentOrderId && isLoggedIn) {
             const itemsResponse = await fetch(`${API_URL}order-items/${currentOrderId}`, {

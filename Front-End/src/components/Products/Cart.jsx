@@ -20,8 +20,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     const getOrderItems = async () => {
         try {
             if (currentOrderId) {
-                console.log("ITEMS RUNNING")
-
                 const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -76,7 +74,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             } catch (error) {
                 console.log(error)
             }
-            console.log(myCart[index].quantity);
         }
     }
 
@@ -100,7 +97,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             } catch (error) {
                 console.log(error)
             }
-            console.log(myCart[index].quantity);
         }
     }
 
@@ -264,11 +260,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                 </div>
                             </div>
                         )}
-                        {showFavorite &&
-                            // <section className='favBox'>
-                            <Favorites favorites={favorites} />
-                            // </section>
-                        }
+                        {showFavorite && <Favorites favorites={favorites} />}
                         {showOrder && <Orders finializedOrders={finializedOrders} />}
                     </section>
                     {isLoggedIn && showCart &&
