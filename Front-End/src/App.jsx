@@ -9,6 +9,7 @@ import Login from './components/Login-Register/Login';
 import Cart from './components/Products/Cart';
 import Offers from './components/SpecialOffers/Offers';
 import Header from './components/Navbar/Header';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
   const [pageTitle, setPageTitle] = useState("SHOPPING CART");
   const [modalEmail, setModalEmail] = useState("")
   const [currentPage, setCurrentPage] = useState(1);
+  const hideFooter = true
 
   // localStorage.setItem('currentOrderId', "");
   useEffect(() => {
@@ -39,7 +41,6 @@ function App() {
       fetchOrder()
     }
   }, [])
-
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -171,6 +172,9 @@ function App() {
           <div className='marginReducer'>
             <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} />
           </div>
+        }
+        {
+          !hideFooter && <Footer />
         }
         <Routes>
           <Route

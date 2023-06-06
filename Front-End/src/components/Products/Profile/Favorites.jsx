@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import Lottie from "lottie-react"
+import delivery from "../../../assets/LottieAnimations/computer.json"
 
 export default function Favorites({ favorites }) {
 
@@ -19,7 +21,9 @@ export default function Favorites({ favorites }) {
                     );
                 })}
             </section >
-            <section className='recomendations'></section>
+            <section className='recomendations'>
+                <Lottie className="favPageAnimation" animationData={delivery} loop={true} />
+            </section>
         </section>
 
     )

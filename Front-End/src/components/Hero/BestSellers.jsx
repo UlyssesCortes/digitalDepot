@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 
 export default function BestSellers() {
     return (
@@ -8,12 +9,15 @@ export default function BestSellers() {
             <section className="bestSellerProducts">
                 {/* On hover make overlay appear with name and price and button to see full details */}
                 <section className="bestLeft">
-                    <div className="bestProduct1"></div>
+                    <Link to='/products' >
+                        <div className="bestProduct1"></div>
+                    </Link>
+
                 </section>
 
                 <section className="bestRight">
-                    <div className="bestProduct2"></div>
-                    <div className="bestProduct3"></div>
+                    <Link to='/products' className="bestProduct2"></Link>
+                    <Link to='/products' className="bestProduct3"></Link>
                 </section>
             </section>
 

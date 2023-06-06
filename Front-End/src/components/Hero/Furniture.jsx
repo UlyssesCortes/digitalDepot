@@ -8,7 +8,7 @@ import {
     furniturePopUp2,
     furniturePopUp3,
     furniturePopUp4
-} from '../../assets/Animations/HeroAnimations';
+} from '../../assets/FramerAnimations/HeroAnimations';
 
 export default function Furniture({ setFilterName }) {
     const [isAnimated, setIsAnimated] = useState(false);

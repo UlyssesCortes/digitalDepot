@@ -8,7 +8,7 @@ import {
     typingContainerSub,
     btnContainer,
     bannerDetails,
-} from '../../assets/Animations/HeroAnimations';
+} from '../../assets/FramerAnimations/HeroAnimations';
 
 export default function Banner() {
 

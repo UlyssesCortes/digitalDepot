@@ -191,6 +191,17 @@
     width: 100px;
 }
 
+/* .orderHisImg {
+    height: 700px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../assets/images/favImg.jpg");
+} */
+
+
+
 /* STAR RATING */
 .star-rating {
     font-size: 24px;
@@ -763,13 +774,30 @@
 
 .favBox {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
 }
 
 .recomendations {
-    width: 600px;
-    outline: auto;
+    overflow: hidden;
+}
+
+.deliveryAnimation {
+    align-self: flex-start;
+    height: 450px;
+    scale: 1.4;
+    width: 700px;
+    margin-top: -100px;
+    z-index: -1;
+}
+
+.favPageAnimation {
+    align-self: flex-start;
+    height: 400px;
+    margin-top: -20px;
+    width: 700px;
+    z-index: -1;
 }
 
 .favoriteContainer {
@@ -883,6 +911,10 @@
         height: 80%;
     }
 
+    .favBox {
+        justify-content: center;
+    }
+
 }
 
 @media only screen and (max-width: 850px) {
@@ -893,6 +925,8 @@
     .productsSec {
         justify-content: center;
     }
+
+
 }
 
 @media only screen and (max-width: 700px) {

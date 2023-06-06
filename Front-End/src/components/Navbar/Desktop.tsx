@@ -5,7 +5,7 @@ import {
     itemVariants,
     navAnimation,
     navItems
-} from '../../assets/Animations/NavAnimations';
+} from '../../assets/FramerAnimations/NavAnimations';
 
 export default function Desktop({ setFilterName, setShowProfile, setIsCategorieOpen, isCategorieOpen, setCurrentPage }) {
 

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Lottie from "lottie-react"
+import delivery from "../../../assets/LottieAnimations/delivery.json"
+
+
 
 export default function Orders({ finializedOrders }) {
     const [selectedOrderId, setSelectedOrderId] = useState(null);
@@ -50,7 +54,7 @@ export default function Orders({ finializedOrders }) {
 
             </section >
             <section className='recomendations'>
-
+                <Lottie className="deliveryAnimation" animationData={delivery} loop={true} />
             </section>
         </section>
 

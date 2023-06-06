@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 import ProductListLoading from '../Loading/ProductListLoading';
 import LoginAlert from '../Login-Register/LoginAlert';
-import { generateCardVariants } from '../../assets/Animations/ProductAnimation';
+import { generateCardVariants } from '../../assets/FramerAnimations/ProductAnimation';
 
 export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts }) {
     const [furniture, setFurniture] = useState([]);

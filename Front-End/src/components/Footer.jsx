@@ -1,41 +1,20 @@
 import '../css/footer.css'
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
     return (
         <section className='footer'>
-
-            <div className='footerColumn'>
-                <p className='linkTtitle'>Contact Us</p>
-                <div className='linksFooter'>
-                    <a className='links'>Join Us</a>
-                    <a href="tel:+7606854653" className='links'>760-685-4653</a>
-                    <a href="mailto:john@windowprosofsandiego.com" className='links'>john@windowprosofsandiego.com</a>
-                </div>
-            </div>
-
-            <div className='footerColumn'>
-                <p className='linkTtitle'>Categories</p>
-                <div className='linksFooter'>
-                    <a className='links' href="#services"
-                    >Residential</a>
-                    <a className='links' href="#services"
-                    >Commercial</a>
-                    <a className='links' href="#services"
-                    >Solar Panel</a>
-                </div>
-            </div>
-
-            <div className='footerColumn'>
-                <p className='linkTtitle'>Testimonials</p>
-                <div className='linksFooter'>
-                    <a className='links'>Yelp</a>
-
-                    <a href='#gallery' className='links'>Clients</a>
-                    <a href='#reviews' className='links'>Reviews</a>
-                </div>
-            </div>
-
-
-        </section>
+            <section className='leftFotNav'>
+                <p>Contacts</p>
+                <p className='phoneNumebr'>(406) 555-0120</p>
+                <p className='phoneNumebr'> contact@digitaldepot.com</p>
+            </section>
+            <section className='rightFotNav'>
+                <Link to='/' className='navLink '>Home</Link>
+                <Link to='/products' className='navLink '>Shop</Link>
+                <p className="navLink categorieFooter">Categories</p>
+                <Link to='/offers' className='navLink'>Special Offers</Link>
+            </section>
+        </section >
     )
 }

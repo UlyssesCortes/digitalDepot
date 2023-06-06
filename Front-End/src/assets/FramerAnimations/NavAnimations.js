@@ -2,9 +2,9 @@ export const itemVariants = {
     open: {
         opacity: 1,
         y: 0,
-        transition: { type: "spring", stiffness: 300, damping: 24 }
+        transition: { type: "spring", stiffness: 30, damping: 2 }
     },
-    closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
+    closed: { opacity: 0, y: 2, transition: { duration: 0.2 } }
 };
 
 export const navAnimation = {
@@ -22,15 +22,15 @@ export const navAnimation = {
 }
 
 export const navItems = {
-    hidden: {
-        opacity: 0,
-        y: '-10px',
-    },
-    show: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            ease: "easeInOut"
-        }
-    }
+    // hidden: {
+    //     opacity: 0,
+    //     y: '0px',
+    // },
+    // show: {
+    //     opacity: 1,
+    //     y: 0,
+    //     transition: {
+    //         ease: "easeInOut"
+    //     }
+    // }
 }
