@@ -14,7 +14,7 @@ export default function Footer() {
             </div>
 
             <div className='footerColumn'>
-                <p className='linkTtitle'>Services</p>
+                <p className='linkTtitle'>Categories</p>
                 <div className='linksFooter'>
                     <a className='links' href="#services"
                     >Residential</a>

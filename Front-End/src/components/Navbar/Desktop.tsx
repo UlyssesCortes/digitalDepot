@@ -1,50 +1,18 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { motion, Variants } from "framer-motion";
-
+import {
+    itemVariants,
+    navAnimation,
+    navItems
+} from '../../assets/Animations/NavAnimations';
 
 export default function Desktop({ setFilterName, setShowProfile, setIsCategorieOpen, isCategorieOpen, setCurrentPage }) {
-
-    const itemVariants: Variants = {
-        open: {
-            opacity: 1,
-            y: 0,
-            transition: { type: "spring", stiffness: 300, damping: 24 }
-        },
-        closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
-    };
 
     const handleCategorySelect = (filterName) => {
         setFilterName(filterName)
         setIsCategorieOpen(false)
         setCurrentPage(1)
-    }
-    const navAnimation = {
-        hidden: {
-            opacity: 0
-        },
-        show: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0,
-                ease: "easeInOut"
-            }
-        }
-    }
-
-    const navItems = {
-        hidden: {
-            opacity: 0,
-            y: '-10px',
-        },
-        show: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                ease: "easeInOut"
-            }
-        }
     }
 
     return (

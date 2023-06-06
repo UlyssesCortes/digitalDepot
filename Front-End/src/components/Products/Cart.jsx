@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CartLoading from '../Loading/CartLoading';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react"
-import checkout from "../../assets/checkout.json"
+import checkout from "../../assets/LottieAnimations/checkout.json"
 import Favorites from './Profile/Favorites';
 import Orders from './Profile/Orders';
 // import { getOrderItems2 } from '../../API/cartApi';

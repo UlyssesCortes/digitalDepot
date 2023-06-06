@@ -1,6 +1,6 @@
 // import loading from "/root/DigitalDepot/Front-End/src/assets/loading.json"
 import Lottie from "lottie-react"
-import loading from "../../assets/loadingLines.json"
+import loading from "../../assets/LottieAnimations/loadingLines.json"
 
 export default function CartLoading() {
 

@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useRef, useEffect } from 'react'
 import Lottie from "lottie-react"
-import search from "../../assets/searchClock.json"
-import cart from "../../assets/cart.json"
-import user from "../../assets/userAnimation.json"
+import search from "../../assets/LottieAnimations/searchClock.json"
+import cart from "../../assets/LottieAnimations/cart.json"
+import user from "../../assets/LottieAnimations/userAnimation.json"
 
 import '../../css/nav.css'
 import Desktop from './Desktop';

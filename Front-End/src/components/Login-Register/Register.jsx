@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react"
-import authorization from "../../assets/loadingLogin.json"
+import authorization from "../../assets/LottieAnimations/loadingLogin.json"
 import { usernameTakenAlert, passwordTooWeekAlert, invalidEmailAlert } from './Alerts';
 
 const Register = ({ API_URL, setHideNav }) => {

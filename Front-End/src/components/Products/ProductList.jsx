@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import ProductListLoading from '../Loading/ProductListLoading';
 import LoginAlert from '../Login-Register/LoginAlert';
+import { generateCardVariants } from '../../assets/Animations/ProductAnimation';
 
 export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts }) {
     const [furniture, setFurniture] = useState([]);
@@ -199,6 +200,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
+
     return (
         <>
             <section className="productsLis">
@@ -210,9 +212,12 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                     const isHovered = index === hoveredIndex;
                     const imageSource = isHovered ? product.images[1] : product.images[0];
                     return (
-                        <section
+                        <motion.section
                             key={product.id}
                             className="productCard"
+                            variants={generateCardVariants(index)}
+                            initial="hidden"
+                            animate="show"
                         >
                             <div className="favorite" href="#topNav">
                                 {isLoggedInLocal && product.isFavorite ? (
@@ -255,7 +260,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                                 </div>
                                     : <p>${product.price}</p>}
                             </div>
-                        </section>
+                        </motion.section>
                     );
                 })}
                 <section className="paginationBtns">

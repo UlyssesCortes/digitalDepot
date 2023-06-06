@@ -3,7 +3,7 @@
     height: 800px;
     width: 100%;
     border-radius: 20px;
-    background-image: url("../assets/SpringSale2.jpg");
+    background-image: url("../assets/images/SpringSale2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;
@@ -23,7 +23,7 @@
     height: 1000px;
     width: 700px;
     border-radius: 20px;
-    background-image: url("../assets/ChairDiscount.jpg");
+    background-image: url("../assets/images/ChairDiscount.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -36,7 +36,7 @@
     height: 1000px;
     width: 700px;
     border-radius: 20px;
-    background-image: url("../assets/SpringSale.jpg");
+    background-image: url("../assets/images/SpringSale.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: top;

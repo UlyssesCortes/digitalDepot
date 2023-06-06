@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Lottie from "lottie-react"
-import check from "../../assets/check.json"
+import check from "../../assets/LottieAnimations/check.json"
 
 import StarRating from './StartRating';
 import Features from './Features';

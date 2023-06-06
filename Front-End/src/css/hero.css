@@ -5,7 +5,7 @@
       display: flex;
       height: 500px;
       border-radius: 20px;
-      background-image: url("../assets/banner.jpg");
+      background-image: url("../assets/images/banner.jpg");
       background-repeat: no-repeat;
       background-size: cover;
       background-position: top;
@@ -102,23 +102,23 @@
   }
 
   .huobi {
-      background-image: url("../assets/logo1.png");
+      background-image: url("../assets/images/logo1.png");
   }
 
   .fastmpany {
-      background-image: url("../assets/logo4.png");
+      background-image: url("../assets/images/logo4.png");
   }
 
   .duofast {
-      background-image: url("../assets/logo3.png");
+      background-image: url("../assets/images/logo3.png");
   }
 
   .hornet {
-      background-image: url("../assets/logo4.png");
+      background-image: url("../assets/images/logo4.png");
   }
 
   .chase {
-      background-image: url("../assets/logo5.png");
+      background-image: url("../assets/images/logo5.png");
   }
 
   /* Furniture */
@@ -346,19 +346,19 @@
   }
 
   .benefitImg1 {
-      background-image: url("../assets/click.png");
+      background-image: url("../assets/images/click.png");
   }
 
   .benefitImg2 {
-      background-image: url("../assets/shiping.png");
+      background-image: url("../assets/images/shiping.png");
   }
 
   .benefitImg3 {
-      background-image: url("../assets/card.png");
+      background-image: url("../assets/images/card.png");
   }
 
   .benefitImg4 {
-      background-image: url("../assets/contact.png");
+      background-image: url("../assets/images/contact.png");
       cursor: pointer;
   }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../css/login.css'
 import Lottie from "lottie-react"
-import authorization from "../../assets/loadingLogin.json"
+import authorization from "../../assets/LottieAnimations/loadingLogin.json"
 
 import { Link, useNavigate } from 'react-router-dom';
 import { wrongUserAlert } from './Alerts';
