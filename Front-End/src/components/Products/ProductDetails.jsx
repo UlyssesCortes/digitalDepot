@@ -22,6 +22,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const [displayShipping, setDisplayShipping] = useState(false)
     const [displayDescription, setDisplayDescription] = useState(false)
     const [showImageSlider, setShowImageSlider] = useState(false)
+    const [clickedFav, setClickedFav] = useState(false)
     const [imgIndex, setImgIndex] = useState(0)
     const [loginAlert, setLoginAlert] = useState(false)
 
@@ -80,7 +81,8 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                     },
                 });
                 if (favoriteResponse.ok) {
-                    fetchProductDetails()
+                    // fetchProductDetails()
+                    setClickedFav(true)
                     getProducts()
                 }
                 if (!favoriteResponse.ok) {
@@ -108,7 +110,8 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                     },
                 });
                 if (favoriteResponse.ok) {
-                    fetchProductDetails()
+                    // fetchProductDetails()
+                    setClickedFav(true)
                     getProducts()
                 }
                 if (!favoriteResponse.ok) {
@@ -235,8 +238,20 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                         </button>
 
                         {isLoggedIn && productInfo.isFavorite ?
-                            <button className='saveToWishlist' onClick={() => { removeFavorite(productInfo.id) }}>Remove from Wishlist</button> :
-                            <button className='saveToWishlist' onClick={() => { handleFavoriteBtn(productInfo.id) }}>Save To Wishlist</button>
+                            <button className='saveToWishlist' onClick={() => { removeFavorite(productInfo.id) }}>
+                                {isLoggedIn && clickedFav ?
+                                    <Lottie className="checkAnimationFav" animationData={check} loop={false} />
+                                    :
+                                    <p> Remove from Wishlist</p>
+                                }
+                            </button> :
+                            <button className='saveToWishlist' onClick={() => { handleFavoriteBtn(productInfo.id) }}>
+                                {isLoggedIn && clickedFav ?
+                                    <Lottie className="checkAnimationFav" animationData={check} loop={false} />
+                                    :
+                                    <p> Save to Wishlist</p>
+                                }
+                            </button>
                         }
 
                     </div>

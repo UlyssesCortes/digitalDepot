@@ -53,52 +53,61 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             console.error(error);
         }
     };
-
     const increaseQuantity = async (index) => {
         if (myCart[index].quantity < 4) {
-            let currentQuantity = myCart[index].quantity += 1;
-            const orderItemId = myCart[index].id
-            // myCart[index].quantity += 1;
+            let currentQuantity = myCart[index].quantity + 1;
+            const orderItemId = myCart[index].id;
+
             try {
                 const response = await fetch(`${API_URL}order-items/${orderItemId}`, {
                     method: "PATCH",
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
                     },
-                    body: JSON.stringify({ quantity: currentQuantity })
+                    body: JSON.stringify({ quantity: currentQuantity }),
                 });
+
                 if (response.ok) {
-                    getOrderItems()
+                    setMyCart((prevCart) => {
+                        const updatedCart = [...prevCart];
+                        updatedCart[index].quantity = currentQuantity;
+                        return updatedCart;
+                    });
                 }
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         }
-    }
+    };
 
     const decreaseQuantity = async (index) => {
         if (myCart[index].quantity > 1) {
+            let currentQuantity = myCart[index].quantity - 1;
+            const orderItemId = myCart[index].id;
 
-            let currentQuantity = myCart[index].quantity -= 1;
-            const orderItemId = myCart[index].id
             try {
                 const response = await fetch(`${API_URL}order-items/${orderItemId}`, {
                     method: "PATCH",
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
                     },
-                    body: JSON.stringify({ quantity: currentQuantity })
+                    body: JSON.stringify({ quantity: currentQuantity }),
                 });
+
                 if (response.ok) {
-                    getOrderItems()
+                    setMyCart((prevCart) => {
+                        const updatedCart = [...prevCart];
+                        updatedCart[index].quantity = currentQuantity;
+                        return updatedCart;
+                    });
                 }
             } catch (error) {
-                console.log(error)
+                console.log(error);
             }
         }
-    }
+    };
 
     const handleUpdate = async (orderId) => {
         var currentDate = new Date();
@@ -222,7 +231,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     </section>
 
                     {/* CART COMPONENT */}
-                    <section className='productsSec'>
+                    <section className={`productsSec ${myCart.length > 2 && "moreGap"}`}>
                         {loading && !showFavorite && !showOrder && !checkoutAnimation && <CartLoading />}
 
                         {checkoutAnimation && !showFavorite && !showOrder && handleAnimation()}

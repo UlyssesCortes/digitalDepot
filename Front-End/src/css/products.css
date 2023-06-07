@@ -397,6 +397,11 @@
     user-select: none;
 }
 
+.checkAnimationFav {
+    height: 70px;
+    margin-top: -15px;
+}
+
 .productCard .imageContainer img {
     opacity: 1;
 }
@@ -561,9 +566,13 @@
 .productsSec {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 50px;
+    justify-content: flex-start;
+    gap: 60px;
     margin-bottom: 100px;
+}
+
+.moreGap {
+    justify-content: space-between;
 }
 
 .invisSum {

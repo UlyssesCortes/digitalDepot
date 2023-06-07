@@ -144,7 +144,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         }
     };
 
-
     const removeFavorite = async (productId) => {
         setFurniture((prevFurniture) => {
             return prevFurniture.map((product) => {
