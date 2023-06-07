@@ -171,6 +171,50 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
     }, [myCart]);
 
+    const handleCheckoutStripe = async () => {
+        try {
+            const response = await fetch(`${API_URL}create-checkout-session`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    items: [
+                        { id: 1, quantity: 3 },
+                        { id: 2, quantity: 1 },
+                    ],
+                }),
+            })
+            if (response.ok) return response.json()
+
+            return response.json().then(json => Promise.reject(json))
+        } catch (error) {
+            console.log(error)
+        }
+        // const response = await fetch(`${API_URL}create-checkout-session`, {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         items: [
+        //             { id: 1, quantity: 3 },
+        //             { id: 2, quantity: 1 },
+        //         ],
+        //     }),
+        // })
+        //     .then(res => {
+        //         if (res.ok) return res.json()
+        //         return res.json().then(json => Promise.reject(json))
+        //     })
+        //     .then(({ url }) => {
+        //         window.location = url
+        //     })
+        //     .catch(e => {
+        //         console.error(e.error)
+        //     })
+    }
+
     const handleFavClick = () => {
         setShowFavorite(true)
         setShowCart(false)
@@ -263,10 +307,13 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                         {showFavorite && <Favorites favorites={favorites} />}
                         {showOrder && <Orders finializedOrders={finializedOrders} />}
                     </section>
+
+
                     {isLoggedIn && showCart &&
                         <section className='CartBtnContainer'>
                             <p className='totalPrice'>Total ${parseFloat(sum)}</p>
-                            <button onClick={() => { handleUpdate(currentOrderId) }}>Checkout</button>
+                            <button onClick={() => { handleCheckoutStripe() }}>Checkout</button>
+                            {/* <button onClick={() => { handleUpdate(currentOrderId) }}>Checkout</button> */}
                         </section>
                     }
                 </div>
