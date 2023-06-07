@@ -28,35 +28,35 @@ export default function Furniture({ setFilterName }) {
                 </section>
             </VisibilitySensor>
 
-            <section className="furnitureCategory">
-                <motion.div className="furnitureCard" variants={furniturePopUp} initial="hidden" animate={isAnimated ? "show" : "hidden"}>
-                    <Link to='./products' className="livingRoomCard furnitureCard" onClick={() => { setFilterName("Living Room") }}>
-                        <div className="livingRoomImg furnitureCardImg"></div>
-                        <p>Living room</p>
-                    </Link>
-                </motion.div>
+            <motion.section className="furnitureCategory" variants={furniturePopUp} initial="hidden" animate={isAnimated ? "show" : "hidden"}>
+                {/* <motion.div className="furnitureCard" variants={furniturePopUp} initial="hidden" animate={isAnimated ? "show" : "hidden"}> */}
+                <Link to='./products' className="livingRoomCard furnitureCard" onClick={() => { setFilterName("Living Room") }}>
+                    <div className="livingRoomImg furnitureCardImg"></div>
+                    <p>Living room</p>
+                </Link>
+                {/* </motion.div> */}
 
-                <motion.div className="furnitureCard" variants={furniturePopUp2} initial="hidden" animate={isAnimated ? "show" : "hidden"}>
-                    <Link to='/products' className="bedRoomCard furnitureCard" onClick={() => { setFilterName("Bedroom") }}>
-                        <div className="bedroomImg furnitureCardImg"></div>
-                        <p>Bedroom</p>
-                    </Link>
-                </motion.div>
+                {/* <motion.div className="furnitureCard" variants={furniturePopUp2} initial="hidden" animate={isAnimated ? "show" : "hidden"}> */}
+                <Link to='/products' className="bedRoomCard furnitureCard" onClick={() => { setFilterName("Bedroom") }}>
+                    <div className="bedroomImg furnitureCardImg"></div>
+                    <p>Bedroom</p>
+                </Link>
+                {/* </motion.div> */}
 
-                <motion.div className="furnitureCard" variants={furniturePopUp3} initial="hidden" animate={isAnimated ? "show" : "hidden"}>
-                    <Link to='/products' className="workSpaceCard furnitureCard" onClick={() => { setFilterName("Workspace") }}>
-                        <div className="workspaceImg furnitureCardImg"></div>
-                        <p>Workspace</p>
-                    </Link>
-                </motion.div>
-                <motion.div className="furnitureCard" variants={furniturePopUp4} initial="hidden" animate={isAnimated ? "show" : "hidden"}>
-                    <Link to='products' className="kitchenCard furnitureCard" onClick={() => { setFilterName("Kitchen") }}>
-                        <div href="#topNav" className="kitchenImg furnitureCardImg"></div>
-                        <p>Kitchen</p>
-                    </Link>
-                </motion.div>
+                {/* <motion.div className="furnitureCard" variants={furniturePopUp3} initial="hidden" animate={isAnimated ? "show" : "hidden"}> */}
+                <Link to='/products' className="workSpaceCard furnitureCard" onClick={() => { setFilterName("Workspace") }}>
+                    <div className="workspaceImg furnitureCardImg"></div>
+                    <p>Workspace</p>
+                </Link>
+                {/* </motion.div> */}
+                {/* <motion.div className="furnitureCard" variants={furniturePopUp4} initial="hidden" animate={isAnimated ? "show" : "hidden"}> */}
+                <Link to='products' className="kitchenCard furnitureCard" onClick={() => { setFilterName("Kitchen") }}>
+                    <div href="#topNav" className="kitchenImg furnitureCardImg"></div>
+                    <p>Kitchen</p>
+                </Link>
+                {/* </motion.div> */}
 
-            </section>
+            </motion.section>
 
         </article>
     )

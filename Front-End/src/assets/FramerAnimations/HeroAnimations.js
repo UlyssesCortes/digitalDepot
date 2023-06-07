@@ -23,7 +23,7 @@ export const furniturePopUp2 = {
         y: 0,
         transition: {
             staggerChildren: 0.3,
-            delay: 0.2,
+            delay: 0.11,
             opacity: {
                 duration: 0.6,
                 ease: [0.4, 0.05, 0.8, 0.5],
@@ -45,7 +45,7 @@ export const furniturePopUp3 = {
         y: 0,
         transition: {
             staggerChildren: 0.3,
-            delay: 0.3,
+            delay: 0.12,
             opacity: {
                 duration: 0.6,
                 ease: [0.4, 0.05, 0.8, 0.5],
@@ -67,7 +67,7 @@ export const furniturePopUp4 = {
         y: 0,
         transition: {
             staggerChildren: 0.3,
-            delay: 0.4,
+            delay: 0.13,
             opacity: {
                 duration: 0.6,
                 ease: [0.4, 0.05, 0.8, 0.5],
