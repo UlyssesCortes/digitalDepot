@@ -26,9 +26,14 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const [loginAlert, setLoginAlert] = useState(false)
 
     useEffect(() => {
+        fetchProductDetails();
+    }, []);
+
+    const fetchProductDetails = async () => {
         const localToken = window.localStorage.getItem('token');
-        const fetchProductDetails = async () => {
-            try {
+
+        try {
+            if (localToken) {
                 const response = await fetch(`${API_URL}products/details/${id}`, {
                     headers: {
                         "Content-Type": "application/json",
@@ -38,28 +43,19 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                 const result = await response.json();
                 if (result) {
                     setProduct(result);
-                    console.log(result)
                 }
-            } catch (error) {
-                console.error(error);
+            } else {
+                const response = await fetch(`${API_URL}products/${id}`, {
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                });
+                const result = await response.json();
+                if (result) {
+                    setProduct(result);
+                }
             }
-        };
 
-        fetchProductDetails();
-    }, [API_URL, id]);
-
-    const fetchProductDetails = async () => {
-        try {
-            const response = await fetch(`${API_URL}products/details/${id}`, {
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            const result = await response.json();
-            if (result) {
-                setProduct(result);
-            }
         } catch (error) {
             console.error(error);
         }
@@ -129,6 +125,8 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const getProducts = async () => {
         try {
             if (isLoggedIn) {
+                console.log("Is logged In getting products/all")
+
                 const response = await fetch(`${API_URL}products/all`, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -138,9 +136,12 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                 const result = await response.json();
                 if (result) {
                     setProducts(result);
+                    console.log(result)
                 }
                 return result;
             } else {
+                console.log("not loggedin getting products")
+
                 const response = await fetch(`${API_URL}products`, {
                     headers: {
                         'Content-Type': 'application/json',
