@@ -359,7 +359,6 @@
 
   .benefitImg4 {
       background-image: url("../assets/images/contact.png");
-      cursor: pointer;
   }
 
   @media only screen and (max-width: 1200px) {

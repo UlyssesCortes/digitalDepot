@@ -7,7 +7,6 @@ export default function BestSellers() {
                 <h1>OUR BESTSELLERS</h1>
             </div>
             <section className="bestSellerProducts">
-                {/* On hover make overlay appear with name and price and button to see full details */}
                 <section className="bestLeft">
                     <Link to='/products' >
                         <div className="bestProduct1"></div>

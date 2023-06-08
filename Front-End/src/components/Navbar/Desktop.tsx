@@ -39,7 +39,7 @@ export default function Desktop({ setFilterName, setShowProfile, setIsCategorieO
                         <motion.div
                             onClick={() => setIsCategorieOpen(!isCategorieOpen)}
                         >
-                            <p className={` ${isCategorieOpen ? "categoryLink" : "navLink"}`}>Categories</p>
+                            <p className={` ${isCategorieOpen ? "categoryLink" : "navLink categoryLinkClose"}`}>Categories</p>
                         </motion.div>
                         <motion.ul
                             variants={{

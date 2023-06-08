@@ -955,7 +955,7 @@
 
 @media only screen and (max-width: 500px) {
     .topNavProduct p {
-        font-size: 30px;
+        font-size: 28px;
     }
 
     .sofa {
@@ -1005,7 +1005,7 @@
     }
 
     .topNavProduct {
-        height: 20vh;
+        height: 10vh;
 
     }
 

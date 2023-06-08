@@ -27,10 +27,12 @@
     align-items: center;
     margin-left: 70px;
     font-size: 20px;
+    height: 40px;
     gap: 30px;
     cursor: pointer;
     color: #2f2f2f;
     list-style: none;
+    /* outline: auto; */
 }
 
 .sloganTest {
@@ -107,6 +109,10 @@
     color: #ffffff;
     text-decoration: none;
     z-index: 999;
+}
+
+.categoryLinkClose {
+    margin-top: 4px;
 }
 
 /* PROFILE */

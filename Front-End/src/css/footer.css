@@ -34,3 +34,33 @@
 .categorieFooter {
     cursor: pointer;
 }
+
+@media only screen and (max-width: 1000px) {
+    .footer {
+        height: 250px;
+    }
+
+    .phoneNumebr {
+        font-size: 36px;
+        cursor: pointer;
+    }
+
+    .rightFotNav {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .footer {
+        height: 200px;
+    }
+
+    .phoneNumebr {
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    .rightFotNav {
+        display: none;
+    }
+}
