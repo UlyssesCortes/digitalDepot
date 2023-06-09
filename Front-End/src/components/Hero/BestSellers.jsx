@@ -15,7 +15,7 @@ export default function BestSellers() {
                 </section>
 
                 <section className="bestRight">
-                    <Link to='/products' className="bestProduct2"></Link>
+                    <Link to='/products' className="bestProduct2" ></Link>
                     <Link to='/products' className="bestProduct3"></Link>
                 </section>
             </section>

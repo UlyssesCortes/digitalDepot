@@ -28,7 +28,7 @@ const LazyImage = ({ src, alt }) => {
         };
     }, [src]);
 
-    return <img ref={imageRef} className="productImg" src={imageSrc} alt={alt} />;
+    return <img ref={imageRef} className="productImg" src={imageSrc} alt={alt} loading='lazy' />;
 };
 
 export default LazyImage;
