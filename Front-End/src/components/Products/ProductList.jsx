@@ -8,7 +8,7 @@ import ProductListLoading from '../Loading/ProductListLoading';
 import LoginAlert from '../Login-Register/LoginAlert';
 import { generateCardVariants } from '../../assets/FramerAnimations/ProductAnimation';
 
-export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts }) {
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod }) {
     const [furniture, setFurniture] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [showAll, setShowAll] = useState(false);
@@ -64,6 +64,32 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             setFurniture(filteredProducts);
         }
     }, [filterName, products]);
+
+    useEffect(() => {
+        // NOT DONE YET
+        if (sortMethod === "A-Z") {
+            furniture.sort();
+        } else if (sortMethod === "Z-A") {
+            furniture.sort(function (a, b) {
+                if (a > b) {
+                    return -1;
+                }
+                if (a < b) {
+                    return 1;
+                }
+                return 0;
+            });
+        } else if (sortMethod === "low-high") {
+            furniture.sort(function (a, b) {
+                return a.price - b.price;
+            });
+        } else if (sortMethod === "high-low") {
+            furniture.sort(function (a, b) {
+                return b.price - a.price;
+            });
+        }
+
+    }, [sortMethod])
 
     const getProducts = async () => {
         try {

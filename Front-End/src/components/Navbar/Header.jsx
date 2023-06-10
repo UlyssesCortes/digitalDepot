@@ -119,10 +119,11 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                             placeholder="Search..."
                             ref={inputRef}
                         />
+                        <Lottie className="headerIcon" animationData={search} loop={false} onClick={() => {
+                            searchClick();
+                        }} />
                     </form>
-                    <Lottie className="headerIcon" animationData={search} loop={false} onClick={() => {
-                        searchClick();
-                    }} />
+
 
                     <Link to='/cart' className='navCartIcons' onClick={() => { handleCartIconClick() }}>
                         <Lottie className="cartIcon" animationData={cart} loop={false} />
