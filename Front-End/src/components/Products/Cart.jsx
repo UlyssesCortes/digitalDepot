@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react"
 import checkout from "../../assets/LottieAnimations/checkout.json"
-import emptyCartAnimation from "../../assets/LottieAnimations/emptyCart.json"
+import emptyCartAnimation from "../../assets/LottieAnimations/box.json"
 import loadingAnimation from "../../assets/LottieAnimations/loadingLines.json"
 import Favorites from './Profile/Favorites';
 import Orders from './Profile/Orders';
@@ -258,9 +258,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                 <Lottie className="loadingAnimation" animationData={loadingAnimation} />
                             </div>}
 
-                        {emptyCart && <div className="loadingWrapper">
+                        {isLoggedIn && showCart && emptyCart && <div className="loadingWrapper">
                             <p className='emptyCart'>Cart is empty</p>
-                            <Lottie className="loadingAnimation" animationData={emptyCartAnimation} />
+                            <Lottie className="emptyAnimation" animationData={emptyCartAnimation} />
                         </div>}
 
                         {!isLoggedIn &&

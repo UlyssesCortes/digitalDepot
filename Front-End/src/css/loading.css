@@ -67,6 +67,10 @@
     overflow: hidden;
 }
 
+.notARouteError {
+    width: 100%;
+}
+
 .shinny::before {
     content: "";
     position: absolute;
@@ -213,13 +217,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     width: 100%;
+    flex-direction: column;
 }
 
 .loadingAnimation {
-    width: 700px;
-    /* outline: auto; */
+    width: 100%;
+}
+
+.emptyAnimation {
+    height: 500px;
 }
 
 #header {

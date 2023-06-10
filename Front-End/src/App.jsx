@@ -10,6 +10,7 @@ import Cart from './components/Products/Cart';
 import Offers from './components/SpecialOffers/Offers';
 import Header from './components/Navbar/Header';
 import Footer from './components/Footer';
+import NotFound from './components/NotFound';
 
 function App() {
 
@@ -205,6 +206,13 @@ function App() {
           <Route path="/product/:id"
             element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} setProducts={setProducts} />}
           />
+          <Route
+            path="/*"
+            element={(
+              <NotFound setHideNav={setHideNav} />
+            )}
+          />
+
         </Routes>
       </BrowserRouter>
     </>
