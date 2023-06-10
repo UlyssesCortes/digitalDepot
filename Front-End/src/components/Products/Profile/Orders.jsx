@@ -7,6 +7,7 @@ import delivery from "../../../assets/LottieAnimations/delivery.json"
 
 export default function Orders({ finializedOrders }) {
     const [selectedOrderId, setSelectedOrderId] = useState(null);
+    const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
 
     const handleClick = (orderId) => {
         setSelectedOrderId(orderId === selectedOrderId ? null : orderId);
@@ -15,7 +16,7 @@ export default function Orders({ finializedOrders }) {
     return (
         <section className='favBox'>
             <section className="favoriteContainer">
-                {finializedOrders &&
+                {isLoggedInLocal && finializedOrders &&
                     finializedOrders.map((order) => {
                         const isOpen = selectedOrderId === order.order_id;
 

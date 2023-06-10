@@ -3,11 +3,13 @@ import Lottie from "lottie-react"
 import delivery from "../../../assets/LottieAnimations/computer.json"
 
 export default function Favorites({ favorites }) {
+    const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
+
 
     return (
         <section className='favBox'>
             <section className='favoriteContainer'>
-                {favorites && favorites.map((favorite) => {
+                {isLoggedInLocal && favorites && favorites.map((favorite) => {
                     return (
                         <Link
                             to={`/product/${favorite.id}`}

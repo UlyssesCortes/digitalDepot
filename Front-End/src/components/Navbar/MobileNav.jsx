@@ -24,7 +24,7 @@ export default function MobileNav({ setShowProfile }) {
 
             <div className={`links-container ${isOpen && "active"}`}>
                 <div className="mobileNav">
-                    <Link to='/home' className='linksMobile' onClick={() => { setIsOpen(!isOpen) }}>Home</Link>
+                    <Link to='/' className='linksMobile' onClick={() => { setIsOpen(!isOpen) }}>Home</Link>
                     <Link to='/products' className='linksMobile' onClick={() => { setIsOpen(!isOpen) }}>Products</Link>
                     <Link to='/offers' className='linksMobile contactLink' onClick={() => { setIsOpen(!isOpen) }}>Offers</Link>
                 </div>

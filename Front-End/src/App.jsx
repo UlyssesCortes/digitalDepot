@@ -181,10 +181,7 @@ function App() {
             path='/'
             element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} setShowProfile={setShowProfile} />}
           />
-          <Route
-            path='/home'
-            element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} />}
-          />
+
           <Route
             path='/register'
             element={<Register API_URL={API_URL} setHideNav={setHideNav} />}
@@ -203,7 +200,7 @@ function App() {
           />
           <Route
             path='/offers'
-            element={<Offers API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setShowProfile={setShowProfile} />}
+            element={<Offers setShowProfile={setShowProfile} setFilterName={setFilterName} />}
           />
           <Route path="/product/:id"
             element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} setProducts={setProducts} />}

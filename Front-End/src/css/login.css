@@ -234,8 +234,9 @@
 
 .alertClose {
     top: 0;
-    scale: .6;
+    scale: .8;
     right: 0;
+    border: #000000 1px solid;
 }
 
 .loginAlertInp {

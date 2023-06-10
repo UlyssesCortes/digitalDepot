@@ -1,45 +1,94 @@
-.topOffer {
+.offerContainer {
     display: flex;
-    height: 800px;
+    flex-direction: row;
     width: 100%;
-    border-radius: 20px;
-    background-image: url("../assets/images/SpringSale2.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    gap: 20px;
+}
+
+.offerLeft {
+    width: 70%;
     cursor: pointer;
 }
 
-.bottomOffer {
-    display: flex;
-    margin-top: 100px;
-    justify-content: space-evenly;
-    gap: 10px;
+.offerImg {
+    width: 100%;
+    height: 85vh;
+    border-radius: 10px;
 }
 
-.firstBottom {
-    display: flex;
-    height: 1000px;
-    width: 700px;
-    border-radius: 20px;
-    background-image: url("../assets/images/ChairDiscount.jpg");
+.offerLeft:hover .arrowImgOffer {
+    margin-left: 0px;
+    opacity: 1;
+}
+
+.offerLeft:hover .imgText {
+    margin-left: 80px;
+}
+
+.arrowImgOffer {
+    position: absolute;
+    margin-bottom: 80px;
+    margin-left: -80px;
+    bottom: 0;
+    opacity: 0;
+    width: 100px;
+    height: 80px;
+    background-image: url("../assets/images/rightArrowImg.png");
     background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    background-position: top;
+    background-size: contain;
+    background-position: center;
+    transition: all ease-in-out .4s;
+}
+
+.percentageOffer {
+    color: rgb(218, 52, 23);
+    font-size: 65px;
+}
+
+.imgText {
+    position: absolute;
+    bottom: 0;
+    color: white;
+    padding: 50px;
+    font-family: inter;
+    transition: all ease-in-out .5s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.imgText p {
+    font-size: 20px;
+}
+
+.imgText h2 {
+    font-size: 55px;
+}
+
+.offerRight {
+    display: flex;
+    align-items: center;
+    background-color: rgb(231, 231, 231);
+    width: 30%;
+    height: 85vh;
+    border-radius: 10px;
     cursor: pointer;
 }
 
-.secondBottom {
+.prodLinkOffer {
     display: flex;
-    height: 1000px;
-    width: 700px;
-    border-radius: 20px;
-    background-image: url("../assets/images/SpringSale.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: top;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    cursor: pointer;
+    align-content: center;
+    gap: 15px;
+    text-decoration: none;
+}
+
+.offerRight p {
+    align-self: center;
+    font-size: 30px;
+    padding-left: 60px;
+    font-family: inter;
+    color: #333333;
+}
+
+.arrowAnimation {
+    width: 50px;
+    height: 50px;
 }

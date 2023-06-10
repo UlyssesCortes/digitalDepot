@@ -469,6 +469,10 @@
     font-size: 24px;
 }
 
+.emptyCart {
+    font-size: 50px;
+    font-family: monospace;
+}
 
 @keyframes opacityAnimation {
 

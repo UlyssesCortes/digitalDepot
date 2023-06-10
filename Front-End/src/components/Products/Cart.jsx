@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import CartLoading from '../Loading/CartLoading';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react"
 import checkout from "../../assets/LottieAnimations/checkout.json"
+import emptyCartAnimation from "../../assets/LottieAnimations/emptyCart.json"
+import loadingAnimation from "../../assets/LottieAnimations/loadingLines.json"
 import Favorites from './Profile/Favorites';
 import Orders from './Profile/Orders';
 // import { getOrderItems2 } from '../../API/cartApi';
@@ -13,6 +14,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
+    const [emptyCart, setEmptyCart] = useState(false);
     const segments = [2.5, 3];
 
     let sum = 0;
@@ -176,8 +178,27 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         } else {
             setTimeout(() => {
                 setLoading(false);
-            }, 200);
+            }, 1000);
         }
+    }, [myCart]);
+
+
+    useEffect(() => {
+        let timeoutId;
+
+        if (myCart.length === 0) {
+            timeoutId = setTimeout(() => {
+                setEmptyCart(true);
+                setLoading(false)
+            }, 1000);
+        } else {
+            clearTimeout(timeoutId);
+            setEmptyCart(false);
+        }
+
+        return () => {
+            clearTimeout(timeoutId);
+        };
     }, [myCart]);
 
     const handleFavClick = () => {
@@ -232,7 +253,19 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
                     {/* CART COMPONENT */}
                     <section className={`productsSec ${myCart.length > 2 && "moreGap"}`}>
-                        {loading && !showFavorite && !showOrder && !checkoutAnimation && <CartLoading />}
+                        {isLoggedIn && loading && !showFavorite && !showOrder && !checkoutAnimation &&
+                            <div className="loadingWrapper">
+                                <Lottie className="loadingAnimation" animationData={loadingAnimation} />
+                            </div>}
+
+                        {emptyCart && <div className="loadingWrapper">
+                            <p className='emptyCart'>Cart is empty</p>
+                            <Lottie className="loadingAnimation" animationData={emptyCartAnimation} />
+                        </div>}
+
+                        {!isLoggedIn &&
+                            <p className='emptyCart'>Log in to see details</p>
+                        }
 
                         {checkoutAnimation && !showFavorite && !showOrder && handleAnimation()}
 
