@@ -23,7 +23,7 @@
     border-bottom: solid black 2px;
 }
 
-.productLinks:first-child {
+.productLinks.subNavSelect {
     font-weight: bold;
 }
 

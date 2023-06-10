@@ -32,6 +32,7 @@ function App() {
   const [pageTitle, setPageTitle] = useState("SHOPPING CART");
   const [modalEmail, setModalEmail] = useState("")
   const [currentPage, setCurrentPage] = useState(1);
+  const [activeCategory, setActiveCategory] = useState("all");
   const hideFooter = true
 
   // localStorage.setItem('currentOrderId', "");
@@ -73,6 +74,15 @@ function App() {
     }
 
   }, [token]);
+
+  useEffect(() => {
+    if (filterName) {
+      setActiveCategory(filterName)
+    }
+    if (filterName === "") {
+      setActiveCategory("all")
+    }
+  }, [filterName])
 
   const getProducts = async () => {
     try {
@@ -197,11 +207,11 @@ function App() {
           />
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setCurrentPage={setCurrentPage} currentPage={currentPage} setProducts={setProducts} />}
+            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setCurrentPage={setCurrentPage} currentPage={currentPage} setProducts={setProducts} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
           />
           <Route
             path='/offers'
-            element={<Offers setShowProfile={setShowProfile} setFilterName={setFilterName} />}
+            element={<Offers setShowProfile={setShowProfile} setFilterName={setFilterName} setActiveCategory={setActiveCategory} />}
           />
           <Route path="/product/:id"
             element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} setProducts={setProducts} />}
