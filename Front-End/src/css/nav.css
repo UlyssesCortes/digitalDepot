@@ -386,25 +386,54 @@
 }
 
 /* PRODUCT NAV */
-.sortMenu {
-    background-color: white;
-    color: black;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+
+.sortMenuSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sortMenuSection ul {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: absolute;
+    z-index: 9999;
+    margin-top: 50px;
+    background-color: #2f2f2f;
+    padding: 22px;
+    font-size: 18px;
+}
+
+.sortMenu li {
+    list-style: none;
+    cursor: pointer;
+}
+
+.sortBtnContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     width: 200px;
-    font-size: 14px;
-    height: 40px;
 }
 
-.sortMenu option {
-    background-color: white;
-    color: black;
-    padding: 8px;
-    margin-bottom: 5px;
+.sortBtn {
+    padding: 10px;
 }
 
-.sortMenu option:hover {
-    background-color: #f2f2f2;
-    color: #333;
+.downArr {
+    width: 10px;
+    height: 10px;
+    border-bottom: #2f2f2f 2px solid;
+    border-right: #2f2f2f 2px solid;
+    transform: rotate(45deg);
+    margin-bottom: 8px;
+    transition: all ease-in-out .3s;
+}
+
+
+.rotate {
+    transform: rotate(225deg);
+    margin-bottom: -4px;
+
 }

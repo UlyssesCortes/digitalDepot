@@ -8,7 +8,7 @@ export default function Products({ API_URL, isLoggedIn, token, filterName, setFi
 
     return (
         <section className='marginReducer' onClick={() => { setShowProfile(false) }}>
-            <ProductNav setFilterName={setFilterName} setCurrentPage={setCurrentPage} setActiveCategory={setActiveCategory} activeCategory={activeCategory} setSortMethod={setSortMethod} />
+            <ProductNav setFilterName={setFilterName} setCurrentPage={setCurrentPage} setActiveCategory={setActiveCategory} activeCategory={activeCategory} setSortMethod={setSortMethod} sortMethod={sortMethod} />
             <ProductList API_URL={API_URL} filterName={filterName} setFilterName={setFilterName} currentPage={currentPage} setCurrentPage={setCurrentPage} isLoggedIn={isLoggedIn} token={token} setIsLoggedIn={setIsLoggedIn} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setProducts={setProducts} sortMethod={sortMethod} />
         </section>
     )

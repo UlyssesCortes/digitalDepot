@@ -63,33 +63,28 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             );
             setFurniture(filteredProducts);
         }
+
     }, [filterName, products]);
 
-    useEffect(() => {
-        // NOT DONE YET
-        if (sortMethod === "A-Z") {
-            furniture.sort();
-        } else if (sortMethod === "Z-A") {
-            furniture.sort(function (a, b) {
-                if (a > b) {
-                    return -1;
-                }
-                if (a < b) {
-                    return 1;
-                }
-                return 0;
-            });
-        } else if (sortMethod === "low-high") {
-            furniture.sort(function (a, b) {
-                return a.price - b.price;
-            });
-        } else if (sortMethod === "high-low") {
-            furniture.sort(function (a, b) {
-                return b.price - a.price;
-            });
-        }
 
-    }, [sortMethod])
+    useEffect(() => {
+        sortFunriture()
+    }, [sortMethod]);
+
+
+    const sortFunriture = () => {
+        const sortedFurniture = [...furniture];
+        if (sortMethod === "Alphabetical (A-Z)") {
+            sortedFurniture.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (sortMethod === "Alphabetical (Z-A)") {
+            sortedFurniture.sort((a, b) => b.title.localeCompare(a.title));
+        } else if (sortMethod === "Price (Low to High)") {
+            sortedFurniture.sort((a, b) => a.price - b.price);
+        } else if (sortMethod === "Price (High to Low)") {
+            sortedFurniture.sort((a, b) => b.price - a.price);
+        }
+        setFurniture(sortedFurniture);
+    }
 
     const getProducts = async () => {
         try {

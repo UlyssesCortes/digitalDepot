@@ -5,8 +5,9 @@ import {
 } from '../../assets/FramerAnimations/NavAnimations';
 
 
-export default function ProductNav({ setFilterName, setCurrentPage, setActiveCategory, activeCategory, setSortMethod }) {
+export default function ProductNav({ setFilterName, setCurrentPage, setActiveCategory, activeCategory, setSortMethod, sortMethod }) {
     const [isSortOpen, setIsSortOpen] = useState(false)
+    const [sortType, setSortType] = useState("")
 
     const handleNavBtn = (category) => {
         setFilterName(category);
@@ -15,7 +16,9 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
     };
 
     const selectSortMethod = (sort) => {
+        setSortType(sort)
         setSortMethod(sort)
+        setIsSortOpen(false)
     }
 
     return (
@@ -66,14 +69,17 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
                 <motion.nav
                     initial={false}
                     animate={isSortOpen ? "open" : "closed"}
-                    className="navCategorieSec"
+                    className="sortMenuSection"
                     layout="position"
                 >
-                    <motion.div
+                    <div
                         onClick={() => setIsSortOpen(!isSortOpen)}
+                        className='sortBtnContainer'
                     >
-                        <p className="productLinks">Sort and Filter</p>
-                    </motion.div>
+                        <p className="productLinks sortBtn">{sortType ? sortType : "Sort and Filter"}</p>
+                        <span className={`downArr ${isSortOpen && "rotate"}`}></span>
+                    </div>
+
                     <motion.ul
                         variants={{
                             open: {
@@ -96,34 +102,30 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
                             },
                         }}
                         style={{ pointerEvents: isSortOpen ? "auto" : "none" }}
+                        className='sortMenu'
                     >
-                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }} onClick={() => { selectSortMethod("A-Z") }}>
+                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }} onClick={() => { selectSortMethod("Price (Low to High)") }}>
                             <div className="navCategory">
-                                Sort [A to Z]
+                                Price (Low to High)
                             </div>
                         </motion.li>
-                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }} onClick={() => { selectSortMethod("Z-A") }}>
+                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }} onClick={() => { selectSortMethod("Price (High to Low)") }}>
                             <div className="navCategory">
-                                Sort [Z to A]
+                                Price (High to Low)
                             </div>
                         </motion.li>
-                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }} onClick={() => { selectSortMethod("low-high") }}>
-                            <div className="navCategory">Price [low to high]</div>
-                        </motion.li>
-                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }} onClick={() => { selectSortMethod("high-low") }}>
+                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }} onClick={() => { selectSortMethod("Alphabetical (A-Z)") }}>
                             <div className="navCategory">
-                                Price [high to low]
+                                Alphabetical (A-Z)
                             </div>
                         </motion.li>
-
+                        <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }} onClick={() => { selectSortMethod("Alphabetical (Z-A)") }}>
+                            <div className="navCategory">
+                                Alphabetical (Z-A)
+                            </div>
+                        </motion.li>
                     </motion.ul>
                 </motion.nav>
-
-
-
-
-
-
             </section>
         </nav >
     );
