@@ -27,19 +27,19 @@ function App() {
   const [products, setProducts] = useState([])
   const [showProfile, setShowProfile] = useState(false)
   const [showOrder, setShowOrder] = useState(false);
+  const [isCategorieOpen, setIsCategorieOpen] = useState(false);
   const [showCart, setShowCart] = useState(true);
+  const [noResult, setNoResult] = useState(false);
   const [showFavorite, setShowFavorite] = useState(false);
   const [pageTitle, setPageTitle] = useState("SHOPPING CART");
   const [modalEmail, setModalEmail] = useState("")
   const [currentPage, setCurrentPage] = useState(1);
   const [activeCategory, setActiveCategory] = useState("all");
-  const hideFooter = true
 
   // localStorage.setItem('currentOrderId', "");
   useEffect(() => {
     const currentOrderId = window.localStorage.getItem('currentOrderId');
     if (!currentOrderId) {
-      console.log("ORDER ID: ", currentOrderId)
       fetchOrder()
     }
   }, [])
@@ -181,16 +181,14 @@ function App() {
       <BrowserRouter>
         {!hideNav &&
           <div className='marginReducer'>
-            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} />
+            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} />
           </div>
         }
-        {
-          !hideFooter && <Footer />
-        }
+
         <Routes>
           <Route
             path='/'
-            element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} setShowProfile={setShowProfile} />}
+            element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} setShowProfile={setShowProfile} setIsCategorieOpen={setIsCategorieOpen} />}
           />
 
           <Route
@@ -207,7 +205,7 @@ function App() {
           />
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setCurrentPage={setCurrentPage} currentPage={currentPage} setProducts={setProducts} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />}
+            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setCurrentPage={setCurrentPage} currentPage={currentPage} setProducts={setProducts} activeCategory={activeCategory} setActiveCategory={setActiveCategory} setNoResult={setNoResult} />}
           />
           <Route
             path='/offers'

@@ -9,7 +9,7 @@ import BestSellers from './BestSellers'
 import Benefits from './Benefits'
 
 
-export default function Hero({ setFilterName, setShowProfile }) {
+export default function Hero({ setFilterName, setShowProfile, setIsCategorieOpen }) {
     return (
         <section className='marginReducer' onClick={() => { setShowProfile(false) }}>
             <Banner />
@@ -18,7 +18,7 @@ export default function Hero({ setFilterName, setShowProfile }) {
             <Sale />
             <Benefits />
             <BestSellers />
-            <Footer />
+            <Footer setIsCategorieOpen={setIsCategorieOpen} />
         </section>
     )
 }

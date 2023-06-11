@@ -10,12 +10,12 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage, setFinalizedOrders }) {
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage, setFinalizedOrders, noResult, setIsCategorieOpen, isCategorieOpen }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showSearch, setShowSearch] = useState(false)
     const [searchInput, setSearchInput] = useState("")
     const [prevFilterName, setPrevFilterName] = useState("")
-    const [isCategorieOpen, setIsCategorieOpen] = useState(false);
+    // const [isCategorieOpen, setIsCategorieOpen] = useState(false);
     const inputRef = useRef(null);
 
     const navigate = useNavigate();
@@ -113,7 +113,9 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                     <form className="box" onSubmit={handleSerachBar}>
                         <input
                             type="text"
-                            className={`searchInput ${showSearch ? 'active' : ''}`}
+                            // className={`searchInput ${showSearch ? 'active' : ''}`}
+                            className={`searchInput ${showSearch ? 'active' : ''} ${noResult ? 'redInp' : ''}`}
+
                             name="txt"
                             onChange={handleSearch}
                             placeholder="Search..."

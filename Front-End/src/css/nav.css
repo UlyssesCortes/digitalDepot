@@ -278,7 +278,10 @@
     color: grey;
     outline: none;
     opacity: 0;
-    transition: all ease-in-out .5s;
+    transition: width 0.5s ease-in-out,
+        opacity 0.5s ease-in-out,
+        border 0.5s ease-in-out,
+        color 0.2s ease-in-out;
 }
 
 .searchInput.active {
@@ -438,4 +441,8 @@
     transform: rotate(225deg);
     margin-bottom: -4px;
 
+}
+
+.redInp {
+    color: red;
 }

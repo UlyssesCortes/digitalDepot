@@ -1,14 +1,13 @@
-import React, { useEffect, useState, Suspense, useRef } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import LazyImages from './LazyImages';
 import { motion } from "framer-motion";
-// import { useInView } from 'react-intersection-observer';
 
 import ProductListLoading from '../Loading/ProductListLoading';
 import LoginAlert from '../Login-Register/LoginAlert';
 import { generateCardVariants } from '../../assets/FramerAnimations/ProductAnimation';
 
-export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod, setSortMethod }) {
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod, setSortMethod, setNoResult }) {
     const [furniture, setFurniture] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [showAll, setShowAll] = useState(false);
@@ -34,38 +33,24 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         };
     }, [location.pathname]);
 
-    useEffect(() => {
+    const filterProducts = (products, filterName) => {
         if (!filterName || filterName === 'all') {
-            setFurniture(products);
-        } else if (filterName === 'Living Room') {
-            const filteredProducts = products.filter(
-                (product) => product.category === filterName
-            );
-            setFurniture(filteredProducts);
-        } else if (filterName === 'Bedroom') {
-            const filteredProducts = products.filter(
-                (product) => product.category === filterName
-            );
-            setFurniture(filteredProducts);
-        } else if (filterName === 'Workspace') {
-            const filteredProducts = products.filter(
-                (product) => product.category === filterName
-            );
-            setFurniture(filteredProducts);
-        } else if (filterName === 'Kitchen') {
-            const filteredProducts = products.filter(
-                (product) => product.category === filterName
-            );
-            setFurniture(filteredProducts);
-        } else {
-            const filteredProducts = products.filter(
-                (product) => product.type.toLowerCase() === lowerCaseFilterName || product.title.toLowerCase().includes(lowerCaseFilterName) || product.id == filterName || product.category.toLowerCase().includes(lowerCaseFilterName)
-            );
-            setFurniture(filteredProducts);
+            return products;
         }
+        return products.filter(
+            (product) =>
+                product.category === filterName ||
+                product.type.toLowerCase() === lowerCaseFilterName ||
+                product.title.toLowerCase().includes(lowerCaseFilterName) ||
+                product.id == filterName ||
+                product.category.toLowerCase().includes(lowerCaseFilterName)
+        );
+    };
 
+    useEffect(() => {
+        const filteredProducts = filterProducts(products, filterName);
+        setFurniture(filteredProducts);
     }, [filterName, products]);
-
 
     useEffect(() => {
         sortFunriture()
@@ -204,13 +189,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         }
     };
 
-    if (products.length === 0) {
-        return (
-            <>
-                <ProductListLoading isLoggedIn={isLoggedIn} />
-            </>
-        );
-    }
+
     const handleClick = () => {
         setShowAll(!showAll);
     };
@@ -222,7 +201,16 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
-
+    if (currentProducts.length === 0) {
+        setNoResult(true)
+        return (
+            <>
+                <ProductListLoading isLoggedIn={isLoggedIn} />
+            </>
+        );
+    } else {
+        setNoResult(false)
+    }
     return (
         <>
             <section className="productsLis">

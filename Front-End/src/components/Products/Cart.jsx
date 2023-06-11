@@ -190,7 +190,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             timeoutId = setTimeout(() => {
                 setEmptyCart(true);
                 setLoading(false)
-            }, 1000);
+            }, 450);
         } else {
             clearTimeout(timeoutId);
             setEmptyCart(false);
