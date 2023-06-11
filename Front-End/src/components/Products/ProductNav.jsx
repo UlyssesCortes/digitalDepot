@@ -5,12 +5,13 @@ import {
 } from '../../assets/FramerAnimations/NavAnimations';
 
 
-export default function ProductNav({ setFilterName, setCurrentPage, setActiveCategory, activeCategory, setSortMethod, sortMethod }) {
+export default function ProductNav({ setFilterName, setCurrentPage, setActiveCategory, activeCategory, setSortMethod }) {
     const [isSortOpen, setIsSortOpen] = useState(false)
     const [sortType, setSortType] = useState("")
 
     const handleNavBtn = (category) => {
         setFilterName(category);
+        setSortType("Sort and Filter")
         setCurrentPage(1);
         setActiveCategory(category);
     };

@@ -8,7 +8,7 @@ import ProductListLoading from '../Loading/ProductListLoading';
 import LoginAlert from '../Login-Register/LoginAlert';
 import { generateCardVariants } from '../../assets/FramerAnimations/ProductAnimation';
 
-export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod }) {
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod, setSortMethod }) {
     const [furniture, setFurniture] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [showAll, setShowAll] = useState(false);
@@ -84,6 +84,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             sortedFurniture.sort((a, b) => b.price - a.price);
         }
         setFurniture(sortedFurniture);
+        setSortMethod("")
     }
 
     const getProducts = async () => {

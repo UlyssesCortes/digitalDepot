@@ -415,10 +415,12 @@
     align-items: center;
     gap: 10px;
     width: 200px;
+    margin-bottom: 2px;
 }
 
 .sortBtn {
-    padding: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: default;
 }
 
 .downArr {
