@@ -1,6 +1,8 @@
 const express = require("express");
 const apiRouter = express.Router();
 const { requireUser } = require("./utils");
+require("dotenv").config()
+const stripe = require('stripe')(process.env.STRIPE_KEY);
 
 const {
     getAllOrders,
@@ -14,6 +16,7 @@ const {
 } = require('../db');
 
 apiRouter.get("/", async (req, res, next) => {
+    console.log("STRIPE KEY: ", process.env.STRIPE_KEY)
     try {
         const orders = await getAllOrders();
         res.send(orders);
@@ -56,6 +59,23 @@ apiRouter.get('/cart', requireUser, async (req, res) => {
     } catch (error) {
         console.error('Error retrieving order details:', error);
         res.status(500).json({ error: 'An error occurred' });
+    }
+});
+
+apiRouter.post('/checkout', async (req, res) => {
+    const { amount } = req.body;
+    console.log("STRIPE KEY: ", process.env.STRIPE_KEY)
+    console.log("STRIPE KEY: ")
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: amount,
+            currency: 'usd',
+        });
+
+        res.json({ clientSecret: paymentIntent.client_secret });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to create payment intent' });
     }
 });
 
@@ -104,5 +124,7 @@ apiRouter.delete("/:orderId", async (req, res, next) => {
         next(error);
     }
 });
+
+
 
 module.exports = apiRouter;

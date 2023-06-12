@@ -11,6 +11,8 @@ app.use(cors())
 
 app.use(express.json())
 
+const stripe = require('stripe')(process.env.STRIPE_KEY);
+
 
 const morgan = require('morgan');
 app.use(morgan('dev'));

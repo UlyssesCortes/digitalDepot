@@ -38,6 +38,7 @@ function App() {
 
   // localStorage.setItem('currentOrderId', "");
   useEffect(() => {
+    console.log(token)
     const currentOrderId = window.localStorage.getItem('currentOrderId');
     if (!currentOrderId) {
       fetchOrder()
