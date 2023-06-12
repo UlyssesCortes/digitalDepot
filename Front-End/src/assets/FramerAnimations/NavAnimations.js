@@ -22,15 +22,15 @@ export const navAnimation = {
 }
 
 export const navItems = {
-    // hidden: {
-    //     opacity: 0,
-    //     y: '0px',
-    // },
-    // show: {
-    //     opacity: 1,
-    //     y: 0,
-    //     transition: {
-    //         ease: "easeInOut"
-    //     }
-    // }
+    hidden: {
+        opacity: 0,
+        y: '0px',
+    },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            ease: "easeInOut"
+        }
+    }
 }

@@ -27,7 +27,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         const cleanup = async () => {
             await getProducts();
         };
-
         return () => {
             cleanup();
         };

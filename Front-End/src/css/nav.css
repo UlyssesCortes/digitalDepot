@@ -404,7 +404,7 @@
     z-index: 9999;
     margin-top: 50px;
     background-color: #2f2f2f;
-    padding: 22px;
+    padding: 25px;
     font-size: 18px;
 }
 
@@ -417,7 +417,6 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 200px;
     margin-bottom: 2px;
 }
 
