@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react"
 import checkout from "../../assets/LottieAnimations/checkout.json"
@@ -6,6 +6,8 @@ import emptyCartAnimation from "../../assets/LottieAnimations/box.json"
 import loadingAnimation from "../../assets/LottieAnimations/loadingLines.json"
 import Favorites from './Profile/Favorites';
 import Orders from './Profile/Orders';
+import { CardElement, useStripe, useElements, Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 // import { getOrderItems2 } from '../../API/cartApi';
 
 export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart }) {
@@ -15,7 +17,14 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
     const [emptyCart, setEmptyCart] = useState(false);
+    const [stripeForm, setStripForm] = useState(false);
     const segments = [2.5, 3];
+    const stripePromise = loadStripe("pk_test_51NDdY6II4Zr4AaFdZKvdWouisBvtIdpBLp8Do9RwkAnqHFvXOKOkVfUrSK28BnowQptv30UgnBErZWXOdifUEyk20038VijbMi");
+
+    // const stripe = useStripe();
+    // const elements = useElements();
+    const cardElementRef = useRef(null);
+
 
     let sum = 0;
 
@@ -110,6 +119,66 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             }
         }
     };
+
+    const handleCheckoutStripe = async (orderId) => {
+        const stripe = await stripePromise;
+
+        const response = await fetch(`${API_URL}order/checkout`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                amount: sum * 100,
+            }),
+        });
+        const cardElement = elements.getElement(CardElement);
+        const { clientSecret } = await response.json();
+        const result = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: cardElement,
+            },
+        });
+
+        if (result.error) {
+            // Handle payment error
+            console.error(result.error);
+        } else {
+            // Payment succeeded
+            if (result.paymentIntent.status === 'succeeded') {
+                try {
+                    // Update the order as checked out
+                    const response = await fetch(`${API_URL}order/${orderId}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`,
+                        },
+                        body: JSON.stringify({
+                            isCheckedOut: true,
+                            checkoutSum: sum,
+                        }),
+                    });
+
+                    const result = await response.json();
+
+                    if (result.name !== 'error') {
+                        localStorage.setItem('currentOrderId', '');
+                        setMyCart([]);
+                        setProducts([]);
+                        setCurrentOrderId('');
+                        setCheckoutAnimation(false);
+                    } else {
+                        console.log('Failed to send order, try again!');
+                    }
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        }
+    };
+
 
     const handleUpdate = async (orderId) => {
         var currentDate = new Date();
@@ -229,6 +298,23 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         return <Lottie className="checkoutAnimation" animationData={checkout} loop={false} segments={segments} />
     }
 
+    const cardElementOptions = {
+        style: {
+            base: {
+                fontSize: '16px',
+                color: '#32325d',
+                '::placeholder': {
+                    color: '#aab7c4',
+                },
+            },
+            invalid: {
+                color: '#fa755a',
+            },
+        },
+        hidePostalCode: true,
+    };
+
+
     return (
         <section className='cartContainer marginReducer' onClick={() => { setShowProfile(false) }}>
             <section className='cartSection'>
@@ -305,17 +391,44 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                         {showFavorite && <Favorites favorites={favorites} />}
                         {showOrder && <Orders finializedOrders={finializedOrders} />}
                     </section>
-                    {isLoggedIn && showCart &&
+
+                    {showCart && isLoggedIn && (
+                        <section className='CartBtnContainer'>
+                            <p className='totalPrice'>Total ${parseFloat(sum)}</p>
+                            <button onClick={() => { setCheckoutAnimation(true) }}>Checkout</button>
+                            {/* {checkoutAnimation && (
+                                <div className='stripe-form'>
+                                    <CardElement />
+                                    <button onClick={() => handleCheckoutStripe(currentOrderId)}>Pay</button>
+                                </div>
+                            )} */}
+                        </section>
+                    )}
+                    <Elements stripe={stripePromise}>
+                        <div className='stripe-form'>
+                            <CardElement options={cardElementOptions} />
+                            <button onClick={() => handleCheckoutStripe(currentOrderId)}>Pay</button>
+                        </div>
+                    </Elements>
+
+
+                    {/* <Elements stripe={stripePromise}>
+                      
+                        <div className='stripe-form'>
+                            <CardElement />
+                            <button onClick={() => handleCheckoutStripe(currentOrderId)}>Pay</button>
+                        </div>
+                    </Elements> */}
+
+
+                    {/* {isLoggedIn && showCart &&
                         <section className='CartBtnContainer'>
                             <p className='totalPrice'>Total ${parseFloat(sum)}</p>
                             <button onClick={() => { handleUpdate(currentOrderId) }}>Checkout</button>
                         </section>
-                    }
+                    } */}
                 </div>
             </section>
-
-
-
         </section>
     )
 }
