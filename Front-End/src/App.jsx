@@ -9,7 +9,6 @@ import Login from './components/Login-Register/Login';
 import Cart from './components/Products/Cart';
 import Offers from './components/SpecialOffers/Offers';
 import Header from './components/Navbar/Header';
-import Footer from './components/Footer';
 import NotFound from './components/NotFound';
 
 function App() {
@@ -42,6 +41,9 @@ function App() {
     if (!currentOrderId) {
       fetchOrder()
     }
+    if (filterName == "") {
+      setFilterName("all")
+    }
   }, [])
 
   useEffect(() => {
@@ -72,16 +74,13 @@ function App() {
     } else {
       fetchGuestProducts()
     }
-
   }, [token]);
 
   useEffect(() => {
     if (filterName) {
       setActiveCategory(filterName)
     }
-    if (filterName === "") {
-      setActiveCategory("all")
-    }
+
   }, [filterName])
 
   const getProducts = async () => {
@@ -205,7 +204,7 @@ function App() {
           />
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setCurrentPage={setCurrentPage} currentPage={currentPage} setProducts={setProducts} activeCategory={activeCategory} setActiveCategory={setActiveCategory} setNoResult={setNoResult} />}
+            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setCurrentPage={setCurrentPage} currentPage={currentPage} setProducts={setProducts} activeCategory={activeCategory} setActiveCategory={setActiveCategory} setNoResult={setNoResult} noResult={noResult} />}
           />
           <Route
             path='/offers'
