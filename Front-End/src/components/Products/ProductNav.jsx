@@ -27,45 +27,15 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
             <section className="topNavProduct">
                 <p>MODERN FURNITURE</p>
             </section>
+
             <section className="bottomNavProduct" id="topSubNav">
-                <button
-                    className={`productLinks ${activeCategory === 'all' && 'subNavSelect'}`}
-                    onClick={() => handleNavBtn('all')}
+                <div
+                    onClick={() => setIsSortOpen(!isSortOpen)}
+                    className='sortBtnContainer'
                 >
-                    All Furniture
-                </button>
-                <button
-                    className={`productLinks ${activeCategory === 'bed' && 'subNavSelect'}`}
-                    onClick={() => handleNavBtn('bed')}
-                >
-                    Beds
-                </button>
-                <button
-                    className={`productLinks ${activeCategory === 'sofa' && 'subNavSelect'}`}
-                    onClick={() => handleNavBtn('sofa')}
-                >
-                    Sofas
-                </button>
-                <button
-                    className={`productLinks ${activeCategory === 'chair' && 'subNavSelect'}`}
-                    onClick={() => handleNavBtn('chair')}
-                >
-                    Chairs
-                </button>
-                <button
-                    className={`productLinks ${activeCategory === 'table' && 'subNavSelect'}`}
-                    onClick={() => handleNavBtn('table')}
-                >
-                    Tables
-                </button>
-                <button
-                    className={`productLinks ${activeCategory === 'desk' && 'subNavSelect'}`}
-                    onClick={() => handleNavBtn('desk')}
-                >
-                    Desks
-                </button>
-
-
+                    <p className="productLinks sortBtn">{sortType ? sortType : "Sort and Filter"}</p>
+                    <span className={`downArr ${isSortOpen && "rotate"}`}></span>
+                </div>
 
                 <motion.nav
                     initial={false}
@@ -73,14 +43,6 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
                     className="sortMenuSection"
                     layout="position"
                 >
-                    <div
-                        onClick={() => setIsSortOpen(!isSortOpen)}
-                        className='sortBtnContainer'
-                    >
-                        <p className="productLinks sortBtn">{sortType ? sortType : "Sort and Filter"}</p>
-                        <span className={`downArr ${isSortOpen && "rotate"}`}></span>
-                    </div>
-
                     <motion.ul
                         variants={{
                             open: {
@@ -127,6 +89,46 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
                         </motion.li>
                     </motion.ul>
                 </motion.nav>
+                <button
+                    className={`productLinks ${activeCategory === 'all' && 'subNavSelect'}`}
+                    onClick={() => handleNavBtn('all')}
+                >
+                    All Furniture
+                </button>
+                <button
+                    className={`productLinks ${activeCategory === 'bed' && 'subNavSelect'}`}
+                    onClick={() => handleNavBtn('bed')}
+                >
+                    Beds
+                </button>
+                <button
+                    className={`productLinks ${activeCategory === 'sofa' && 'subNavSelect'}`}
+                    onClick={() => handleNavBtn('sofa')}
+                >
+                    Sofas
+                </button>
+                <button
+                    className={`productLinks ${activeCategory === 'chair' && 'subNavSelect'}`}
+                    onClick={() => handleNavBtn('chair')}
+                >
+                    Chairs
+                </button>
+                <button
+                    className={`productLinks ${activeCategory === 'table' && 'subNavSelect'}`}
+                    onClick={() => handleNavBtn('table')}
+                >
+                    Tables
+                </button>
+                <button
+                    className={`productLinks ${activeCategory === 'desk' && 'subNavSelect'}`}
+                    onClick={() => handleNavBtn('desk')}
+                >
+                    Desks
+                </button>
+
+
+
+
             </section>
         </nav >
     );

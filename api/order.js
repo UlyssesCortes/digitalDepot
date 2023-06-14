@@ -86,30 +86,29 @@ apiRouter.post("/", requireUser, async (req, res, next) => {
     }
 });
 
-apiRouter.patch("/:orderId", async (req, res, next) => {
-    try {
-        const id = req.params.orderId;
-        const { isCheckedOut, checkoutDate, checkoutSum } = req.body;
-        const updatedFields = { id: id };
+try {
+    const id = req.params.orderId;
+    const { isCheckedOut, checkoutDate, checkoutSum } = req.body;
+    const updatedFields = { id: id };
 
-        if (isCheckedOut) {
-            updatedFields.isCheckedOut = isCheckedOut;
-        }
-
-        if (checkoutDate) {
-            updatedFields.checkoutDate = checkoutDate;
-        }
-
-        if (checkoutSum) {
-            updatedFields.checkoutSum = checkoutSum;
-        }
-
-        const updatedOrderItem = await updateOrders(updatedFields);
-
-        res.send(updatedOrderItem);
-    } catch (error) {
-        next(error);
+    if (isCheckedOut) {
+        updatedFields.isCheckedOut = isCheckedOut;
     }
+
+    if (checkoutDate) {
+        updatedFields.checkoutDate = checkoutDate;
+    }
+
+    if (checkoutSum) {
+        updatedFields.checkoutSum = checkoutSum;
+    }
+
+    const updatedOrderItem = await updateOrders(updatedFields);
+
+    res.send(updatedOrderItem);
+} catch (error) {
+    next(error);
+}
 });
 
 apiRouter.delete("/:orderId", async (req, res, next) => {
