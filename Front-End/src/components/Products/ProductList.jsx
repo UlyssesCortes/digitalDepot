@@ -39,8 +39,8 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         }
         return products.filter(
             (product) =>
-                product.category === filterName ||
                 product.type.toLowerCase() === lowerCaseFilterName ||
+                product.category === filterName ||
                 product.title.toLowerCase().includes(lowerCaseFilterName) ||
                 product.id == filterName ||
                 product.category.toLowerCase().includes(lowerCaseFilterName)
