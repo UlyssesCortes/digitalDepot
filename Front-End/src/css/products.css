@@ -871,6 +871,32 @@
     font-size: 24px;
 }
 
+.stripe-form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.stripe-form button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.stripe-form button:hover {
+    background-color: #0056b3;
+}
+
+
+
 @media only screen and (max-width: 1160px) {
     .topNavProduct p {
         font-size: 70px;

@@ -59,6 +59,23 @@ apiRouter.get('/cart', requireUser, async (req, res) => {
     }
 });
 
+apiRouter.post('/checkout', async (req, res) => {
+    const { amount } = req.body;
+    console.log("STRIPE KEY: ", process.env.STRIPE_KEY)
+    console.log("STRIPE KEY: ")
+    try {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: amount,
+            currency: 'usd',
+        });
+
+        res.json({ clientSecret: paymentIntent.client_secret });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to create payment intent' });
+    }
+});
+
 
 apiRouter.post("/", requireUser, async (req, res, next) => {
     try {

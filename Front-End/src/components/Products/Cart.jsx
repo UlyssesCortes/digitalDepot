@@ -17,14 +17,11 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
     const [emptyCart, setEmptyCart] = useState(false);
-    const [stripeForm, setStripForm] = useState(false);
     const segments = [2.5, 3];
     const stripePromise = loadStripe("pk_test_51NDdY6II4Zr4AaFdZKvdWouisBvtIdpBLp8Do9RwkAnqHFvXOKOkVfUrSK28BnowQptv30UgnBErZWXOdifUEyk20038VijbMi");
 
     // const stripe = useStripe();
     // const elements = useElements();
-    const cardElementRef = useRef(null);
-
 
     let sum = 0;
 
@@ -122,7 +119,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     const handleCheckoutStripe = async (orderId) => {
         const stripe = await stripePromise;
-
         const response = await fetch(`${API_URL}order/checkout`, {
             method: 'POST',
             headers: {
@@ -133,22 +129,25 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 amount: sum * 100,
             }),
         });
-        const cardElement = elements.getElement(CardElement);
         const { clientSecret } = await response.json();
-        const result = await stripe.confirmCardPayment(clientSecret, {
+
+        const cardElement = stripe.elements().create('card');
+        await stripe.confirmCardSetup(clientSecret, {
+            payment_method: {
+                card: cardElement,
+            },
+        });
+        const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: cardElement,
             },
         });
 
-        if (result.error) {
-            // Handle payment error
-            console.error(result.error);
+        if (error) {
+            console.error(error);
         } else {
-            // Payment succeeded
-            if (result.paymentIntent.status === 'succeeded') {
+            if (paymentIntent.status === 'succeeded') {
                 try {
-                    // Update the order as checked out
                     const response = await fetch(`${API_URL}order/${orderId}`, {
                         method: 'PATCH',
                         headers: {
@@ -404,6 +403,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                             )} */}
                         </section>
                     )}
+
                     <Elements stripe={stripePromise}>
                         <div className='stripe-form'>
                             <CardElement options={cardElementOptions} />
