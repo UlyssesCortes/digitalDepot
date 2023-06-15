@@ -116,10 +116,10 @@ const Register = ({ API_URL, setHideNav }) => {
                         <input type='text' placeholder="Email" value={emailReg} onChange={handleChangeEmailReg} className="inputLogin"></input>
                         <input type='password' placeholder="Password" value={passwordReg} onChange={handleChangePasswordRegister} className="inputLogin"></input>
                         <button type="submit" className="loginBtn">Register &rarr;</button>
-                        <button className='googleLog'>
+                        {/* <button className='googleLog'>
                             <div className='googleIcon'></div>
                             Sign up with Google
-                        </button>
+                        </button> */}
                     </form>
                     <Link to='/products' className="link-2" onClick={() => { setHideNav(false) }}></Link>
 

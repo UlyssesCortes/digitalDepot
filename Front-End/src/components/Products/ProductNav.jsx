@@ -4,7 +4,7 @@ import {
     itemVariants
 } from '../../assets/FramerAnimations/NavAnimations';
 import Lottie from "lottie-react"
-import filterIcon from "../../assets/LottieAnimations/filter.json"
+import filterIcon from "../../assets/LottieAnimations/filterDotsIcon.json"
 
 
 export default function ProductNav({ setFilterName, setCurrentPage, setActiveCategory, activeCategory, setSortMethod }) {
@@ -43,7 +43,7 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
                     Beds
                 </button>
                 <button
-                    className={`productLinks hideLink4 ${activeCategory === 'sofa' && 'subNavSelect'}`}
+                    className={`productLinks  ${activeCategory === 'sofa' && 'subNavSelect'}`}
                     onClick={() => handleNavBtn('sofa')}
                 >
                     Sofas
@@ -55,13 +55,13 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
                     Chairs
                 </button>
                 <button
-                    className={`productLinks hideLink3 ${activeCategory === 'table' && 'subNavSelect'}`}
+                    className={`productLinks  ${activeCategory === 'table' && 'subNavSelect'}`}
                     onClick={() => handleNavBtn('table')}
                 >
                     Tables
                 </button>
                 <button
-                    className={`productLinks hideLink ${activeCategory === 'desk' && 'subNavSelect'}`}
+                    className={`productLinks ${activeCategory === 'desk' && 'subNavSelect'}`}
                     onClick={() => handleNavBtn('desk')}
                 >
                     Desks
@@ -77,9 +77,11 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
                         onClick={() => setIsSortOpen(!isSortOpen)}
                         className='sortBtnContainer'
                     >
-                        <Lottie className="headerIcon" animationData={filterIcon} loop={false} />
-                        {/* <p className="productLinks sortBtn">{sortType ? sortType : "Sort and Filter"}</p>
-                        <span className={`downArr ${isSortOpen && "rotate"}`}></span> */}
+
+                        <Lottie className="sortIcon" animationData={filterIcon} loop={true} animationOptions={{ delay: 2000 }} />
+                        <p className="productLinks sortBtn">{sortType ? sortType : "Sort and Filter"}</p>
+                        <span className={`downArr ${isSortOpen && "rotate"}`}></span>
+
                     </div>
 
                     <motion.ul
@@ -110,20 +112,32 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
                             <div className="navCategory">
                                 Price (Low to High)
                             </div>
+                            <div className="navCategoryMobile">
+                                Low to High
+                            </div>
                         </motion.li>
                         <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }} onClick={() => { selectSortMethod("Price (High to Low)") }}>
                             <div className="navCategory">
                                 Price (High to Low)
+                            </div>
+                            <div className="navCategoryMobile">
+                                High to Low
                             </div>
                         </motion.li>
                         <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }} onClick={() => { selectSortMethod("Alphabetical (A-Z)") }}>
                             <div className="navCategory">
                                 Alphabetical (A-Z)
                             </div>
+                            <div className="navCategoryMobile">
+                                Alph. A-Z
+                            </div>
                         </motion.li>
                         <motion.li variants={itemVariants} whileHover={{ scale: 1.04 }} onClick={() => { selectSortMethod("Alphabetical (Z-A)") }}>
                             <div className="navCategory">
                                 Alphabetical (Z-A)
+                            </div>
+                            <div className="navCategoryMobile">
+                                Alph. Z-A
                             </div>
                         </motion.li>
                     </motion.ul>
