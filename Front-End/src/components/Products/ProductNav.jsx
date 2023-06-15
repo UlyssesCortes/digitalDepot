@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
-import {
-    itemVariants
-} from '../../assets/FramerAnimations/NavAnimations';
+import { itemVariants } from '../../assets/FramerAnimations/NavAnimations';
 import Lottie from "lottie-react"
 import filterIcon from "../../assets/LottieAnimations/filterDotsIcon.json"
 
