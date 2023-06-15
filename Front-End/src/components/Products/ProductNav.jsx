@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import {
     itemVariants
 } from '../../assets/FramerAnimations/NavAnimations';
+import Lottie from "lottie-react"
+import filterIcon from "../../assets/LottieAnimations/filter.json"
 
 
 export default function ProductNav({ setFilterName, setCurrentPage, setActiveCategory, activeCategory, setSortMethod }) {
@@ -29,19 +31,19 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
             </section>
             <section className="bottomNavProduct" id="topSubNav">
                 <button
-                    className={`productLinks ${activeCategory === 'all' && 'subNavSelect'}`}
+                    className={`productLinks hideLink ${activeCategory === 'all' && 'subNavSelect'}`}
                     onClick={() => handleNavBtn('all')}
                 >
                     All Furniture
                 </button>
                 <button
-                    className={`productLinks ${activeCategory === 'bed' && 'subNavSelect'}`}
+                    className={`productLinks 4 ${activeCategory === 'bed' && 'subNavSelect'}`}
                     onClick={() => handleNavBtn('bed')}
                 >
                     Beds
                 </button>
                 <button
-                    className={`productLinks ${activeCategory === 'sofa' && 'subNavSelect'}`}
+                    className={`productLinks hideLink4 ${activeCategory === 'sofa' && 'subNavSelect'}`}
                     onClick={() => handleNavBtn('sofa')}
                 >
                     Sofas
@@ -53,32 +55,31 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
                     Chairs
                 </button>
                 <button
-                    className={`productLinks ${activeCategory === 'table' && 'subNavSelect'}`}
+                    className={`productLinks hideLink3 ${activeCategory === 'table' && 'subNavSelect'}`}
                     onClick={() => handleNavBtn('table')}
                 >
                     Tables
                 </button>
                 <button
-                    className={`productLinks ${activeCategory === 'desk' && 'subNavSelect'}`}
+                    className={`productLinks hideLink ${activeCategory === 'desk' && 'subNavSelect'}`}
                     onClick={() => handleNavBtn('desk')}
                 >
                     Desks
                 </button>
-
-
-
                 <motion.nav
                     initial={false}
                     animate={isSortOpen ? "open" : "closed"}
                     className="sortMenuSection"
                     layout="position"
                 >
+
                     <div
                         onClick={() => setIsSortOpen(!isSortOpen)}
                         className='sortBtnContainer'
                     >
-                        <p className="productLinks sortBtn">{sortType ? sortType : "Sort and Filter"}</p>
-                        <span className={`downArr ${isSortOpen && "rotate"}`}></span>
+                        <Lottie className="headerIcon" animationData={filterIcon} loop={false} />
+                        {/* <p className="productLinks sortBtn">{sortType ? sortType : "Sort and Filter"}</p>
+                        <span className={`downArr ${isSortOpen && "rotate"}`}></span> */}
                     </div>
 
                     <motion.ul

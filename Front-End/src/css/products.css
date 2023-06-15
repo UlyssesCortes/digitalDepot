@@ -21,7 +21,6 @@
     gap: 50px;
     height: 8vh;
     border-bottom: solid black 2px;
-
 }
 
 .productLinks.subNavSelect {
@@ -903,7 +902,6 @@
         display: none;
     }
 
-
     .imageGallery {
         width: 90%;
     }
@@ -933,6 +931,22 @@
 
 }
 
+@media only screen and (max-width: 900px) {
+
+    .hideLink {
+        display: none;
+    }
+
+    .bottomNavProduct {
+        flex-direction: row-reverse;
+    }
+
+    .sortBtn {
+        font-size: 18px;
+    }
+
+}
+
 @media only screen and (max-width: 850px) {
     .topNavProduct p {
         font-size: 40px;
@@ -941,22 +955,38 @@
     .productsSec {
         justify-content: center;
     }
-
-
 }
+
 
 @media only screen and (max-width: 700px) {
     .tables {
         display: none;
     }
 
-    .productLinks {
+    .productLinks,
+    .sortBtn {
         font-size: 15px;
+    }
+
+    .downArr {
+        scale: .6;
+        margin-top: 2px;
+        margin-left: -5px;
     }
 
     .CartBtnContainer button {
         font-size: 16px;
         width: 120px;
+    }
+
+    .hideLink2 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .hideLink4 {
+        display: none;
     }
 }
 
