@@ -11,6 +11,7 @@ import Cart from './components/Products/Cart';
 import Offers from './components/SpecialOffers/Offers';
 import Header from './components/Navbar/Header';
 import NotFound from './components/NotFound';
+import Success from './components/Products/Success';
 
 function App() {
 
@@ -53,6 +54,7 @@ function App() {
     const currentOrderId = window.localStorage.getItem('currentOrderId');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     setCurrentOrderId(currentOrderId)
+    // If not currentOrderId then fetch throught myOrders to grab the id and if none then just dont do nothing
     setIsLoggedIn(isLoggedInLocal)
     setToken(localToken)
     if (localToken) {
@@ -211,7 +213,7 @@ function App() {
           />
           <Route
             path='/paymentSuccess'
-            element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} setShowProfile={setShowProfile} setIsCategorieOpen={setIsCategorieOpen} />}
+            element={<Success API_URL={API_URL} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} />}
           />
 
           <Route

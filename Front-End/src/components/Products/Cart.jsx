@@ -12,7 +12,6 @@ import { loadStripe } from '@stripe/stripe-js'
 
 export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart, cartItems, setCartItems }) {
 
-    // const [myCart, setMyCart] = useState([])
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
     const [emptyCart, setEmptyCart] = useState(false);
@@ -28,22 +27,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
         return stripePromise
     }
-
-    // const getOrderItems = async () => {
-    //     try {
-    //         if (currentOrderId) {
-    //             const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
-    //                 headers: {
-    //                     'Content-Type': 'application/json',
-    //                 }
-    //             })
-    //             const items = await response.json();
-    //             setMyCart(items)
-    //         }
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }
 
     const getCartTest = async () => {
         try {
@@ -129,7 +112,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                         return updatedCart;
                     });
                 }
-                // getCartTest()
             } catch (error) {
                 console.log(error);
             }
@@ -147,7 +129,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             quantity: item.quantity,
         })),
         mode: "payment",
-        successUrl: `${window.location.origin}`,
+        successUrl: `${window.location.origin}/paymentSuccess?payment=success`,
         cancelUrl: `${window.location.origin}/cart`
     }
 
@@ -155,15 +137,16 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         setStripeLoading(true)
         const stripe = await getStripe()
         const { error } = await stripe.redirectToCheckout(checkoutOptions)
-        if (error.message) {
+        if (error) {
             alert(error.message)
+        } else {
+            handleUpdate(window.localStorage.getItem('currentOrderId'));
         }
         setStripeLoading(false)
         getCartTest()
     }
 
     const handleUpdate = async (orderId) => {
-
         var currentDate = new Date();
         var checkoutDate = new Date(currentDate);
         checkoutDate.setDate(currentDate.getDate());
@@ -191,7 +174,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
             if (result.name !== "error") {
                 localStorage.setItem('currentOrderId', "");
-                // setMyCart([])
                 setCurrentOrderId("")
                 setCheckoutAnimation(true)
             } else {
