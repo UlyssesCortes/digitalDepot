@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import dotenv from 'dotenv';
 import Lottie from "lottie-react"
 import checkout from "../../assets/LottieAnimations/checkout.json"
 import emptyCartAnimation from "../../assets/LottieAnimations/box.json"
@@ -7,6 +8,7 @@ import loadingAnimation from "../../assets/LottieAnimations/loadingLines.json"
 import Favorites from './Profile/Favorites';
 import Orders from './Profile/Orders';
 // import { getOrderItems2 } from '../../API/cartApi';
+import { loadStripe } from '@stripe/stripe-js'
 
 export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart }) {
 
@@ -15,9 +17,17 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
     const [emptyCart, setEmptyCart] = useState(false);
+    const [stripeLoading, setStripeLoading] = useState(false)
     const segments = [2.5, 3];
-
     let sum = 0;
+    let stripePromise
+
+    const getStripe = () => {
+        if (!stripePromise) {
+            stripePromise = loadStripe("pk_test_51NDdY6II4Zr4AaFdZKvdWouisBvtIdpBLp8Do9RwkAnqHFvXOKOkVfUrSK28BnowQptv30UgnBErZWXOdifUEyk20038VijbMi")
+        }
+        return stripePromise
+    }
 
     const getOrderItems = async () => {
         try {
@@ -111,45 +121,75 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
     };
 
-    const handleUpdate = async (orderId) => {
-        var currentDate = new Date();
-        var checkoutDate = new Date(currentDate);
-        checkoutDate.setDate(currentDate.getDate());
+    const items = [
+        { price: "price_1NJNHCII4Zr4AaFdxXhJknTA", quantity: 2 },
+        { price: "price_1NJQlmII4Zr4AaFdOdsBuyVi", quantity: 1 }
+    ];
 
-        var month = checkoutDate.getMonth() + 1;
-        var day = checkoutDate.getDate();
-        var year = checkoutDate.getFullYear();
+    const checkoutOptions = {
+        lineItems: items.map((item) => ({
+            price: item.price,
+            quantity: item.quantity,
+        })),
+        mode: "payment",
+        successUrl: `${window.location.origin}`,
+        cancelUrl: `${window.location.origin}/cart`
+    }
 
-        var formattedDate = month + '/' + day + '/' + year;
-
-        try {
-            const response = await fetch(`${API_URL}order/${orderId}`, {
-                method: "PATCH",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    isCheckedOut: true,
-                    checkoutDate: formattedDate,
-                    checkoutSum: sum
-                })
-            });
-            const result = await response.json();
-
-            if (result.name !== "error") {
-                localStorage.setItem('currentOrderId', "");
-                setMyCart([])
-                setProducts([])
-                setCurrentOrderId("")
-                setCheckoutAnimation(true)
-            } else {
-                console.log("Failed to send order, try again!")
-            }
-
-        } catch (error) {
-            console.error(error);
+    const redirectToCheckout = async () => {
+        setLoading(true)
+        console.log("redirectToCheckout")
+        const stripe = await getStripe()
+        const { error } = await stripe.redirectToCheckout(checkoutOptions)
+        console.log("Stripe checkout error ", error)
+        if (error.message) {
+            alert(error.message)
         }
+        setLoading(false)
+    }
+
+    const handleUpdate = async (orderId) => {
+
+
+
+        // var currentDate = new Date();
+        // var checkoutDate = new Date(currentDate);
+        // checkoutDate.setDate(currentDate.getDate());
+
+        // var month = checkoutDate.getMonth() + 1;
+        // var day = checkoutDate.getDate();
+        // var year = checkoutDate.getFullYear();
+
+        // var formattedDate = month + '/' + day + '/' + year;
+
+        // try {
+        //     const response = await fetch(`${API_URL}order/${orderId}`, {
+        //         method: "PATCH",
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             'Authorization': `Bearer ${token}`,
+        //         },
+        //         body: JSON.stringify({
+        //             isCheckedOut: true,
+        //             checkoutDate: formattedDate,
+        //             checkoutSum: sum
+        //         })
+        //     });
+        //     const result = await response.json();
+
+        //     if (result.name !== "error") {
+        //         localStorage.setItem('currentOrderId', "");
+        //         setMyCart([])
+        //         setProducts([])
+        //         setCurrentOrderId("")
+        //         setCheckoutAnimation(true)
+        //     } else {
+        //         console.log("Failed to send order, try again!")
+        //     }
+
+        // } catch (error) {
+        //     console.error(error);
+        // }
     };
 
     useEffect(() => {
@@ -219,7 +259,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         setShowOrder(false)
         setPageTitle(" SHOPPING CART")
     }
-
 
     const handleAnimation = () => {
         setTimeout(() => {
@@ -308,7 +347,8 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     {isLoggedIn && showCart &&
                         <section className='CartBtnContainer'>
                             <p className='totalPrice'>Total ${parseFloat(sum)}</p>
-                            <button onClick={() => { handleUpdate(currentOrderId) }}>Checkout</button>
+                            {/* <button onClick={() => { handleUpdate(currentOrderId) }}>Checkout</button> */}
+                            <button onClick={() => { redirectToCheckout() }} disabled={stripeLoading}>{!stripeLoading ? "Checkout" : "Loading..."}</button>
                         </section>
                     }
                 </div>

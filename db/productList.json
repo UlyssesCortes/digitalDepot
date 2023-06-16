@@ -23,7 +23,8 @@
                 "Top Material": "Solid Wood",
                 "Base Material": "Solid Wood; Stainless Steel",
                 "Weight Capacity": "100 lb"
-            }
+            },
+            "stripePrice": "price_1NJNHCII4Zr4AaFdxXhJknTA"
         },
         {
             "title": "Flame Desk",
@@ -48,7 +49,8 @@
                 "Top Material": "Manufactured Wood + Solid Wood",
                 "Base Material": "Concrete",
                 "Weight Capacity": "180 lb"
-            }
+            },
+            "stripePrice": "price_1NJQsaII4Zr4AaFd0zUKfmCX"
         },
         {
             "title": "Dakota Desk",
@@ -73,7 +75,8 @@
                 "Top Material": "Solid Wood",
                 "Base Material": "Iron",
                 "Weight Capacity": "150 lb"
-            }
+            },
+            "stripePrice": "price_1NJQu3II4Zr4AaFdWuVjtPzq"
         },
         {
             "title": "Williams Vanity",
@@ -98,7 +101,8 @@
                 "Top Material": "Solid Wood",
                 "Base Material": "Iron",
                 "Weight Capacity": "120 lb"
-            }
+            },
+            "stripePrice": "price_1NJQveII4Zr4AaFdiIYppRVn"
         },
         {
             "title": "Walter Desk",
@@ -123,7 +127,8 @@
                 "Top Material": "Glass",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "500 lb"
-            }
+            },
+            "stripePrice": "price_1NJQwFII4Zr4AaFddZ7Kil8H"
         },
         {
             "title": "Lilith Desk",
@@ -148,7 +153,8 @@
                 "Top Material": "Solid Wood",
                 "Base Material": "Iron",
                 "Weight Capacity": "150 lb"
-            }
+            },
+            "stripePrice": "price_1NJQx9II4Zr4AaFdbZkegDdG"
         },
         {
             "title": "Flame Desk",
@@ -173,7 +179,8 @@
                 "Top Material": "Manufactured Wood + Solid Wood",
                 "Base Material": "Concrete",
                 "Weight Capacity": "160 lb"
-            }
+            },
+            "stripePrice": "price_1NJQy9II4Zr4AaFd2btV9mWj"
         },
         {
             "title": "Fischer Dining Table",
@@ -198,7 +205,8 @@
                 "Top Material": "Solid Wood",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "140 lb"
-            }
+            },
+            "stripePrice": "price_1NJQykII4Zr4AaFdZlQsbUJV"
         },
         {
             "title": "Covington Desk",
@@ -223,7 +231,8 @@
                 "Top Material": "Glass",
                 "Base Material": "Walnut",
                 "Weight Capacity": "48 lb"
-            }
+            },
+            "stripePrice": "price_1NJQzPII4Zr4AaFdqpFjkaqq"
         },
         {
             "title": "Series L Desk",
@@ -248,7 +257,8 @@
                 "Top Material": "Manufactured Wood",
                 "Base Material": "Steel",
                 "Weight Capacity": "300 lb"
-            }
+            },
+            "stripePrice": "price_1NJR0GII4Zr4AaFdMrWmJE1j"
         },
         {
             "title": "Sequel Desk",
@@ -273,7 +283,8 @@
                 "Top Material": "Glass",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "200 lb"
-            }
+            },
+            "stripePrice": "price_1NJQlmII4Zr4AaFdOdsBuyVi"
         },
         {
             "title": "Duran Desk",
@@ -298,7 +309,8 @@
                 "Top Material": "Glass",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "40 lb"
-            }
+            },
+            "stripePrice": "price_1NJR1sII4Zr4AaFdCA7HABiE"
         },
         {
             "title": "Ando Desk",
@@ -323,7 +335,8 @@
                 "Top Material": "Solid Wood",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "300 lb"
-            }
+            },
+            "stripePrice": "price_1NJR2TII4Zr4AaFdX7EYN1Ve"
         },
         {
             "title": "Pietsch Desk",
@@ -348,7 +361,8 @@
                 "Top Material": "Solid Wood",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "30 lb"
-            }
+            },
+            "stripePrice": "price_1NJR32II4Zr4AaFdlZwssQm7"
         },
         {
             "title": "Corridor Desk",
@@ -373,7 +387,8 @@
                 "Top Material": "Glass",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": "price_1NJR4CII4Zr4AaFdgIoDkmKx"
         },
         {
             "title": "Alem Desk",
@@ -398,7 +413,8 @@
                 "Top Material": "Glass",
                 "Base Material": "Wood",
                 "Weight Capacity": "140 lb"
-            }
+            },
+            "stripePrice": "price_1NJR4qII4Zr4AaFdoj6Y090wx"
         },
         {
             "title": "Carson Desk",
@@ -423,7 +439,8 @@
                 "Top Material": "Solid Wood",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "66 lb"
-            }
+            },
+            "stripePrice": "price_1NJR5QII4Zr4AaFd19NdoZcy"
         },
         {
             "title": "Wyman Desk",
@@ -448,7 +465,8 @@
                 "Top Material": "Solid Wood",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "66 lb"
-            }
+            },
+            "stripePrice": "price_1NJR5vII4Zr4AaFdT70rVzDS"
         },
         {
             "title": "Sleeper Sofa",
@@ -478,7 +496,8 @@
                 "Seat Fill Materia": "Foam",
                 "Leg Material": "Metal",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJR6WII4Zr4AaFd0AiMsF0K"
         },
         {
             "title": "Calyna Upholstered Sofa",
@@ -508,7 +527,8 @@
                 "Wood Species": "Pine",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJR73II4Zr4AaFdilJ9Km17"
         },
         {
             "title": "Deans Upholstered Sofa",
@@ -538,7 +558,8 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJR7bII4Zr4AaFdA2nZ9WrI"
         },
         {
             "title": "Sumo Upholstered Loveseat",
@@ -567,7 +588,8 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJR89II4Zr4AaFd0aZVopXv"
         },
         {
             "title": "Kearney Upholstered Loveseat",
@@ -596,7 +618,8 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJR8fII4Zr4AaFdbVDdqXa8"
         },
         {
             "title": "Deangelo Sofa",
@@ -625,7 +648,8 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJR9XII4Zr4AaFdFgnQaqkN"
         },
         {
             "title": "Moab Sofa",
@@ -654,7 +678,8 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJRA4II4Zr4AaFdSmV3XGoo"
         },
         {
             "title": "Elsmere Upholstered Sleeper Sofa",
@@ -684,7 +709,8 @@
                 "Wood Species": "Pine",
                 "Leg Material": "Metal",
                 "Removable Cushions": "Yes"
-            }
+            },
+            "stripePrice": "price_1NJRAhII4Zr4AaFdkGrmQDRP"
         },
         {
             "title": "Kye Loveseat",
@@ -713,7 +739,8 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJRBFII4Zr4AaFdEL9HX1JD"
         },
         {
             "title": "Easy Sofa",
@@ -742,7 +769,8 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJRBmII4Zr4AaFdcDGKmdoC"
         },
         {
             "title": "Katavia Sofa",
@@ -771,7 +799,8 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJRCLII4Zr4AaFdUvO9X4CW"
         },
         {
             "title": "Lavonte Sofa",
@@ -800,7 +829,8 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJRD0II4Zr4AaFdBYUYP35z"
         },
         {
             "title": "Luxury Channel Couch",
@@ -829,7 +859,8 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJRDlII4Zr4AaFdKA3bIvN3"
         },
         {
             "title": "Bradson Sofa",
@@ -858,7 +889,8 @@
                 "Seat Fill Material": "Foam",
                 "Leg Material": "Wood",
                 "Removable Cushions": "No"
-            }
+            },
+            "stripePrice": "price_1NJRRNII4Zr4AaFdPHVZ6hc9"
         },
         {
             "title": "Annora Geometric Bookcase",
@@ -883,7 +915,8 @@
                 "Shelf Material": "Manufactured Wood",
                 "Number of Shelves": "2",
                 "Weight Capacity": "70 lb"
-            }
+            },
+            "stripePrice": "price_1NJRRrII4Zr4AaFd20CPoul6"
         },
         {
             "title": "Stetson Bookcase",
@@ -908,7 +941,8 @@
                 "Shelf Material": "Manufactured Wood",
                 "Number of Shelves": "4",
                 "Weight Capacity": "64.64 lb"
-            }
+            },
+            "stripePrice": "price_1NJRSLII4Zr4AaFdteFd64YS"
         },
         {
             "title": "Innes Ladder Bookcase",
@@ -933,7 +967,8 @@
                 "Shelf Material": "Solid Wood",
                 "Number of Shelves": "4",
                 "Weight Capacity": "80 lb"
-            }
+            },
+            "stripePrice": "price_1NJRSrII4Zr4AaFd6muWAPXD"
         },
         {
             "title": "Eldorado Etagere Bookcase",
@@ -958,7 +993,8 @@
                 "Shelf Material": "Solid Wood",
                 "Number of Shelves": "4",
                 "Weight Capacity": "70 lb"
-            }
+            },
+            "stripePrice": "price_1NJRTKII4Zr4AaFdNw47ir11"
         },
         {
             "title": "Flame Drawer File Cabinet",
@@ -983,7 +1019,8 @@
                 "Shelf Material": "Solid Wood",
                 "Number of drawers": "2",
                 "Weight Capacity": "150 lb"
-            }
+            },
+            "stripePrice": "price_1NJRTlII4Zr4AaFdrwyPtlRk"
         },
         {
             "title": "Rayford Upholstered Bed",
@@ -1009,7 +1046,8 @@
                 "Upholstery Material": "100% Polyester",
                 "Number of Slats Included": "13",
                 "Weight Capacity": "500 lb"
-            }
+            },
+            "stripePrice": "price_1NJRUEII4Zr4AaFdJjNi8EtB"
         },
         {
             "title": "Williams Upholstered Bed",
@@ -1035,7 +1073,8 @@
                 "Upholstery Material": "Linen Blend",
                 "Number of Slats Included": "15",
                 "Weight Capacity": "500 lb"
-            }
+            },
+            "stripePrice": "price_1NJRUgII4Zr4AaFdXEWGQYkz"
         },
         {
             "title": "Florian Bed",
@@ -1061,7 +1100,8 @@
                 "Upholstery Material": "Linen Blend",
                 "Number of Slats Included": "13",
                 "Weight Capacity": "600 lb"
-            }
+            },
+            "stripePrice": "price_1NJRV6II4Zr4AaFdtrEGtjtk"
         },
         {
             "title": "Antigua Solid Wood Bed",
@@ -1087,7 +1127,8 @@
                 "Upholstery Material": "Linen Blend",
                 "Number of Slats Included": "13",
                 "Weight Capacity": "550 lb"
-            }
+            },
+            "stripePrice": "price_1NJRVXII4Zr4AaFdYVN36Bew"
         },
         {
             "title": "Javi Upholstered Bed",
@@ -1113,7 +1154,8 @@
                 "Upholstery Material": "MDF",
                 "Number of Slats Included": "13",
                 "Weight Capacity": "550 lb"
-            }
+            },
+            "stripePrice": "price_1NJRW6II4Zr4AaFdxZpCBKga"
         },
         {
             "title": "Kaydan Upholstered Bed",
@@ -1139,7 +1181,8 @@
                 "Upholstery Material": "Faux leather",
                 "Number of Slats Included": "9",
                 "Weight Capacity": "500 lb"
-            }
+            },
+            "stripePrice": "price_1NJRWeII4Zr4AaFdY6pbx9yR"
         },
         {
             "title": "Ascent Drawer File Cabinet",
@@ -1164,7 +1207,8 @@
                 "Shelf Material": "Solid Wood",
                 "Number of drawers": "2",
                 "Weight Capacity": "150 lb"
-            }
+            },
+            "stripePrice": "price_1NJRX6II4Zr4AaFdbHGWwO4i"
         },
         {
             "title": "Kingsdown Drawer File Cabinet",
@@ -1189,7 +1233,8 @@
                 "Shelf Material": "Solid Wood",
                 "Number of drawers": "2",
                 "Weight Capacity": "120 lb"
-            }
+            },
+            "stripePrice": "price_1NJRXZII4Zr4AaFd6ZO1N8lm"
         },
         {
             "title": "Square Arm Sofa Bed",
@@ -1219,7 +1264,8 @@
                 "Wood Species": "Pine",
                 "Leg Material": "Solid Wood",
                 "Removable Cushions": "Yes"
-            }
+            },
+            "stripePrice": "price_1NJRY5II4Zr4AaFduEFwgltU"
         },
         {
             "title": "Dang Drawer File Cabinet",
@@ -1244,7 +1290,8 @@
                 "Shelf Material": "Solid Wood",
                 "Number of drawers": "2",
                 "Weight Capacity": "110 lb"
-            }
+            },
+            "stripePrice": "price_1NJRa0II4Zr4AaFdO0bqxwdA"
         },
         {
             "title": "Williams Bed",
@@ -1270,7 +1317,8 @@
                 "Upholstery Material": "Faux leather",
                 "Number of Slats Included": "9",
                 "Weight Capacity": "500 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Glow Upholstered Bed",
@@ -1296,7 +1344,8 @@
                 "Upholstery Material": "100% Linen",
                 "Number of Slats Included": "13",
                 "Weight Capacity": "440 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Cal Swivel Chair",
@@ -1322,7 +1371,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Marinette Office Chair",
@@ -1348,7 +1398,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Jewett Office Chair",
@@ -1374,7 +1425,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Escapade Dining Chair",
@@ -1399,7 +1451,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Cali Swivel Chair",
@@ -1424,7 +1477,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "299 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Brisbane Swivel Chair",
@@ -1449,7 +1503,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Jewett Swivel Chair",
@@ -1474,7 +1529,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Cooke Swivel Chair",
@@ -1499,7 +1555,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "300 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Acosta Swivel Chair",
@@ -1524,7 +1581,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Demetrus Swivel Chair",
@@ -1549,7 +1607,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Apt Home Office Chair",
@@ -1574,7 +1633,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Orna Swivel Chair",
@@ -1599,7 +1659,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "275 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Calypso Swivel Chair",
@@ -1624,7 +1685,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "220 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Craft Side Chair",
@@ -1649,7 +1711,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "331 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Brenda Swivel Chair",
@@ -1674,7 +1737,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Jewett Arm Chair",
@@ -1699,7 +1763,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Acosta Swivel Chair",
@@ -1724,7 +1789,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Mako Swivel Chair",
@@ -1749,7 +1815,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "299 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Chaely Swivel Chair",
@@ -1774,7 +1841,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "275 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Max Swivel Chair",
@@ -1799,7 +1867,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "300 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Buttercup Task Chair",
@@ -1824,7 +1893,8 @@
                 "Seat Material ": "Upholstered",
                 "Adjustable Height": "Yes",
                 "Weight Capacity": "299 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Lincoln 5 - Piece Dining Set",
@@ -1850,7 +1920,8 @@
                 "Table Base Material": "Steel",
                 "Seating Capacity": "4",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "5 - Piece Dining Set",
@@ -1876,7 +1947,8 @@
                 "Table Base Material": "Wood",
                 "Seating Capacity": "4",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Arlener 7 - Piece Dining Set",
@@ -1902,7 +1974,8 @@
                 "Table Base Material": "Wood",
                 "Seating Capacity": "6",
                 "Weight Capacity": "300 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Louetta 7 - Piece Dining Set",
@@ -1928,7 +2001,8 @@
                 "Table Base Material": "Oak",
                 "Seating Capacity": "6",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Ebba 5 - Piece Dining Set",
@@ -1954,7 +2028,8 @@
                 "Table Base Material": "Oak",
                 "Seating Capacity": "4",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Daxon 3 - Piece Dining Set",
@@ -1980,7 +2055,8 @@
                 "Table Base Material": "Metal",
                 "Seating Capacity": "2",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Schuyler 5 - Piece Dining Set",
@@ -2006,7 +2082,8 @@
                 "Table Base Material": "Solid Wood",
                 "Seating Capacity": "4",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Extendable Dining Table",
@@ -2030,7 +2107,8 @@
                 "Table Base Material": "Solid Wood",
                 "Seating Capacity": "14",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Gayle Dining Table",
@@ -2054,7 +2132,8 @@
                 "Table Base Material": "Metal",
                 "Seating Capacity": "6",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Joyce Dining Table",
@@ -2078,7 +2157,8 @@
                 "Table Base Material": "Iron",
                 "Seating Capacity": "4",
                 "Weight Capacity": "200 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Dining Table",
@@ -2102,7 +2182,8 @@
                 "Table Base Material": "Solid Wood",
                 "Seating Capacity": "8",
                 "Weight Capacity": "170 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Anoka Dining Table",
@@ -2126,7 +2207,8 @@
                 "Table Base Material": "Iron",
                 "Seating Capacity": "6",
                 "Weight Capacity": "300 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Jerrod Extendable Table",
@@ -2150,7 +2232,8 @@
                 "Table Base Material": "Steel",
                 "Seating Capacity": "8",
                 "Weight Capacity": "300 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Roberto Dining Table",
@@ -2174,7 +2257,8 @@
                 "Table Base Material": "Metal",
                 "Seating Capacity": "6",
                 "Weight Capacity": "250 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Kigali Dining Table",
@@ -2198,7 +2282,8 @@
                 "Table Base Material": "Concrete",
                 "Seating Capacity": "8",
                 "Weight Capacity": "450 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Walter Dining Table",
@@ -2222,7 +2307,8 @@
                 "Table Base Material": "Solid Wood",
                 "Seating Capacity": "6",
                 "Weight Capacity": "150 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Clifton Dining Table",
@@ -2246,7 +2332,8 @@
                 "Table Base Material": "Steel",
                 "Seating Capacity": "6",
                 "Weight Capacity": "249 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Carlo Dining Table",
@@ -2270,7 +2357,8 @@
                 "Table Base Material": "Solid Wood",
                 "Seating Capacity": "4",
                 "Weight Capacity": "180 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Duron Bar Cart",
@@ -2293,7 +2381,8 @@
                 "Frame Material": "Solid Wood",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "25 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Longday Bar Cart",
@@ -2316,7 +2405,8 @@
                 "Frame Material": "Solid Wood",
                 "Base Material": "Metal",
                 "Weight Capacity": "60 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Emer Metal Bar Cart",
@@ -2339,7 +2429,8 @@
                 "Frame Material": "Manufactured Wood",
                 "Base Material": "Wood",
                 "Weight Capacity": "49 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Onyx Bar Cabinet",
@@ -2362,7 +2453,8 @@
                 "Frame Material": "Manufactured Wood",
                 "Base Material": "Wood",
                 "Weight Capacity": "80 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Zachary Bar Cabinet",
@@ -2385,7 +2477,8 @@
                 "Frame Material": "Solid + Manufactured Wood",
                 "Base Material": "Iron",
                 "Weight Capacity": "180 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Messing Bar Cart",
@@ -2408,7 +2501,8 @@
                 "Frame Material": "Manufactured Wood",
                 "Base Material": "Wood",
                 "Weight Capacity": "50 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Williams Bar Cabinet",
@@ -2431,7 +2525,8 @@
                 "Frame Material": "Solid + Manufactured Wood",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "50 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Cavan Dining Cabinet",
@@ -2454,7 +2549,8 @@
                 "Frame Material": "Glass; Solid + Manufactured Wood",
                 "Base Material": "Solid Wood",
                 "Weight Capacity": "100 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Andor Dining Cabinet",
@@ -2477,7 +2573,8 @@
                 "Frame Material": "Solid + Manufactured Wood",
                 "Base Material": "Walnut",
                 "Weight Capacity": "150 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Ralph Console Table",
@@ -2503,7 +2600,8 @@
                 "Base Material": "Stainless Steel",
                 "Number of Shelves": "2",
                 "Weight Capacity": "40 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Dakota Console Table",
@@ -2529,7 +2627,8 @@
                 "Base Material": "Solid Wood; Iron",
                 "Number of Shelves": "3",
                 "Weight Capacity": "200 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Carson Console Table",
@@ -2555,7 +2654,8 @@
                 "Base Material": "Manufactured Wood",
                 "Number of Shelves": "1",
                 "Weight Capacity": "66 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Carlo Console Table",
@@ -2581,7 +2681,8 @@
                 "Base Material": "Manufactured Wood",
                 "Number of Shelves": "1",
                 "Weight Capacity": "132 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Aramis Console Table",
@@ -2606,7 +2707,8 @@
                 "Base Material": "Metal",
                 "Number of Shelves": "0",
                 "Weight Capacity": "175 lb"
-            }
+            },
+            "stripePrice": ""
         },
         {
             "title": "Kenmore Console Table",
@@ -2631,7 +2733,8 @@
                 "Base Material": "Acacia",
                 "Number of Shelves": "0",
                 "Weight Capacity": "180 lb"
-            }
+            },
+            "stripePrice": ""
         }
     ]
 }
