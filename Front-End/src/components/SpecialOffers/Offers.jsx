@@ -24,7 +24,7 @@ export default function Offers({ setShowProfile, setFilterName }) {
                         <div className='arrowImgOffer'></div>
                         <div className='imgText'>
                             <p>Discover the Perfect Seat at Unbeatable Prices</p>
-                            <h2>Sit in Style, Save More:<br></br> <span className='percentageOffer'>10%</span> off All Chairs!</h2>
+                            <h2>Sit in Style, Save More:<br></br> <span className='percentageOffer'>25%</span> off All Chairs!</h2>
                         </div>
                     </Link>
 

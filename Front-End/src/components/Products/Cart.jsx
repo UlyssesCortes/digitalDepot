@@ -78,9 +78,12 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             }
 
             getOrderItems()
+            getCartTest()
+
         } catch (error) {
             console.error(error);
         }
+
     };
     const increaseQuantity = async (index) => {
         if (myCart[index].quantity < 4) {
@@ -104,10 +107,13 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                         return updatedCart;
                     });
                 }
+                getCartTest()
+
             } catch (error) {
                 console.log(error);
             }
         }
+
     };
 
     const decreaseQuantity = async (index) => {
@@ -132,12 +138,13 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                         return updatedCart;
                     });
                 }
+                getCartTest()
             } catch (error) {
                 console.log(error);
             }
         }
     };
-
+    // If type == chair 10%discount or add coupon code 
     const items = cartItems && cartItems.map((product) => ({
         price: product.stripePrice,
         quantity: product.quantity
@@ -161,13 +168,10 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             alert(error.message)
         }
         setStripeLoading(false)
-
-
+        getCartTest()
     }
 
     const handleUpdate = async (orderId) => {
-
-
 
         // var currentDate = new Date();
         // var checkoutDate = new Date(currentDate);
@@ -210,8 +214,8 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     };
 
     useEffect(() => {
-        getOrderItems()
         getCartTest()
+        getOrderItems()
     }, [token]);
 
     useEffect(() => {
