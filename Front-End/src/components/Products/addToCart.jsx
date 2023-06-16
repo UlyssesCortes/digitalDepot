@@ -1,9 +1,27 @@
 
-const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert) => {
+const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert, setCartItems) => {
 
     let items = null;
     console.log("isLoggedIn: ", isLoggedIn)
     setCurrentOrderId(currentOrderId)
+
+    const getCartTest = async () => {
+        console.log("adding to cart fetch cart")
+        try {
+            const localToken = window.localStorage.getItem('token');
+
+            const response = await fetch(`${API_URL}order/cart`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localToken}`,
+                },
+            })
+            const items = await response.json();
+            setCartItems(items)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     if (!currentOrderId && isLoggedIn) {
         const response = await fetch(`${API_URL}order/myOrders`, {
@@ -57,6 +75,9 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
                 throw new Error(`Failed to add item to cart. Status: ${itemsResponse.status}`);
             }
             items = await itemsResponse.json();
+            if (items) {
+                getCartTest()
+            }
         }
 
     } else if (!isLoggedIn) {
@@ -85,12 +106,18 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
             }
             items = await itemsResponse.json();
             console.log(items)
+            if (items) {
+                getCartTest()
+            }
         }
 
 
     } catch (err) {
         console.error(err);
     }
+
+
+
 };
 
 export default addToCart;

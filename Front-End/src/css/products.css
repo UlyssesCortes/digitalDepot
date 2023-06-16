@@ -597,9 +597,9 @@
     transition: all ease-in-out .2s;
 }
 
-.cartProduct:hover {
+/* .cartProduct:hover {
     scale: 1.01;
-}
+} */
 
 .cartProductImg {
     height: 400px;

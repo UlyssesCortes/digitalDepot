@@ -63,7 +63,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     }
 
     const deleteItem = async (data) => {
-        console.log("Deleting items", data)
         try {
             const response = await fetch(`${API_URL}order-items/${data.productId}`, {
                 method: "DELETE",
@@ -81,12 +80,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
     };
     const increaseQuantity = async (data, index) => {
-        console.log(data)
         if (data.quantity < 4) {
             let currentQuantity = data.quantity + 1;
             const orderItemId = data.orderItemId;
-            console.log(`${API_URL}order-items/${orderItemId}`)
-
             try {
                 const response = await fetch(`${API_URL}order-items/${orderItemId}`, {
                     method: "PATCH",
@@ -96,7 +92,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     },
                     body: JSON.stringify({ quantity: currentQuantity }),
                 });
-                console.log(response)
                 if (response.ok) {
                     setCartItems((pertCartItems) => {
                         const updatedCart = [...pertCartItems];
@@ -207,10 +202,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             console.error(error);
         }
     };
-
-    // useEffect(() => {
-    //     getOrderItems()
-    // }, [token]);
 
     useEffect(() => {
         if (cartItems.length === 0) {

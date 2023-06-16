@@ -128,7 +128,6 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const getProducts = async () => {
         try {
             if (isLoggedIn) {
-                console.log("Is logged In getting products/all")
 
                 const response = await fetch(`${API_URL}products/all`, {
                     headers: {
@@ -143,8 +142,6 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                 }
                 return result;
             } else {
-                console.log("not loggedin getting products")
-
                 const response = await fetch(`${API_URL}products`, {
                     headers: {
                         'Content-Type': 'application/json',
@@ -162,7 +159,6 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     };
 
     const getCartTest = async () => {
-        console.log("adding to cart fetch cart")
         try {
             const localToken = window.localStorage.getItem('token');
 
@@ -244,9 +240,9 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                         <button
                             className="addCartBtn"
                             onClick={() => {
-                                addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert);
+                                addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert, setCartItems);
                                 setAdded(true);
-                                getCartTest();
+                                // getCartTest();
                             }}
                         >
                             {isLoggedIn && added ?
