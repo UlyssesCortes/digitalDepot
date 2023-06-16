@@ -81,7 +81,7 @@ async function getOrderDetails(userId) {
 async function getCart() {
     try {
         const { rows } = await client.query(`
-        SELECT o.id AS order_id, o."isCheckedOut",
+        SELECT oi.id AS "orderItemId" o.id AS order_id, o."isCheckedOut",
           oi.quantity, p.id AS "productId", p.title, p.price, p."stripePrice" ,p.images[1] AS image
         FROM orders o
         JOIN order_items oi ON o.id = oi."orderId"
@@ -94,6 +94,22 @@ async function getCart() {
         throw error;
     }
 }
+
+// async function updateCart(orderItemId, quantity) {
+//     try {
+//         const { rowCount } = await client.query(`
+//         UPDATE order_items
+//         SET quantity = $1
+//         WHERE id = $2;
+//       `, [quantity, orderItemId]);
+
+//         return rowCount;
+//     } catch (error) {
+//         console.error('Error executing query:', error);
+//         throw error;
+//     }
+// }
+
 
 async function getAllOrders() {
     try {

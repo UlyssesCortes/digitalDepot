@@ -83,10 +83,12 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
 
     };
-    const increaseQuantity = async (index) => {
-        if (myCart[index].quantity < 4) {
-            let currentQuantity = myCart[index].quantity + 1;
-            const orderItemId = myCart[index].id;
+    const increaseQuantity = async (data, index) => {
+        console.log(data)
+        if (data.quantity < 4) {
+            let currentQuantity = data.quantity + 1;
+            const orderItemId = data.order_id;
+            console.log(`${API_URL}order-items/${orderItemId}`)
 
             try {
                 const response = await fetch(`${API_URL}order-items/${orderItemId}`, {
@@ -97,16 +99,16 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     },
                     body: JSON.stringify({ quantity: currentQuantity }),
                 });
-
+                console.log(response)
                 if (response.ok) {
-                    setMyCart((prevCart) => {
-                        const updatedCart = [...prevCart];
+                    setCartItems((pertCartItems) => {
+                        const updatedCart = [...pertCartItems];
+                        console.log("UPDATECART: ", updatedCart)
                         updatedCart[index].quantity = currentQuantity;
                         return updatedCart;
                     });
                 }
-                getCartTest()
-
+                // getCartTest()
             } catch (error) {
                 console.log(error);
             }
@@ -333,7 +335,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
                                         <div className='quntityBtns'>
 
-                                            <div className='plusIcon' onClick={() => { increaseQuantity(index) }}>+</div>
+                                            <div className='plusIcon' onClick={() => { increaseQuantity(data, index) }}>+</div>
                                             <p>0{data.quantity}</p>
                                             <div className='minusIcon' onClick={() => { decreaseQuantity(index) }}>-</div>
                                         </div>

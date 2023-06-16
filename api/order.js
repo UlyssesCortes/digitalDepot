@@ -69,6 +69,12 @@ apiRouter.post("/", requireUser, async (req, res, next) => {
     }
 });
 
+// apiRouter.patch("/cart/:orderItemId"), async (req, res, next) => {
+//     const { orderItemId } = req.params;
+//     const { quantity } = req.body;
+
+// }
+
 apiRouter.patch("/:orderId", async (req, res, next) => {
     try {
         const id = req.params.orderId;
