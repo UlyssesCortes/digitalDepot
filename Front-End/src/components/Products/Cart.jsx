@@ -17,10 +17,12 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
     const [emptyCart, setEmptyCart] = useState(false);
+    const [cartItems, setCartItems] = useState([])
     const [stripeLoading, setStripeLoading] = useState(false)
     const segments = [2.5, 3];
     let sum = 0;
     let stripePromise
+
 
     const getStripe = () => {
         if (!stripePromise) {
@@ -40,9 +42,25 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 const items = await response.json();
                 setMyCart(items)
             }
-
         } catch (error) {
             console.error(error);
+        }
+    }
+
+    const getCartTest = async () => {
+        try {
+            const localToken = window.localStorage.getItem('token');
+
+            const response = await fetch(`${API_URL}order/cart`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localToken}`,
+                },
+            })
+            const items = await response.json();
+            setCartItems(items)
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -59,7 +77,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 throw new Error(`Failed to delete item. Status: ${response.status}`);
             }
 
-            console.log("Item deleted successfully");
             getOrderItems()
         } catch (error) {
             console.error(error);
@@ -121,10 +138,10 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
     };
 
-    const items = [
-        { price: "price_1NJNHCII4Zr4AaFdxXhJknTA", quantity: 2 },
-        { price: "price_1NJQlmII4Zr4AaFdOdsBuyVi", quantity: 1 }
-    ];
+    const items = cartItems && cartItems.map((product) => ({
+        price: product.stripePrice,
+        quantity: product.quantity
+    }))
 
     const checkoutOptions = {
         lineItems: items.map((item) => ({
@@ -137,15 +154,15 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     }
 
     const redirectToCheckout = async () => {
-        setLoading(true)
-        console.log("redirectToCheckout")
+        setStripeLoading(true)
         const stripe = await getStripe()
         const { error } = await stripe.redirectToCheckout(checkoutOptions)
-        console.log("Stripe checkout error ", error)
         if (error.message) {
             alert(error.message)
         }
-        setLoading(false)
+        setStripeLoading(false)
+
+
     }
 
     const handleUpdate = async (orderId) => {
@@ -194,6 +211,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     useEffect(() => {
         getOrderItems()
+        getCartTest()
     }, [token]);
 
     useEffect(() => {
@@ -220,12 +238,34 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 setLoading(false);
             }, 1000);
         }
+        // const getProducts = async () => {
+        //     try {
+        //         const myProductData = await Promise.all(
+        //             myCart && myCart.map((product) =>
+        //                 fetch(`${API_URL}products/${product.productId}`)
+        //                     .then((response) => response.json())
+        //                     .catch((error) => console.error(error))
+        //             )
+        //         );
+        //         setProducts(myProductData.flat());
+        //     } catch (error) {
+        //         console.error(error);
+        //     }
+        // };
+        // getProducts();
+
+        // if (myCart.length === 0) {
+        //     setLoading(true);
+        // } else {
+        //     setTimeout(() => {
+        //         setLoading(false);
+        //     }, 1000);
+        // }
     }, [myCart]);
 
 
     useEffect(() => {
         let timeoutId;
-
         if (myCart.length === 0) {
             timeoutId = setTimeout(() => {
                 setEmptyCart(true);
