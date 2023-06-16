@@ -24,6 +24,7 @@ function App() {
   const [hideNav, setHideNav] = useState(false)
   const [finializedOrders, setFinalizedOrders] = useState([])
   const [favorites, setFavorites] = useState([])
+  const [cartItems, setCartItems] = useState([])
   const [products, setProducts] = useState([])
   const [showProfile, setShowProfile] = useState(false)
   const [showOrder, setShowOrder] = useState(false);
@@ -72,6 +73,7 @@ function App() {
       getProducts();
       fetchFavorites();
       fetchOrders();
+      getCartTest()
     } else {
       fetchGuestProducts()
     }
@@ -114,6 +116,23 @@ function App() {
       console.error(error);
     }
   };
+
+  const getCartTest = async () => {
+    try {
+      const localToken = window.localStorage.getItem('token');
+
+      const response = await fetch(`${API_URL}order/cart`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localToken}`,
+        },
+      })
+      const items = await response.json();
+      setCartItems(items)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const fetchGuestProducts = async () => {
     const localToken = window.localStorage.getItem('token');
@@ -190,6 +209,10 @@ function App() {
             path='/'
             element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} setShowProfile={setShowProfile} setIsCategorieOpen={setIsCategorieOpen} />}
           />
+          <Route
+            path='/paymentSuccess'
+            element={<Hero API_URL={API_URL} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} setShowProfile={setShowProfile} setIsCategorieOpen={setIsCategorieOpen} />}
+          />
 
           <Route
             path='/register'
@@ -201,7 +224,7 @@ function App() {
           />
           <Route
             path='/cart'
-            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} favorites={favorites} finializedOrders={finializedOrders} showOrder={showOrder} setShowOrder={setShowOrder} showFavorite={showFavorite} setShowFavorite={setShowFavorite} pageTitle={pageTitle} setPageTitle={setPageTitle} setShowCart={setShowCart} showCart={showCart} />}
+            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} favorites={favorites} finializedOrders={finializedOrders} showOrder={showOrder} setShowOrder={setShowOrder} showFavorite={showFavorite} setShowFavorite={setShowFavorite} pageTitle={pageTitle} setPageTitle={setPageTitle} setShowCart={setShowCart} showCart={showCart} cartItems={cartItems} setCartItems={setCartItems} />}
           />
           <Route
             path='/products'

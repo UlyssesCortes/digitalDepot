@@ -10,14 +10,12 @@ import Orders from './Profile/Orders';
 // import { getOrderItems2 } from '../../API/cartApi';
 import { loadStripe } from '@stripe/stripe-js'
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart, cartItems, setCartItems }) {
 
     const [myCart, setMyCart] = useState([])
-    const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
     const [emptyCart, setEmptyCart] = useState(false);
-    const [cartItems, setCartItems] = useState([])
     const [stripeLoading, setStripeLoading] = useState(false)
     const segments = [2.5, 3];
     let sum = 0;
@@ -169,103 +167,63 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
         setStripeLoading(false)
         getCartTest()
+
     }
 
     const handleUpdate = async (orderId) => {
 
-        // var currentDate = new Date();
-        // var checkoutDate = new Date(currentDate);
-        // checkoutDate.setDate(currentDate.getDate());
+        var currentDate = new Date();
+        var checkoutDate = new Date(currentDate);
+        checkoutDate.setDate(currentDate.getDate());
 
-        // var month = checkoutDate.getMonth() + 1;
-        // var day = checkoutDate.getDate();
-        // var year = checkoutDate.getFullYear();
+        var month = checkoutDate.getMonth() + 1;
+        var day = checkoutDate.getDate();
+        var year = checkoutDate.getFullYear();
 
-        // var formattedDate = month + '/' + day + '/' + year;
+        var formattedDate = month + '/' + day + '/' + year;
 
-        // try {
-        //     const response = await fetch(`${API_URL}order/${orderId}`, {
-        //         method: "PATCH",
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Authorization': `Bearer ${token}`,
-        //         },
-        //         body: JSON.stringify({
-        //             isCheckedOut: true,
-        //             checkoutDate: formattedDate,
-        //             checkoutSum: sum
-        //         })
-        //     });
-        //     const result = await response.json();
+        try {
+            const response = await fetch(`${API_URL}order/${orderId}`, {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    isCheckedOut: true,
+                    checkoutDate: formattedDate,
+                    checkoutSum: sum
+                })
+            });
+            const result = await response.json();
 
-        //     if (result.name !== "error") {
-        //         localStorage.setItem('currentOrderId', "");
-        //         setMyCart([])
-        //         setProducts([])
-        //         setCurrentOrderId("")
-        //         setCheckoutAnimation(true)
-        //     } else {
-        //         console.log("Failed to send order, try again!")
-        //     }
+            if (result.name !== "error") {
+                localStorage.setItem('currentOrderId', "");
+                setMyCart([])
+                setCurrentOrderId("")
+                setCheckoutAnimation(true)
+            } else {
+                console.log("Failed to send order, try again!")
+            }
 
-        // } catch (error) {
-        //     console.error(error);
-        // }
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     useEffect(() => {
-        getCartTest()
         getOrderItems()
     }, [token]);
 
     useEffect(() => {
-        const getProducts = async () => {
-            try {
-                const myProductData = await Promise.all(
-                    myCart && myCart.map((product) =>
-                        fetch(`${API_URL}products/${product.productId}`)
-                            .then((response) => response.json())
-                            .catch((error) => console.error(error))
-                    )
-                );
-                setProducts(myProductData.flat());
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        getProducts();
-
-        if (myCart.length === 0) {
+        if (cartItems.length === 0) {
             setLoading(true);
         } else {
             setTimeout(() => {
                 setLoading(false);
             }, 1000);
         }
-        // const getProducts = async () => {
-        //     try {
-        //         const myProductData = await Promise.all(
-        //             myCart && myCart.map((product) =>
-        //                 fetch(`${API_URL}products/${product.productId}`)
-        //                     .then((response) => response.json())
-        //                     .catch((error) => console.error(error))
-        //             )
-        //         );
-        //         setProducts(myProductData.flat());
-        //     } catch (error) {
-        //         console.error(error);
-        //     }
-        // };
-        // getProducts();
-
-        // if (myCart.length === 0) {
-        //     setLoading(true);
-        // } else {
-        //     setTimeout(() => {
-        //         setLoading(false);
-        //     }, 1000);
-        // }
-    }, [myCart]);
+    }, [cartItems]);
 
 
     useEffect(() => {
@@ -335,7 +293,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     </section>
 
                     {/* CART COMPONENT */}
-                    <section className={`productsSec ${myCart.length > 2 && "moreGap"}`}>
+                    <section className={`productsSec ${cartItems.length > 2 && "moreGap"}`}>
                         {isLoggedIn && loading && !showFavorite && !showOrder && !checkoutAnimation &&
                             <div className="loadingWrapper">
                                 <Lottie className="loadingAnimation" animationData={loadingAnimation} />
@@ -352,12 +310,12 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
                         {checkoutAnimation && !showFavorite && !showOrder && handleAnimation()}
 
-                        {!loading && showCart && isLoggedIn && products && products.map((data, index) =>
+                        {!loading && showCart && isLoggedIn && cartItems && cartItems.map((data, index) =>
                             <div className="cartProduct" key={data.id + '-' + index}>
 
                                 <div className='contentBox'>
                                     <Link to={`/product/${data.id}`}>
-                                        <img className='cartProductImg' src={data.images[0]} alt="" loading='lazy' />
+                                        <img className='cartProductImg' src={data.image} alt="" loading='lazy' />
                                     </Link>
                                     <div className='topContentBox'>
                                         <h3>{data.title}</h3>
@@ -366,9 +324,8 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                         </div>
                                             : <h3>${data.price}</h3>}
                                         <p className='invisSum'>
-                                            {products.length === myCart.length ?
-                                                data.type === "chair" ? sum += parseFloat((((myCart[index].quantity) * data.price) * .75).toFixed(2)) :
-                                                    sum += parseFloat((myCart[index].quantity) * data.price) : sum += parseFloat(data.price)}
+                                            {data.type === "chair" ? sum += parseFloat((((data.quantity) * data.price) * .75).toFixed(2)) :
+                                                sum += parseFloat((data.quantity) * data.price)}
                                         </p>
                                     </div>
 
@@ -377,7 +334,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                                         <div className='quntityBtns'>
 
                                             <div className='plusIcon' onClick={() => { increaseQuantity(index) }}>+</div>
-                                            <p>0{products.length === myCart.length ? myCart[index].quantity : 0}</p>
+                                            <p>0{data.quantity}</p>
                                             <div className='minusIcon' onClick={() => { decreaseQuantity(index) }}>-</div>
                                         </div>
                                         <button className='removeBtn' onClick={() => deleteItem(data.id)}>Remove item</button>
