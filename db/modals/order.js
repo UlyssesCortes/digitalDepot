@@ -81,7 +81,7 @@ async function getOrderDetails(userId) {
 async function getCart() {
     try {
         const { rows } = await client.query(`
-        SELECT oi.id AS "orderItemId" o.id AS order_id, o."isCheckedOut",
+        SELECT oi.id AS "orderItemId", o.id AS order_id, o."isCheckedOut",
           oi.quantity, p.id AS "productId", p.title, p.price, p."stripePrice" ,p.images[1] AS image
         FROM orders o
         JOIN order_items oi ON o.id = oi."orderId"
