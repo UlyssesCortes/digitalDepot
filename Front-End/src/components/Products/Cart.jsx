@@ -12,7 +12,7 @@ import { loadStripe } from '@stripe/stripe-js'
 
 export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart, cartItems, setCartItems }) {
 
-    const [myCart, setMyCart] = useState([])
+    // const [myCart, setMyCart] = useState([])
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
     const [emptyCart, setEmptyCart] = useState(false);
@@ -29,21 +29,21 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         return stripePromise
     }
 
-    const getOrderItems = async () => {
-        try {
-            if (currentOrderId) {
-                const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    }
-                })
-                const items = await response.json();
-                setMyCart(items)
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    }
+    // const getOrderItems = async () => {
+    //     try {
+    //         if (currentOrderId) {
+    //             const response = await fetch(`${API_URL}order-items/${currentOrderId}`, {
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                 }
+    //             })
+    //             const items = await response.json();
+    //             setMyCart(items)
+    //         }
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
 
     const getCartTest = async () => {
         try {
@@ -62,32 +62,29 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
     }
 
-    const deleteItem = async (itemId) => {
+    const deleteItem = async (data) => {
+        console.log("Deleting items", data)
         try {
-            const response = await fetch(`${API_URL}order-items/${itemId}`, {
+            const response = await fetch(`${API_URL}order-items/${data.productId}`, {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
                 }
             });
+            const responseBody = await response.json();
+            console.log(responseBody);
 
-            if (!response.ok) {
-                throw new Error(`Failed to delete item. Status: ${response.status}`);
-            }
 
-            getOrderItems()
             getCartTest()
-
         } catch (error) {
             console.error(error);
         }
-
     };
     const increaseQuantity = async (data, index) => {
         console.log(data)
         if (data.quantity < 4) {
             let currentQuantity = data.quantity + 1;
-            const orderItemId = data.order_id;
+            const orderItemId = data.orderItemId;
             console.log(`${API_URL}order-items/${orderItemId}`)
 
             try {
@@ -103,7 +100,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 if (response.ok) {
                     setCartItems((pertCartItems) => {
                         const updatedCart = [...pertCartItems];
-                        console.log("UPDATECART: ", updatedCart)
                         updatedCart[index].quantity = currentQuantity;
                         return updatedCart;
                     });
@@ -116,10 +112,10 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     };
 
-    const decreaseQuantity = async (index) => {
-        if (myCart[index].quantity > 1) {
-            let currentQuantity = myCart[index].quantity - 1;
-            const orderItemId = myCart[index].id;
+    const decreaseQuantity = async (data, index) => {
+        if (data.quantity > 1) {
+            let currentQuantity = data.quantity - 1;
+            const orderItemId = data.orderItemId;
 
             try {
                 const response = await fetch(`${API_URL}order-items/${orderItemId}`, {
@@ -132,13 +128,13 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 });
 
                 if (response.ok) {
-                    setMyCart((prevCart) => {
+                    setCartItems((prevCart) => {
                         const updatedCart = [...prevCart];
                         updatedCart[index].quantity = currentQuantity;
                         return updatedCart;
                     });
                 }
-                getCartTest()
+                // getCartTest()
             } catch (error) {
                 console.log(error);
             }
@@ -169,7 +165,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
         setStripeLoading(false)
         getCartTest()
-
     }
 
     const handleUpdate = async (orderId) => {
@@ -201,7 +196,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
             if (result.name !== "error") {
                 localStorage.setItem('currentOrderId', "");
-                setMyCart([])
+                // setMyCart([])
                 setCurrentOrderId("")
                 setCheckoutAnimation(true)
             } else {
@@ -213,9 +208,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
     };
 
-    useEffect(() => {
-        getOrderItems()
-    }, [token]);
+    // useEffect(() => {
+    //     getOrderItems()
+    // }, [token]);
 
     useEffect(() => {
         if (cartItems.length === 0) {
@@ -230,7 +225,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     useEffect(() => {
         let timeoutId;
-        if (myCart.length === 0) {
+        if (cartItems.length === 0) {
             timeoutId = setTimeout(() => {
                 setEmptyCart(true);
                 setLoading(false)
@@ -243,7 +238,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         return () => {
             clearTimeout(timeoutId);
         };
-    }, [myCart]);
+    }, [cartItems]);
 
     const handleFavClick = () => {
         setShowFavorite(true)
@@ -316,7 +311,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                             <div className="cartProduct" key={data.id + '-' + index}>
 
                                 <div className='contentBox'>
-                                    <Link to={`/product/${data.id}`}>
+                                    <Link to={`/products/${data.productId}`}>
                                         <img className='cartProductImg' src={data.image} alt="" loading='lazy' />
                                     </Link>
                                     <div className='topContentBox'>
@@ -337,9 +332,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
                                             <div className='plusIcon' onClick={() => { increaseQuantity(data, index) }}>+</div>
                                             <p>0{data.quantity}</p>
-                                            <div className='minusIcon' onClick={() => { decreaseQuantity(index) }}>-</div>
+                                            <div className='minusIcon' onClick={() => { decreaseQuantity(data, index) }}>-</div>
                                         </div>
-                                        <button className='removeBtn' onClick={() => deleteItem(data.id)}>Remove item</button>
+                                        <button className='removeBtn' onClick={() => deleteItem(data)}>Remove item</button>
                                     </div>
                                 </div>
                             </div>

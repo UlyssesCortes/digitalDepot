@@ -95,22 +95,6 @@ async function getCart() {
     }
 }
 
-// async function updateCart(orderItemId, quantity) {
-//     try {
-//         const { rowCount } = await client.query(`
-//         UPDATE order_items
-//         SET quantity = $1
-//         WHERE id = $2;
-//       `, [quantity, orderItemId]);
-
-//         return rowCount;
-//     } catch (error) {
-//         console.error('Error executing query:', error);
-//         throw error;
-//     }
-// }
-
-
 async function getAllOrders() {
     try {
         const { rows } = await client.query(`

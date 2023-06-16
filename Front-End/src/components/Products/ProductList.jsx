@@ -250,7 +250,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                             </div>
 
                             <Link
-                                to={`/product/${product.id}`}
+                                to={`/products/${product.id}`}
                                 key={product.id}
                                 onMouseEnter={() => handleMouseEnter(index)}
                                 onClick={() => { getProducts() }}

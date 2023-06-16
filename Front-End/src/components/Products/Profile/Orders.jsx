@@ -36,7 +36,7 @@ export default function Orders({ finializedOrders }) {
                                 <section className='itemsContainer'>
                                     {isOpen && order.orderItems.map((item) => {
                                         return (
-                                            <Link to={`/product/${item.productId}`} className='item' key={item.productId} >
+                                            <Link to={`/products/${item.productId}`} className='item' key={item.productId} >
                                                 <img className='orderImg' src={item.image} alt="" loading='lazy' />
                                                 <div className='leftItem'>
                                                     <p className='favTitle'>{item.title}</p>

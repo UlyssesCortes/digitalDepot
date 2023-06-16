@@ -12,7 +12,7 @@ export default function Favorites({ favorites }) {
                 {isLoggedInLocal && favorites && favorites.map((favorite) => {
                     return (
                         <Link
-                            to={`/product/${favorite.id}`}
+                            to={`/products/${favorite.id}`}
                             className="favoriteProd" key={favorite.id} >
                             <img className='favProductImg' src={favorite.image} alt="" loading='lazy' />
                             <div className='topContentBoxFav'>

@@ -13,7 +13,7 @@ import ProductLoading from '../Loading/ProductLoading';
 import ImageSlider from './ImageSlider';
 import LoginAlert from '../Login-Register/LoginAlert';
 
-export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, setProducts }) {
+export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, setProducts, setCartItems }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [displayFeatures, setDisplayFeatures] = useState(false)
@@ -161,6 +161,24 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
         }
     };
 
+    const getCartTest = async () => {
+        console.log("adding to cart fetch cart")
+        try {
+            const localToken = window.localStorage.getItem('token');
+
+            const response = await fetch(`${API_URL}order/cart`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localToken}`,
+                },
+            })
+            const items = await response.json();
+            setCartItems(items)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const productInfo = product[0];
     return (
         <section id="topDetails" className='marginReducer' onClick={() => { setShowProfile(false) }}>
@@ -228,6 +246,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                             onClick={() => {
                                 addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert);
                                 setAdded(true);
+                                getCartTest();
                             }}
                         >
                             {isLoggedIn && added ?
