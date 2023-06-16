@@ -29,7 +29,8 @@ async function buildTables() {
             type varchar(255) NOT NULL,
             images TEXT[] NOT NULL,
             dimensions JSONB,
-            features JSONB
+            features JSONB,
+            "stripePrice" varchar(255) NOT NULL
           );
     
           CREATE TABLE IF NOT EXISTS users (

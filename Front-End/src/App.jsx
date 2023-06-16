@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import "@stripe/stripe-js"
 
 import Hero from './components/Hero/Hero'
 import Products from './components/Products/Products';

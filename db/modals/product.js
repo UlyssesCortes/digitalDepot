@@ -10,17 +10,18 @@ async function createProduct({
     images,
     dimensions,
     features,
+    stripePrice
 }) {
     try {
         const {
             rows: [product],
         } = await client.query(
             `
-            INSERT INTO products(title, description, price, quantity, category,type, images, dimensions, features) 
-            VALUES($1, $2, $3, $4, $5, $6, $7, $8 ,$9) 
+            INSERT INTO products(title, description, price, quantity, category,type, images, dimensions, features, "stripePrice") 
+            VALUES($1, $2, $3, $4, $5, $6, $7, $8 ,$9, $10) 
             RETURNING *;
             `,
-            [title, description, price, quantity, category, type, images || null, dimensions, features]
+            [title, description, price, quantity, category, type, images || null, dimensions, features, stripePrice]
         );
 
         return product;
@@ -33,7 +34,7 @@ async function createProduct({
 async function getAllProducts() {
     try {
         const { rows } = await client.query(`
-      SELECT id, title, description, price, quantity, category, type, images, dimensions, features
+      SELECT id, title, description, price, quantity, category, type, images, dimensions, features, "stripePrice"
       FROM products;
     `);
 
@@ -62,7 +63,7 @@ async function getAllProductsFavorite(userId) {
 async function getProductById(id) {
     try {
         const { rows } = await client.query(`
-      SELECT id, title, description, price, quantity, category, type,images, dimensions, features 
+      SELECT id, title, description, price, quantity, category, type,images, dimensions, features, "stripePrice"
       FROM products
       WHERE id=${id};
     `);

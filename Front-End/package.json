@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^1.54.0",
+    "dotenv": "^16.1.4",
     "framer-motion": "^10.12.16",
     "lottie-react": "^2.4.0",
     "lottie-react-web": "^2.2.2",
