@@ -302,40 +302,41 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
                         {showFavorite && <Favorites favorites={favorites} />}
                         {showOrder && <Orders finializedOrders={finializedOrders} />}
                     </section>
+                    {showCart && !emptyCart &&
+                        <section className='creditSection'>
+                            <motion.div className="credit"
+                                animate={creditHover ? 'hover' : 'initial'}
+                                whileTap={{ scale: 1.1, rotate: 25 }}
+                                variants={creditAnimation}
+                                onMouseEnter={() => setCreditHover(true)}
+                                onMouseLeave={() => setCreditHover(false)}
+                                onClick={() => { handleCreditCardClick() }}>
+                                {showCart && copy && <Lottie className='copyAni' animationData={copyAnimation} loop={false} />}
+                                <div className="visa_logo">
+                                    <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png" alt="" />
+                                </div>
+                                <div className="visa_info">
+                                    <img className='chip' src="https://img.icons8.com/?size=512&id=pRrkw6sJDhF_&format=png" alt="" />
+                                    <p>4242 4242 4242 4242</p>
+                                </div>
+                                <div className="visa_crinfo">
+                                    <section className='visaDetail'>
+                                        <div>
+                                            <p>Ex. Date</p>
+                                            <p>04/24</p>
+                                        </div>
+                                        <div>
+                                            <p>CVV</p>
+                                            <p>242</p>
+                                        </div>
+                                    </section>
+                                    <p>Test Card Name</p>
+                                </div>
 
-                    <section className='creditSection'>
-                        <motion.div className="credit"
-                            animate={creditHover ? 'hover' : 'initial'}
-                            whileTap={{ scale: 1.1, rotate: 25 }}
-                            variants={creditAnimation}
-                            onMouseEnter={() => setCreditHover(true)}
-                            onMouseLeave={() => setCreditHover(false)}
-                            onClick={() => { handleCreditCardClick() }}>
-                            {copy && <Lottie className='copyAni' animationData={copyAnimation} loop={false} />}
-                            <div className="visa_logo">
-                                <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png" alt="" />
-                            </div>
-                            <div className="visa_info">
-                                <img className='chip' src="https://img.icons8.com/?size=512&id=pRrkw6sJDhF_&format=png" alt="" />
-                                <p>4242 4242 4242 4242</p>
-                            </div>
-                            <div className="visa_crinfo">
-                                <section className='visaDetail'>
-                                    <div>
-                                        <p>Ex. Date</p>
-                                        <p>04/24</p>
-                                    </div>
-                                    <div>
-                                        <p>CVV</p>
-                                        <p>242</p>
-                                    </div>
-                                </section>
-                                <p>Test Card Name</p>
-                            </div>
 
-
-                        </motion.div>
-                    </section>
+                            </motion.div>
+                        </section>
+                    }
                     {isLoggedIn && showCart && !emptyCart &&
                         <section className='CartBtnContainer'>
                             <p className='totalPrice'>Total ${parseFloat(sum)}</p>
