@@ -25,6 +25,7 @@ export default function Success({ API_URL, token, currentOrderId, setCurrentOrde
 
             const currentOrderId = window.localStorage.getItem('currentOrderId');
             const localToken = window.localStorage.getItem('token');
+            const totalSum = window.localStorage.getItem('totalSum');
 
             if (!currentOrderId || currentOrderId == undefined) {
                 const response = await fetch(`${API_URL}order/myOrders`, {
@@ -39,6 +40,7 @@ export default function Success({ API_URL, token, currentOrderId, setCurrentOrde
             }
 
             if (orderId) {
+                console.log(totalSum)
                 const response = await fetch(`${API_URL}order/${orderId}`, {
                     method: "PATCH",
                     headers: {
@@ -48,7 +50,7 @@ export default function Success({ API_URL, token, currentOrderId, setCurrentOrde
                     body: JSON.stringify({
                         isCheckedOut: true,
                         checkoutDate: formattedDate,
-                        // checkoutSum: checkoutSum,
+                        checkoutSum: totalSum,
                     })
                 });
                 const result = await response.json();

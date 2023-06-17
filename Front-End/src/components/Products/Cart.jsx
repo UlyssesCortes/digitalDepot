@@ -20,8 +20,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     let stripePromise
 
     useEffect(() => {
-        setCheckoutSum(sum)
-        console.log("CART ITEMS: ", cartItems)
+        localStorage.setItem('totalSum', sum)
     }, [sum])
 
     const getStripe = () => {
@@ -143,48 +142,11 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             alert(error.message)
         }
         setStripeLoading(false)
-        setCheckoutSum(sum)
+        // setCheckoutSum(sum)
+
+
         getCartTest()
     }
-
-    const handleUpdate = async (orderId) => {
-        var currentDate = new Date();
-        var checkoutDate = new Date(currentDate);
-        checkoutDate.setDate(currentDate.getDate());
-
-        var month = checkoutDate.getMonth() + 1;
-        var day = checkoutDate.getDate();
-        var year = checkoutDate.getFullYear();
-
-        var formattedDate = month + '/' + day + '/' + year;
-
-        try {
-            const response = await fetch(`${API_URL}order/${orderId}`, {
-                method: "PATCH",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    isCheckedOut: true,
-                    checkoutDate: formattedDate,
-                    sum: checkoutSum
-                })
-            });
-            const result = await response.json();
-
-            if (result.name !== "error") {
-                localStorage.setItem('currentOrderId', "");
-                setCurrentOrderId("")
-                setCheckoutAnimation(true)
-            } else {
-                console.log("Failed to send order, try again!")
-            }
-
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
     useEffect(() => {
         if (cartItems.length === 0) {
@@ -245,11 +207,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             <section className='cartSection'>
                 <div className='subHeaderCart'>
                     <h1>{pageTitle}</h1>
-                    <p>User email: {user}</p>
                     <section className='CartBtnContainer'>
                         <div className='myCartBtnContainer' onClick={() => { handleCartClick() }}>
                             <p className='cartLink' >My Cart</p>
-
                         </div>
                         <div className='dropDownBox' onClick={() => { handleFavClick() }}>
                             <p className='cartLink'>Favorites</p>
