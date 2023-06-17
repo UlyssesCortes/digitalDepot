@@ -4,12 +4,11 @@ import checkout from "../../assets/LottieAnimations/checkout.json"
 import { useNavigate } from 'react-router-dom';
 
 
-export default function Success({ API_URL, token, currentOrderId, setCurrentOrderId, checkoutSum, setCartItems }) {
+export default function Success({ API_URL, setCurrentOrderId, setCartItems }) {
     let orderId
     const navigate = useNavigate();
 
     const handleUpdate = async () => {
-
 
         var currentDate = new Date();
         var checkoutDate = new Date(currentDate);
@@ -40,7 +39,6 @@ export default function Success({ API_URL, token, currentOrderId, setCurrentOrde
             }
 
             if (orderId) {
-                console.log(totalSum)
                 const response = await fetch(`${API_URL}order/${orderId}`, {
                     method: "PATCH",
                     headers: {
@@ -59,7 +57,6 @@ export default function Success({ API_URL, token, currentOrderId, setCurrentOrde
                     localStorage.setItem('currentOrderId', "");
                     setCurrentOrderId("")
                     setCartItems([])
-                    // setCheckoutAnimation(true)
                     setTimeout(() => {
                         navigate('/');
                     }, 3300);

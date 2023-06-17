@@ -6,7 +6,7 @@ import authorization from "../../assets/LottieAnimations/loadingLogin.json"
 import { Link, useNavigate } from 'react-router-dom';
 import { wrongUserAlert } from './Alerts';
 
-const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEmail }) => {
+const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEmail }) => {
 
     const [email, setEamil] = useState("")
     const [password, setPassword] = useState("")

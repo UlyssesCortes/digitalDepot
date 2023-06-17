@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, Variants } from 'framer-motion';
 
-export default function Profile({ setIsLoggedIn, favorites, setShowProfile, finializedOrders, showProfile, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCartItems }) {
+export default function Profile({ setIsLoggedIn, setShowProfile, showProfile, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCartItems }) {
 
     const handleLogOutBtn = () => {
         window.localStorage.removeItem('isLoggedIn');

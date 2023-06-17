@@ -9,7 +9,7 @@ import Orders from './Profile/Orders';
 // import { getOrderItems2 } from '../../API/cartApi';
 import { loadStripe } from '@stripe/stripe-js'
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart, cartItems, setCartItems, setCheckoutSum, checkoutSum, user }) {
+export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart, cartItems, setCartItems }) {
 
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)

@@ -15,7 +15,6 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
     const [showSearch, setShowSearch] = useState(false)
     const [searchInput, setSearchInput] = useState("")
     const [prevFilterName, setPrevFilterName] = useState("")
-    // const [isCategorieOpen, setIsCategorieOpen] = useState(false);
     const inputRef = useRef(null);
 
     const navigate = useNavigate();
@@ -126,7 +125,6 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                         }} />
                     </form>
 
-
                     <Link to='/cart' className='navCartIcons' onClick={() => { handleCartIconClick() }}>
                         <Lottie className="cartIcon" animationData={cart} loop={false} />
                     </Link >
@@ -137,7 +135,6 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                         <section className='profileSection'>
                             <Lottie className="userIcon" animationData={user} loop={false} onClick={() => { handleProfileClick() }} />
                         </section>
-
 
                         {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} setShowProfile={setShowProfile} showProfile={showProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setShowCart={setShowCart} setPageTitle={setPageTitle} setCartItems={setCartItems} />}
                     </section>

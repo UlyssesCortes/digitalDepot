@@ -78,9 +78,6 @@ function App() {
       fetchFavorites();
       fetchOrders();
       getCartTest()
-      console.log("ORDER ID: ", currentOrderId)
-      console.log("CART ITEMS: ", cartItems)
-
     } else {
       fetchGuestProducts()
     }
@@ -219,7 +216,7 @@ function App() {
           />
           <Route
             path='/paymentSuccess'
-            element={<Success API_URL={API_URL} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} setCartItems={setCartItems} checkoutSum={checkoutSum} />}
+            element={<Success API_URL={API_URL} setCurrentOrderId={setCurrentOrderId} setCartItems={setCartItems} />}
           />
 
           <Route
@@ -228,11 +225,11 @@ function App() {
           />
           <Route
             path='/login'
-            element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} setToken={setToken} user={user} token={token} setHideNav={setHideNav} modalEmail={modalEmail} />}
+            element={<Login setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} setToken={setToken} user={user} token={token} setHideNav={setHideNav} modalEmail={modalEmail} />}
           />
           <Route
             path='/cart'
-            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} favorites={favorites} finializedOrders={finializedOrders} showOrder={showOrder} setShowOrder={setShowOrder} showFavorite={showFavorite} setShowFavorite={setShowFavorite} pageTitle={pageTitle} setPageTitle={setPageTitle} setShowCart={setShowCart} showCart={showCart} cartItems={cartItems} setCartItems={setCartItems} setCheckoutSum={setCheckoutSum} checkoutSum={checkoutSum} user={user.email} />}
+            element={<Cart API_URL={API_URL} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} favorites={favorites} finializedOrders={finializedOrders} showOrder={showOrder} setShowOrder={setShowOrder} showFavorite={showFavorite} setShowFavorite={setShowFavorite} pageTitle={pageTitle} setPageTitle={setPageTitle} setShowCart={setShowCart} showCart={showCart} cartItems={cartItems} setCartItems={setCartItems} />}
           />
           <Route
             path='/products'

@@ -2,11 +2,9 @@
 const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert, setCartItems) => {
 
     let items = null;
-    console.log("isLoggedIn: ", isLoggedIn)
     setCurrentOrderId(currentOrderId)
 
     const getCartTest = async () => {
-        console.log("adding to cart fetch cart")
         try {
             const localToken = window.localStorage.getItem('token');
 

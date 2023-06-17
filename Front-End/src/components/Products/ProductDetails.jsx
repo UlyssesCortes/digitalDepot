@@ -81,7 +81,6 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                     },
                 });
                 if (favoriteResponse.ok) {
-                    // fetchProductDetails()
                     setClickedFav(true)
                     getProducts()
                 }
@@ -110,7 +109,6 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                     },
                 });
                 if (favoriteResponse.ok) {
-                    // fetchProductDetails()
                     setClickedFav(true)
                     getProducts()
                 }
@@ -157,23 +155,6 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
             console.error(error);
         }
     };
-
-    const getCartTest = async () => {
-        try {
-            const localToken = window.localStorage.getItem('token');
-
-            const response = await fetch(`${API_URL}order/cart`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${localToken}`,
-                },
-            })
-            const items = await response.json();
-            setCartItems(items)
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     const productInfo = product[0];
     return (
@@ -242,7 +223,6 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                             onClick={() => {
                                 addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert, setCartItems);
                                 setAdded(true);
-                                // getCartTest();
                             }}
                         >
                             {isLoggedIn && added ?
