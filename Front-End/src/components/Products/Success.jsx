@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react'
 import Lottie from "lottie-react"
 import checkout from "../../assets/LottieAnimations/checkout.json"
+import { useNavigate } from 'react-router-dom';
 
-export default function Success({ API_URL, token, currentOrderId, setCurrentOrderId }) {
 
-    const handleUpdate = async (orderId) => {
-        console.log("RUNNINT HANDLE UPDATE")
+export default function Success({ API_URL, token, currentOrderId, setCurrentOrderId, checkoutSum, setCartItems }) {
+    let orderId
+    const navigate = useNavigate();
+
+    const handleUpdate = async () => {
+
 
         var currentDate = new Date();
         var checkoutDate = new Date(currentDate);
@@ -18,28 +22,49 @@ export default function Success({ API_URL, token, currentOrderId, setCurrentOrde
         var formattedDate = month + '/' + day + '/' + year;
 
         try {
-            const response = await fetch(`${API_URL}order/${orderId}`, {
-                method: "PATCH",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                    isCheckedOut: true,
-                    checkoutDate: formattedDate,
-                    // checkoutSum: sum
-                })
-            });
-            const result = await response.json();
 
-            if (result.name !== "error") {
-                localStorage.setItem('currentOrderId', "");
-                setCurrentOrderId("")
-                // setCheckoutAnimation(true)
+            const currentOrderId = window.localStorage.getItem('currentOrderId');
+            const localToken = window.localStorage.getItem('token');
+
+            if (!currentOrderId || currentOrderId == undefined) {
+                const response = await fetch(`${API_URL}order/myOrders`, {
+                    headers: {
+                        Authorization: `Bearer ${localToken}`
+                    }
+                });
+                const data = await response.json();
+                orderId = data[0].id
             } else {
-                console.log("Failed to send order, try again!")
+                orderId = currentOrderId
             }
 
+            if (orderId) {
+                const response = await fetch(`${API_URL}order/${orderId}`, {
+                    method: "PATCH",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localToken}`,
+                    },
+                    body: JSON.stringify({
+                        isCheckedOut: true,
+                        checkoutDate: formattedDate,
+                        // checkoutSum: checkoutSum,
+                    })
+                });
+                const result = await response.json();
+                console.log("result: ", result)
+                if (result.name !== "error") {
+                    localStorage.setItem('currentOrderId', "");
+                    setCurrentOrderId("")
+                    setCartItems([])
+                    // setCheckoutAnimation(true)
+                    setTimeout(() => {
+                        navigate('/');
+                    }, 3500);
+                } else {
+                    console.log("Failed to send order, try again!")
+                }
+            }
         } catch (error) {
             console.error(error);
         }
@@ -51,8 +76,7 @@ export default function Success({ API_URL, token, currentOrderId, setCurrentOrde
         const isPaymentSuccessful = paymentStatus === 'success';
 
         if (isPaymentSuccessful) {
-            console.log("RUNNINT HANDLE UPDATE IF")
-            handleUpdate(currentOrderId)
+            handleUpdate()
         }
     }, [])
 

@@ -36,7 +36,9 @@ function App() {
   const [pageTitle, setPageTitle] = useState("SHOPPING CART");
   const [modalEmail, setModalEmail] = useState("")
   const [currentPage, setCurrentPage] = useState(1);
+  const [checkoutSum, setCheckoutSum] = useState(0);
   const [activeCategory, setActiveCategory] = useState("all");
+  // let checkoutSum = 0
 
   // localStorage.setItem('currentOrderId', "");
   useEffect(() => {
@@ -76,6 +78,7 @@ function App() {
       fetchFavorites();
       fetchOrders();
       getCartTest()
+      console.log(checkoutSum)
     } else {
       fetchGuestProducts()
     }
@@ -213,7 +216,7 @@ function App() {
           />
           <Route
             path='/paymentSuccess'
-            element={<Success API_URL={API_URL} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} />}
+            element={<Success API_URL={API_URL} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} setCartItems={setCartItems} checkoutSum={checkoutSum} />}
           />
 
           <Route
@@ -226,7 +229,7 @@ function App() {
           />
           <Route
             path='/cart'
-            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} favorites={favorites} finializedOrders={finializedOrders} showOrder={showOrder} setShowOrder={setShowOrder} showFavorite={showFavorite} setShowFavorite={setShowFavorite} pageTitle={pageTitle} setPageTitle={setPageTitle} setShowCart={setShowCart} showCart={showCart} cartItems={cartItems} setCartItems={setCartItems} />}
+            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} favorites={favorites} finializedOrders={finializedOrders} showOrder={showOrder} setShowOrder={setShowOrder} showFavorite={showFavorite} setShowFavorite={setShowFavorite} pageTitle={pageTitle} setPageTitle={setPageTitle} setShowCart={setShowCart} showCart={showCart} cartItems={cartItems} setCartItems={setCartItems} setCheckoutSum={setCheckoutSum} checkoutSum={checkoutSum} />}
           />
           <Route
             path='/products'

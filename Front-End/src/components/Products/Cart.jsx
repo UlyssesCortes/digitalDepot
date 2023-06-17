@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import dotenv from 'dotenv';
 import Lottie from "lottie-react"
 import checkout from "../../assets/LottieAnimations/checkout.json"
 import emptyCartAnimation from "../../assets/LottieAnimations/box.json"
@@ -10,7 +9,7 @@ import Orders from './Profile/Orders';
 // import { getOrderItems2 } from '../../API/cartApi';
 import { loadStripe } from '@stripe/stripe-js'
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart, cartItems, setCartItems }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart, cartItems, setCartItems, setCheckoutSum, checkoutSum }) {
 
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
@@ -20,6 +19,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
     let sum = 0;
     let stripePromise
 
+    useEffect(() => {
+        setCheckoutSum(sum)
+    }, [sum])
 
     const getStripe = () => {
         if (!stripePromise) {
@@ -56,7 +58,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
             const responseBody = await response.json();
             console.log(responseBody);
 
-
             getCartTest()
         } catch (error) {
             console.error(error);
@@ -82,7 +83,6 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                         return updatedCart;
                     });
                 }
-                // getCartTest()
             } catch (error) {
                 console.log(error);
             }
@@ -139,10 +139,9 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         const { error } = await stripe.redirectToCheckout(checkoutOptions)
         if (error) {
             alert(error.message)
-        } else {
-            handleUpdate(window.localStorage.getItem('currentOrderId'));
         }
         setStripeLoading(false)
+        setCheckoutSum(sum)
         getCartTest()
     }
 
@@ -167,7 +166,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 body: JSON.stringify({
                     isCheckedOut: true,
                     checkoutDate: formattedDate,
-                    checkoutSum: sum
+                    sum: sum
                 })
             });
             const result = await response.json();
@@ -315,18 +314,14 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                         {showFavorite && <Favorites favorites={favorites} />}
                         {showOrder && <Orders finializedOrders={finializedOrders} />}
                     </section>
-                    {isLoggedIn && showCart &&
+                    {isLoggedIn && showCart && !emptyCart &&
                         <section className='CartBtnContainer'>
                             <p className='totalPrice'>Total ${parseFloat(sum)}</p>
-                            {/* <button onClick={() => { handleUpdate(currentOrderId) }}>Checkout</button> */}
                             <button onClick={() => { redirectToCheckout() }} disabled={stripeLoading}>{!stripeLoading ? "Checkout" : "Loading..."}</button>
                         </section>
                     }
                 </div>
             </section>
-
-
-
         </section>
     )
 }
