@@ -111,7 +111,7 @@
     }
 
     .offerRight p {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .arrowAnimation {
@@ -120,8 +120,23 @@
 }
 
 @media only screen and (max-width: 950px) {
-    .prodLinkOffer {
-        display: none;
+
+    .offerRight p {
+        font-size: 20px;
+    }
+
+    .offerRight {
+        width: 100%;
+        height: 40vh;
+    }
+
+    .offerRight p {
+        font-size: 24px;
+    }
+
+    .offerContainer {
+        display: flex;
+        flex-direction: column;
     }
 
     .offerLeft {
@@ -132,5 +147,20 @@
 @media only screen and (max-width: 500px) {
     .emptyCart {
         font-size: 40px;
+    }
+
+    .offerImg {
+        height: 50vh;
+    }
+
+    .imgText,
+    .arrowImgOffer {
+        top: 0;
+        padding: 10px;
+        margin-top: 350px;
+    }
+
+    .imgText h2 {
+        font-size: 24px;
     }
 }

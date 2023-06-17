@@ -214,7 +214,6 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
         }
     }
 
-
     const handleCreditCardClick = () => {
         navigator.clipboard.writeText(creditCardNumber)
             .then(() => {
@@ -229,6 +228,7 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
 
     return (
         <section className='marginReducer' onClick={() => { setShowProfile(false) }}>
+
             <section className='cartSection'>
                 <div className='subHeaderCart'>
                     <h1>{pageTitle}</h1>
@@ -302,6 +302,7 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
                         {showFavorite && <Favorites favorites={favorites} />}
                         {showOrder && <Orders finializedOrders={finializedOrders} />}
                     </section>
+
                     {showCart && !emptyCart &&
                         <section className='creditSection'>
                             <motion.div className="credit"
@@ -332,13 +333,12 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
                                     </section>
                                     <p>Test Card Name</p>
                                 </div>
-
-
                             </motion.div>
                         </section>
                     }
+
                     {isLoggedIn && showCart && !emptyCart &&
-                        <section className='CartBtnContainer'>
+                        <section className='CartBtnContainer bottomCartContainer'>
                             <p className='totalPrice'>Total ${parseFloat(sum)}</p>
                             <button className='checkoutBtn' onClick={() => { redirectToCheckout() }} disabled={stripeLoading}
                                 onMouseEnter={() => setCreditHover(true)}
