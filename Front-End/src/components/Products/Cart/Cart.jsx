@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from "framer-motion";
 import Lottie from "lottie-react"
 import checkout from "../../../assets/LottieAnimations/checkout.json"
+import copyAnimation from "../../../assets/LottieAnimations/copy.json"
+
 import emptyCartAnimation from "../../../assets/LottieAnimations/box.json"
 import loadingAnimation from "../../../assets/LottieAnimations/loadingLines.json"
 import Favorites from '../Profile/Favorites';
@@ -14,10 +17,14 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
     const [emptyCart, setEmptyCart] = useState(false);
+    const [creditHover, setCreditHover] = useState(false)
     const [stripeLoading, setStripeLoading] = useState(false)
+    const [copy, setCopy] = useState(false);
+    const creditCardNumber = '4242 4242 4242 4242'
     const segments = [2.5, 3];
     let sum = 0;
     let stripePromise
+
 
     const getStripe = () => {
         if (!stripePromise) {
@@ -199,8 +206,29 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
         return <Lottie className="checkoutAnimation" animationData={checkout} loop={false} segments={segments} />
     }
 
+    const creditAnimation = {
+        hover: {
+            scale: 1.2,
+            rotate: 10,
+            y: -180
+        }
+    }
+
+
+    const handleCreditCardClick = () => {
+        navigator.clipboard.writeText(creditCardNumber)
+            .then(() => {
+                console.log('Text copied to clipboard');
+                setCopy(true)
+                setTimeout(() => setCopy(false), 700);
+            })
+            .catch((error) => {
+                console.log('Failed to copy text:', error);
+            });
+    };
+
     return (
-        <section className='cartContainer marginReducer' onClick={() => { setShowProfile(false) }}>
+        <section className='marginReducer' onClick={() => { setShowProfile(false) }}>
             <section className='cartSection'>
                 <div className='subHeaderCart'>
                     <h1>{pageTitle}</h1>
@@ -215,7 +243,7 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
                             <p className='cartLink'>Orders</p>
                         </div>
                         <Link to='/products'>
-                            <button>Continue Shoping</button>
+                            <button className='hideBtn'>Continue Shoping</button>
                         </Link>
 
                     </section>
@@ -257,6 +285,7 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
                                         </p>
                                     </div>
 
+
                                     <div className='bottomContentBox'>
 
                                         <div className='quntityBtns'>
@@ -273,12 +302,49 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
                         {showFavorite && <Favorites favorites={favorites} />}
                         {showOrder && <Orders finializedOrders={finializedOrders} />}
                     </section>
+
+                    <section className='creditSection'>
+                        <motion.div className="credit"
+                            animate={creditHover ? 'hover' : 'initial'}
+                            whileTap={{ scale: 1.1, rotate: 25 }}
+                            variants={creditAnimation}
+                            onMouseEnter={() => setCreditHover(true)}
+                            onMouseLeave={() => setCreditHover(false)}
+                            onClick={() => { handleCreditCardClick() }}>
+                            {copy && <Lottie className='copyAni' animationData={copyAnimation} loop={false} />}
+                            <div className="visa_logo">
+                                <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png" alt="" />
+                            </div>
+                            <div className="visa_info">
+                                <img className='chip' src="https://img.icons8.com/?size=512&id=pRrkw6sJDhF_&format=png" alt="" />
+                                <p>4242 4242 4242 4242</p>
+                            </div>
+                            <div className="visa_crinfo">
+                                <section className='visaDetail'>
+                                    <div>
+                                        <p>Ex. Date</p>
+                                        <p>04/24</p>
+                                    </div>
+                                    <div>
+                                        <p>CVV</p>
+                                        <p>242</p>
+                                    </div>
+                                </section>
+                                <p>Test Card Name</p>
+                            </div>
+
+
+                        </motion.div>
+                    </section>
                     {isLoggedIn && showCart && !emptyCart &&
                         <section className='CartBtnContainer'>
                             <p className='totalPrice'>Total ${parseFloat(sum)}</p>
-                            <button onClick={() => { redirectToCheckout() }} disabled={stripeLoading}>{!stripeLoading ? "Checkout" : "Loading..."}</button>
+                            <button className='checkoutBtn' onClick={() => { redirectToCheckout() }} disabled={stripeLoading}
+                                onMouseEnter={() => setCreditHover(true)}
+                                onMouseLeave={() => setCreditHover(false)}>{!stripeLoading ? "Checkout" : "Loading..."}</button>
                         </section>
                     }
+
                 </div>
             </section>
         </section>
