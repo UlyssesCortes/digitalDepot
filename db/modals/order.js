@@ -78,7 +78,7 @@ async function getOrderDetails(userId) {
     }
 }
 
-async function getCart() {
+async function getCart(userId) {
     try {
         const { rows } = await client.query(`
         SELECT oi.id AS "orderItemId", o.id AS order_id, o."isCheckedOut",
@@ -86,8 +86,9 @@ async function getCart() {
         FROM orders o
         JOIN order_items oi ON o.id = oi."orderId"
         JOIN products p ON oi."productId" = p.id
-        WHERE o."isCheckedOut" = false;
-      `);
+        WHERE o."isCheckedOut" = false
+        AND o."userId" = $1;
+      `, [userId]);
         return rows;
     } catch (error) {
         console.error('Error executing query:', error);

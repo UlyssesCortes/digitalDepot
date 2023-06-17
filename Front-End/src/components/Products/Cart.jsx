@@ -9,7 +9,7 @@ import Orders from './Profile/Orders';
 // import { getOrderItems2 } from '../../API/cartApi';
 import { loadStripe } from '@stripe/stripe-js'
 
-export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart, cartItems, setCartItems, setCheckoutSum, checkoutSum }) {
+export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart, cartItems, setCartItems, setCheckoutSum, checkoutSum, user }) {
 
     const [loading, setLoading] = useState(false)
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
@@ -21,6 +21,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
     useEffect(() => {
         setCheckoutSum(sum)
+        console.log("CART ITEMS: ", cartItems)
     }, [sum])
 
     const getStripe = () => {
@@ -29,6 +30,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
         }
         return stripePromise
     }
+
 
     const getCartTest = async () => {
         try {
@@ -77,11 +79,11 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     body: JSON.stringify({ quantity: currentQuantity }),
                 });
                 if (response.ok) {
-                    setCartItems((pertCartItems) => {
-                        const updatedCart = [...pertCartItems];
-                        updatedCart[index].quantity = currentQuantity;
-                        return updatedCart;
-                    });
+                    // setCartItems((pertCartItems) => {
+                    //     const updatedCart = [...pertCartItems];
+                    //     updatedCart[index].quantity = currentQuantity;
+                    //     return updatedCart;
+                    // });
                 }
             } catch (error) {
                 console.log(error);
@@ -106,11 +108,11 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 });
 
                 if (response.ok) {
-                    setCartItems((prevCart) => {
-                        const updatedCart = [...prevCart];
-                        updatedCart[index].quantity = currentQuantity;
-                        return updatedCart;
-                    });
+                    // setCartItems((prevCart) => {
+                    //     const updatedCart = [...prevCart];
+                    //     updatedCart[index].quantity = currentQuantity;
+                    //     return updatedCart;
+                    // });
                 }
             } catch (error) {
                 console.log(error);
@@ -166,7 +168,7 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 body: JSON.stringify({
                     isCheckedOut: true,
                     checkoutDate: formattedDate,
-                    sum: sum
+                    sum: checkoutSum
                 })
             });
             const result = await response.json();
@@ -238,12 +240,12 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
 
         return <Lottie className="checkoutAnimation" animationData={checkout} loop={false} segments={segments} />
     }
-
     return (
         <section className='cartContainer marginReducer' onClick={() => { setShowProfile(false) }}>
             <section className='cartSection'>
                 <div className='subHeaderCart'>
                     <h1>{pageTitle}</h1>
+                    <p>User email: {user}</p>
                     <section className='CartBtnContainer'>
                         <div className='myCartBtnContainer' onClick={() => { handleCartClick() }}>
                             <p className='cartLink' >My Cart</p>

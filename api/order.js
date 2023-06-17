@@ -51,7 +51,7 @@ apiRouter.get('/history', requireUser, async (req, res) => {
 
 apiRouter.get('/cart', requireUser, async (req, res) => {
     try {
-        const cart = await getCart();
+        const cart = await getCart(req.user.id);
         res.json(cart);
     } catch (error) {
         console.error('Error retrieving order details:', error);

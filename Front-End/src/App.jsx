@@ -71,14 +71,16 @@ function App() {
       })
         .then((response) => response.json())
         .then((result) => {
-          setUser(result)
+          setUser(result.user)
         })
         .catch((error) => console.log(error));
       getProducts();
       fetchFavorites();
       fetchOrders();
       getCartTest()
-      console.log(checkoutSum)
+      console.log("ORDER ID: ", currentOrderId)
+      console.log("CART ITEMS: ", cartItems)
+
     } else {
       fetchGuestProducts()
     }
@@ -125,15 +127,16 @@ function App() {
   const getCartTest = async () => {
     try {
       const localToken = window.localStorage.getItem('token');
-
-      const response = await fetch(`${API_URL}order/cart`, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${localToken}`,
-        },
-      })
-      const items = await response.json();
-      setCartItems(items)
+      if (localToken) {
+        const response = await fetch(`${API_URL}order/cart`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localToken}`,
+          },
+        })
+        const items = await response.json();
+        setCartItems(items)
+      }
     } catch (error) {
       console.log(error)
     }
@@ -205,7 +208,7 @@ function App() {
       <BrowserRouter>
         {!hideNav &&
           <div className='marginReducer'>
-            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} />
+            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} setCartItems={setCartItems} />
           </div>
         }
 
@@ -229,7 +232,7 @@ function App() {
           />
           <Route
             path='/cart'
-            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} favorites={favorites} finializedOrders={finializedOrders} showOrder={showOrder} setShowOrder={setShowOrder} showFavorite={showFavorite} setShowFavorite={setShowFavorite} pageTitle={pageTitle} setPageTitle={setPageTitle} setShowCart={setShowCart} showCart={showCart} cartItems={cartItems} setCartItems={setCartItems} setCheckoutSum={setCheckoutSum} checkoutSum={checkoutSum} />}
+            element={<Cart API_URL={API_URL} token={token} setCurrentOrderId={setCurrentOrderId} currentOrderId={currentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setFilterName={setFilterName} setShowProfile={setShowProfile} favorites={favorites} finializedOrders={finializedOrders} showOrder={showOrder} setShowOrder={setShowOrder} showFavorite={showFavorite} setShowFavorite={setShowFavorite} pageTitle={pageTitle} setPageTitle={setPageTitle} setShowCart={setShowCart} showCart={showCart} cartItems={cartItems} setCartItems={setCartItems} setCheckoutSum={setCheckoutSum} checkoutSum={checkoutSum} user={user.email} />}
           />
           <Route
             path='/products'

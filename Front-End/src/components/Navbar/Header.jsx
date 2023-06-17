@@ -10,7 +10,7 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage, setFinalizedOrders, noResult, setIsCategorieOpen, isCategorieOpen }) {
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage, setFinalizedOrders, noResult, setIsCategorieOpen, isCategorieOpen, setCartItems }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showSearch, setShowSearch] = useState(false)
     const [searchInput, setSearchInput] = useState("")
@@ -139,7 +139,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                         </section>
 
 
-                        {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} setShowProfile={setShowProfile} showProfile={showProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setShowCart={setShowCart} setPageTitle={setPageTitle} />}
+                        {showProfile && <Profile setIsLoggedIn={setIsLoggedIn} setShowProfile={setShowProfile} showProfile={showProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setShowCart={setShowCart} setPageTitle={setPageTitle} setCartItems={setCartItems} />}
                     </section>
                     :
                     <section className='navLogContainer'>
