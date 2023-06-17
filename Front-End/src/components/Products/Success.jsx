@@ -60,7 +60,7 @@ export default function Success({ API_URL, token, currentOrderId, setCurrentOrde
                     // setCheckoutAnimation(true)
                     setTimeout(() => {
                         navigate('/');
-                    }, 3500);
+                    }, 3300);
                 } else {
                     console.log("Failed to send order, try again!")
                 }

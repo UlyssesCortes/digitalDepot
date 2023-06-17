@@ -79,11 +79,11 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                     body: JSON.stringify({ quantity: currentQuantity }),
                 });
                 if (response.ok) {
-                    // setCartItems((pertCartItems) => {
-                    //     const updatedCart = [...pertCartItems];
-                    //     updatedCart[index].quantity = currentQuantity;
-                    //     return updatedCart;
-                    // });
+                    setCartItems((pertCartItems) => {
+                        const updatedCart = [...pertCartItems];
+                        updatedCart[index].quantity = currentQuantity;
+                        return updatedCart;
+                    });
                 }
             } catch (error) {
                 console.log(error);
@@ -108,11 +108,11 @@ export default function Cart({ API_URL, token, currentOrderId, setCurrentOrderId
                 });
 
                 if (response.ok) {
-                    // setCartItems((prevCart) => {
-                    //     const updatedCart = [...prevCart];
-                    //     updatedCart[index].quantity = currentQuantity;
-                    //     return updatedCart;
-                    // });
+                    setCartItems((prevCart) => {
+                        const updatedCart = [...prevCart];
+                        updatedCart[index].quantity = currentQuantity;
+                        return updatedCart;
+                    });
                 }
             } catch (error) {
                 console.log(error);
