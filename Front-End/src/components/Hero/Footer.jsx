@@ -1,4 +1,4 @@
-import '../css/footer.css'
+import '../../css/footer.css'
 import { Link } from 'react-router-dom';
 
 export default function Footer({ setIsCategorieOpen }) {

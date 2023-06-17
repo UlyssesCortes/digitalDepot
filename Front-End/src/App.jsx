@@ -3,15 +3,15 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import "@stripe/stripe-js"
 
 import Hero from './components/Hero/Hero'
-import Products from './components/Products/Products';
-import ProductDetails from './components/Products/ProductDetails';
+import Products from './components/Products/ProductList/Products';
+import ProductDetails from './components/Products/ProductDetails/ProductDetails';
 import Register from './components/Login-Register/Register';
 import Login from './components/Login-Register/Login';
-import Cart from './components/Products/Cart';
+import Cart from './components/Products/Cart/Cart';
 import Offers from './components/SpecialOffers/Offers';
 import Header from './components/Navbar/Header';
 import NotFound from './components/NotFound';
-import Success from './components/Products/Success';
+import Success from './components/Products/Cart/Success';
 
 function App() {
 
