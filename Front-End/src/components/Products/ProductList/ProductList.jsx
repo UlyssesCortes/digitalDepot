@@ -3,10 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import LazyImages from './LazyImages';
 import { motion } from "framer-motion";
 
-import ProductListLoading from '../Loading/ProductListLoading';
-import LoginAlert from '../Login-Register/LoginAlert';
-import { generateCardVariants } from '../../assets/FramerAnimations/ProductAnimation';
-import ProductLoading from '../Loading/ProductLoading';
+import ProductListLoading from '../../Loading/ProductListLoading';
+import LoginAlert from '../../Login-Register/LoginAlert';
+import { generateCardVariants } from '../../../assets/FramerAnimations/ProductAnimation';
 
 export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod, setSortMethod, setNoResult, noResult }) {
     const [furniture, setFurniture] = useState([]);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../css/products.css'
+import '../../../css/products.css'
 import ProductNav from './ProductNav'
 import ProductList from './ProductList'
 

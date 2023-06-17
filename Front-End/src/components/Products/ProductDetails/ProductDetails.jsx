@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Lottie from "lottie-react"
-import check from "../../assets/LottieAnimations/check.json"
+import check from "../../../assets/LottieAnimations/check.json"
 
 import StarRating from './StartRating';
 import Features from './Features';
 import Dimensions from './Dimensions';
+
 import Shipping from './Shipping';
 import Description from './Description';
-import addToCart from './addToCart';
-import ProductLoading from '../Loading/ProductLoading';
+import addToCart from '../Cart/addToCart';
+import ProductLoading from '../../Loading/ProductLoading';
 import ImageSlider from './ImageSlider';
-import LoginAlert from '../Login-Register/LoginAlert';
+import LoginAlert from '../../Login-Register/LoginAlert';
 
 export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, setProducts, setCartItems }) {
     const { id } = useParams();

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Lottie from "lottie-react"
-import checkout from "../../assets/LottieAnimations/checkout.json"
+import checkout from "../../../assets/LottieAnimations/checkout.json"
 import { useNavigate } from 'react-router-dom';
 
 

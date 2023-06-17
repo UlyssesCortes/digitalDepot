@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react"
-import checkout from "../../assets/LottieAnimations/checkout.json"
-import emptyCartAnimation from "../../assets/LottieAnimations/box.json"
-import loadingAnimation from "../../assets/LottieAnimations/loadingLines.json"
-import Favorites from './Profile/Favorites';
-import Orders from './Profile/Orders';
-// import { getOrderItems2 } from '../../API/cartApi';
+import checkout from "../../../assets/LottieAnimations/checkout.json"
+import emptyCartAnimation from "../../../assets/LottieAnimations/box.json"
+import loadingAnimation from "../../../assets/LottieAnimations/loadingLines.json"
+import Favorites from '../Profile/Favorites';
+import Orders from '../Profile/Orders';
+
 import { loadStripe } from '@stripe/stripe-js'
 
 export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favorites, finializedOrders, showFavorite, setShowFavorite, showOrder, setShowOrder, pageTitle, setPageTitle, setShowCart, showCart, cartItems, setCartItems }) {
@@ -19,17 +19,12 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
     let sum = 0;
     let stripePromise
 
-    useEffect(() => {
-        localStorage.setItem('totalSum', sum)
-    }, [sum])
-
     const getStripe = () => {
         if (!stripePromise) {
-            stripePromise = loadStripe("pk_test_51NDdY6II4Zr4AaFdZKvdWouisBvtIdpBLp8Do9RwkAnqHFvXOKOkVfUrSK28BnowQptv30UgnBErZWXOdifUEyk20038VijbMi")
+            stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHIBLE_KEY)
         }
         return stripePromise
     }
-
 
     const getCartTest = async () => {
         try {
@@ -118,7 +113,7 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
             }
         }
     };
-    // If type == chair 10%discount or add coupon code 
+
     const items = cartItems && cartItems.map((product) => ({
         price: product.stripePrice,
         quantity: product.quantity
@@ -135,17 +130,18 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
     }
 
     const redirectToCheckout = async () => {
+        localStorage.setItem('totalSum', sum)
+
         setStripeLoading(true)
-        const stripe = await getStripe()
-        const { error } = await stripe.redirectToCheckout(checkoutOptions)
-        if (error) {
-            alert(error.message)
+        if (sum > 0) {
+            const stripe = await getStripe()
+            const { error } = await stripe.redirectToCheckout(checkoutOptions)
+            if (error) {
+                alert(error.message)
+            }
+            setStripeLoading(false)
+            getCartTest()
         }
-        setStripeLoading(false)
-        // setCheckoutSum(sum)
-
-
-        getCartTest()
     }
 
     useEffect(() => {
@@ -198,10 +194,11 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
     const handleAnimation = () => {
         setTimeout(() => {
             setCheckoutAnimation(false)
-        }, 3500);
+        }, 3300);
 
         return <Lottie className="checkoutAnimation" animationData={checkout} loop={false} segments={segments} />
     }
+
     return (
         <section className='cartContainer marginReducer' onClick={() => { setShowProfile(false) }}>
             <section className='cartSection'>
