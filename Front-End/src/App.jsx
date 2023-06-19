@@ -36,20 +36,24 @@ function App() {
   const [pageTitle, setPageTitle] = useState("SHOPPING CART");
   const [modalEmail, setModalEmail] = useState("")
   const [currentPage, setCurrentPage] = useState(1);
-  const [checkoutSum, setCheckoutSum] = useState(0);
   const [activeCategory, setActiveCategory] = useState("all");
-  // let checkoutSum = 0
 
   // localStorage.setItem('currentOrderId', "");
   useEffect(() => {
+    const localToken = window.localStorage.getItem('token');
+    const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
+    setIsLoggedIn(isLoggedInLocal)
+    setToken(localToken)
+
     const currentOrderId = window.localStorage.getItem('currentOrderId');
+
     if (!currentOrderId) {
       fetchOrder()
     }
     if (filterName == "") {
       setFilterName("all")
     }
-  }, [])
+  }, [isLoggedIn])
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -62,7 +66,9 @@ function App() {
     if (localToken) {
       setIsLoggedIn(true)
     }
-    if (token) {
+
+    if (localToken) {
+      setIsLoggedIn(true)
       fetch(`${API_URL}users/me`, {
         headers: {
           'Content-Type': 'application/json',
@@ -74,6 +80,7 @@ function App() {
           setUser(result.user)
         })
         .catch((error) => console.log(error));
+
       getProducts();
       fetchFavorites();
       fetchOrders();
@@ -197,6 +204,7 @@ function App() {
       const data = await response.json();
       const orderId = data[0].id
       localStorage.setItem('currentOrderId', orderId);
+      setCurrentOrderId(orderId)
     }
   }
 

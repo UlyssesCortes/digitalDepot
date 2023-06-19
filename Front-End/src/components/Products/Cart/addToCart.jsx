@@ -2,7 +2,9 @@
 const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert, setCartItems) => {
 
     let items = null;
-    setCurrentOrderId(currentOrderId)
+    const localCurrentOrderId = window.localStorage.getItem('currentOrderId');
+    const localIsLoggedIn = window.localStorage.getItem('isLoggedIn');
+    setCurrentOrderId(localCurrentOrderId)
 
     const getCartTest = async () => {
         try {
@@ -21,7 +23,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
         }
     }
 
-    if (!currentOrderId && isLoggedIn) {
+    if (!localCurrentOrderId && localIsLoggedIn) {
         const response = await fetch(`${API_URL}order/myOrders`, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -55,7 +57,6 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
 
             const order = await orderResponse.json();
             setCurrentOrderId(order.id);
-
             const itemsResponse = await fetch(`${API_URL}order-items/${order.id}`, {
                 method: "POST",
                 headers: {
@@ -63,7 +64,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    orderId: currentOrderId,
+                    orderId: order.id,
                     productId: productId,
                     quantity: quantity
                 })
@@ -78,21 +79,20 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
             }
         }
 
-    } else if (!isLoggedIn) {
+    } else if (!localIsLoggedIn) {
         setLoginAlert(true)
     }
 
     try {
-        // error occurs because currentOrder does not get registered fast enought
-        if (currentOrderId && isLoggedIn) {
-            const itemsResponse = await fetch(`${API_URL}order-items/${currentOrderId}`, {
+        if (localCurrentOrderId && localIsLoggedIn) {
+            const itemsResponse = await fetch(`${API_URL}order-items/${localCurrentOrderId}`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    orderId: currentOrderId,
+                    orderId: localCurrentOrderId,
                     productId: productId,
                     quantity: quantity
                 })
@@ -103,19 +103,13 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
                 throw new Error(`Failed to add item to cart. Status: ${itemsResponse.status}`);
             }
             items = await itemsResponse.json();
-            console.log(items)
             if (items) {
                 getCartTest()
             }
         }
-
-
     } catch (err) {
         console.error(err);
     }
-
-
-
 };
 
 export default addToCart;
