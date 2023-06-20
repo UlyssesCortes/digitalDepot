@@ -37,6 +37,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
         if (hasUncheckedOrder) {
             const uncheckedOrder = data.find((order) => !order.isCheckedOut);
             setCurrentOrderId(uncheckedOrder.id);
+            console.log("UNCHECKEDORDER AddToCart: ", uncheckedOrder.id)
             localStorage.setItem('currentOrderId', uncheckedOrder.id);
         } else {
             console.log("Creating new order");

@@ -40,14 +40,27 @@ function App() {
 
   // localStorage.setItem('currentOrderId', "");
   useEffect(() => {
-    const localToken = window.localStorage.getItem('token');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     setIsLoggedIn(isLoggedInLocal)
-    setToken(localToken)
+    const localCurrentOrderId = window.localStorage.getItem('currentOrderId');
+    setCurrentOrderId(localCurrentOrderId)
 
-    const currentOrderId = window.localStorage.getItem('currentOrderId');
+    if (!isLoggedInLocal) {
+      localStorage.setItem('currentOrderId', "");
+    }
 
-    if (!currentOrderId) {
+    if (isLoggedInLocal) {
+      const localToken = window.localStorage.getItem('token');
+      const currentOrderId = window.localStorage.getItem('currentOrderId');
+      setToken(localToken)
+      setIsLoggedIn(isLoggedInLocal)
+      setCurrentOrderId(currentOrderId)
+    }
+
+  }, [])
+  useEffect(() => {
+    const localCurrentOrderId = window.localStorage.getItem('currentOrderId');
+    if (!localCurrentOrderId && isLoggedIn) {
       fetchOrder()
     }
     if (filterName == "") {
@@ -60,7 +73,6 @@ function App() {
     const currentOrderId = window.localStorage.getItem('currentOrderId');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     setCurrentOrderId(currentOrderId)
-    // If not currentOrderId then fetch throught myOrders to grab the id and if none then just dont do nothing
     setIsLoggedIn(isLoggedInLocal)
     setToken(localToken)
     if (localToken) {
@@ -204,6 +216,7 @@ function App() {
       const data = await response.json();
       const orderId = data[0].id
       localStorage.setItem('currentOrderId', orderId);
+      console.log("FETCHIN ORDER APP: ", data[0].id)
       setCurrentOrderId(orderId)
     }
   }
@@ -213,7 +226,7 @@ function App() {
       <BrowserRouter>
         {!hideNav &&
           <div className='marginReducer'>
-            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} setCartItems={setCartItems} />
+            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} setCartItems={setCartItems} setCurrentOrderId={setCurrentOrderId} />
           </div>
         }
 

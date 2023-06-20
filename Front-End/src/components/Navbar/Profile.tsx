@@ -2,14 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, Variants } from 'framer-motion';
 
-export default function Profile({ setIsLoggedIn, setShowProfile, showProfile, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCartItems }) {
+export default function Profile({ setIsLoggedIn, setShowProfile, showProfile, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCartItems, setCurrentOrderId }) {
 
     const handleLogOutBtn = () => {
-        window.localStorage.removeItem('isLoggedIn');
-        window.localStorage.removeItem('currentOrderId');
-        window.localStorage.removeItem('token');
+        // window.localStorage.removeItem('isLoggedIn');
+        // window.localStorage.removeItem('token');
+        // window.localStorage.removeItem('currentOrderId');
+
+        localStorage.setItem('currentOrderId', "");
+        localStorage.setItem('token', "");
+        localStorage.setItem('isLoggedIn', "");
+
         setIsLoggedIn(false);
         setShowProfile(false)
+        setCurrentOrderId("")
         setCartItems([])
     };
 
