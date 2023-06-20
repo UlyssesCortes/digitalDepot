@@ -1,5 +1,5 @@
 
-const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert, setCartItems) => {
+const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, setLoginAlert, setCartItems) => {
 
     let items = null;
     const localCurrentOrderId = window.localStorage.getItem('currentOrderId');
@@ -9,7 +9,6 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
     const getCartTest = async () => {
         try {
             const localToken = window.localStorage.getItem('token');
-
             const response = await fetch(`${API_URL}order/cart`, {
                 headers: {
                     'Content-Type': 'application/json',
@@ -23,90 +22,72 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
         }
     }
 
-    if (!localCurrentOrderId && localIsLoggedIn) {
-        const response = await fetch(`${API_URL}order/myOrders`, {
+    const addingItem = async (orderId) => {
+        console.log("ADDING ITEM")
+        const itemsResponse = await fetch(`${API_URL}order-items/${orderId}`, {
+            method: "POST",
             headers: {
-                Authorization: `Bearer ${token}`
-            }
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                orderId: orderId,
+                productId: productId,
+                quantity: quantity
+            })
         });
 
-        const data = await response.json();
-
-        const hasUncheckedOrder = data.some((order) => !order.isCheckedOut);
-
-        if (hasUncheckedOrder) {
-            const uncheckedOrder = data.find((order) => !order.isCheckedOut);
-            setCurrentOrderId(uncheckedOrder.id);
-            console.log("UNCHECKEDORDER AddToCart: ", uncheckedOrder.id)
-            localStorage.setItem('currentOrderId', uncheckedOrder.id);
-        } else {
-            console.log("Creating new order");
-            const orderResponse = await fetch(`${API_URL}order`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    userId: user.id,
-                })
-            });
-
-            if (!orderResponse.ok) {
-                throw new Error(`Failed to create order. Status: ${orderResponse.status}`);
-            }
-
-            const order = await orderResponse.json();
-            setCurrentOrderId(order.id);
-            const itemsResponse = await fetch(`${API_URL}order-items/${order.id}`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    orderId: order.id,
-                    productId: productId,
-                    quantity: quantity
-                })
-            });
-
-            if (!itemsResponse.ok) {
-                throw new Error(`Failed to add item to cart. Status: ${itemsResponse.status}`);
-            }
-            items = await itemsResponse.json();
-            if (items) {
-                getCartTest()
-            }
+        if (!itemsResponse.ok) {
+            throw new Error(`Failed to add item to cart. Status: ${itemsResponse.status}`);
         }
-
-    } else if (!localIsLoggedIn) {
-        setLoginAlert(true)
+        items = await itemsResponse.json();
+        if (items) {
+            getCartTest()
+        }
     }
 
     try {
-        if (localCurrentOrderId && localIsLoggedIn) {
-            const itemsResponse = await fetch(`${API_URL}order-items/${localCurrentOrderId}`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    orderId: localCurrentOrderId,
-                    productId: productId,
-                    quantity: quantity
-                })
-            });
+        if (!localIsLoggedIn) {
+            return setLoginAlert(true)
+        }
 
-            if (!itemsResponse.ok) {
-                alert(`Failed to add item to cart. Status: ${itemsResponse.status}`)
-                throw new Error(`Failed to add item to cart. Status: ${itemsResponse.status}`);
+        if (!localCurrentOrderId && localIsLoggedIn) {
+            const response = await fetch(`${API_URL}order/myOrders`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const data = await response.json();
+
+            if (data.length > 0) {
+                localStorage.setItem('currentOrderId', data[0].id);
+                setCurrentOrderId(data[0].id)
+                addingItem(data[0].id)
+
+            } else {
+                console.log("Creating new order");
+                const orderResponse = await fetch(`${API_URL}order`, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        userId: user.id,
+                    })
+                });
+
+                if (!orderResponse.ok) {
+                    throw new Error(`Failed to create order. Status: ${orderResponse.status}`);
+                }
+                const order = await orderResponse.json();
+                setCurrentOrderId(order.id);
+                addingItem(order.id)
             }
-            items = await itemsResponse.json();
-            if (items) {
-                getCartTest()
-            }
+        }
+
+        if (localCurrentOrderId && localIsLoggedIn) {
+            addingItem(currentOrderId)
         }
     } catch (err) {
         console.error(err);

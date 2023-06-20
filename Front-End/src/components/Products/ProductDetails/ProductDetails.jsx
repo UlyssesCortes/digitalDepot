@@ -222,7 +222,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                         <button
                             className="addCartBtn"
                             onClick={() => {
-                                addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, isLoggedIn, setLoginAlert, setCartItems);
+                                addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, setLoginAlert, setCartItems);
                                 setAdded(true);
                             }}
                         >
