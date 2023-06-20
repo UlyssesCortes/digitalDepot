@@ -37,7 +37,6 @@
     font-size: 18px;
     cursor: pointer;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    cursor: pointer;
 }
 
 /* PRODUCT LIST */
@@ -477,7 +476,6 @@
 
 .emptyCart {
     font-size: 50px;
-    font-family: monospace;
 }
 
 @keyframes opacityAnimation {
@@ -528,7 +526,7 @@
 .cartSection {
     position: absolute;
     overflow: hidden;
-    margin-top: 50px;
+    margin-top: 20px;
     width: 92%;
     /* height: 100vh; */
 }
@@ -536,7 +534,6 @@
 .subHeaderCart h1 {
     font-size: 40px;
     letter-spacing: 4px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .CartBtnContainer {
@@ -646,7 +643,6 @@
 .cartLink {
     font-size: 24px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    /* outline: auto; */
     padding: 10px;
 }
 
@@ -858,8 +854,13 @@
 .favTitle {
     display: flex;
     justify-content: flex-end;
-    font-size: 22px;
+    font-size: 20px;
     color: #333333;
+}
+
+.favPrice {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
 }
 
 .topContentBoxOrder {
@@ -871,7 +872,7 @@
 }
 
 .favTitle {
-    font-size: 24px;
+    font-size: 22px;
 }
 
 .sortIcon {
@@ -1150,7 +1151,7 @@
     }
 
     .subHeaderCart h1 {
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .CartBtnContainer button {

@@ -50,7 +50,6 @@
     bottom: 0;
     color: white;
     padding: 50px;
-    font-family: inter;
     transition: all ease-in-out .5s;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
@@ -85,7 +84,6 @@
     align-self: center;
     font-size: 30px;
     padding-left: 60px;
-    font-family: inter;
     color: #333333;
     color: white;
 }

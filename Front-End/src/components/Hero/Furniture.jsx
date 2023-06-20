@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import { useState } from "react";
 import VisibilitySensor from "react-visibility-sensor";
-
+import upRightArrow from '../../assets/images/upRightArrow.png'
+import upRightArrowWhite from '../../assets/images/upRightArrowWhite.png'
 import {
     furniturePopUp
 } from '../../assets/FramerAnimations/HeroAnimations';
@@ -20,8 +21,11 @@ export default function Furniture({ setFilterName }) {
         <article className="furnitureComponent">
             <VisibilitySensor onChange={handleVisibilityChange}>
                 <section className="topFurniture">
-                    <h1>Exclusive Furniture</h1>
-                    <p>Check out this week&rsquo;s selection of popular products that might catch your eye, and don&rsquo;t</p>
+                    <div>
+                        <h1>Top <br></br> Categories</h1>
+                        <p>We offer a wide variety of furniture to suit your unique style and needs</p>
+                    </div>
+                    <Link to='products' className='disBtn'>Discover More  <img src={upRightArrow} className='upRightArr' alt="Up Right Arrow" /></Link>
                 </section>
             </VisibilitySensor>
 
