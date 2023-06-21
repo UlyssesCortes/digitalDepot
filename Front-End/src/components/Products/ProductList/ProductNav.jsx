@@ -64,6 +64,7 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
                 >
                     Desks
                 </button>
+
                 <motion.nav
                     initial={false}
                     animate={isSortOpen ? "open" : "closed"}

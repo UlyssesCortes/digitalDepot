@@ -335,7 +335,6 @@
   .benefitsBox {
       width: 180px;
       height: 100%;
-      /* outline: auto; */
   }
 
   .benefitsBox p {
@@ -384,6 +383,8 @@
           justify-content: center;
       }
   }
+
+
 
   @media only screen and (max-width: 750px) {
 
@@ -434,5 +435,50 @@
       .hornet,
       .duofast {
           display: none;
+      }
+  }
+
+  @media only screen and (max-width: 500px) {
+      .bannerStats {
+          color: rgb(255, 255, 255);
+          text-shadow: 1px 1px 1px rgb(70, 69, 69);
+      }
+
+      .statsLeft h1,
+      .statsLeft p,
+      .statsRight h1,
+      .statsRight p {
+          font-size: 18px;
+      }
+
+      .bannerBtn {
+          width: 120px;
+          font-size: 14px;
+      }
+
+      .disBtn {
+          height: 50px;
+          width: 180px;
+          font-size: 14px;
+      }
+
+      .upRightArr {
+          width: 12px;
+          height: 12px;
+      }
+
+      .benefitsStripe {
+          height: 150px;
+          margin: 100px 0 100px 0;
+      }
+
+      .benefitsBox {
+          width: 70px;
+          height: 60%;
+      }
+
+      .benefitsBox p {
+          margin-top: 5px;
+          font-size: 12px;
       }
   }

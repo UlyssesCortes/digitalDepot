@@ -311,6 +311,12 @@
 
 
 @media only screen and (max-width: 600px) {
+
+    .searchInput.active {
+        width: 200px;
+        font-size: 14px;
+    }
+
     #signUpBtn {
         display: none;
     }
@@ -319,9 +325,9 @@
         height: 100px;
     }
 
-    .box:hover .searchInput {
+    /* .box:hover .searchInput {
         width: 250px;
-    }
+    } */
 }
 
 
@@ -444,4 +450,19 @@
     color: red;
 }
 
-@media only screen and (max-width: 500px) {}
+@media only screen and (max-width: 500px) {
+    .searchInput.active {
+        width: 150px;
+        font-size: 14px;
+    }
+
+    .navIcons {
+        padding-right: 0px;
+        border-right: none;
+    }
+
+    .sortMenuSection ul {
+        width: 150px;
+        margin-right: 55px;
+    }
+}

@@ -8,7 +8,7 @@ export default function Benefits() {
             </div>
             <div className="benefitsBox">
                 <div className="benefitImg2"></div>
-                <p>Free Shiping</p>
+                <p>Free Shipping</p>
             </div>
             <div className="benefitsBox">
                 <div className="benefitImg3"></div>

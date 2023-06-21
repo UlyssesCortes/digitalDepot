@@ -112,7 +112,6 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                     <form className="box" onSubmit={handleSerachBar}>
                         <input
                             type="text"
-                            // className={`searchInput ${showSearch ? 'active' : ''}`}
                             className={`searchInput ${showSearch ? 'active' : ''} ${noResult ? 'redInp' : ''}`}
 
                             name="txt"
