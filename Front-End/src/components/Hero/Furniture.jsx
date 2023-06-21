@@ -3,10 +3,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import VisibilitySensor from "react-visibility-sensor";
 import upRightArrow from '../../assets/images/upRightArrow.png'
-import upRightArrowWhite from '../../assets/images/upRightArrowWhite.png'
-import {
-    furniturePopUp
-} from '../../assets/FramerAnimations/HeroAnimations';
+import { furniturePopUp } from '../../assets/FramerAnimations/HeroAnimations';
 
 export default function Furniture({ setFilterName }) {
     const [isAnimated, setIsAnimated] = useState(false);

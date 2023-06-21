@@ -271,6 +271,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                         </motion.section>
                     );
                 })}
+                {/* {console.log("FURNITURE LENGTH")} */}
                 <section className="paginationBtns">
                     {Array.from(
                         { length: Math.ceil(furniture.length / productsPerPage) },
