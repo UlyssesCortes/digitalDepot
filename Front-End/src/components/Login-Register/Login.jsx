@@ -25,6 +25,7 @@ const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEma
             setEamil("demouser@gmail.com")
             setPassword("123456789")
         }
+        console.log(demoUser)
     }, []);
 
     const handleClose = () => {

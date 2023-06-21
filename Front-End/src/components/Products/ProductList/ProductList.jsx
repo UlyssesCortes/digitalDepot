@@ -7,7 +7,7 @@ import ProductListLoading from '../../Loading/ProductListLoading';
 import LoginAlert from '../../Login-Register/LoginAlert';
 import { generateCardVariants } from '../../../assets/FramerAnimations/ProductAnimation';
 
-export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod, setSortMethod, setNoResult, noResult }) {
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod, setSortMethod, setNoResult, noResult, setDemoUser }) {
     const [furniture, setFurniture] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [showAll, setShowAll] = useState(false);
@@ -19,8 +19,24 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const lowerCaseFilterName = filterName.toLowerCase();
     const location = useLocation();
 
+
     useEffect(() => {
-        setIsLoggedIn(isLoggedInLocal)
+        const filteredProducts = filterProducts(products, filterName);
+        setFurniture(filteredProducts);
+        if (filteredProducts.length === 0) {
+            setNoResult(true)
+        } else {
+            setNoResult(false)
+        }
+    }, [filterName, products]);
+
+    useEffect(() => {
+        sortFunriture()
+    }, [sortMethod]);
+
+    useEffect(() => {
+        setIsLoggedIn(isLoggedInLocal);
+        setFurniture(products)
     }, []);
 
     useEffect(() => {
@@ -45,21 +61,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 product.category.toLowerCase().includes(lowerCaseFilterName)
         );
     };
-
-    useEffect(() => {
-        const filteredProducts = filterProducts(products, filterName);
-        setFurniture(filteredProducts);
-        if (filteredProducts.length === 0) {
-            setNoResult(true)
-        } else {
-            setNoResult(false)
-        }
-    }, [filterName, products]);
-
-    useEffect(() => {
-        sortFunriture()
-    }, [sortMethod]);
-
 
     const sortFunriture = () => {
         const sortedFurniture = [...furniture];
@@ -214,7 +215,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             <section className="productsLis">
                 {loginAlert &&
                     <div className='loginAlertWrapper'>
-                        <LoginAlert setLoginAlert={setLoginAlert} setModalEmail={setModalEmail} modalEmail={modalEmail} />
+                        <LoginAlert setLoginAlert={setLoginAlert} setModalEmail={setModalEmail} modalEmail={modalEmail} setDemoUser={setDemoUser} />
                     </div>}
                 {!noResult && currentProducts.map((product, index) => {
                     const isHovered = index === hoveredIndex;
@@ -271,7 +272,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                         </motion.section>
                     );
                 })}
-                {/* {console.log("FURNITURE LENGTH")} */}
+
                 <section className="paginationBtns">
                     {Array.from(
                         { length: Math.ceil(furniture.length / productsPerPage) },
@@ -291,6 +292,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                             return null;
                         }
                     )}
+
                     {furniture.length / 8 > 7 && (
                         <button className='showMoreBtn' onClick={handleClick}>
                             {showAll ? '‣' : '‣'}

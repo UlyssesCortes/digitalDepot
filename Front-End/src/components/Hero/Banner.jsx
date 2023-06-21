@@ -37,7 +37,7 @@ export default function Banner() {
                 <motion.section className='bannerSubSlogan' variants={typingContainerSub} initial="hidden" animate="show">
 
                     <p>Accent chairs at Herman Miller included a clear</p>
-                    <p>mid-century modern accent</p>
+                    <p>&quot;mid-century&quot; modern accent</p>
 
                 </motion.section>
                 <section className='bannerBtnContainer'>

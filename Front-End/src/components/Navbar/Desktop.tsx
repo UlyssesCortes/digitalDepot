@@ -47,7 +47,7 @@ export default function Desktop({ setFilterName, setShowProfile, setIsCategorieO
                                     clipPath: "inset(0% 0% 0% 0% round 10px)",
                                     transition: {
                                         type: "spring",
-                                        bounce: 0,
+                                        bounce: 0.1,
                                         duration: 0.5,
                                         delayChildren: 0.3,
                                         staggerChildren: 0.05,

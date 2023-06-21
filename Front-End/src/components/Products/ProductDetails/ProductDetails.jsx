@@ -14,7 +14,7 @@ import ProductLoading from '../../Loading/ProductLoading';
 import ImageSlider from './ImageSlider';
 import LoginAlert from '../../Login-Register/LoginAlert';
 
-export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, setProducts, setCartItems }) {
+export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, setProducts, setCartItems, setDemoUser }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [displayFeatures, setDisplayFeatures] = useState(false)
@@ -162,7 +162,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
         <section id="topDetails" className='marginReducer' onClick={() => { setShowProfile(false) }}>
             {loginAlert &&
                 <div className='loginAlertWrapper'>
-                    <LoginAlert setLoginAlert={setLoginAlert} setModalEmail={setModalEmail} modalEmail={modalEmail} />
+                    <LoginAlert setLoginAlert={setLoginAlert} setModalEmail={setModalEmail} modalEmail={modalEmail} setDemoUser={setDemoUser} />
                 </div>}
             {showImageSlider &&
                 <div className='imageSliderContainerBox'>

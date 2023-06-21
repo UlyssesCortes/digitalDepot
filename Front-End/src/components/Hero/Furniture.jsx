@@ -37,7 +37,7 @@ export default function Furniture({ setFilterName }) {
                 </Link>
                 <Link to='/products' className="workSpaceCard furnitureCard" onClick={() => { setFilterName("Workspace") }}>
                     <div className="workspaceImg furnitureCardImg"></div>
-                    <p>Workspace</p>
+                    <p>Office</p>
                 </Link>
                 <Link to='products' className="kitchenCard furnitureCard" onClick={() => { setFilterName("Kitchen") }}>
                     <div href="#topNav" className="kitchenImg furnitureCardImg"></div>

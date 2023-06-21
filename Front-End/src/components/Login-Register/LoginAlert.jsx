@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export default function LoginAlert({ setLoginAlert, setModalEmail, modalEmail }) {
+export default function LoginAlert({ setLoginAlert, setModalEmail, modalEmail, setDemoUser }) {
     const navigate = useNavigate();
 
     const handleSubmit = () => {
@@ -23,7 +23,10 @@ export default function LoginAlert({ setLoginAlert, setModalEmail, modalEmail })
             <div className='bottomLoginAlert'>
                 <form onSubmit={handleSubmit}>
                     <input type='text' placeholder="Email" value={modalEmail} onChange={handleChangeEmail} className="inputLogin loginAlertInp"></input>
-                    <button className='continueLogBtn' type='submit'>Continue</button>
+                    <section className='contSectioin'>
+                        <button className='continueLogBtn' type='submit'>Continue</button>
+                        <button className='demo' onClick={() => { setDemoUser(true) }}>Demo User</button>
+                    </section>
                 </form>
             </div>
             <div className="sliderClose alertClose" onClick={handleClose}></div>

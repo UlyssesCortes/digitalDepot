@@ -68,7 +68,7 @@
     align-items: center;
     background-color: rgb(65, 64, 64);
     width: 30%;
-    height: 85vh;
+    /* height: 85vh; */
     border-radius: 10px;
     cursor: pointer;
 }
