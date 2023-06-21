@@ -156,11 +156,21 @@
       cursor: pointer;
       color: black;
       text-decoration: none;
+      transition: font-size ease-in-out .1s;
+  }
+
+  .disBtn:hover {
+      font-size: 18.4px;
+  }
+
+  .disBtn:hover>.upRightArr {
+      width: 22px;
   }
 
   .upRightArr {
       width: 20px;
       height: 20px;
+      transition: all ease-in-out .1s;
   }
 
   .topFurniture h1 {

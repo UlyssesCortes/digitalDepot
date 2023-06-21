@@ -27,6 +27,12 @@ const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEma
         }
     }, []);
 
+    const handleClose = () => {
+        setHideNav(false)
+        setEamil("")
+        setPassword("")
+    }
+
     const handleChangeEmail = (event) => {
         setEamil(event.target.value.toLowerCase())
     }
@@ -100,14 +106,11 @@ const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEma
                         <button type="submit" className="loginBtn">Log In &rarr;</button>
                     </form>
 
-                    <Link to='/products' className="link-2" onClick={() => { setHideNav(false) }}></Link>
+                    <Link to='/products' className="link-2" onClick={() => { handleClose() }}></Link>
 
                     <div className='memberDetail'>
                         <p className="signUpContainer">Not a member?</p>
-
-                        <Link to='/register' className="signUp navLink">Sign Up
-                        </Link>
-
+                        <Link to='/register' className="signUp navLink">Sign Up</Link>
                     </div>
                     <p onClick={() => {
                         setEamil("demouser@gmail.com")
@@ -116,7 +119,6 @@ const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEma
                         className=" demoUser">Demo User
                     </p>
                 </section>
-
 
                 <div className='authContainer'>
                     {showAnimation && <Lottie className="authorizationAnimation" animationData={authorization} loop={false} />}
