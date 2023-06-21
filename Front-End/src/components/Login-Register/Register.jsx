@@ -4,7 +4,7 @@ import Lottie from "lottie-react"
 import authorization from "../../assets/LottieAnimations/loadingLogin.json"
 import { usernameTakenAlert, passwordTooWeekAlert, invalidEmailAlert } from './Alerts';
 
-const Register = ({ API_URL, setHideNav }) => {
+const Register = ({ API_URL, setHideNav, setDemoUser }) => {
 
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -127,10 +127,15 @@ const Register = ({ API_URL, setHideNav }) => {
                         <p className="signUpContainer">Have an account?</p>
 
                         <Link to='/login'
-                            className="signUp navLink">Log In
+                            className="signUp">Log In
                         </Link>
                     </div>
+                    <Link to='/login'
+                        onClick={() => { setDemoUser(true) }}
+                        className=" demoUser">Demo User
+                    </Link>
                 </section>
+
 
                 <div className='authContainer'>
                     {showAnimation && <Lottie className="authorizationAnimation2" animationData={authorization} loop={false} />}

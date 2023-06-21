@@ -103,6 +103,8 @@
 
 .memberDetail {
     display: flex;
+    align-items: center;
+    /* justify-content: center; */
     gap: 5px;
 }
 
@@ -115,6 +117,25 @@
 .signUp {
     cursor: pointer;
     font-weight: bold;
+    color: #000000;
+    text-decoration: none;
+}
+
+.signUp:hover {
+    text-decoration: underline;
+}
+
+.demoUser {
+    color: #2214a0;
+    text-decoration: none;
+    font-size: 16px;
+    width: 90px;
+    cursor: pointer;
+}
+
+.demoUser:hover {
+    text-decoration: underline;
+
 }
 
 

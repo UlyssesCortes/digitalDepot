@@ -6,7 +6,7 @@ import authorization from "../../assets/LottieAnimations/loadingLogin.json"
 import { Link, useNavigate } from 'react-router-dom';
 import { wrongUserAlert } from './Alerts';
 
-const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEmail }) => {
+const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEmail, demoUser, setDemoUser }) => {
 
     const [email, setEamil] = useState("")
     const [password, setPassword] = useState("")
@@ -20,6 +20,11 @@ const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEma
             setEamil(modalEmail)
         }
         setHideNav(true)
+
+        if (demoUser) {
+            setEamil("demouser@gmail.com")
+            setPassword("123456789")
+        }
     }, []);
 
     const handleChangeEmail = (event) => {
@@ -69,6 +74,7 @@ const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEma
                 .catch(console.error);
         }
         fetchLogin()
+        setDemoUser(false)
     }
 
     return (
@@ -103,7 +109,14 @@ const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEma
                         </Link>
 
                     </div>
+                    <p onClick={() => {
+                        setEamil("demouser@gmail.com")
+                        setPassword("123456789")
+                    }}
+                        className=" demoUser">Demo User
+                    </p>
                 </section>
+
 
                 <div className='authContainer'>
                     {showAnimation && <Lottie className="authorizationAnimation" animationData={authorization} loop={false} />}

@@ -28,6 +28,7 @@ function App() {
   const [cartItems, setCartItems] = useState([])
   const [products, setProducts] = useState([])
   const [showProfile, setShowProfile] = useState(false)
+  const [demoUser, setDemoUser] = useState(false)
   const [showOrder, setShowOrder] = useState(false);
   const [isCategorieOpen, setIsCategorieOpen] = useState(false);
   const [showCart, setShowCart] = useState(true);
@@ -242,11 +243,11 @@ function App() {
 
           <Route
             path='/register'
-            element={<Register API_URL={API_URL} setHideNav={setHideNav} />}
+            element={<Register API_URL={API_URL} setHideNav={setHideNav} setDemoUser={setDemoUser} />}
           />
           <Route
             path='/login'
-            element={<Login setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} setToken={setToken} user={user} token={token} setHideNav={setHideNav} modalEmail={modalEmail} />}
+            element={<Login setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} setToken={setToken} user={user} token={token} setHideNav={setHideNav} modalEmail={modalEmail} demoUser={demoUser} setDemoUser={setDemoUser} />}
           />
           <Route
             path='/cart'

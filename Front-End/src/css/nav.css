@@ -30,7 +30,6 @@
     cursor: pointer;
     color: #2f2f2f;
     list-style: none;
-    /* outline: auto; */
 }
 
 .sloganTest {
@@ -42,7 +41,7 @@
     position: relative;
     text-decoration: none;
     padding-bottom: 4px;
-    color: #2f2f2f;
+    color: #6b6b6b;
 }
 
 .rightNav {
@@ -153,7 +152,7 @@
     height: 3px;
     bottom: 0;
     left: 0;
-    background-color: #8b8b8b;
+    background-color: #181818;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
