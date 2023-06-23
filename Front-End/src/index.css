@@ -6,6 +6,10 @@
     font-family: inter;
 }
 
+.otherFont {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .marginReducer {
     margin: 0 5% 0 5%;
 }

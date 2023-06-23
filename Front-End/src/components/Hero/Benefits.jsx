@@ -1,21 +1,26 @@
+import clickImg from "../../assets/images/click.png"
+import shippingImg from "../../assets/images/shiping.png"
+import payImg from "../../assets/images/card.png"
+import contact from "../../assets/images/contact.png"
 
 export default function Benefits() {
     return (
         <article className="benefitsStripe">
             <div className="benefitsBox">
-                <div className="benefitImg1"></div>
+                <img className='benefitImg1' src={clickImg} alt="Product Image" loading='lazy' />
+
                 <p>Click & Collect</p>
             </div>
             <div className="benefitsBox">
-                <div className="benefitImg2"></div>
+                <img className='benefitImg2' src={shippingImg} alt="Product Image" loading='lazy' />
                 <p>Free Shipping</p>
             </div>
             <div className="benefitsBox">
-                <div className="benefitImg3"></div>
+                <img className='benefitImg3' src={payImg} alt="Product Image" loading='lazy' />
                 <p>Pay with card</p>
             </div>
             <div className="benefitsBox">
-                <div className="benefitImg4"></div>
+                <img className='benefitImg4' src={contact} alt="Product Image" loading='lazy' />
                 <p>Contact us</p>
             </div>
         </article>

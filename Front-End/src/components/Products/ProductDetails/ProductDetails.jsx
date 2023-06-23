@@ -201,26 +201,26 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                     </div>
                     <div className='nameAndPrice'>
                         <h2>{productInfo.title}</h2>
-                        {productInfo.type === "chair" ? <div className='discountD'>
-                            <p className='discountPriceD'> ${((productInfo.price * .75) * quantity).toFixed(2)}</p><p className='originalPriceD'> ${(productInfo.price * quantity).toFixed(2)}</p>
+                        {productInfo.type === "chair" ? <div className='discountD '>
+                            <p className='discountPriceD '> ${((productInfo.price * .75) * quantity).toFixed(2)}</p><p className='originalPriceD'> ${(productInfo.price * quantity).toFixed(2)}</p>
                         </div>
                             : <p className='regularPrice'>${(productInfo.price * quantity).toFixed(2)} </p>}
                     </div>
                     <div className='quantity'>
                         <div className='quntityBtns'>
                             <div className='minusIcon' onClick={() => { quantity < 4 && setQuantity(quantity + 1) }}>+</div>
-                            <p>0{quantity}</p>
+                            <p className='otherFont'>0{quantity}</p>
                             <div className='plusIcon' onClick={() => { quantity > 1 && setQuantity(quantity - 1) }}>-</div>
                         </div>
                     </div>
                     {quantity === 4 && <p className='tooManyError'>Maximum capacity reached!</p>}
                     <div className='shipInfo'>
-                        <p>Available to ship in 2 weeks</p>
+                        <p className='otherFont'>Available to ship in 2 weeks</p>
                     </div>
 
                     <div className='productBtns'>
                         <button
-                            className="addCartBtn"
+                            className="addCartBtn otherFont"
                             onClick={() => {
                                 addToCart(API_URL, user, productInfo.id, token, currentOrderId, setCurrentOrderId, quantity, setLoginAlert, setCartItems);
                                 setAdded(true);
@@ -229,7 +229,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                             {isLoggedIn && added ?
                                 <Lottie className="checkAnimation" animationData={check} loop={false} />
                                 :
-                                <p>Add to cart</p>
+                                " Add to cart"
                             }
                         </button>
 
@@ -238,14 +238,14 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                                 {isLoggedIn && clickedFav ?
                                     <Lottie className="checkAnimationFav" animationData={check} loop={false} />
                                     :
-                                    <p> Remove from Wishlist</p>
+                                    "Remove from Wishlist"
                                 }
                             </button> :
-                            <button className='saveToWishlist' onClick={() => { handleFavoriteBtn(productInfo.id) }}>
+                            <button className='saveToWishlist otherFont' onClick={() => { handleFavoriteBtn(productInfo.id) }}>
                                 {isLoggedIn && clickedFav ?
                                     <Lottie className="checkAnimationFav" animationData={check} loop={false} />
                                     :
-                                    <p> Save to Wishlist</p>
+                                    "Save to Wishlist"
                                 }
                             </button>
                         }
@@ -259,7 +259,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                                 setDisplayFeatures(!displayFeatures);
                             }}
                         >
-                            <p>Product Features</p>
+                            <p className='otherFont'>Product Features</p>
                             <p className="plus">{!displayFeatures ? "+" : "-"}</p>
                         </div>
                         <section className={`moreDetailsListAnimation ${displayFeatures ? "actives" : ""}`}>
@@ -270,7 +270,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                                 setDisplayDimensions(!displayDimensions);
                             }}
                         >
-                            <p>Dimensions</p>
+                            <p className='otherFont'>Dimensions</p>
                             <p className="plus">{!displayDimensions ? "+" : "-"}</p>
                         </div>
                         <section className={`moreDetailsListAnimation ${displayDimensions ? "actives" : ""}`}>
@@ -281,7 +281,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                                 setDisplayDescription(!displayDescription);
                             }}
                         >
-                            <p>Description</p>
+                            <p className='otherFont'>Description</p>
                             <p className="plus">{!displayDescription ? "+" : "-"}</p>
                         </div>
                         <section className={`moreDetailsListAnimation ${displayDescription ? "actives" : ""}`}>
@@ -290,7 +290,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
 
                         <div className='shiping'
                             onClick={() => { setDisplayShipping(!displayShipping) }}>
-                            <p>Shipping and Return</p>
+                            <p className='otherFont'>Shipping and Return</p>
                             <p className="plus">{!displayShipping ? "+" : "-"}</p>
                         </div>
                         <section className={`moreDetailsListAnimation ${displayShipping ? "actives" : ""}`}>

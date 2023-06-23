@@ -4,7 +4,7 @@ export default function Dimensions({ dimensions }) {
         <>
             <section className='moreDetailsList'>
                 {Object.keys(dimensions).map(key => (
-                    <p key={key}>
+                    <p key={key} className="otherFont">
                         <strong>{key}: </strong>
                         {dimensions[key]}
                     </p>

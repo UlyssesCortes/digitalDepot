@@ -80,7 +80,7 @@
   .conpaniesContainer {
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
+      justify-content: space-around;
       align-items: center;
       height: 12vh;
       margin: 30px 0 30px 0;
@@ -91,33 +91,8 @@
   .duofast,
   .hornet,
   .chase {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 130px;
+      width: 120px;
       height: 30px;
-      background-repeat: no-repeat;
-      background-size: contain;
-  }
-
-  .huobi {
-      background-image: url("../assets/images/logo1.png");
-  }
-
-  .fastmpany {
-      background-image: url("../assets/images/logo4.png");
-  }
-
-  .duofast {
-      background-image: url("../assets/images/logo3.png");
-  }
-
-  .hornet {
-      background-image: url("../assets/images/logo4.png");
-  }
-
-  .chase {
-      background-image: url("../assets/images/logo5.png");
   }
 
   /* Furniture */
@@ -310,6 +285,7 @@
 
   .bestProduct1 {
       background-image: url('https://secure.img1-fg.wfcdn.com/im/21438957/resize-h800-w800%5Ecompr-r85/1221/122154328/Marinette+Swivel+Office+Chair.jpg');
+      width: 100%;
   }
 
   .bestProduct2 {
@@ -328,11 +304,15 @@
   .benefitsStripe {
       display: flex;
       justify-content: space-evenly;
-      height: 150px;
+      height: 160px;
       margin: 100px 0 100px 0;
   }
 
   .benefitsBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       width: 180px;
       height: 100%;
   }

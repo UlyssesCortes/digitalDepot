@@ -3,7 +3,7 @@ export default function Features({ features }) {
         <>
             <section className="moreDetailsList">
                 {Object.keys(features).map((key) => (
-                    <p key={key}>
+                    <p key={key} className="otherFont">
                         <strong>{key}: </strong>
                         {features[key]}
                     </p>
