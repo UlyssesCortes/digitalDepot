@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../../css/login.css'
 import Lottie from "lottie-react"
 import authorization from "../../assets/LottieAnimations/loadingLogin.json"
+import axios from 'axios';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { wrongUserAlert } from './Alerts';
@@ -25,7 +26,6 @@ const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEma
             setEamil("demouser@gmail.com")
             setPassword("123456789")
         }
-        console.log(demoUser)
     }, []);
 
     const handleClose = () => {
@@ -42,48 +42,48 @@ const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEma
     }
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
-        setShowAnimation(true)
+        event.preventDefault();
+        setShowAnimation(true);
+
         const fetchLogin = async () => {
-            await fetch(`${API_URL}users/login`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: `${email}`,
-                    password: `${password}`
+            try {
+                const response = await axios.post(`${API_URL}users/login`, {
+                    email: email,
+                    password: password,
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
 
-                })
-            }).then(response => response.json())
-                .then(result => {
-                    if (result.token) {
-                        setIsLoggedIn(true)
-                        localStorage.setItem('isLoggedIn', true)
-                        localStorage.setItem('token', result.token);
-                        setToken(result.token)
-                        setUser(result.user);
-                    } else {
-                        setValidInfo(false)
-                    }
+                const result = response.data;
+                if (result.token) {
+                    setIsLoggedIn(true);
+                    localStorage.setItem('isLoggedIn', true);
+                    localStorage.setItem('token', result.token);
+                    setToken(result.token);
+                    setUser(result.user);
+                } else {
+                    setValidInfo(false);
+                }
 
-                    if (result.token) {
-                        setTimeout(() => {
-                            navigate('/');
-                            setHideNav(false)
-                        }, 800);
-                    }
-                    if (!result.token) {
-                        setShowAnimation(false)
-                    }
+                if (result.token) {
+                    setTimeout(() => {
+                        navigate('/');
+                        setHideNav(false);
+                    }, 800);
+                }
+                if (!result.token) {
+                    setShowAnimation(false);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-                })
-                .catch(console.error);
-        }
-        fetchLogin()
-        setDemoUser(false)
-    }
-
+        await fetchLogin();
+        setDemoUser(false);
+    };
     return (
         <>
             <section className="loginComponent">

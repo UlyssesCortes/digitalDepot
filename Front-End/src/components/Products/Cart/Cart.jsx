@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import Lottie from "lottie-react"
@@ -24,7 +26,6 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
     const segments = [2.5, 3];
     let sum = 0;
     let stripePromise
-
 
     const getStripe = () => {
         if (!stripePromise) {

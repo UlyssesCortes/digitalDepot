@@ -1,4 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+
+import axios from 'axios';
 import React, { useState, useRef, useEffect } from 'react'
 import Lottie from "lottie-react"
 import search from "../../assets/LottieAnimations/searchClock.json"
@@ -16,7 +18,7 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
     const [searchInput, setSearchInput] = useState("")
     const [prevFilterName, setPrevFilterName] = useState("")
     const inputRef = useRef(null);
-
+    const location = useLocation();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,6 +26,16 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
             inputRef.current.focus();
         }
     }, [showSearch]);
+
+    useEffect(() => {
+        const currentPath = location.pathname;
+        const desiredPath = '/cart';
+        if (currentPath === desiredPath) {
+            console.log('You are on the cart page');
+            fetchFavorites()
+            fetchOrders()
+        }
+    }, [location.pathname])
 
     const handleSearch = (event) => {
         setFilterName(event.target.value)
@@ -33,13 +45,13 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
     const fetchFavorites = async () => {
         try {
             try {
-                const favoriteProducts = await fetch(`${API_URL}favorite/myFavorites`, {
+                const favoriteProducts = await axios.get(`${API_URL}favorite/myFavorites`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                const products = await favoriteProducts.json();
+                const products = await favoriteProducts.data;
                 setFavorites(products)
             } catch (error) {
                 console.log(error);
@@ -51,12 +63,12 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
 
     const fetchOrders = async () => {
         if (token) {
-            const response = await fetch(`${API_URL}order/history`, {
+            const response = await axios.get(`${API_URL}order/history`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            const data = await response.json();
+            const data = await response.data;
             setFinalizedOrders(data)
         }
     }
@@ -89,15 +101,11 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
         setShowFavorite(false)
         setShowOrder(false)
         setShowCart(true)
-        fetchFavorites()
-        fetchOrders()
         setPageTitle("SHOPPING CART")
     }
 
     const handleProfileClick = () => {
         setShowProfile(!showProfile)
-        fetchFavorites()
-        fetchOrders()
         setIsCategorieOpen(false)
     }
 
@@ -113,7 +121,6 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
                         <input
                             type="text"
                             className={`searchInput ${showSearch ? 'active' : ''} ${noResult ? 'redInp' : ''}`}
-
                             name="txt"
                             onChange={handleSearch}
                             placeholder="Search..."

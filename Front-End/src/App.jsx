@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import "@stripe/stripe-js"
+import axios from 'axios';
 
 import Hero from './components/Hero/Hero'
 import Products from './components/Products/ProductList/Products';
@@ -13,8 +15,7 @@ import Header from './components/Navbar/Header';
 import NotFound from './components/NotFound';
 import Success from './components/Products/Cart/Success';
 
-function App() {
-
+const App = () => {
   const API_URL = "https://digital-depot.onrender.com/api/";
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState("")
@@ -59,6 +60,9 @@ function App() {
     }
 
   }, [])
+
+
+
   useEffect(() => {
     const localCurrentOrderId = window.localStorage.getItem('currentOrderId');
     if (!localCurrentOrderId && isLoggedIn) {
@@ -76,27 +80,11 @@ function App() {
     setCurrentOrderId(currentOrderId)
     setIsLoggedIn(isLoggedInLocal)
     setToken(localToken)
-    if (localToken) {
-      setIsLoggedIn(true)
-    }
 
     if (localToken) {
       setIsLoggedIn(true)
-      fetch(`${API_URL}users/me`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localToken}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((result) => {
-          setUser(result.user)
-        })
-        .catch((error) => console.log(error));
-
+      getUser();
       getProducts();
-      fetchFavorites();
-      fetchOrders();
       getCartTest()
     } else {
       fetchGuestProducts()
@@ -110,27 +98,38 @@ function App() {
 
   }, [filterName])
 
+  const getUser = async () => {
+    const response = await axios.get(`${API_URL}users/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+    })
+    const result = response.data
+    setUser(result)
+  }
+
   const getProducts = async () => {
     try {
       if (isLoggedIn) {
-        const response = await fetch(`${API_URL}products/all`, {
+        const response = await axios.get(`${API_URL}products/all`, {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
+            'Authorization': `Bearer ${token}`,
           },
         });
-        const result = await response.json();
+        const result = response.data;
         if (result) {
           setProducts(result);
         }
         return result;
       } else {
-        const response = await fetch(`${API_URL}products`, {
+        const response = await axios.get(`${API_URL}products`, {
           headers: {
             'Content-Type': 'application/json',
           },
         });
-        const result = await response.json();
+        const result = response.data;
         if (result) {
           setProducts(result);
         }
@@ -145,13 +144,13 @@ function App() {
     try {
       const localToken = window.localStorage.getItem('token');
       if (localToken) {
-        const response = await fetch(`${API_URL}order/cart`, {
+        const response = await axios.get(`${API_URL}order/cart`, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${localToken}`,
           },
         })
-        const items = await response.json();
+        const items = await response.data;
         setCartItems(items)
       }
     } catch (error) {
@@ -162,12 +161,12 @@ function App() {
   const fetchGuestProducts = async () => {
     const localToken = window.localStorage.getItem('token');
     if (!localToken) {
-      const response = await fetch(`${API_URL}products`, {
+      const response = await axios.get(`${API_URL}products`, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      const result = await response.json();
+      const result = await response.data;
       if (result) {
         setProducts(result);
       }
@@ -175,49 +174,16 @@ function App() {
     }
   }
 
-
-  const fetchFavorites = async () => {
-    try {
-      try {
-        const favoriteProducts = await fetch(`${API_URL}favorite/myFavorites`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const products = await favoriteProducts.json();
-        setFavorites(products)
-      } catch (error) {
-        console.log(error);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fetchOrders = async () => {
-    if (token) {
-      const response = await fetch(`${API_URL}order/history`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      const data = await response.json();
-      setFinalizedOrders(data)
-    }
-  }
-
   const fetchOrder = async () => {
     if (token) {
-      const response = await fetch(`${API_URL}order/myOrders`, {
+      const response = await axios.get(`${API_URL}order/myOrders`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      const data = await response.json();
+      const data = await response.data;
       const orderId = data[0].id
       localStorage.setItem('currentOrderId', orderId);
-      console.log("FETCHIN ORDER APP: ", data[0].id)
       setCurrentOrderId(orderId)
     }
   }

@@ -19,7 +19,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const lowerCaseFilterName = filterName.toLowerCase();
     const location = useLocation();
 
-
     useEffect(() => {
         const filteredProducts = filterProducts(products, filterName);
         setFurniture(filteredProducts);
