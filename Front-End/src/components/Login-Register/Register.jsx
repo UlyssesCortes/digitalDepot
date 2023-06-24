@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react"
 import authorization from "../../assets/LottieAnimations/loadingLogin.json"
@@ -14,12 +15,11 @@ const Register = ({ API_URL, setHideNav, setDemoUser }) => {
     const [weakPass, setWeakPass] = useState(false)
     const [invalidEmail, setInvalidEmail] = useState(false)
     const [showAnimation, setShowAnimation] = useState(false)
+    const navigate = useNavigate();
 
     useEffect(() => {
         setHideNav(true)
     }, []);
-    const navigate = useNavigate();
-
 
     const handleChangeFirstName = (event) => {
         setFirstName(event.target.value)
@@ -50,22 +50,18 @@ const Register = ({ API_URL, setHideNav, setDemoUser }) => {
             return;
         }
         try {
-            const response = await fetch(`${API_URL}users/register`, {
-                method: "POST",
+            const response = await axios.post(`${API_URL}users/register`, {
+                firstName: firstName,
+                lastName: lastName,
+                email: emailReg,
+                password: passwordReg,
+                isAdmin: "false",
+            }, {
                 headers: {
                     'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: emailReg,
-                    password: passwordReg,
-                    isAdmin: "false"
-                })
+                }
             });
-
-            const result = await response.json();
-            console.log(result)
+            const result = await response.data;
 
             if (result.message === "PasswordTooShortError") {
                 setWeakPass(true);
@@ -75,7 +71,6 @@ const Register = ({ API_URL, setHideNav, setDemoUser }) => {
                 setWeakPass(false)
                 setUserNameTaken(false)
                 setShowAnimation(true)
-
             }
 
             if (result.token) {
@@ -87,7 +82,6 @@ const Register = ({ API_URL, setHideNav, setDemoUser }) => {
             if (!result.token) {
                 setShowAnimation(false)
             }
-
         } catch (error) {
             console.error("An error occurred during registration:", error);
         }
@@ -112,14 +106,9 @@ const Register = ({ API_URL, setHideNav, setDemoUser }) => {
                             <input type='text' placeholder="First Name" value={firstName} onChange={handleChangeFirstName} className="inputLogin namesInp"></input>
                             <input type='text' placeholder="Last Name" value={lastName} onChange={handleChangeLastName} className="inputLogin namesInp"></input>
                         </div>
-
                         <input type='text' placeholder="Email" value={emailReg} onChange={handleChangeEmailReg} className="inputLogin"></input>
                         <input type='password' placeholder="Password" value={passwordReg} onChange={handleChangePasswordRegister} className="inputLogin"></input>
                         <button type="submit" className="loginBtn">Register &rarr;</button>
-                        {/* <button className='googleLog'>
-                            <div className='googleIcon'></div>
-                            Sign up with Google
-                        </button> */}
                     </form>
                     <Link to='/products' className="link-2" onClick={() => { setHideNav(false) }}></Link>
 
@@ -135,7 +124,6 @@ const Register = ({ API_URL, setHideNav, setDemoUser }) => {
                         className=" demoUser">Demo User
                     </Link>
                 </section>
-
 
                 <div className='authContainer'>
                     {showAnimation && <Lottie className="authorizationAnimation2" animationData={authorization} loop={false} />}

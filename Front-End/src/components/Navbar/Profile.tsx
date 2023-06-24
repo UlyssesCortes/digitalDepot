@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
+import {
+    itemVariants,
+    containerVariants
+} from '../../assets/FramerAnimations/NavAnimations';
 
 export default function Profile({ setIsLoggedIn, setShowProfile, showProfile, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCartItems, setCurrentOrderId }) {
 
     const handleLogOutBtn = () => {
-        // window.localStorage.removeItem('isLoggedIn');
-        // window.localStorage.removeItem('token');
-        // window.localStorage.removeItem('currentOrderId');
-
         localStorage.setItem('currentOrderId', "");
         localStorage.setItem('token', "");
         localStorage.setItem('isLoggedIn', "");
@@ -17,37 +17,6 @@ export default function Profile({ setIsLoggedIn, setShowProfile, showProfile, se
         setShowProfile(false)
         setCurrentOrderId("")
         setCartItems([])
-    };
-
-    const itemVariants: Variants = {
-        open: {
-            opacity: 1,
-            y: 0,
-            transition: { type: "spring", stiffness: 300, damping: 24 }
-        },
-        closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
-
-    };
-
-    const containerVariants = {
-        open: {
-            clipPath: "inset(0% 0% 0% 0% )",
-            transition: {
-                type: "spring",
-                bounce: 0,
-                duration: 0.5,
-                delayChildren: 0.3,
-                staggerChildren: 0.05,
-            },
-        },
-        closed: {
-            clipPath: "inset(10% 50% 90% 50% )",
-            transition: {
-                type: "spring",
-                bounce: 0,
-                duration: 0.2,
-            },
-        },
     };
 
     const handleFavClick = () => {

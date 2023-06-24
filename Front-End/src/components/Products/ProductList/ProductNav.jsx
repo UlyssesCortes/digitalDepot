@@ -5,7 +5,7 @@ import Lottie from "lottie-react"
 import filterIcon from "../../../assets/LottieAnimations/filterDotsIcon.json"
 
 
-export default function ProductNav({ setFilterName, setCurrentPage, setActiveCategory, activeCategory, setSortMethod }) {
+export default function ProductNav({ setFilterName, setCurrentPage, setActiveCategory, activeCategory, setSortMethod, setUpdateFurniture }) {
     const [isSortOpen, setIsSortOpen] = useState(false)
     const [sortType, setSortType] = useState("")
 
@@ -14,6 +14,7 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
         setSortType("Sort and Filter")
         setCurrentPage(1);
         setActiveCategory(category);
+        setUpdateFurniture(true)
     };
 
     const selectSortMethod = (sort) => {
@@ -64,20 +65,17 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
                 >
                     Desks
                 </button>
-
                 <motion.nav
                     initial={false}
                     animate={isSortOpen ? "open" : "closed"}
                     className="sortMenuSection"
                     layout="position"
                 >
-
                     <div
                         onClick={() => setIsSortOpen(!isSortOpen)}
                         className='sortBtnContainer'
                     >
-
-                        <Lottie className="sortIcon" animationData={filterIcon} loop={true} animationOptions={{ delay: 2000 }} />
+                        <Lottie className="sortIcon" animationData={filterIcon} loop={true} animationoptions={{ delay: 2000 }} />
                         <p className="productLinks sortBtn">{sortType ? sortType : "Sort and Filter"}</p>
                         <span className={`downArr ${isSortOpen && "rotate"}`}></span>
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import "@stripe/stripe-js"
+import axios from 'axios';
 
 import Hero from './components/Hero/Hero'
 import Products from './components/Products/ProductList/Products';
@@ -13,8 +15,7 @@ import Header from './components/Navbar/Header';
 import NotFound from './components/NotFound';
 import Success from './components/Products/Cart/Success';
 
-function App() {
-
+const App = () => {
   const API_URL = "https://digital-depot.onrender.com/api/";
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState("")
@@ -33,6 +34,7 @@ function App() {
   const [isCategorieOpen, setIsCategorieOpen] = useState(false);
   const [showCart, setShowCart] = useState(true);
   const [noResult, setNoResult] = useState(false);
+  const [updateFurniture, setUpdateFurniture] = useState(false)
   const [showFavorite, setShowFavorite] = useState(false);
   const [pageTitle, setPageTitle] = useState("SHOPPING CART");
   const [modalEmail, setModalEmail] = useState("")
@@ -42,23 +44,22 @@ function App() {
   // localStorage.setItem('currentOrderId', "");
   useEffect(() => {
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
-    setIsLoggedIn(isLoggedInLocal)
+    const localToken = window.localStorage.getItem('token');
     const localCurrentOrderId = window.localStorage.getItem('currentOrderId');
-    setCurrentOrderId(localCurrentOrderId)
-
-    if (!isLoggedInLocal) {
-      localStorage.setItem('currentOrderId', "");
-    }
-
+    setIsLoggedIn(isLoggedInLocal)
     if (isLoggedInLocal) {
-      const localToken = window.localStorage.getItem('token');
-      const currentOrderId = window.localStorage.getItem('currentOrderId');
       setToken(localToken)
       setIsLoggedIn(isLoggedInLocal)
-      setCurrentOrderId(currentOrderId)
+      setCurrentOrderId(localCurrentOrderId)
+      getUser();
+      getCartTest()
+      getProducts()
+    } else {
+      localStorage.setItem('currentOrderId', "");
+      fetchGuestProducts()
     }
-
   }, [])
+
   useEffect(() => {
     const localCurrentOrderId = window.localStorage.getItem('currentOrderId');
     if (!localCurrentOrderId && isLoggedIn) {
@@ -70,67 +71,60 @@ function App() {
   }, [isLoggedIn])
 
   useEffect(() => {
-    const localToken = window.localStorage.getItem('token');
-    const currentOrderId = window.localStorage.getItem('currentOrderId');
-    const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
-    setCurrentOrderId(currentOrderId)
-    setIsLoggedIn(isLoggedInLocal)
-    setToken(localToken)
-    if (localToken) {
-      setIsLoggedIn(true)
+    if (filterName) {
+      setActiveCategory(filterName)
     }
+  }, [filterName])
 
-    if (localToken) {
-      setIsLoggedIn(true)
-      fetch(`${API_URL}users/me`, {
+  const getUser = async () => {
+    const localToken = window.localStorage.getItem('token');
+    try {
+      const response = await axios.get(`${API_URL}users/me`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localToken}`,
         },
       })
-        .then((response) => response.json())
-        .then((result) => {
-          setUser(result.user)
+      const result = await response.data
+      setUser(result)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const getCartTest = async () => {
+    try {
+      const localToken = window.localStorage.getItem('token');
+      if (localToken) {
+        const response = await axios.get(`${API_URL}order/cart`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localToken}`,
+          },
         })
-        .catch((error) => console.log(error));
-
-      getProducts();
-      fetchFavorites();
-      fetchOrders();
-      getCartTest()
-    } else {
-      fetchGuestProducts()
+        const items = await response.data;
+        if (items) {
+          setCartItems(items)
+        }
+      }
+    } catch (error) {
+      console.log(error)
     }
-  }, [token]);
-
-  useEffect(() => {
-    if (filterName) {
-      setActiveCategory(filterName)
-    }
-
-  }, [filterName])
+  }
 
   const getProducts = async () => {
+    const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
+    const localToken = window.localStorage.getItem('token');
+
     try {
-      if (isLoggedIn) {
-        const response = await fetch(`${API_URL}products/all`, {
+      if (isLoggedInLocal) {
+        const response = await axios.get(`${API_URL}products/all`, {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${localToken}`,
           },
         });
-        const result = await response.json();
-        if (result) {
-          setProducts(result);
-        }
-        return result;
-      } else {
-        const response = await fetch(`${API_URL}products`, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        const result = await response.json();
+        const result = await response.data;
         if (result) {
           setProducts(result);
         }
@@ -141,33 +135,15 @@ function App() {
     }
   };
 
-  const getCartTest = async () => {
-    try {
-      const localToken = window.localStorage.getItem('token');
-      if (localToken) {
-        const response = await fetch(`${API_URL}order/cart`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localToken}`,
-          },
-        })
-        const items = await response.json();
-        setCartItems(items)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
   const fetchGuestProducts = async () => {
     const localToken = window.localStorage.getItem('token');
     if (!localToken) {
-      const response = await fetch(`${API_URL}products`, {
+      const response = await axios.get(`${API_URL}products`, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      const result = await response.json();
+      const result = await response.data;
       if (result) {
         setProducts(result);
       }
@@ -175,49 +151,16 @@ function App() {
     }
   }
 
-
-  const fetchFavorites = async () => {
-    try {
-      try {
-        const favoriteProducts = await fetch(`${API_URL}favorite/myFavorites`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const products = await favoriteProducts.json();
-        setFavorites(products)
-      } catch (error) {
-        console.log(error);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const fetchOrders = async () => {
-    if (token) {
-      const response = await fetch(`${API_URL}order/history`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      const data = await response.json();
-      setFinalizedOrders(data)
-    }
-  }
-
   const fetchOrder = async () => {
     if (token) {
-      const response = await fetch(`${API_URL}order/myOrders`, {
+      const response = await axios.get(`${API_URL}order/myOrders`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      const data = await response.json();
+      const data = await response.data;
       const orderId = data[0].id
       localStorage.setItem('currentOrderId', orderId);
-      console.log("FETCHIN ORDER APP: ", data[0].id)
       setCurrentOrderId(orderId)
     }
   }
@@ -230,7 +173,6 @@ function App() {
             <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} setCartItems={setCartItems} setCurrentOrderId={setCurrentOrderId} />
           </div>
         }
-
         <Routes>
           <Route
             path='/'
@@ -240,7 +182,6 @@ function App() {
             path='/paymentSuccess'
             element={<Success API_URL={API_URL} setCurrentOrderId={setCurrentOrderId} setCartItems={setCartItems} />}
           />
-
           <Route
             path='/register'
             element={<Register API_URL={API_URL} setHideNav={setHideNav} setDemoUser={setDemoUser} />}
@@ -255,14 +196,14 @@ function App() {
           />
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setCurrentPage={setCurrentPage} currentPage={currentPage} setProducts={setProducts} activeCategory={activeCategory} setActiveCategory={setActiveCategory} setNoResult={setNoResult} noResult={noResult} setDemoUser={setDemoUser} />}
+            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setCurrentPage={setCurrentPage} currentPage={currentPage} setProducts={setProducts} activeCategory={activeCategory} setActiveCategory={setActiveCategory} setNoResult={setNoResult} noResult={noResult} setDemoUser={setDemoUser} updateFurniture={updateFurniture} setUpdateFurniture={setUpdateFurniture} />}
           />
           <Route
             path='/offers'
             element={<Offers setShowProfile={setShowProfile} setFilterName={setFilterName} setActiveCategory={setActiveCategory} />}
           />
           <Route path="/products/:id"
-            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} setProducts={setProducts} setCartItems={setCartItems} setDemoUser={setDemoUser} />}
+            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} setCartItems={setCartItems} setDemoUser={setDemoUser} setUpdateFurniture={setUpdateFurniture} />}
           />
           <Route
             path="/*"
@@ -270,7 +211,6 @@ function App() {
               <NotFound setHideNav={setHideNav} />
             )}
           />
-
         </Routes>
       </BrowserRouter>
     </>

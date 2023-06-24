@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 import Lottie from "lottie-react"
@@ -25,7 +27,6 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
     let sum = 0;
     let stripePromise
 
-
     const getStripe = () => {
         if (!stripePromise) {
             stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHIBLE_KEY)
@@ -37,13 +38,13 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
         try {
             const localToken = window.localStorage.getItem('token');
 
-            const response = await fetch(`${API_URL}order/cart`, {
+            const response = await axios.get(`${API_URL}order/cart`, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${localToken}`,
                 },
             })
-            const items = await response.json();
+            const items = await response.data;
             setCartItems(items)
         } catch (error) {
             console.log(error)
@@ -52,40 +53,44 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
 
     const deleteItem = async (data) => {
         try {
-            const response = await fetch(`${API_URL}order-items/${data.productId}`, {
-                method: "DELETE",
+            const response = await axios.delete(`${API_URL}order-items/${data.productId}`, {
                 headers: {
                     'Content-Type': 'application/json',
                 }
             });
-            const responseBody = await response.json();
+            const responseBody = await response.data;
             console.log(responseBody);
-
             getCartTest()
         } catch (error) {
             console.error(error);
         }
     };
+
+    const updateQuantity = async (data, index, quantity) => {
+        const response = await axios.patch(`${API_URL}order-items/${data.orderItemId}`, {
+            quantity: quantity
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            }
+        });
+        console.log(response)
+
+        if (response.status === 200) {
+            setCartItems((pertCartItems) => {
+                const updatedCart = [...pertCartItems];
+                updatedCart[index].quantity = quantity;
+                return updatedCart;
+            });
+        }
+    }
+
     const increaseQuantity = async (data, index) => {
         if (data.quantity < 4) {
             let currentQuantity = data.quantity + 1;
-            const orderItemId = data.orderItemId;
             try {
-                const response = await fetch(`${API_URL}order-items/${orderItemId}`, {
-                    method: "PATCH",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify({ quantity: currentQuantity }),
-                });
-                if (response.ok) {
-                    setCartItems((pertCartItems) => {
-                        const updatedCart = [...pertCartItems];
-                        updatedCart[index].quantity = currentQuantity;
-                        return updatedCart;
-                    });
-                }
+                updateQuantity(data, index, currentQuantity)
             } catch (error) {
                 console.log(error);
             }
@@ -96,25 +101,9 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
     const decreaseQuantity = async (data, index) => {
         if (data.quantity > 1) {
             let currentQuantity = data.quantity - 1;
-            const orderItemId = data.orderItemId;
 
             try {
-                const response = await fetch(`${API_URL}order-items/${orderItemId}`, {
-                    method: "PATCH",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                    },
-                    body: JSON.stringify({ quantity: currentQuantity }),
-                });
-
-                if (response.ok) {
-                    setCartItems((prevCart) => {
-                        const updatedCart = [...prevCart];
-                        updatedCart[index].quantity = currentQuantity;
-                        return updatedCart;
-                    });
-                }
+                updateQuantity(data, index, currentQuantity)
             } catch (error) {
                 console.log(error);
             }
@@ -147,7 +136,7 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
                 alert(error.message)
             }
             setStripeLoading(false)
-            getCartTest()
+            setCartItems([])
         }
     }
 

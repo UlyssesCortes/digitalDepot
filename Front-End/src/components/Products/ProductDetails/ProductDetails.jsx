@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import { useParams } from 'react-router-dom';
 import Lottie from "lottie-react"
 import check from "../../../assets/LottieAnimations/check.json"
@@ -14,7 +16,7 @@ import ProductLoading from '../../Loading/ProductLoading';
 import ImageSlider from './ImageSlider';
 import LoginAlert from '../../Login-Register/LoginAlert';
 
-export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, setProducts, setCartItems, setDemoUser }) {
+export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, setCartItems, setDemoUser, setUpdateFurniture }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [displayFeatures, setDisplayFeatures] = useState(false)
@@ -36,23 +38,23 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
 
         try {
             if (localToken) {
-                const response = await fetch(`${API_URL}products/details/${id}`, {
+                const response = await axios.get(`${API_URL}products/details/${id}`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${localToken}`,
                     },
                 });
-                const result = await response.json();
+                const result = await response.data;
                 if (result) {
                     setProduct(result);
                 }
             } else {
-                const response = await fetch(`${API_URL}products/${id}`, {
+                const response = await axios.get(`${API_URL}products/${id}`, {
                     headers: {
                         "Content-Type": "application/json"
                     },
                 });
-                const result = await response.json();
+                const result = await response.data;
                 if (result) {
                     setProduct(result);
                 }
@@ -74,21 +76,18 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const handleFavoriteBtn = async (productId) => {
         if (isLoggedIn) {
             try {
-                const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
-                    method: 'POST',
+                const favoriteResponse = await axios.post(`${API_URL}favorite/${productId}`, {}, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
-                    },
+                    }
                 });
-                if (favoriteResponse.ok) {
+                if (favoriteResponse.status === 200) {
                     setClickedFav(true)
-                    getProducts()
-                }
-                if (!favoriteResponse.ok) {
-
+                    setUpdateFurniture(true)
+                } else {
                     throw new Error(
-                        `Failed to create order. Status: ${favoriteResponse.status}`
+                        `Failed to add to favorite. Status: ${favoriteResponse.status}`
                     );
                 }
             } catch (error) {
@@ -102,58 +101,23 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
     const removeFavorite = async (productId) => {
         if (isLoggedIn) {
             try {
-                const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
-                    method: 'DELETE',
+                const favoriteResponse = await axios.delete(`${API_URL}favorite/${productId}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                if (favoriteResponse.ok) {
+                if (favoriteResponse.status === 200) {
                     setClickedFav(true)
-                    getProducts()
-                }
-                if (!favoriteResponse.ok) {
+                    setUpdateFurniture(true)
+                } else {
                     throw new Error(
-                        `Failed to create order. Status: ${favoriteResponse.status}`
+                        `Failed to remove favorite. Status: ${favoriteResponse.status}`
                     );
                 }
             } catch (error) {
                 console.error(error);
             }
-        }
-    };
-
-    const getProducts = async () => {
-        try {
-            if (isLoggedIn) {
-
-                const response = await fetch(`${API_URL}products/all`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                const result = await response.json();
-                if (result) {
-                    setProducts(result);
-                    console.log(result)
-                }
-                return result;
-            } else {
-                const response = await fetch(`${API_URL}products`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const result = await response.json();
-                if (result) {
-                    setProducts(result);
-                }
-                return result;
-            }
-        } catch (error) {
-            console.error(error);
         }
     };
 

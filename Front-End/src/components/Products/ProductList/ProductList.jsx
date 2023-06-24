@@ -6,8 +6,9 @@ import { motion } from "framer-motion";
 import ProductListLoading from '../../Loading/ProductListLoading';
 import LoginAlert from '../../Login-Register/LoginAlert';
 import { generateCardVariants } from '../../../assets/FramerAnimations/ProductAnimation';
+import axios from 'axios';
 
-export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod, setSortMethod, setNoResult, noResult, setDemoUser }) {
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod, setSortMethod, setNoResult, noResult, setDemoUser, updateFurniture, setUpdateFurniture }) {
     const [furniture, setFurniture] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [showAll, setShowAll] = useState(false);
@@ -18,7 +19,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     const lowerCaseFilterName = filterName.toLowerCase();
     const location = useLocation();
-
 
     useEffect(() => {
         const filteredProducts = filterProducts(products, filterName);
@@ -40,13 +40,11 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     }, []);
 
     useEffect(() => {
-        const cleanup = async () => {
-            await getProducts();
-        };
-        return () => {
-            cleanup();
-        };
-    }, [location.pathname]);
+        if (updateFurniture) {
+            getProducts();
+            setUpdateFurniture(false)
+        }
+    }, [location.pathname, updateFurniture]);
 
     const filterProducts = (products, filterName) => {
         if (!filterName || filterName === 'all') {
@@ -80,24 +78,24 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const getProducts = async () => {
         try {
             if (isLoggedIn) {
-                const response = await fetch(`${API_URL}products/all`, {
+                const response = await axios.get(`${API_URL}products/all`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                const result = await response.json();
+                const result = await response.data;
                 if (result) {
                     setProducts(result);
                 }
                 return result;
             } else {
-                const response = await fetch(`${API_URL}products`, {
+                const response = await axios.get(`${API_URL}products`, {
                     headers: {
                         'Content-Type': 'application/json',
                     },
                 });
-                const result = await response.json();
+                const result = await response.data;
                 if (result) {
                     setProducts(result);
                 }
@@ -126,24 +124,16 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             });
 
             try {
-                const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
-                    method: 'POST',
+                const favoriteResponse = await axios.post(`${API_URL}favorite/${productId}`, {}, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,
                     },
                 });
 
-                if (!favoriteResponse.ok) {
-                    setFurniture((prevFurniture) => {
-                        return prevFurniture.map((product) => {
-                            if (product.id === productId) {
-                                return { ...product, isFavorite: !product.isFavorite };
-                            }
-                            return product;
-                        });
-                    });
-
+                if (favoriteResponse.status === 200) {
+                    setUpdateFurniture(true)
+                } else {
                     throw new Error(
                         `Failed to create order. Status: ${favoriteResponse.status}`
                     );
@@ -167,24 +157,17 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         });
 
         try {
-            const favoriteResponse = await fetch(`${API_URL}favorite/${productId}`, {
-                method: 'DELETE',
+            const favoriteResponse = await axios.delete(`${API_URL}favorite/${productId}`, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
                 },
             });
 
-            if (!favoriteResponse.ok) {
-                setFurniture((prevFurniture) => {
-                    return prevFurniture.map((product) => {
-                        if (product.id === productId) {
-                            return { ...product, isFavorite: true };
-                        }
-                        return product;
-                    });
-                });
+            if (favoriteResponse.status === 200) {
+                setUpdateFurniture(true)
 
+            } else {
                 throw new Error(
                     `Failed to create order. Status: ${favoriteResponse.status}`
                 );
@@ -194,11 +177,9 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         }
     };
 
-
     const handleClick = () => {
         setShowAll(!showAll);
     };
-
     const visibleButtons = showAll ? furniture.length : 7;
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -253,7 +234,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                                 to={`/products/${product.id}`}
                                 key={product.id}
                                 onMouseEnter={() => handleMouseEnter(index)}
-                                onClick={() => { getProducts() }}
+                            // onClick={() => { getProducts() }}
                             >
                                 <Suspense fallback={<div>Loading...</div>}>
                                     <div className="imageContainer">

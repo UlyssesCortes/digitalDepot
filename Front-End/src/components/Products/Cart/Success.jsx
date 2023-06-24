@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
+import axios from 'axios';
+
 import Lottie from "lottie-react"
 import checkout from "../../../assets/LottieAnimations/checkout.json"
 import { useNavigate } from 'react-router-dom';
-
 
 export default function Success({ API_URL, setCurrentOrderId, setCartItems }) {
     let orderId
@@ -27,31 +28,29 @@ export default function Success({ API_URL, setCurrentOrderId, setCartItems }) {
             const totalSum = window.localStorage.getItem('totalSum');
 
             if (!currentOrderId || currentOrderId == undefined) {
-                const response = await fetch(`${API_URL}order/myOrders`, {
+                const response = await axios.get(`${API_URL}order/myOrders`, {
                     headers: {
                         Authorization: `Bearer ${localToken}`
                     }
                 });
-                const data = await response.json();
+                const data = await response.data;
                 orderId = data[0].id
             } else {
                 orderId = currentOrderId
             }
 
             if (orderId) {
-                const response = await fetch(`${API_URL}order/${orderId}`, {
-                    method: "PATCH",
+                const response = await axios.patch(`${API_URL}order/${orderId}`, {
+                    isCheckedOut: true,
+                    checkoutDate: formattedDate,
+                    checkoutSum: totalSum,
+                }, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localToken}`,
-                    },
-                    body: JSON.stringify({
-                        isCheckedOut: true,
-                        checkoutDate: formattedDate,
-                        checkoutSum: totalSum,
-                    })
+                    }
                 });
-                const result = await response.json();
+                const result = await response.data;
                 console.log("result: ", result)
                 if (result.name !== "error") {
                     localStorage.setItem('currentOrderId', "");
