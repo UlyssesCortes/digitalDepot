@@ -61,8 +61,6 @@ const App = () => {
 
   }, [])
 
-
-
   useEffect(() => {
     const localCurrentOrderId = window.localStorage.getItem('currentOrderId');
     if (!localCurrentOrderId && isLoggedIn) {
@@ -84,7 +82,6 @@ const App = () => {
     if (localToken) {
       setIsLoggedIn(true)
       getUser();
-      getProducts();
       getCartTest()
     } else {
       fetchGuestProducts()
@@ -108,37 +105,6 @@ const App = () => {
     const result = response.data
     setUser(result)
   }
-
-  const getProducts = async () => {
-    try {
-      if (isLoggedIn) {
-        const response = await axios.get(`${API_URL}products/all`, {
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-        });
-        const result = response.data;
-        if (result) {
-          setProducts(result);
-        }
-        return result;
-      } else {
-        const response = await axios.get(`${API_URL}products`, {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        const result = response.data;
-        if (result) {
-          setProducts(result);
-        }
-        return result;
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const getCartTest = async () => {
     try {
@@ -193,10 +159,9 @@ const App = () => {
       <BrowserRouter>
         {!hideNav &&
           <div className='marginReducer'>
-            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} setCartItems={setCartItems} setCurrentOrderId={setCurrentOrderId} />
+            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} setCartItems={setCartItems} setCurrentOrderId={setCurrentOrderId} setProducts={setProducts} />
           </div>
         }
-
         <Routes>
           <Route
             path='/'
@@ -206,7 +171,6 @@ const App = () => {
             path='/paymentSuccess'
             element={<Success API_URL={API_URL} setCurrentOrderId={setCurrentOrderId} setCartItems={setCartItems} />}
           />
-
           <Route
             path='/register'
             element={<Register API_URL={API_URL} setHideNav={setHideNav} setDemoUser={setDemoUser} />}
@@ -228,7 +192,7 @@ const App = () => {
             element={<Offers setShowProfile={setShowProfile} setFilterName={setFilterName} setActiveCategory={setActiveCategory} />}
           />
           <Route path="/products/:id"
-            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} setProducts={setProducts} setCartItems={setCartItems} setDemoUser={setDemoUser} />}
+            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} setCartItems={setCartItems} setDemoUser={setDemoUser} />}
           />
           <Route
             path="/*"
@@ -236,7 +200,6 @@ const App = () => {
               <NotFound setHideNav={setHideNav} />
             )}
           />
-
         </Routes>
       </BrowserRouter>
     </>

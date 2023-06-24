@@ -12,7 +12,7 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage, setFinalizedOrders, noResult, setIsCategorieOpen, isCategorieOpen, setCartItems, setCurrentOrderId }) {
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage, setFinalizedOrders, noResult, setIsCategorieOpen, isCategorieOpen, setCartItems, setCurrentOrderId, setProducts }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showSearch, setShowSearch] = useState(false)
     const [searchInput, setSearchInput] = useState("")
@@ -72,6 +72,8 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
             setFinalizedOrders(data)
         }
     }
+
+
 
     const handleSerachBar = (event) => {
         event.preventDefault()
