@@ -34,6 +34,7 @@ const App = () => {
   const [isCategorieOpen, setIsCategorieOpen] = useState(false);
   const [showCart, setShowCart] = useState(true);
   const [noResult, setNoResult] = useState(false);
+  const [updateFurniture, setUpdateFurniture] = useState(false)
   const [showFavorite, setShowFavorite] = useState(false);
   const [pageTitle, setPageTitle] = useState("SHOPPING CART");
   const [modalEmail, setModalEmail] = useState("")
@@ -43,22 +44,20 @@ const App = () => {
   // localStorage.setItem('currentOrderId', "");
   useEffect(() => {
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
-    setIsLoggedIn(isLoggedInLocal)
+    const localToken = window.localStorage.getItem('token');
     const localCurrentOrderId = window.localStorage.getItem('currentOrderId');
-    setCurrentOrderId(localCurrentOrderId)
-
-    if (!isLoggedInLocal) {
-      localStorage.setItem('currentOrderId', "");
-    }
-
+    setIsLoggedIn(isLoggedInLocal)
     if (isLoggedInLocal) {
-      const localToken = window.localStorage.getItem('token');
-      const currentOrderId = window.localStorage.getItem('currentOrderId');
       setToken(localToken)
       setIsLoggedIn(isLoggedInLocal)
-      setCurrentOrderId(currentOrderId)
+      setCurrentOrderId(localCurrentOrderId)
+      getUser();
+      getCartTest()
+      getProducts()
+    } else {
+      localStorage.setItem('currentOrderId', "");
+      fetchGuestProducts()
     }
-
   }, [])
 
   useEffect(() => {
@@ -72,38 +71,25 @@ const App = () => {
   }, [isLoggedIn])
 
   useEffect(() => {
-    const localToken = window.localStorage.getItem('token');
-    const currentOrderId = window.localStorage.getItem('currentOrderId');
-    const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
-    setCurrentOrderId(currentOrderId)
-    setIsLoggedIn(isLoggedInLocal)
-    setToken(localToken)
-
-    if (localToken) {
-      setIsLoggedIn(true)
-      getUser();
-      getCartTest()
-    } else {
-      fetchGuestProducts()
-    }
-  }, [token]);
-
-  useEffect(() => {
     if (filterName) {
       setActiveCategory(filterName)
     }
-
   }, [filterName])
 
   const getUser = async () => {
-    const response = await axios.get(`${API_URL}users/me`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-    })
-    const result = response.data
-    setUser(result)
+    const localToken = window.localStorage.getItem('token');
+    try {
+      const response = await axios.get(`${API_URL}users/me`, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localToken}`,
+        },
+      })
+      const result = await response.data
+      setUser(result)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const getCartTest = async () => {
@@ -117,12 +103,37 @@ const App = () => {
           },
         })
         const items = await response.data;
-        setCartItems(items)
+        if (items) {
+          setCartItems(items)
+        }
       }
     } catch (error) {
       console.log(error)
     }
   }
+
+  const getProducts = async () => {
+    const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
+    const localToken = window.localStorage.getItem('token');
+
+    try {
+      if (isLoggedInLocal) {
+        const response = await axios.get(`${API_URL}products/all`, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localToken}`,
+          },
+        });
+        const result = await response.data;
+        if (result) {
+          setProducts(result);
+        }
+        return result;
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const fetchGuestProducts = async () => {
     const localToken = window.localStorage.getItem('token');
@@ -159,7 +170,7 @@ const App = () => {
       <BrowserRouter>
         {!hideNav &&
           <div className='marginReducer'>
-            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} setCartItems={setCartItems} setCurrentOrderId={setCurrentOrderId} setProducts={setProducts} />
+            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} setCartItems={setCartItems} setCurrentOrderId={setCurrentOrderId} />
           </div>
         }
         <Routes>
@@ -185,14 +196,14 @@ const App = () => {
           />
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setCurrentPage={setCurrentPage} currentPage={currentPage} setProducts={setProducts} activeCategory={activeCategory} setActiveCategory={setActiveCategory} setNoResult={setNoResult} noResult={noResult} setDemoUser={setDemoUser} />}
+            element={<Products API_URL={API_URL} user={user} token={token} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} filterName={filterName} setFilterName={setFilterName} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} products={products} setCurrentPage={setCurrentPage} currentPage={currentPage} setProducts={setProducts} activeCategory={activeCategory} setActiveCategory={setActiveCategory} setNoResult={setNoResult} noResult={noResult} setDemoUser={setDemoUser} updateFurniture={updateFurniture} setUpdateFurniture={setUpdateFurniture} />}
           />
           <Route
             path='/offers'
             element={<Offers setShowProfile={setShowProfile} setFilterName={setFilterName} setActiveCategory={setActiveCategory} />}
           />
           <Route path="/products/:id"
-            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} setCartItems={setCartItems} setDemoUser={setDemoUser} />}
+            element={<ProductDetails API_URL={API_URL} user={user} token={token} currentOrderId={currentOrderId} setCurrentOrderId={setCurrentOrderId} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} setQuantity={setQuantity} quantity={quantity} setShowProfile={setShowProfile} setModalEmail={setModalEmail} modalEmail={modalEmail} setCartItems={setCartItems} setDemoUser={setDemoUser} setUpdateFurniture={setUpdateFurniture} />}
           />
           <Route
             path="/*"

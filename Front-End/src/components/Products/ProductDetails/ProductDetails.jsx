@@ -16,7 +16,7 @@ import ProductLoading from '../../Loading/ProductLoading';
 import ImageSlider from './ImageSlider';
 import LoginAlert from '../../Login-Register/LoginAlert';
 
-export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, setProducts, setCartItems, setDemoUser }) {
+export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, setCartItems, setDemoUser, setUpdateFurniture }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [displayFeatures, setDisplayFeatures] = useState(false)
@@ -84,6 +84,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                 });
                 if (favoriteResponse.status === 200) {
                     setClickedFav(true)
+                    setUpdateFurniture(true)
                 } else {
                     throw new Error(
                         `Failed to add to favorite. Status: ${favoriteResponse.status}`
@@ -108,6 +109,7 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
                 });
                 if (favoriteResponse.status === 200) {
                     setClickedFav(true)
+                    setUpdateFurniture(true)
                 } else {
                     throw new Error(
                         `Failed to remove favorite. Status: ${favoriteResponse.status}`
@@ -116,26 +118,6 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
             } catch (error) {
                 console.error(error);
             }
-        }
-    };
-
-    const getProducts = async () => {
-        try {
-            if (isLoggedIn) {
-                const response = await axios.get(`${API_URL}products/all`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`,
-                    },
-                });
-                const result = response.data;
-                if (result) {
-                    setProducts(result);
-                }
-                return result;
-            }
-        } catch (error) {
-            console.error(error);
         }
     };
 

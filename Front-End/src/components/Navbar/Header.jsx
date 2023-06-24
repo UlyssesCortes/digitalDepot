@@ -12,7 +12,7 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage, setFinalizedOrders, noResult, setIsCategorieOpen, isCategorieOpen, setCartItems, setCurrentOrderId, setProducts }) {
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage, setFinalizedOrders, noResult, setIsCategorieOpen, isCategorieOpen, setCartItems, setCurrentOrderId }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showSearch, setShowSearch] = useState(false)
     const [searchInput, setSearchInput] = useState("")
@@ -31,7 +31,6 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
         const currentPath = location.pathname;
         const desiredPath = '/cart';
         if (currentPath === desiredPath) {
-            console.log('You are on the cart page');
             fetchFavorites()
             fetchOrders()
         }

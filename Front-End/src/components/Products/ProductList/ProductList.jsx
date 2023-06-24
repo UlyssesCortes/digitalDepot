@@ -8,7 +8,7 @@ import LoginAlert from '../../Login-Register/LoginAlert';
 import { generateCardVariants } from '../../../assets/FramerAnimations/ProductAnimation';
 import axios from 'axios';
 
-export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod, setSortMethod, setNoResult, noResult, setDemoUser }) {
+export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod, setSortMethod, setNoResult, noResult, setDemoUser, updateFurniture, setUpdateFurniture }) {
     const [furniture, setFurniture] = useState([]);
     const [hoveredIndex, setHoveredIndex] = useState(null);
     const [showAll, setShowAll] = useState(false);
@@ -40,13 +40,11 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     }, []);
 
     useEffect(() => {
-        const cleanup = async () => {
-            await getProducts();
-        };
-        return () => {
-            cleanup();
-        };
-    }, [location.pathname]);
+        if (updateFurniture) {
+            getProducts();
+            setUpdateFurniture(false)
+        }
+    }, [location.pathname, updateFurniture]);
 
     const filterProducts = (products, filterName) => {
         if (!filterName || filterName === 'all') {
@@ -133,16 +131,9 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                     },
                 });
 
-                if (!favoriteResponse.status === 200) {
-                    setFurniture((prevFurniture) => {
-                        return prevFurniture.map((product) => {
-                            if (product.id === productId) {
-                                return { ...product, isFavorite: !product.isFavorite };
-                            }
-                            return product;
-                        });
-                    });
-
+                if (favoriteResponse.status === 200) {
+                    setUpdateFurniture(true)
+                } else {
                     throw new Error(
                         `Failed to create order. Status: ${favoriteResponse.status}`
                     );
@@ -173,16 +164,10 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                 },
             });
 
-            if (!favoriteResponse.status) {
-                setFurniture((prevFurniture) => {
-                    return prevFurniture.map((product) => {
-                        if (product.id === productId) {
-                            return { ...product, isFavorite: true };
-                        }
-                        return product;
-                    });
-                });
+            if (favoriteResponse.status === 200) {
+                setUpdateFurniture(true)
 
+            } else {
                 throw new Error(
                     `Failed to create order. Status: ${favoriteResponse.status}`
                 );
@@ -191,7 +176,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             console.error(error);
         }
     };
-
 
     const handleClick = () => {
         setShowAll(!showAll);
