@@ -37,6 +37,7 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     useEffect(() => {
         setIsLoggedIn(isLoggedInLocal);
         setFurniture(products)
+
     }, []);
 
     useEffect(() => {
@@ -194,6 +195,9 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     return (
         <>
             <section className="productsLis">
+                {products.length === 0 &&
+                    <ProductListLoading />
+                }
                 {loginAlert &&
                     <div className='loginAlertWrapper'>
                         <LoginAlert setLoginAlert={setLoginAlert} setModalEmail={setModalEmail} modalEmail={modalEmail} setDemoUser={setDemoUser} />
@@ -234,7 +238,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                                 to={`/products/${product.id}`}
                                 key={product.id}
                                 onMouseEnter={() => handleMouseEnter(index)}
-                            // onClick={() => { getProducts() }}
                             >
                                 <Suspense fallback={<div>Loading...</div>}>
                                     <div className="imageContainer">

@@ -5,7 +5,7 @@ import Lottie from "lottie-react"
 import filterIcon from "../../../assets/LottieAnimations/filterDotsIcon.json"
 
 
-export default function ProductNav({ setFilterName, setCurrentPage, setActiveCategory, activeCategory, setSortMethod, setUpdateFurniture }) {
+export default function ProductNav({ setFilterName, setCurrentPage, setActiveCategory, activeCategory, setSortMethod }) {
     const [isSortOpen, setIsSortOpen] = useState(false)
     const [sortType, setSortType] = useState("")
 
@@ -14,7 +14,6 @@ export default function ProductNav({ setFilterName, setCurrentPage, setActiveCat
         setSortType("Sort and Filter")
         setCurrentPage(1);
         setActiveCategory(category);
-        setUpdateFurniture(true)
     };
 
     const selectSortMethod = (sort) => {
