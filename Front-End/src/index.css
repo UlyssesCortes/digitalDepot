@@ -6,6 +6,20 @@
     font-family: inter;
 }
 
+
+&::-webkit-scrollbar {
+    width: 8px;
+}
+
+&::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+&::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
 .otherFont {
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -18,3 +32,5 @@
     background-color: rgb(206, 206, 205);
     color: rgb(59, 44, 44);
 }
+
+.image-slider-container {}

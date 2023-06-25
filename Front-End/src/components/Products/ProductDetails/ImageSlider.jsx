@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import arrow from '../../../assets/images/imgArr.png'
 
 const variants = {
     enter: (direction) => {
@@ -69,14 +70,14 @@ const ImageSlider = ({ images, setShowImageSlider, imgIndex }) => {
                     />
                     <div className="slider-buttons">
                         <button className="prev" onClick={() => paginate(-1)}>
-                            ‣
+                            <img className="prevArr" src={arrow} alt="product Image" loading='lazy' />
                         </button>
                         <button className="next" onClick={() => paginate(1)}>
-                            ‣
+                            <img className="prevArr" src={arrow} alt="product Image" loading='lazy' />
                         </button>
                     </div>
                     <div className="hideMobile">
-                        <div to='/products' className="sliderClose" onClick={() => { setShowImageSlider(false) }} ></div>
+                        <button to='/products' className="sliderClose" onClick={() => { setShowImageSlider(false) }} ></button>
                     </div>
 
                 </div>
