@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { getCartTestAPI } from '../../API/AppApi';
 
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
@@ -35,20 +36,8 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
     }
 
     const getCartTest = async () => {
-        try {
-            const localToken = window.localStorage.getItem('token');
-
-            const response = await axios.get(`${API_URL}order/cart`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${localToken}`,
-                },
-            })
-            const items = await response.data;
-            setCartItems(items)
-        } catch (error) {
-            console.log(error)
-        }
+        const data = await getCartTestAPI(API_URL)
+        setCartItems(data)
     }
 
     const deleteItem = async (data) => {

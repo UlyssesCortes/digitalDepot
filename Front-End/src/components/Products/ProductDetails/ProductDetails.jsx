@@ -16,6 +16,8 @@ import ProductLoading from '../../Loading/ProductLoading';
 import ImageSlider from './ImageSlider';
 import LoginAlert from '../../Login-Register/LoginAlert';
 
+import { fetchProductDetailsAPI, fetchGuestProductDetails, addFavoriteAPI, removeFavoriteAPI } from '../../API/Products';
+
 export default function ProductDetails({ API_URL, user, token, currentOrderId, setCurrentOrderId, isLoggedIn, quantity, setQuantity, setShowProfile, setModalEmail, modalEmail, setCartItems, setDemoUser, setUpdateFurniture }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
@@ -38,26 +40,11 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
 
         try {
             if (localToken) {
-                const response = await axios.get(`${API_URL}products/details/${id}`, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${localToken}`,
-                    },
-                });
-                const result = await response.data;
-                if (result) {
-                    setProduct(result);
-                }
+                const data = await fetchProductDetailsAPI(API_URL, id)
+                setProduct(data)
             } else {
-                const response = await axios.get(`${API_URL}products/${id}`, {
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                });
-                const result = await response.data;
-                if (result) {
-                    setProduct(result);
-                }
+                const data = await fetchGuestProductDetails(API_URL, id)
+                setProduct(data)
             }
 
         } catch (error) {
@@ -75,24 +62,12 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
 
     const handleFavoriteBtn = async (productId) => {
         if (isLoggedIn) {
-            try {
-                const favoriteResponse = await axios.post(`${API_URL}favorite/${productId}`, {}, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    }
-                });
-                if (favoriteResponse.status === 200) {
-                    setClickedFav(true)
-                    setUpdateFurniture(true)
-                } else {
-                    throw new Error(
-                        `Failed to add to favorite. Status: ${favoriteResponse.status}`
-                    );
-                }
-            } catch (error) {
-                console.error(error);
+            const data = await addFavoriteAPI(productId, API_URL)
+            if (data) {
+                setUpdateFurniture(data)
+                setClickedFav(true)
             }
+
         } else {
             setLoginAlert(true)
         }
@@ -100,23 +75,10 @@ export default function ProductDetails({ API_URL, user, token, currentOrderId, s
 
     const removeFavorite = async (productId) => {
         if (isLoggedIn) {
-            try {
-                const favoriteResponse = await axios.delete(`${API_URL}favorite/${productId}`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                if (favoriteResponse.status === 200) {
-                    setClickedFav(true)
-                    setUpdateFurniture(true)
-                } else {
-                    throw new Error(
-                        `Failed to remove favorite. Status: ${favoriteResponse.status}`
-                    );
-                }
-            } catch (error) {
-                console.error(error);
+            const data = await removeFavoriteAPI(productId, API_URL)
+            if (data) {
+                setUpdateFurniture(data)
+                setClickedFav(true)
             }
         }
     };

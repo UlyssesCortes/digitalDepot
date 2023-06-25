@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
 import "@stripe/stripe-js"
-import axios from 'axios';
+
+import {
+  getCartTestAPI,
+  getProductsAPI,
+  getUserAPI,
+  fetchGuestProductsAPI,
+  fetchMyOrdersAPI
+} from './components/API/AppApi';
 
 import Hero from './components/Hero/Hero'
 import Products from './components/Products/ProductList/Products';
@@ -47,9 +53,9 @@ const App = () => {
     const localToken = window.localStorage.getItem('token');
     const localCurrentOrderId = window.localStorage.getItem('currentOrderId');
     setIsLoggedIn(isLoggedInLocal)
+
     if (isLoggedInLocal) {
       setToken(localToken)
-      setIsLoggedIn(isLoggedInLocal)
       setCurrentOrderId(localCurrentOrderId)
       getUser();
       getCartTest()
@@ -77,92 +83,28 @@ const App = () => {
   }, [filterName])
 
   const getUser = async () => {
-    const localToken = window.localStorage.getItem('token');
-    try {
-      const response = await axios.get(`${API_URL}users/me`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localToken}`,
-        },
-      })
-      const result = await response.data
-      setUser(result)
-    } catch (error) {
-      console.log(error)
-    }
+    const data = await getUserAPI(API_URL)
+    setUser(data)
   }
 
   const getCartTest = async () => {
-    try {
-      const localToken = window.localStorage.getItem('token');
-      if (localToken) {
-        const response = await axios.get(`${API_URL}order/cart`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localToken}`,
-          },
-        })
-        const items = await response.data;
-        if (items) {
-          setCartItems(items)
-        }
-      }
-    } catch (error) {
-      console.log(error)
-    }
+    const data = await getCartTestAPI(API_URL)
+    setCartItems(data)
   }
 
   const getProducts = async () => {
-    const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
-    const localToken = window.localStorage.getItem('token');
-
-    try {
-      if (isLoggedInLocal) {
-        const response = await axios.get(`${API_URL}products/all`, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localToken}`,
-          },
-        });
-        const result = await response.data;
-        if (result) {
-          setProducts(result);
-        }
-        return result;
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    const data = await getProductsAPI(API_URL)
+    setProducts(data)
   };
 
   const fetchGuestProducts = async () => {
-    const localToken = window.localStorage.getItem('token');
-    if (!localToken) {
-      const response = await axios.get(`${API_URL}products`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const result = await response.data;
-      if (result) {
-        setProducts(result);
-      }
-      return result;
-    }
+    const data = await fetchGuestProductsAPI(API_URL)
+    setProducts(data)
   }
 
   const fetchOrder = async () => {
-    if (token) {
-      const response = await axios.get(`${API_URL}order/myOrders`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
-      const data = await response.data;
-      const orderId = data[0].id
-      localStorage.setItem('currentOrderId', orderId);
-      setCurrentOrderId(orderId)
-    }
+    const data = await fetchMyOrdersAPI(token, API_URL)
+    setCurrentOrderId(data)
   }
 
   return (
@@ -170,7 +112,7 @@ const App = () => {
       <BrowserRouter>
         {!hideNav &&
           <div className='marginReducer'>
-            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} token={token} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} setCartItems={setCartItems} setCurrentOrderId={setCurrentOrderId} />
+            <Header API_URL={API_URL} setHideNav={setHideNav} hideNav={hideNav} setIsLoggedIn={setIsLoggedIn} setFilterName={setFilterName} filterName={filterName} setFavorites={setFavorites} showProfile={showProfile} setShowProfile={setShowProfile} setShowFavorite={setShowFavorite} setShowOrder={setShowOrder} setPageTitle={setPageTitle} setShowCart={setShowCart} setCurrentPage={setCurrentPage} currentPage={currentPage} setFinalizedOrders={setFinalizedOrders} noResult={noResult} setIsCategorieOpen={setIsCategorieOpen} isCategorieOpen={isCategorieOpen} setCartItems={setCartItems} setCurrentOrderId={setCurrentOrderId} />
           </div>
         }
         <Routes>

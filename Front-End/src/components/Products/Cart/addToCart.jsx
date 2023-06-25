@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { getCartTestAPI, fetchMyOrdersAPI } from '../../API/AppApi';
+
 const addToCart = async (API_URL, user, productId, token, currentOrderId, setCurrentOrderId, quantity, setLoginAlert, setCartItems) => {
 
     let items = null;
@@ -8,19 +10,8 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
     setCurrentOrderId(localCurrentOrderId)
 
     const getCartTest = async () => {
-        try {
-            const localToken = window.localStorage.getItem('token');
-            const response = await axios.get(`${API_URL}order/cart`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${localToken}`,
-                },
-            })
-            const items = await response.data;
-            setCartItems(items)
-        } catch (error) {
-            console.log(error)
-        }
+        const data = await getCartTestAPI(API_URL)
+        setCartItems(data)
     }
 
     const addingItem = async (orderId) => {
@@ -51,13 +42,7 @@ const addToCart = async (API_URL, user, productId, token, currentOrderId, setCur
         }
 
         if (!localCurrentOrderId && localIsLoggedIn) {
-            const response = await axios.get(`${API_URL}order/myOrders`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            const data = await response.data;
-
+            const data = await fetchMyOrdersAPI(token, API_URL)
             if (data.length > 0) {
                 localStorage.setItem('currentOrderId', data[0].id);
                 setCurrentOrderId(data[0].id)

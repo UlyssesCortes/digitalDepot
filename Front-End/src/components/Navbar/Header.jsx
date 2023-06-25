@@ -12,7 +12,12 @@ import Desktop from './Desktop';
 import Profile from './Profile';
 import MobileNav from './MobileNav';
 
-export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage, setFinalizedOrders, noResult, setIsCategorieOpen, isCategorieOpen, setCartItems, setCurrentOrderId }) {
+import {
+    fetchMyFavoritesAPI,
+    fetchOrderHistoryAPI
+} from '../API/Products';
+
+export default function Header({ setIsLoggedIn, setFilterName, setHideNav, API_URL, setFavorites, showProfile, setShowProfile, filterName, setShowFavorite, setShowOrder, setPageTitle, setShowCart, setCurrentPage, setFinalizedOrders, noResult, setIsCategorieOpen, isCategorieOpen, setCartItems, setCurrentOrderId }) {
     const isLoggedIn = window.localStorage.getItem('isLoggedIn');
     const [showSearch, setShowSearch] = useState(false)
     const [searchInput, setSearchInput] = useState("")
@@ -42,34 +47,13 @@ export default function Header({ setIsLoggedIn, setFilterName, setHideNav, token
     }
 
     const fetchFavorites = async () => {
-        try {
-            try {
-                const favoriteProducts = await axios.get(`${API_URL}favorite/myFavorites`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                const products = await favoriteProducts.data;
-                setFavorites(products)
-            } catch (error) {
-                console.log(error);
-            }
-        } catch (error) {
-            console.log(error);
-        }
+        const data = await fetchMyFavoritesAPI(API_URL)
+        setFavorites(data)
     };
 
     const fetchOrders = async () => {
-        if (token) {
-            const response = await axios.get(`${API_URL}order/history`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            const data = await response.data;
-            setFinalizedOrders(data)
-        }
+        const data = fetchOrderHistoryAPI(API_URL)
+        setFinalizedOrders(data)
     }
 
 

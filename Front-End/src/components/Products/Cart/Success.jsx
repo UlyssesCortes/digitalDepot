@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import axios from 'axios';
+import { fetchMyOrdersAPI } from '../../API/AppApi';
 
 import Lottie from "lottie-react"
 import checkout from "../../../assets/LottieAnimations/checkout.json"
@@ -28,12 +29,7 @@ export default function Success({ API_URL, setCurrentOrderId, setCartItems }) {
             const totalSum = window.localStorage.getItem('totalSum');
 
             if (!currentOrderId || currentOrderId == undefined) {
-                const response = await axios.get(`${API_URL}order/myOrders`, {
-                    headers: {
-                        Authorization: `Bearer ${localToken}`
-                    }
-                });
-                const data = await response.data;
+                const data = await fetchMyOrdersAPI(localToken, API_URL)
                 orderId = data[0].id
             } else {
                 orderId = currentOrderId

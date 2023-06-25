@@ -6,7 +6,16 @@ import { motion } from "framer-motion";
 import ProductListLoading from '../../Loading/ProductListLoading';
 import LoginAlert from '../../Login-Register/LoginAlert';
 import { generateCardVariants } from '../../../assets/FramerAnimations/ProductAnimation';
-import axios from 'axios';
+
+import {
+    getProductsAPI,
+    fetchGuestProductsAPI
+} from '../../API/AppApi';
+
+import {
+    addFavoriteAPI,
+    removeFavoriteAPI
+} from '../../API/Products';
 
 export default function ProductList({ API_URL, filterName, currentPage, setCurrentPage, isLoggedIn, setIsLoggedIn, setModalEmail, modalEmail, products, setProducts, sortMethod, setSortMethod, setNoResult, noResult, setDemoUser, updateFurniture, setUpdateFurniture }) {
     const [furniture, setFurniture] = useState([]);
@@ -15,7 +24,6 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const [productsPerPage] = useState(8);
     const [loginAlert, setLoginAlert] = useState(false)
 
-    const token = window.localStorage.getItem('token');
     const isLoggedInLocal = window.localStorage.getItem('isLoggedIn');
     const lowerCaseFilterName = filterName.toLowerCase();
     const location = useLocation();
@@ -79,28 +87,11 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
     const getProducts = async () => {
         try {
             if (isLoggedIn) {
-                const response = await axios.get(`${API_URL}products/all`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                const result = await response.data;
-                if (result) {
-                    setProducts(result);
-                }
-                return result;
+                const data = await getProductsAPI(API_URL)
+                setProducts(data)
             } else {
-                const response = await axios.get(`${API_URL}products`, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const result = await response.data;
-                if (result) {
-                    setProducts(result);
-                }
-                return result;
+                const data = await fetchGuestProductsAPI(API_URL)
+                setProducts(data)
             }
         } catch (error) {
             console.error(error);
@@ -125,19 +116,9 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
             });
 
             try {
-                const favoriteResponse = await axios.post(`${API_URL}favorite/${productId}`, {}, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-
-                if (favoriteResponse.status === 200) {
-                    setUpdateFurniture(true)
-                } else {
-                    throw new Error(
-                        `Failed to create order. Status: ${favoriteResponse.status}`
-                    );
+                const data = await addFavoriteAPI(productId, API_URL)
+                if (data) {
+                    setUpdateFurniture(data)
                 }
             } catch (error) {
                 console.error(error);
@@ -158,20 +139,9 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
         });
 
         try {
-            const favoriteResponse = await axios.delete(`${API_URL}favorite/${productId}`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
-            if (favoriteResponse.status === 200) {
-                setUpdateFurniture(true)
-
-            } else {
-                throw new Error(
-                    `Failed to create order. Status: ${favoriteResponse.status}`
-                );
+            const data = removeFavoriteAPI(productId, API_URL)
+            if (data) {
+                setUpdateFurniture(data)
             }
         } catch (error) {
             console.error(error);
