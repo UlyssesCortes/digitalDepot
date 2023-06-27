@@ -446,10 +446,6 @@
     color: white;
 }
 
-.dots {
-    display: none;
-}
-
 .discountD {
     display: flex;
     gap: 5px;
@@ -1057,6 +1053,10 @@
         justify-content: center;
     }
 
+    .moreDetails {
+        margin-bottom: 50px;
+    }
+
 }
 
 @media only screen and (max-width: 900px) {
@@ -1177,20 +1177,6 @@
         display: none;
     }
 
-    .dots {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        z-index: 999;
-    }
-
-    .dot {
-        width: 20px;
-        height: 20px;
-        background-color: #333333;
-        border-radius: 50px;
-    }
-
     .topNavProduct {
         height: 14vh;
     }
@@ -1255,5 +1241,30 @@
 
     .bottomCartContainer {
         justify-content: space-around;
+    }
+
+    .next,
+    .prev {
+        background: transparent;
+        width: 2.5rem;
+        height: 70vh;
+    }
+
+    .next:hover,
+    .prev:hover {
+        border: none;
+    }
+
+    .image-slider-container {
+        height: 70vh;
+    }
+
+    .productDetailBox {
+        /* padding: 0; */
+    }
+
+    .productDetailsRight {
+        margin: 0;
+        padding: 10px;
     }
 }
