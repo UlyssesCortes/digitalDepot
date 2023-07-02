@@ -20,6 +20,7 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
     const [checkoutAnimation, setCheckoutAnimation] = useState(false)
     const [emptyCart, setEmptyCart] = useState(false);
     const [creditHover, setCreditHover] = useState(false)
+    const [creditBtnHover, setCreditBtnHover] = useState(false)
     const [stripeLoading, setStripeLoading] = useState(false)
     const [copy, setCopy] = useState(false);
     const creditCardNumber = '4242 4242 4242 4242'
@@ -75,8 +76,6 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
                 Authorization: `Bearer ${token}`
             }
         });
-        console.log(response)
-
         if (response.status === 200) {
             setCartItems((pertCartItems) => {
                 const updatedCart = [...pertCartItems];
@@ -197,9 +196,9 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
 
     const creditAnimation = {
         hover: {
-            scale: 1.2,
-            rotate: 10,
-            y: -180
+            scale: creditBtnHover ? 1 : 1.2,
+            rotate: creditBtnHover ? 8 : 10,
+            y: creditBtnHover ? -30 : -180
         }
     }
 
@@ -330,13 +329,13 @@ export default function Cart({ API_URL, token, isLoggedIn, setShowProfile, favor
                         <section className='CartBtnContainer bottomCartContainer'>
                             <p className='totalPrice'>Total ${parseFloat(sum)}</p>
                             <button className='checkoutBtn' onClick={() => { redirectToCheckout() }} disabled={stripeLoading}
-                                onMouseEnter={() => setCreditHover(true)}
-                                onMouseLeave={() => setCreditHover(false)}>{!stripeLoading ? "Checkout" : "Loading..."}</button>
+                                onMouseEnter={() => { setCreditBtnHover(true); setCreditHover(true) }}
+                                onMouseLeave={() => { setCreditBtnHover(false); setCreditHover(false) }}>{!stripeLoading ? "Checkout" : "Loading..."}</button>
                         </section>
                     }
 
                 </div>
-            </section>
-        </section>
+            </section >
+        </section >
     )
 }

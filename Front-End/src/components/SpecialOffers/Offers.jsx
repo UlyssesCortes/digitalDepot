@@ -20,7 +20,7 @@ export default function Offers({ setShowProfile, setFilterName }) {
             <section className="offerContainer">
                 <div className="offerLeft" onClick={() => setFilterName("chair")}>
                     <Link to='/products'>
-                        <img className='offerImg' src="https://www.ikea.com/global/en/images/PH_192617_1_4bf83c6c23.jpg?f=xxl" alt="Product Image" loading='lazy' />
+                        <img className='offerImg' src="https://www.ikea.com/global/en/images/PH_192617_1_4bf83c6c23.jpg?f=xxl" alt="Product Image" />
                         <div className='arrowImgOffer'></div>
                         <div className='imgText'>
                             <p>Discover the Perfect Seat at Unbeatable Prices</p>

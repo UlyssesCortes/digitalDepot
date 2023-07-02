@@ -126,7 +126,7 @@ const Login = ({ setIsLoggedIn, API_URL, setUser, setToken, setHideNav, modalEma
                 </div>
 
                 <section className='rightLoginImg'>
-                    <img className="loginImg" src={"https://secure.img1-fg.wfcdn.com/im/04285501/resize-h800-w800%5Ecompr-r85/1539/153992096/Jewett+Swivel+Office+Chair.jpg"} alt="product Image" loading='lazy' />
+                    <img className="loginImg" src={"https://secure.img1-fg.wfcdn.com/im/04285501/resize-h800-w800%5Ecompr-r85/1539/153992096/Jewett+Swivel+Office+Chair.jpg"} alt="product Image" />
                 </section>
             </section>
         </>

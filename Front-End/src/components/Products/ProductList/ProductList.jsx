@@ -213,7 +213,9 @@ export default function ProductList({ API_URL, filterName, currentPage, setCurre
                             initial="hidden"
                             animate="show"
                         >
-                            <div className="favorite" href="#topNav">
+                            <div
+                                className={`favorite ${loginAlert && "hideMe"}`}
+                                href="#topNav">
                                 {isLoggedInLocal && product.isFavorite ? (
 
                                     <motion.div

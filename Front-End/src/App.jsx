@@ -62,6 +62,9 @@ const App = () => {
 
   useEffect(() => {
     const localCurrentOrderId = window.localStorage.getItem('currentOrderId');
+    if (isLoggedIn) {
+      getCartTest()
+    }
     if (!localCurrentOrderId && isLoggedIn) {
       fetchOrder()
     }
@@ -93,6 +96,8 @@ const App = () => {
   }
 
   const getCartTest = async () => {
+    console.log("CART TEST B: ")
+
     try {
       const localToken = window.localStorage.getItem('token');
       if (localToken) {
@@ -103,7 +108,10 @@ const App = () => {
           },
         })
         const items = await response.data;
+
         if (items) {
+          console.log("CART TEST: ", items)
+
           setCartItems(items)
         }
       }
